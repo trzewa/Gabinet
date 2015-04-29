@@ -16,5 +16,10 @@ namespace Gabinet
         {
             InitializeComponent();
         }
+
+        private void btnGabinet_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

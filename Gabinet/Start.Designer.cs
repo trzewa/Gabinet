@@ -46,6 +46,7 @@
             this.btnGabinet.Text = "Gabinet";
             this.btnGabinet.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnGabinet.UseVisualStyleBackColor = true;
+            this.btnGabinet.Click += new System.EventHandler(this.btnGabinet_Click);
             // 
             // btnRejestracja
             // 
