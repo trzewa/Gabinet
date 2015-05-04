@@ -16,5 +16,25 @@ namespace Gabinet
         {
             InitializeComponent();
         }
+
+        private void toolStripBtnDodaj_Click(object sender, EventArgs e)
+        {
+            bool IsOpen = false;
+
+            foreach (Form f in Application.OpenForms)
+            {
+                if (f.Text == "Dodawanie pacjenta")
+                {
+                    IsOpen = true;
+                    f.Focus();
+                    break;
+                }
+            }
+            if (IsOpen == false)
+            {
+                DodajPacjent f2 = new DodajPacjent();
+                f2.Show();
+            }
+        }
     }
 }

@@ -73,6 +73,16 @@ namespace Gabinet.Properties {
         /// <summary>
         ///   Wyszukuje zlokalizowany zasób typu System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap dodajpacjenta {
+            get {
+                object obj = ResourceManager.GetObject("dodajpacjenta", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Wyszukuje zlokalizowany zasób typu System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap koniec {
             get {
                 object obj = ResourceManager.GetObject("koniec", resourceCulture);
@@ -113,6 +123,26 @@ namespace Gabinet.Properties {
         /// <summary>
         ///   Wyszukuje zlokalizowany zasób typu System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap rejestruj1 {
+            get {
+                object obj = ResourceManager.GetObject("rejestruj1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Wyszukuje zlokalizowany zasób typu System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap rejestruj2 {
+            get {
+                object obj = ResourceManager.GetObject("rejestruj2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Wyszukuje zlokalizowany zasób typu System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap ustawienia {
             get {
                 object obj = ResourceManager.GetObject("ustawienia", resourceCulture);
@@ -126,6 +156,16 @@ namespace Gabinet.Properties {
         internal static System.Drawing.Bitmap x {
             get {
                 object obj = ResourceManager.GetObject("x", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Wyszukuje zlokalizowany zasób typu System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap zmień {
+            get {
+                object obj = ResourceManager.GetObject("zmień", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

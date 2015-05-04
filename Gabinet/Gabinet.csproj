@@ -46,6 +46,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Database.cs" />
+    <Compile Include="DodajPacjent.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DodajPacjent.Designer.cs">
+      <DependentUpon>DodajPacjent.cs</DependentUpon>
+    </Compile>
     <Compile Include="Gabinet.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -72,6 +78,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="DodajPacjent.resx">
+      <DependentUpon>DodajPacjent.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
@@ -124,6 +133,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\rejestruj.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rejestruj.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\zmień.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rejestruj1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\dodajpacjenta.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
