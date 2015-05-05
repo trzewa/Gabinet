@@ -45,6 +45,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ComboBoxItem.cs" />
     <Compile Include="Database.cs" />
     <Compile Include="DodajPacjent.cs">
       <SubType>Form</SubType>
