@@ -13,7 +13,8 @@ namespace Gabinet
 {
     class Database
     {
-        public MySqlDataAdapter Select(string query, string db_connection){
+        public MySqlDataAdapter Select(string query, string db_connection)
+        {
                 MySqlConnection myConn = new MySqlConnection(db_connection);
                 MySqlDataAdapter myDataAdapter = new MySqlDataAdapter();
                 myDataAdapter.SelectCommand = new MySqlCommand(query, myConn);

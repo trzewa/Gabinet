@@ -40,6 +40,7 @@
             this.textBoxImie = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.comboBoxWojewodztwo = new System.Windows.Forms.ComboBox();
             this.comboBoxKod = new System.Windows.Forms.ComboBox();
             this.comboBoxUlica = new System.Windows.Forms.ComboBox();
             this.textBoxMail = new System.Windows.Forms.TextBox();
@@ -47,13 +48,12 @@
             this.textBoxTelefon = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             this.textBoxNrMieszkania = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.textBoxNrDomu = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.textBoxWojewodztwo = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
             this.comboBoxMiasto = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
@@ -188,6 +188,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.comboBoxWojewodztwo);
             this.groupBox2.Controls.Add(this.comboBoxKod);
             this.groupBox2.Controls.Add(this.comboBoxUlica);
             this.groupBox2.Controls.Add(this.textBoxMail);
@@ -195,13 +196,12 @@
             this.groupBox2.Controls.Add(this.textBoxTelefon);
             this.groupBox2.Controls.Add(this.label12);
             this.groupBox2.Controls.Add(this.label11);
+            this.groupBox2.Controls.Add(this.label7);
             this.groupBox2.Controls.Add(this.textBoxNrMieszkania);
             this.groupBox2.Controls.Add(this.label10);
             this.groupBox2.Controls.Add(this.textBoxNrDomu);
             this.groupBox2.Controls.Add(this.label9);
             this.groupBox2.Controls.Add(this.label8);
-            this.groupBox2.Controls.Add(this.textBoxWojewodztwo);
-            this.groupBox2.Controls.Add(this.label7);
             this.groupBox2.Controls.Add(this.comboBoxMiasto);
             this.groupBox2.Controls.Add(this.label6);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
@@ -211,6 +211,16 @@
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Adres zamieszkania";
+            // 
+            // comboBoxWojewodztwo
+            // 
+            this.comboBoxWojewodztwo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.comboBoxWojewodztwo.FormattingEnabled = true;
+            this.comboBoxWojewodztwo.Location = new System.Drawing.Point(6, 32);
+            this.comboBoxWojewodztwo.Name = "comboBoxWojewodztwo";
+            this.comboBoxWojewodztwo.Size = new System.Drawing.Size(208, 21);
+            this.comboBoxWojewodztwo.TabIndex = 18;
+            this.comboBoxWojewodztwo.SelectedIndexChanged += new System.EventHandler(this.comboBoxWojewodztwo_DropDownClosed);
             // 
             // comboBoxKod
             // 
@@ -276,6 +286,16 @@
             this.label11.TabIndex = 10;
             this.label11.Text = "Kod";
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label7.Location = new System.Drawing.Point(6, 16);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(74, 13);
+            this.label7.TabIndex = 2;
+            this.label7.Text = "Województwo";
+            // 
             // textBoxNrMieszkania
             // 
             this.textBoxNrMieszkania.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
@@ -322,39 +342,22 @@
             this.label8.TabIndex = 4;
             this.label8.Text = "Ulica";
             // 
-            // textBoxWojewodztwo
-            // 
-            this.textBoxWojewodztwo.Enabled = false;
-            this.textBoxWojewodztwo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.textBoxWojewodztwo.Location = new System.Drawing.Point(223, 32);
-            this.textBoxWojewodztwo.Name = "textBoxWojewodztwo";
-            this.textBoxWojewodztwo.Size = new System.Drawing.Size(197, 20);
-            this.textBoxWojewodztwo.TabIndex = 3;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label7.Location = new System.Drawing.Point(220, 16);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(74, 13);
-            this.label7.TabIndex = 2;
-            this.label7.Text = "Województwo";
-            // 
             // comboBoxMiasto
             // 
+            this.comboBoxMiasto.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.comboBoxMiasto.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.comboBoxMiasto.FormattingEnabled = true;
-            this.comboBoxMiasto.Location = new System.Drawing.Point(9, 32);
+            this.comboBoxMiasto.Location = new System.Drawing.Point(223, 32);
             this.comboBoxMiasto.Name = "comboBoxMiasto";
-            this.comboBoxMiasto.Size = new System.Drawing.Size(205, 21);
+            this.comboBoxMiasto.Size = new System.Drawing.Size(197, 21);
             this.comboBoxMiasto.TabIndex = 1;
+            this.comboBoxMiasto.SelectedIndexChanged += new System.EventHandler(this.comboBoxMiasto_DropDownClosed);
             // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label6.Location = new System.Drawing.Point(6, 16);
+            this.label6.Location = new System.Drawing.Point(220, 16);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(68, 13);
             this.label6.TabIndex = 0;
@@ -543,7 +546,6 @@
         private System.Windows.Forms.TextBox textBoxImie;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.TextBox textBoxWojewodztwo;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.ComboBox comboBoxMiasto;
         private System.Windows.Forms.Label label6;
@@ -573,5 +575,6 @@
         private System.Windows.Forms.Button buttonAnuluj;
         private System.Windows.Forms.ComboBox comboBoxKod;
         private System.Windows.Forms.ComboBox comboBoxUlica;
+        private System.Windows.Forms.ComboBox comboBoxWojewodztwo;
     }
 }

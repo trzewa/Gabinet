@@ -14,17 +14,17 @@ namespace Gabinet
 {
     public partial class DodajPacjent : Form
     {
-        public string dbconnection_string;
-        public string dbconnection;
+        public string dbconnection_gabinet;
+        public string dbconnection_gus;
 
         public DodajPacjent()
         {
             InitializeComponent();
-            this.dbconnection_string = "datasource=localhost;database=" + mysettings.Default.database + ";port=" + mysettings.Default.port + ";username=" + mysettings.Default.user + ";password=" + mysettings.Default.password;
+            this.dbconnection_gabinet = "datasource=localhost;database=" + mysettings.Default.database + ";port=" + mysettings.Default.port + ";username=" + mysettings.Default.user + ";password=" + mysettings.Default.password;
+            this.dbconnection_gus = "datasource=localhost;database=" + mysettings.Default.database1 + ";port=" + mysettings.Default.port + ";username=" + mysettings.Default.user + ";password=" + mysettings.Default.password;
             Update_comboBoxUprawnienia();
-            Update_comboBoxNfz();
-            
-            Update_comboBoxMiasto();
+            Update_comboBoxNfz();            
+            Update_comboBoxWojewodztwo();
         }
 
         private void comboBoxUprawnienia_SelectedIndexChanged(object sender, EventArgs e)
@@ -45,7 +45,7 @@ namespace Gabinet
                 
                 MySqlDataAdapter myDataAdapter = new MySqlDataAdapter();
                 Database database = new Database();
-                myDataAdapter = database.Select("select * from ubezpieczenia", this.dbconnection_string);
+                myDataAdapter = database.Select("select * from ubezpieczenia", this.dbconnection_gabinet);
 
                 DataTable dt = new DataTable();
                 myDataAdapter.Fill(dt);
@@ -73,7 +73,7 @@ namespace Gabinet
                 
                 MySqlDataAdapter myDataAdapter = new MySqlDataAdapter();
                 Database database = new Database();
-                myDataAdapter = database.Select("select * from fundusz", this.dbconnection_string);
+                myDataAdapter = database.Select("select * from fundusz", this.dbconnection_gabinet);
 
                 DataTable dt = new DataTable();
                 myDataAdapter.Fill(dt);
@@ -86,7 +86,7 @@ namespace Gabinet
                     item.Hidden_Id = dt.Rows[i]["idfundusz"].ToString();
                     comboBoxNfz.Items.Add(item);
                 }
-                Update_comboBoxMiasto();
+                
             }
             catch (Exception ex)
             {
@@ -94,19 +94,79 @@ namespace Gabinet
             }
         }
         
-        public void Update_comboBoxMiasto()
+        public void Update_comboBoxWojewodztwo()
         {
             try
             {
-                this.dbconnection = "datasource=localhost;database=" + mysettings.Default.database1 + ";port=" + mysettings.Default.port + ";username=" + mysettings.Default.user + ";password=" + mysettings.Default.password;
+                
                 MySqlDataAdapter myDataAdapter = new MySqlDataAdapter();
                 Database database = new Database();
-                myDataAdapter = database.Select("SELECT DISTINCT miejscowosc FROM mytable ORDER BY miejscowosc ASC", this.dbconnection);
+                myDataAdapter = database.Select("SELECT distinct wojewodztwo FROM mytable ORDER BY wojewodztwo ASC", this.dbconnection_gus);
 
                 DataTable dt = new DataTable();
                 myDataAdapter.Fill(dt);
 
+                
+                for (int i = 0; i < dt.Rows.Count; i++)
+                {
+                    ComboboxItem item = new ComboboxItem();
+                    item.Text = dt.Rows[i]["wojewodztwo"].ToString();
+                    //item.Hidden_Id = dt.Rows[i]["id"].ToString();
+                    comboBoxWojewodztwo.Items.Add(item);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void comboBoxMiasto_DropDownClosed(object sender, EventArgs e)
+        {
+            try
+            {
+                string selected_item = (comboBoxMiasto.SelectedItem as ComboboxItem).Text.ToString();
+                string selected_item1 = (comboBoxWojewodztwo.SelectedItem as ComboboxItem).Text.ToString();
+                Database database = new Database();
+                MySqlDataAdapter myDataAdapter = new MySqlDataAdapter();
+                myDataAdapter = database.Select("select distinct adres from mytable WHERE (miejscowosc='" + selected_item + "' and wojewodztwo='" + selected_item1 + "') order by adres ASC", this.dbconnection_gus);
+
+                DataTable dt = new DataTable();
+                myDataAdapter.Fill(dt);
+
+                comboBoxUlica.Items.Clear();
+
+                for (int i = 0; i < dt.Rows.Count; i++)
+                {
+                    ComboboxItem item = new ComboboxItem();
+                    item.Text = dt.Rows[i]["adres"].ToString();
+                    comboBoxUlica.Items.Add(item);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void comboBoxWojewodztwo_DropDownClosed(object sender, EventArgs e)
+        {
+            try
+            {
+                string selected_item = (comboBoxWojewodztwo.SelectedItem as ComboboxItem).Text.ToString();
+                Database database = new Database();
+                MySqlDataAdapter myDataAdapter = new MySqlDataAdapter();
+                myDataAdapter = database.Select("select distinct miejscowosc from mytable WHERE wojewodztwo='" + selected_item + "' order by miejscowosc ASC", this.dbconnection_gus);
+
+                DataTable dt = new DataTable();
+                myDataAdapter.Fill(dt);
+                
+                comboBoxUlica.Items.Clear();
+                comboBoxUlica.ResetText();
                 comboBoxMiasto.Items.Clear();
+                comboBoxMiasto.ResetText();
+                
+
                 for (int i = 0; i < dt.Rows.Count; i++)
                 {
                     ComboboxItem item = new ComboboxItem();
