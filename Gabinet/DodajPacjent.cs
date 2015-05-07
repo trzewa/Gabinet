@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
+using System.Net.Mail;
 using mysettings = Gabinet.Properties.Settings;
 
 namespace Gabinet
@@ -16,6 +17,7 @@ namespace Gabinet
     {
         public string dbconnection_gabinet;
         public string dbconnection_gus;
+        
 
         public DodajPacjent()
         {
@@ -25,6 +27,8 @@ namespace Gabinet
             Update_comboBoxUprawnienia();
             Update_comboBoxNfz();            
             Update_comboBoxWojewodztwo();
+            Update_comboBoxMiasto();
+            Update_comboBoxUlica();            
         }
 
         private void comboBoxUprawnienia_SelectedIndexChanged(object sender, EventArgs e)
@@ -105,15 +109,15 @@ namespace Gabinet
 
                 DataTable dt = new DataTable();
                 myDataAdapter.Fill(dt);
-
-                
+               
                 for (int i = 0; i < dt.Rows.Count; i++)
                 {
                     ComboboxItem item = new ComboboxItem();
                     item.Text = dt.Rows[i]["wojewodztwo"].ToString();
-                    //item.Hidden_Id = dt.Rows[i]["id"].ToString();
+                    //item.Hidden_Id = dt.Rows[i]["miasto"].ToString();                    
                     comboBoxWojewodztwo.Items.Add(item);
                 }
+                
             }
             catch (Exception ex)
             {
@@ -121,64 +125,96 @@ namespace Gabinet
             }
         }
 
-        private void comboBoxMiasto_DropDownClosed(object sender, EventArgs e)
+        public void Update_comboBoxMiasto()
         {
             try
             {
-                string selected_item = (comboBoxMiasto.SelectedItem as ComboboxItem).Text.ToString();
-                string selected_item1 = (comboBoxWojewodztwo.SelectedItem as ComboboxItem).Text.ToString();
-                Database database = new Database();
+
                 MySqlDataAdapter myDataAdapter = new MySqlDataAdapter();
-                myDataAdapter = database.Select("select distinct adres from mytable WHERE (miejscowosc='" + selected_item + "' and wojewodztwo='" + selected_item1 + "') order by adres ASC", this.dbconnection_gus);
+                Database database = new Database();
+                myDataAdapter = database.Select("SELECT distinct miejscowosc FROM mytable ORDER BY miejscowosc ASC", this.dbconnection_gus);
 
                 DataTable dt = new DataTable();
                 myDataAdapter.Fill(dt);
-
-                comboBoxUlica.Items.Clear();
-
-                for (int i = 0; i < dt.Rows.Count; i++)
-                {
-                    ComboboxItem item = new ComboboxItem();
-                    item.Text = dt.Rows[i]["adres"].ToString();
-                    comboBoxUlica.Items.Add(item);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
-
-        private void comboBoxWojewodztwo_DropDownClosed(object sender, EventArgs e)
-        {
-            try
-            {
-                string selected_item = (comboBoxWojewodztwo.SelectedItem as ComboboxItem).Text.ToString();
-                Database database = new Database();
-                MySqlDataAdapter myDataAdapter = new MySqlDataAdapter();
-                myDataAdapter = database.Select("select distinct miejscowosc from mytable WHERE wojewodztwo='" + selected_item + "' order by miejscowosc ASC", this.dbconnection_gus);
-
-                DataTable dt = new DataTable();
-                myDataAdapter.Fill(dt);
-                
-                comboBoxUlica.Items.Clear();
-                comboBoxUlica.ResetText();
-                comboBoxMiasto.Items.Clear();
-                comboBoxMiasto.ResetText();
-                
 
                 for (int i = 0; i < dt.Rows.Count; i++)
                 {
                     ComboboxItem item = new ComboboxItem();
                     item.Text = dt.Rows[i]["miejscowosc"].ToString();
-                    //item.Hidden_Id = dt.Rows[i]["id"].ToString();
+                    //item.Hidden_Id = dt.Rows[i]["miasto"].ToString();                    
                     comboBoxMiasto.Items.Add(item);
                 }
+
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
         }
+
+        public void Update_comboBoxUlica()
+        {
+            try
+            {
+
+                MySqlDataAdapter myDataAdapter = new MySqlDataAdapter();
+                Database database = new Database();
+                myDataAdapter = database.Select("SELECT distinct adres FROM mytable ORDER BY adres ASC", this.dbconnection_gus);
+
+                DataTable dt = new DataTable();
+                myDataAdapter.Fill(dt);
+
+                for (int i = 0; i < dt.Rows.Count; i++)
+                {
+                    ComboboxItem item = new ComboboxItem();
+                    item.Text = dt.Rows[i]["adres"].ToString();
+                    //item.Hidden_Id = dt.Rows[i]["miasto"].ToString();                    
+                    comboBoxUlica.Items.Add(item);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }        
+
+        private void comboBoxUlica_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void comboBoxMiasto_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonZapisz_Click(object sender, EventArgs e)
+        {
+            string imie = this.textBoxImie.Text;
+            string nazwisko = this.textBoxNazwisko.Text;
+            string dataUrodzenia = this.dateTimePickerUrodzenia.Text;
+            string pesel = this.textBoxPesel.Text;
+            string nip = this.maskedTextBoxNip.Text;
+
+            string wojewodztwo = (comboBoxWojewodztwo.SelectedItem as ComboboxItem).Text.ToString();
+            string miasto = (comboBoxMiasto.SelectedItem as ComboboxItem).Text.ToString();
+            string ulica = (comboBoxUlica.SelectedItem as ComboboxItem).Text.ToString();
+            string nrDomu = this.textBoxNrDomu.Text;
+            string nrMieszkania = this.textBoxNrMieszkania.Text;
+            string kod = this.maskedTextBoxKod.Text;
+            string telefon = this.textBoxTelefon.Text;
+            string mail = this.textBoxMail.Text;
+
+            string uprawnienia = (comboBoxUprawnienia.SelectedItem as ComboboxItem).Text.ToString();
+            string nfz = (comboBoxNfz.SelectedItem as ComboboxItem).Text.ToString();
+
+            string zaklad = this.textBoxZakladNazwa.Text;
+            string zawod = this.textBoxZawod.Text;
+            string nipPraca = this.maskedTextBoxNipPraca.Text;
+
+
+        }
+        
     }
 }

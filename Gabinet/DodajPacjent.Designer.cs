@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.textBoxNip = new System.Windows.Forms.TextBox();
+            this.maskedTextBoxNip = new System.Windows.Forms.MaskedTextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.textBoxPesel = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -40,9 +40,9 @@
             this.textBoxImie = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.comboBoxWojewodztwo = new System.Windows.Forms.ComboBox();
-            this.comboBoxKod = new System.Windows.Forms.ComboBox();
+            this.maskedTextBoxKod = new System.Windows.Forms.MaskedTextBox();
             this.comboBoxUlica = new System.Windows.Forms.ComboBox();
+            this.comboBoxWojewodztwo = new System.Windows.Forms.ComboBox();
             this.textBoxMail = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
             this.textBoxTelefon = new System.Windows.Forms.TextBox();
@@ -62,9 +62,9 @@
             this.comboBoxUprawnienia = new System.Windows.Forms.ComboBox();
             this.label14 = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.maskedTextBoxNipPraca = new System.Windows.Forms.MaskedTextBox();
             this.textBoxZawod = new System.Windows.Forms.TextBox();
             this.label18 = new System.Windows.Forms.Label();
-            this.textBoxZakladNip = new System.Windows.Forms.TextBox();
             this.label17 = new System.Windows.Forms.Label();
             this.textBoxZakladNazwa = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
@@ -78,7 +78,7 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.textBoxNip);
+            this.groupBox1.Controls.Add(this.maskedTextBoxNip);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.textBoxPesel);
             this.groupBox1.Controls.Add(this.label4);
@@ -96,19 +96,21 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Dane podstawowe";
             // 
-            // textBoxNip
+            // maskedTextBoxNip
             // 
-            this.textBoxNip.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.textBoxNip.Location = new System.Drawing.Point(297, 76);
-            this.textBoxNip.Name = "textBoxNip";
-            this.textBoxNip.Size = new System.Drawing.Size(123, 20);
-            this.textBoxNip.TabIndex = 7;
+            this.maskedTextBoxNip.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.maskedTextBoxNip.Location = new System.Drawing.Point(328, 76);
+            this.maskedTextBoxNip.Mask = "000-000-00-00";
+            this.maskedTextBoxNip.Name = "maskedTextBoxNip";
+            this.maskedTextBoxNip.Size = new System.Drawing.Size(91, 20);
+            this.maskedTextBoxNip.TabIndex = 7;
+            this.maskedTextBoxNip.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label5.Location = new System.Drawing.Point(294, 59);
+            this.label5.Location = new System.Drawing.Point(325, 59);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(25, 13);
             this.label5.TabIndex = 6;
@@ -119,7 +121,7 @@
             this.textBoxPesel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.textBoxPesel.Location = new System.Drawing.Point(177, 76);
             this.textBoxPesel.Name = "textBoxPesel";
-            this.textBoxPesel.Size = new System.Drawing.Size(114, 20);
+            this.textBoxPesel.Size = new System.Drawing.Size(145, 20);
             this.textBoxPesel.TabIndex = 5;
             // 
             // label4
@@ -135,6 +137,7 @@
             // dateTimePickerUrodzenia
             // 
             this.dateTimePickerUrodzenia.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.dateTimePickerUrodzenia.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dateTimePickerUrodzenia.Location = new System.Drawing.Point(9, 76);
             this.dateTimePickerUrodzenia.Name = "dateTimePickerUrodzenia";
             this.dateTimePickerUrodzenia.Size = new System.Drawing.Size(162, 20);
@@ -188,9 +191,9 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.comboBoxWojewodztwo);
-            this.groupBox2.Controls.Add(this.comboBoxKod);
+            this.groupBox2.Controls.Add(this.maskedTextBoxKod);
             this.groupBox2.Controls.Add(this.comboBoxUlica);
+            this.groupBox2.Controls.Add(this.comboBoxWojewodztwo);
             this.groupBox2.Controls.Add(this.textBoxMail);
             this.groupBox2.Controls.Add(this.label13);
             this.groupBox2.Controls.Add(this.textBoxTelefon);
@@ -212,24 +215,15 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Adres zamieszkania";
             // 
-            // comboBoxWojewodztwo
+            // maskedTextBoxKod
             // 
-            this.comboBoxWojewodztwo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.comboBoxWojewodztwo.FormattingEnabled = true;
-            this.comboBoxWojewodztwo.Location = new System.Drawing.Point(6, 32);
-            this.comboBoxWojewodztwo.Name = "comboBoxWojewodztwo";
-            this.comboBoxWojewodztwo.Size = new System.Drawing.Size(208, 21);
-            this.comboBoxWojewodztwo.TabIndex = 18;
-            this.comboBoxWojewodztwo.SelectedIndexChanged += new System.EventHandler(this.comboBoxWojewodztwo_DropDownClosed);
-            // 
-            // comboBoxKod
-            // 
-            this.comboBoxKod.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.comboBoxKod.FormattingEnabled = true;
-            this.comboBoxKod.Location = new System.Drawing.Point(353, 73);
-            this.comboBoxKod.Name = "comboBoxKod";
-            this.comboBoxKod.Size = new System.Drawing.Size(67, 21);
-            this.comboBoxKod.TabIndex = 17;
+            this.maskedTextBoxKod.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.maskedTextBoxKod.Location = new System.Drawing.Point(353, 73);
+            this.maskedTextBoxKod.Mask = "00-000";
+            this.maskedTextBoxKod.Name = "maskedTextBoxKod";
+            this.maskedTextBoxKod.Size = new System.Drawing.Size(66, 20);
+            this.maskedTextBoxKod.TabIndex = 22;
+            this.maskedTextBoxKod.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // comboBoxUlica
             // 
@@ -238,7 +232,17 @@
             this.comboBoxUlica.Location = new System.Drawing.Point(9, 73);
             this.comboBoxUlica.Name = "comboBoxUlica";
             this.comboBoxUlica.Size = new System.Drawing.Size(205, 21);
-            this.comboBoxUlica.TabIndex = 16;
+            this.comboBoxUlica.TabIndex = 21;
+            this.comboBoxUlica.SelectedIndexChanged += new System.EventHandler(this.comboBoxUlica_SelectedIndexChanged);
+            // 
+            // comboBoxWojewodztwo
+            // 
+            this.comboBoxWojewodztwo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.comboBoxWojewodztwo.FormattingEnabled = true;
+            this.comboBoxWojewodztwo.Location = new System.Drawing.Point(9, 32);
+            this.comboBoxWojewodztwo.Name = "comboBoxWojewodztwo";
+            this.comboBoxWojewodztwo.Size = new System.Drawing.Size(205, 21);
+            this.comboBoxWojewodztwo.TabIndex = 20;
             // 
             // textBoxMail
             // 
@@ -344,14 +348,12 @@
             // 
             // comboBoxMiasto
             // 
-            this.comboBoxMiasto.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.comboBoxMiasto.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.comboBoxMiasto.FormattingEnabled = true;
             this.comboBoxMiasto.Location = new System.Drawing.Point(223, 32);
             this.comboBoxMiasto.Name = "comboBoxMiasto";
-            this.comboBoxMiasto.Size = new System.Drawing.Size(197, 21);
-            this.comboBoxMiasto.TabIndex = 1;
-            this.comboBoxMiasto.SelectedIndexChanged += new System.EventHandler(this.comboBoxMiasto_DropDownClosed);
+            this.comboBoxMiasto.Size = new System.Drawing.Size(196, 21);
+            this.comboBoxMiasto.TabIndex = 19;
+            this.comboBoxMiasto.SelectedIndexChanged += new System.EventHandler(this.comboBoxMiasto_SelectedIndexChanged);
             // 
             // label6
             // 
@@ -421,9 +423,9 @@
             // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.maskedTextBoxNipPraca);
             this.groupBox4.Controls.Add(this.textBoxZawod);
             this.groupBox4.Controls.Add(this.label18);
-            this.groupBox4.Controls.Add(this.textBoxZakladNip);
             this.groupBox4.Controls.Add(this.label17);
             this.groupBox4.Controls.Add(this.textBoxZakladNazwa);
             this.groupBox4.Controls.Add(this.label16);
@@ -435,31 +437,33 @@
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Zawód";
             // 
+            // maskedTextBoxNipPraca
+            // 
+            this.maskedTextBoxNipPraca.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.maskedTextBoxNipPraca.Location = new System.Drawing.Point(9, 71);
+            this.maskedTextBoxNipPraca.Mask = "000-000-00-00";
+            this.maskedTextBoxNipPraca.Name = "maskedTextBoxNipPraca";
+            this.maskedTextBoxNipPraca.Size = new System.Drawing.Size(93, 20);
+            this.maskedTextBoxNipPraca.TabIndex = 6;
+            this.maskedTextBoxNipPraca.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // textBoxZawod
             // 
             this.textBoxZawod.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.textBoxZawod.Location = new System.Drawing.Point(224, 71);
+            this.textBoxZawod.Location = new System.Drawing.Point(108, 71);
             this.textBoxZawod.Name = "textBoxZawod";
-            this.textBoxZawod.Size = new System.Drawing.Size(195, 20);
+            this.textBoxZawod.Size = new System.Drawing.Size(311, 20);
             this.textBoxZawod.TabIndex = 5;
             // 
             // label18
             // 
             this.label18.AutoSize = true;
             this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label18.Location = new System.Drawing.Point(221, 55);
+            this.label18.Location = new System.Drawing.Point(108, 55);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(40, 13);
             this.label18.TabIndex = 4;
             this.label18.Text = "Zawód";
-            // 
-            // textBoxZakladNip
-            // 
-            this.textBoxZakladNip.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.textBoxZakladNip.Location = new System.Drawing.Point(9, 71);
-            this.textBoxZakladNip.Name = "textBoxZakladNip";
-            this.textBoxZakladNip.Size = new System.Drawing.Size(205, 20);
-            this.textBoxZakladNip.TabIndex = 3;
             // 
             // label17
             // 
@@ -497,6 +501,7 @@
             this.buttonZapisz.TabIndex = 4;
             this.buttonZapisz.Text = "Zapisz";
             this.buttonZapisz.UseVisualStyleBackColor = true;
+            this.buttonZapisz.Click += new System.EventHandler(this.buttonZapisz_Click);
             // 
             // buttonAnuluj
             // 
@@ -535,7 +540,6 @@
         #endregion
 
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TextBox textBoxNip;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox textBoxPesel;
         private System.Windows.Forms.Label label4;
@@ -547,7 +551,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.ComboBox comboBoxMiasto;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox textBoxMail;
         private System.Windows.Forms.Label label13;
@@ -569,12 +572,14 @@
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.TextBox textBoxZawod;
         private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.TextBox textBoxZakladNip;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Button buttonZapisz;
         private System.Windows.Forms.Button buttonAnuluj;
-        private System.Windows.Forms.ComboBox comboBoxKod;
         private System.Windows.Forms.ComboBox comboBoxUlica;
-        private System.Windows.Forms.ComboBox comboBoxWojewodztwo;
+        public System.Windows.Forms.ComboBox comboBoxMiasto;
+        public System.Windows.Forms.ComboBox comboBoxWojewodztwo;
+        private System.Windows.Forms.MaskedTextBox maskedTextBoxKod;
+        private System.Windows.Forms.MaskedTextBox maskedTextBoxNip;
+        private System.Windows.Forms.MaskedTextBox maskedTextBoxNipPraca;
     }
 }

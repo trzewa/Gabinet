@@ -21,6 +21,7 @@ namespace Gabinet
                 MySqlCommandBuilder cb = new MySqlCommandBuilder(myDataAdapter);
                 myConn.Open();
                 return myDataAdapter;
+                
         }
 
       public void Delete(string query, string db_connection)
