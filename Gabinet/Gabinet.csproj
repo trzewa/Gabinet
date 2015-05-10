@@ -47,6 +47,12 @@
   <ItemGroup>
     <Compile Include="ComboBoxItem.cs" />
     <Compile Include="Database.cs" />
+    <Compile Include="dodajOpiekun.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="dodajOpiekun.Designer.cs">
+      <DependentUpon>dodajOpiekun.cs</DependentUpon>
+    </Compile>
     <Compile Include="DodajPacjent.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -79,6 +85,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="dodajOpiekun.resx">
+      <DependentUpon>dodajOpiekun.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="DodajPacjent.resx">
       <DependentUpon>DodajPacjent.cs</DependentUpon>
     </EmbeddedResource>

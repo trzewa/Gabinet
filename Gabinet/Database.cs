@@ -8,6 +8,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
+using mysettings = Gabinet.Properties.Settings;
 
 namespace Gabinet
 {
@@ -31,7 +32,7 @@ namespace Gabinet
             MySqlDataReader MyReader;
             MyConn.Open();
             MyReader = MyCommand.ExecuteReader();
-            MessageBox.Show("Data Deleted");
+            //MessageBox.Show("Data Deleted");
             while (MyReader.Read())
             {
 
@@ -50,7 +51,7 @@ namespace Gabinet
               MySqlDataReader MyReader;
               myConn.Open();
               MyReader = MyCommand.ExecuteReader();
-              MessageBox.Show("Data Updated");
+              //MessageBox.Show("Data Updated");
               while (MyReader.Read())
               {
 
@@ -77,7 +78,7 @@ namespace Gabinet
             {
                 conDataBase.Open();
                 myReader = cmdDataBase.ExecuteReader();
-                MessageBox.Show("DODANE");
+                //MessageBox.Show("DODANE");
 
                 while (myReader.Read())
                 {
@@ -89,6 +90,6 @@ namespace Gabinet
                 MessageBox.Show(ex.Message);
 
             }
-        }
+        }       
     }
 }

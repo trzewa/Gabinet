@@ -82,5 +82,17 @@ namespace Gabinet.Properties {
                 this["database1"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("localhost")]
+        public string datasource {
+            get {
+                return ((string)(this["datasource"]));
+            }
+            set {
+                this["datasource"] = value;
+            }
+        }
     }
 }

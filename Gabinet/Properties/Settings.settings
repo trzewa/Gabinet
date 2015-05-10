@@ -17,5 +17,8 @@
     <Setting Name="database1" Type="System.String" Scope="User">
       <Value Profile="(Default)">gus</Value>
     </Setting>
+    <Setting Name="datasource" Type="System.String" Scope="User">
+      <Value Profile="(Default)">localhost</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

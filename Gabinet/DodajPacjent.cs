@@ -16,16 +16,15 @@ namespace Gabinet
     public partial class DodajPacjent : Form
     {
         public string dbconnection_gabinet;
-        public string dbconnection_gus;
+        public string idopiekun = null;
         
-
         public DodajPacjent()
         {
             InitializeComponent();
-            this.dbconnection_gabinet = "datasource=localhost;database=" + mysettings.Default.database + ";port=" + mysettings.Default.port + ";username=" + mysettings.Default.user + ";password=" + mysettings.Default.password;
-            this.dbconnection_gus = "datasource=localhost;database=" + mysettings.Default.database1 + ";port=" + mysettings.Default.port + ";username=" + mysettings.Default.user + ";password=" + mysettings.Default.password;
+            this.dbconnection_gabinet = "datasource=" + mysettings.Default.datasource + ";database=" + mysettings.Default.database + ";port=" + mysettings.Default.port + ";username=" + mysettings.Default.user + ";password=" + mysettings.Default.password;
             Update_comboBoxUprawnienia();
-            Update_comboBoxNfz();            
+            Update_comboBoxNfz();
+            Update_comboBoxPlec();
             Update_comboBoxWojewodztwo();
             Update_comboBoxMiasto();
             Update_comboBoxUlica();            
@@ -97,6 +96,33 @@ namespace Gabinet
                 MessageBox.Show(ex.Message);
             }
         }
+
+        public void Update_comboBoxPlec()
+        {
+            try
+            {
+
+                MySqlDataAdapter myDataAdapter = new MySqlDataAdapter();
+                Database database = new Database();
+                myDataAdapter = database.Select("SELECT * FROM plec", this.dbconnection_gabinet);
+
+                DataTable dt = new DataTable();
+                myDataAdapter.Fill(dt);
+
+                for (int i = 0; i < dt.Rows.Count; i++)
+                {
+                    ComboboxItem item = new ComboboxItem();
+                    item.Text = dt.Rows[i]["plec"].ToString();
+                    item.Hidden_Id = dt.Rows[i]["idplec"].ToString();                    
+                    comboBoxPlec.Items.Add(item);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
         
         public void Update_comboBoxWojewodztwo()
         {
@@ -105,7 +131,7 @@ namespace Gabinet
                 
                 MySqlDataAdapter myDataAdapter = new MySqlDataAdapter();
                 Database database = new Database();
-                myDataAdapter = database.Select("SELECT distinct wojewodztwo FROM mytable ORDER BY wojewodztwo ASC", this.dbconnection_gus);
+                myDataAdapter = database.Select("SELECT distinct wojewodztwo FROM gus ORDER BY wojewodztwo ASC", this.dbconnection_gabinet);
 
                 DataTable dt = new DataTable();
                 myDataAdapter.Fill(dt);
@@ -132,7 +158,7 @@ namespace Gabinet
 
                 MySqlDataAdapter myDataAdapter = new MySqlDataAdapter();
                 Database database = new Database();
-                myDataAdapter = database.Select("SELECT distinct miejscowosc FROM mytable ORDER BY miejscowosc ASC", this.dbconnection_gus);
+                myDataAdapter = database.Select("SELECT distinct miejscowosc FROM gus ORDER BY miejscowosc ASC", this.dbconnection_gabinet);
 
                 DataTable dt = new DataTable();
                 myDataAdapter.Fill(dt);
@@ -159,7 +185,7 @@ namespace Gabinet
 
                 MySqlDataAdapter myDataAdapter = new MySqlDataAdapter();
                 Database database = new Database();
-                myDataAdapter = database.Select("SELECT distinct adres FROM mytable ORDER BY adres ASC", this.dbconnection_gus);
+                myDataAdapter = database.Select("SELECT distinct adres FROM gus ORDER BY adres ASC", this.dbconnection_gabinet);
 
                 DataTable dt = new DataTable();
                 myDataAdapter.Fill(dt);
@@ -191,11 +217,14 @@ namespace Gabinet
 
         private void buttonZapisz_Click(object sender, EventArgs e)
         {
+            try
+            {            
             string imie = this.textBoxImie.Text;
             string nazwisko = this.textBoxNazwisko.Text;
             string dataUrodzenia = this.dateTimePickerUrodzenia.Text;
             string pesel = this.textBoxPesel.Text;
             string nip = this.maskedTextBoxNip.Text;
+            string plec = (comboBoxPlec.SelectedItem as ComboboxItem).Hidden_Id.ToString();
 
             string wojewodztwo = (comboBoxWojewodztwo.SelectedItem as ComboboxItem).Text.ToString();
             string miasto = (comboBoxMiasto.SelectedItem as ComboboxItem).Text.ToString();
@@ -206,15 +235,75 @@ namespace Gabinet
             string telefon = this.textBoxTelefon.Text;
             string mail = this.textBoxMail.Text;
 
-            string uprawnienia = (comboBoxUprawnienia.SelectedItem as ComboboxItem).Text.ToString();
-            string nfz = (comboBoxNfz.SelectedItem as ComboboxItem).Text.ToString();
+            string uprawnienia = (comboBoxUprawnienia.SelectedItem as ComboboxItem).Hidden_Id.ToString();
+            string nfz = (comboBoxNfz.SelectedItem as ComboboxItem).Hidden_Id.ToString();
 
             string zaklad = this.textBoxZakladNazwa.Text;
             string zawod = this.textBoxZawod.Text;
             string nipPraca = this.maskedTextBoxNipPraca.Text;
+            
+            Database database = new Database();
+            database.Insert("insert into pacjent (idplec, idubezpieczenia, idfundusz, imie, nazwisko, data_urodzenia, pesel, nip, miejsce_pracy, zawod, nip_platnika) VALUES('" + plec + "','" + uprawnienia + "','" + nfz + "','" + imie.ToString() + "','" + nazwisko.ToString() + "','" + dataUrodzenia + "','" + pesel + "','" + nip.ToString() + "','" + zaklad.ToString() + "','" + zawod.ToString() + "','" + nipPraca.ToString() + "')", this.dbconnection_gabinet);
+            database.Insert("insert into adres (wojewodztwo, miasto, kod_pocztowy, ulica, nr_budynku, nr_lokalu) VALUES('" + wojewodztwo.ToString() + "','" + miasto.ToString() + "','" + kod.ToString() + "','" + ulica.ToString() + "','" + nrDomu + "','" + nrMieszkania + "')", this.dbconnection_gabinet);
+            database.Insert("insert into kontakt (telefon, mail) VALUES('" + telefon.ToString() + "','" + mail.ToString() + "')", this.dbconnection_gabinet);
+            database.Insert("insert pacjentadres (idpacjent, idadres) select max(idpacjent), max(idadres) from pacjent, adres", this.dbconnection_gabinet);
+            database.Insert("insert pacjentkontakt (idpacjent, idkontakt) select max(idpacjent), max(idkontakt) from pacjent, kontakt", this.dbconnection_gabinet);
 
+            if (idopiekun != null)
+            {
+                database.Insert("insert pacjentopiekun (idpacjent, idopiekun) select max(idpacjent), '" + idopiekun + "' from pacjent, opiekun", this.dbconnection_gabinet);
+            }
+
+            DialogResult result = MessageBox.Show("Pacjent dodany");
+            if (result == System.Windows.Forms.DialogResult.OK)
+                {                    
+                    DodajPacjent.ActiveForm.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                //MessageBox.Show("Nie zostały wypełnione pola obowiązkowe");
+            }
+        }
+
+        private void buttonAnuluj_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void buttonDodajOpiekun_Click(object sender, EventArgs e)
+        {
+            bool IsOpen = false;
+
+            foreach (Form f in Application.OpenForms)
+            {
+                if (f.Text == "Dodawanie opiekuna")
+                {
+                    IsOpen = true;
+                    f.Focus();
+                    break;
+                }
+            }
+            if (IsOpen == false)
+            {
+                dodajOpiekun f2 = new dodajOpiekun();
+               
+                //f2.FormClosed += new FormClosedEventHandler(form2_FormClosed);
+                //f2.Show();
+                if (f2.ShowDialog() == DialogResult.OK)
+                {
+                    this.idopiekun = f2.idopiekun;
+                }
+
+                //this.idopiekun = f2.idopiekun;
+            }
 
         }
-        
+
+        void form2_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            
+        }
     }
 }
