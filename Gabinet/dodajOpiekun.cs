@@ -15,17 +15,19 @@ namespace Gabinet
     public partial class dodajOpiekun : Form
     {
         public string dbconnection_gabinet;
-        public string idopiekun = null;
+        public string idopiekunSend;
 
         public dodajOpiekun()
         {
             InitializeComponent();
             this.dbconnection_gabinet = "datasource=" + mysettings.Default.datasource + ";database=" + mysettings.Default.database + ";port=" + mysettings.Default.port + ";username=" + mysettings.Default.user + ";password=" + mysettings.Default.password;
+            //this.idopiekunSend = idopiekun;
             Update_comboBoxTelefon();
         }
 
         private void buttonAnuluj_Click(object sender, EventArgs e)
         {
+            this.idopiekunSend = null;
             this.Close();
         }
 
@@ -41,7 +43,7 @@ namespace Gabinet
                 Database database = new Database();
                 MySqlDataAdapter myDataAdapter = new MySqlDataAdapter();
 
-                if (idopiekun == null)
+                if (this.idopiekunSend == null)
                 {
                     database.Insert("insert into opiekun (imie, nazwisko) VALUES('" + imie.ToString() + "','" + nazwisko.ToString() + "')", this.dbconnection_gabinet);
                     database.Insert("insert into kontakt (telefon, mail) VALUES('" + telefon.ToString() + "','" + mail.ToString() + "')", this.dbconnection_gabinet);
@@ -52,10 +54,10 @@ namespace Gabinet
                     if (dt.Rows.Count == 1)
                     {
                         DataRow element = dt.Rows[0];
-                        this.idopiekun = element["max(idopiekun)"].ToString();
-                    }
+                        this.idopiekunSend = element["max(idopiekun)"].ToString();
+                    }                    
                 }
-
+                
                 DialogResult result = MessageBox.Show("Opiekun dodany");
 
                 if (result == System.Windows.Forms.DialogResult.OK)
@@ -116,7 +118,7 @@ namespace Gabinet
                     this.textBoxNazwisko.Text = element["nazwisko"].ToString();
                     this.textBoxTelefon.Text = element["telefon"].ToString();
                     this.textBoxMail.Text = element["mail"].ToString();
-                    this.idopiekun = element["idopiekun"].ToString();
+                    this.idopiekunSend = element["idopiekun"].ToString();
                     
                 }                    
                 else

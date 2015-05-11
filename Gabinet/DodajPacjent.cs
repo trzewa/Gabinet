@@ -16,12 +16,13 @@ namespace Gabinet
     public partial class DodajPacjent : Form
     {
         public string dbconnection_gabinet;
-        public string idopiekun = null;
+        public string idopiekun;
         
         public DodajPacjent()
         {
             InitializeComponent();
             this.dbconnection_gabinet = "datasource=" + mysettings.Default.datasource + ";database=" + mysettings.Default.database + ";port=" + mysettings.Default.port + ";username=" + mysettings.Default.user + ";password=" + mysettings.Default.password;
+            this.idopiekun = null;
             Update_comboBoxUprawnienia();
             Update_comboBoxNfz();
             Update_comboBoxPlec();
@@ -249,7 +250,7 @@ namespace Gabinet
             database.Insert("insert pacjentadres (idpacjent, idadres) select max(idpacjent), max(idadres) from pacjent, adres", this.dbconnection_gabinet);
             database.Insert("insert pacjentkontakt (idpacjent, idkontakt) select max(idpacjent), max(idkontakt) from pacjent, kontakt", this.dbconnection_gabinet);
 
-            if (idopiekun != null)
+            if (this.idopiekun != null)
             {
                 database.Insert("insert pacjentopiekun (idpacjent, idopiekun) select max(idpacjent), '" + idopiekun + "' from pacjent, opiekun", this.dbconnection_gabinet);
             }
@@ -287,16 +288,10 @@ namespace Gabinet
             }
             if (IsOpen == false)
             {
-                dodajOpiekun f2 = new dodajOpiekun();
-               
-                //f2.FormClosed += new FormClosedEventHandler(form2_FormClosed);
-                //f2.Show();
-                if (f2.ShowDialog() == DialogResult.OK)
-                {
-                    this.idopiekun = f2.idopiekun;
-                }
-
-                //this.idopiekun = f2.idopiekun;
+                
+                dodajOpiekun f2 = new dodajOpiekun();                
+                f2.ShowDialog();
+                this.idopiekun = f2.idopiekunSend;
             }
 
         }
