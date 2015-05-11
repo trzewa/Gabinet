@@ -77,6 +77,12 @@
     <Compile Include="Rejestracja.Designer.cs">
       <DependentUpon>Rejestracja.cs</DependentUpon>
     </Compile>
+    <Compile Include="rejestracjaPacjenta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="rejestracjaPacjenta.Designer.cs">
+      <DependentUpon>rejestracjaPacjenta.cs</DependentUpon>
+    </Compile>
     <Compile Include="Start.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -96,6 +102,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Rejestracja.resx">
       <DependentUpon>Rejestracja.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="rejestracjaPacjenta.resx">
+      <DependentUpon>rejestracjaPacjenta.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Start.resx">
       <DependentUpon>Start.cs</DependentUpon>
