@@ -256,6 +256,7 @@ namespace Gabinet
             }
 
             DialogResult result = MessageBox.Show("Pacjent dodany");
+
             if (result == System.Windows.Forms.DialogResult.OK)
                 {                    
                     DodajPacjent.ActiveForm.Close();

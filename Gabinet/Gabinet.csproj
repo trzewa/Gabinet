@@ -59,6 +59,12 @@
     <Compile Include="DodajPacjent.Designer.cs">
       <DependentUpon>DodajPacjent.cs</DependentUpon>
     </Compile>
+    <Compile Include="dodajPracownika.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="dodajPracownika.Designer.cs">
+      <DependentUpon>dodajPracownika.cs</DependentUpon>
+    </Compile>
     <Compile Include="Gabinet.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -70,6 +76,12 @@
     </Compile>
     <Compile Include="Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="organizacjaPrzychodni.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="organizacjaPrzychodni.Designer.cs">
+      <DependentUpon>organizacjaPrzychodni.cs</DependentUpon>
     </Compile>
     <Compile Include="Rejestracja.cs">
       <SubType>Form</SubType>
@@ -97,8 +109,14 @@
     <EmbeddedResource Include="DodajPacjent.resx">
       <DependentUpon>DodajPacjent.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="dodajPracownika.resx">
+      <DependentUpon>dodajPracownika.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="organizacjaPrzychodni.resx">
+      <DependentUpon>organizacjaPrzychodni.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Rejestracja.resx">
       <DependentUpon>Rejestracja.cs</DependentUpon>

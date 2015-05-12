@@ -58,7 +58,10 @@ namespace Gabinet
             }
             if (IsOpen == false)
             {
-                rejestracjaPacjenta f2 = new rejestracjaPacjenta();
+                int row = dataGridViewPacjenci.CurrentCell.RowIndex;
+                string idpacjent = dataGridViewPacjenci.Rows[row].Cells[3].Value.ToString();
+                
+                rejestracjaPacjenta f2 = new rejestracjaPacjenta(idpacjent);
                 f2.ShowDialog();
             }
         }
@@ -73,7 +76,7 @@ namespace Gabinet
 
                 MySqlDataAdapter myDataAdapter = new MySqlDataAdapter();
                 Database database = new Database();
-                myDataAdapter = database.Select("select imie, nazwisko, pesel, idpacjent from pacjent where imie='" + imie.ToString() + "' or nazwisko='" + nazwisko.ToString() + "' or pesel='" + pesel + "'", this.dbconnection_gabinet);
+                myDataAdapter = database.Select("select nazwisko, imie, pesel, telefon, mail, pacjent.idpacjent, plec from pacjentkontakt inner join pacjent on pacjentkontakt.idpacjent=pacjent.idpacjent inner join plec on plec.idplec=pacjent.idplec inner join kontakt on pacjentkontakt.idkontakt=kontakt.idkontakt where imie='" + imie.ToString() + "' or nazwisko='" + nazwisko.ToString() + "' or pesel='" + pesel + "'", this.dbconnection_gabinet);
 
                 DataTable dt = new DataTable();
                 myDataAdapter.Fill(dt);               
