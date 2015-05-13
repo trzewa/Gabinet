@@ -31,7 +31,6 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.comboBoxPlec = new System.Windows.Forms.ComboBox();
             this.label19 = new System.Windows.Forms.Label();
-            this.maskedTextBoxPwz = new System.Windows.Forms.MaskedTextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.textBoxPesel = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -59,17 +58,18 @@
             this.comboBoxMiasto = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.label14 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
-            this.textBoxLogin = new System.Windows.Forms.TextBox();
-            this.textBoxHaslo = new System.Windows.Forms.TextBox();
+            this.comboBoxStanowisko = new System.Windows.Forms.ComboBox();
+            this.label17 = new System.Windows.Forms.Label();
             this.textBoxHasloRepeat = new System.Windows.Forms.TextBox();
+            this.textBoxHaslo = new System.Windows.Forms.TextBox();
+            this.textBoxLogin = new System.Windows.Forms.TextBox();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
             this.buttonZapisz = new System.Windows.Forms.Button();
             this.buttonAnuluj = new System.Windows.Forms.Button();
-            this.label17 = new System.Windows.Forms.Label();
-            this.comboBoxStanowisko = new System.Windows.Forms.ComboBox();
+            this.textBoxPwz = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -77,9 +77,9 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.textBoxPwz);
             this.groupBox1.Controls.Add(this.comboBoxPlec);
             this.groupBox1.Controls.Add(this.label19);
-            this.groupBox1.Controls.Add(this.maskedTextBoxPwz);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.textBoxPesel);
             this.groupBox1.Controls.Add(this.label4);
@@ -115,15 +115,6 @@
             this.label19.Size = new System.Drawing.Size(37, 13);
             this.label19.TabIndex = 8;
             this.label19.Text = "Płeć *";
-            // 
-            // maskedTextBoxPwz
-            // 
-            this.maskedTextBoxPwz.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.maskedTextBoxPwz.Location = new System.Drawing.Point(328, 76);
-            this.maskedTextBoxPwz.Name = "maskedTextBoxPwz";
-            this.maskedTextBoxPwz.Size = new System.Drawing.Size(91, 20);
-            this.maskedTextBoxPwz.TabIndex = 7;
-            this.maskedTextBoxPwz.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label5
             // 
@@ -400,25 +391,48 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Dane logowania";
             // 
-            // label14
+            // comboBoxStanowisko
             // 
-            this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label14.Location = new System.Drawing.Point(6, 16);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(33, 13);
-            this.label14.TabIndex = 0;
-            this.label14.Text = "Login";
+            this.comboBoxStanowisko.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.comboBoxStanowisko.FormattingEnabled = true;
+            this.comboBoxStanowisko.Location = new System.Drawing.Point(6, 70);
+            this.comboBoxStanowisko.Name = "comboBoxStanowisko";
+            this.comboBoxStanowisko.Size = new System.Drawing.Size(144, 21);
+            this.comboBoxStanowisko.TabIndex = 7;
             // 
-            // label15
+            // label17
             // 
-            this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label15.Location = new System.Drawing.Point(153, 15);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(36, 13);
-            this.label15.TabIndex = 1;
-            this.label15.Text = "Hasło";
+            this.label17.AutoSize = true;
+            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label17.Location = new System.Drawing.Point(8, 54);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(62, 13);
+            this.label17.TabIndex = 6;
+            this.label17.Text = "Stanowisko";
+            // 
+            // textBoxHasloRepeat
+            // 
+            this.textBoxHasloRepeat.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.textBoxHasloRepeat.Location = new System.Drawing.Point(293, 31);
+            this.textBoxHasloRepeat.Name = "textBoxHasloRepeat";
+            this.textBoxHasloRepeat.Size = new System.Drawing.Size(126, 20);
+            this.textBoxHasloRepeat.TabIndex = 5;
+            // 
+            // textBoxHaslo
+            // 
+            this.textBoxHaslo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.textBoxHaslo.Location = new System.Drawing.Point(156, 31);
+            this.textBoxHaslo.Name = "textBoxHaslo";
+            this.textBoxHaslo.Size = new System.Drawing.Size(131, 20);
+            this.textBoxHaslo.TabIndex = 4;
+            // 
+            // textBoxLogin
+            // 
+            this.textBoxLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.textBoxLogin.Location = new System.Drawing.Point(6, 31);
+            this.textBoxLogin.Name = "textBoxLogin";
+            this.textBoxLogin.Size = new System.Drawing.Size(144, 20);
+            this.textBoxLogin.TabIndex = 3;
             // 
             // label16
             // 
@@ -430,29 +444,25 @@
             this.label16.TabIndex = 2;
             this.label16.Text = "Powtórz hasło";
             // 
-            // textBoxLogin
+            // label15
             // 
-            this.textBoxLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.textBoxLogin.Location = new System.Drawing.Point(6, 31);
-            this.textBoxLogin.Name = "textBoxLogin";
-            this.textBoxLogin.Size = new System.Drawing.Size(144, 20);
-            this.textBoxLogin.TabIndex = 3;
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label15.Location = new System.Drawing.Point(153, 15);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(36, 13);
+            this.label15.TabIndex = 1;
+            this.label15.Text = "Hasło";
             // 
-            // textBoxHaslo
+            // label14
             // 
-            this.textBoxHaslo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.textBoxHaslo.Location = new System.Drawing.Point(156, 31);
-            this.textBoxHaslo.Name = "textBoxHaslo";
-            this.textBoxHaslo.Size = new System.Drawing.Size(131, 20);
-            this.textBoxHaslo.TabIndex = 4;
-            // 
-            // textBoxHasloRepeat
-            // 
-            this.textBoxHasloRepeat.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.textBoxHasloRepeat.Location = new System.Drawing.Point(293, 31);
-            this.textBoxHasloRepeat.Name = "textBoxHasloRepeat";
-            this.textBoxHasloRepeat.Size = new System.Drawing.Size(126, 20);
-            this.textBoxHasloRepeat.TabIndex = 5;
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label14.Location = new System.Drawing.Point(6, 16);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(33, 13);
+            this.label14.TabIndex = 0;
+            this.label14.Text = "Login";
             // 
             // label20
             // 
@@ -483,24 +493,13 @@
             this.buttonAnuluj.UseVisualStyleBackColor = true;
             this.buttonAnuluj.Click += new System.EventHandler(this.buttonAnuluj_Click);
             // 
-            // label17
+            // textBoxPwz
             // 
-            this.label17.AutoSize = true;
-            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label17.Location = new System.Drawing.Point(8, 54);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(62, 13);
-            this.label17.TabIndex = 6;
-            this.label17.Text = "Stanowisko";
-            // 
-            // comboBoxStanowisko
-            // 
-            this.comboBoxStanowisko.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.comboBoxStanowisko.FormattingEnabled = true;
-            this.comboBoxStanowisko.Location = new System.Drawing.Point(6, 70);
-            this.comboBoxStanowisko.Name = "comboBoxStanowisko";
-            this.comboBoxStanowisko.Size = new System.Drawing.Size(144, 21);
-            this.comboBoxStanowisko.TabIndex = 7;
+            this.textBoxPwz.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.textBoxPwz.Location = new System.Drawing.Point(328, 76);
+            this.textBoxPwz.Name = "textBoxPwz";
+            this.textBoxPwz.Size = new System.Drawing.Size(91, 20);
+            this.textBoxPwz.TabIndex = 10;
             // 
             // dodajPracownika
             // 
@@ -532,7 +531,6 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.ComboBox comboBoxPlec;
         private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.MaskedTextBox maskedTextBoxPwz;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox textBoxPesel;
         private System.Windows.Forms.Label label4;
@@ -571,5 +569,6 @@
         private System.Windows.Forms.Button buttonAnuluj;
         private System.Windows.Forms.ComboBox comboBoxStanowisko;
         private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.TextBox textBoxPwz;
     }
 }

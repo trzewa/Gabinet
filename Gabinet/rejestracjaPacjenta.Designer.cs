@@ -99,6 +99,7 @@
             this.comboBoxDaneLekarza.Name = "comboBoxDaneLekarza";
             this.comboBoxDaneLekarza.Size = new System.Drawing.Size(188, 21);
             this.comboBoxDaneLekarza.TabIndex = 3;
+            this.comboBoxDaneLekarza.SelectedIndexChanged += new System.EventHandler(this.comboBoxDaneLekarza_SelectedIndexChanged);
             // 
             // label2
             // 
