@@ -23,6 +23,7 @@ namespace Gabinet
             this.idpacjent = idpacjentreceive;
             this.dbconnection_gabinet = "datasource=" + mysettings.Default.datasource + ";database=" + mysettings.Default.database + ";port=" + mysettings.Default.port + ";username=" + mysettings.Default.user + ";password=" + mysettings.Default.password;
             Update_danePacjent();
+            Update_daneLekarza();
         }
 
         public void Update_danePacjent()
@@ -42,6 +43,32 @@ namespace Gabinet
                     this.textBoxDanePacjenta.Text = element["nazwisko"].ToString() + " " + element["imie"].ToString();
                 }            
                 
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        public void Update_daneLekarza()
+        {
+            try
+            {
+                MySqlDataAdapter myDataAdapter = new MySqlDataAdapter();
+                Database database = new Database();
+                myDataAdapter = database.Select("select * from pracownik where idstanowisko='1' or idstanowisko='3'", this.dbconnection_gabinet);
+
+                DataTable dt = new DataTable();
+                myDataAdapter.Fill(dt);
+
+                for (int i = 0; i < dt.Rows.Count; i++)
+                {
+                    ComboboxItem item = new ComboboxItem();
+                    item.Text = dt.Rows[i]["nazwisko"].ToString() + " " + dt.Rows[i]["imie"].ToString();
+                    item.Hidden_Id = dt.Rows[i]["idpracownik"].ToString();
+                    comboBoxDaneLekarza.Items.Add(item);
+                }
+
             }
             catch (Exception ex)
             {

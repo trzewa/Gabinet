@@ -58,11 +58,17 @@ namespace Gabinet
             }
             if (IsOpen == false)
             {
-                int row = dataGridViewPacjenci.CurrentCell.RowIndex;
-                string idpacjent = dataGridViewPacjenci.Rows[row].Cells[3].Value.ToString();
-                
-                rejestracjaPacjenta f2 = new rejestracjaPacjenta(idpacjent);
-                f2.ShowDialog();
+                if (dataGridViewPacjenci.RowCount != 0)
+                {
+                    int row = dataGridViewPacjenci.CurrentCell.RowIndex;
+                    string id = dataGridViewPacjenci.Rows[row].Cells[5].Value.ToString();
+                    rejestracjaPacjenta f2 = new rejestracjaPacjenta(id);
+                    f2.ShowDialog();
+                }
+                else
+                {
+                    MessageBox.Show("Musisz wybrać pacjenta!");
+                }
             }
         }
 
