@@ -75,5 +75,10 @@ namespace Gabinet
                 MessageBox.Show(ex.Message);
             }
         }
+
+        private void comboBoxDaneLekarza_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

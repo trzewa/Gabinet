@@ -94,11 +94,10 @@
             // comboBoxDaneLekarza
             // 
             this.comboBoxDaneLekarza.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.comboBoxDaneLekarza.FormattingEnabled = true;
-            this.comboBoxDaneLekarza.Location = new System.Drawing.Point(6, 32);
+            this.comboBoxDaneLekarza.Location = new System.Drawing.Point(9, 32);
             this.comboBoxDaneLekarza.Name = "comboBoxDaneLekarza";
-            this.comboBoxDaneLekarza.Size = new System.Drawing.Size(188, 21);
-            this.comboBoxDaneLekarza.TabIndex = 3;
+            this.comboBoxDaneLekarza.Size = new System.Drawing.Size(185, 21);
+            this.comboBoxDaneLekarza.TabIndex = 0;
             this.comboBoxDaneLekarza.SelectedIndexChanged += new System.EventHandler(this.comboBoxDaneLekarza_SelectedIndexChanged);
             // 
             // label2

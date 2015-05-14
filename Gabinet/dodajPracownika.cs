@@ -174,7 +174,7 @@ namespace Gabinet
                 string dataZatrudnienia = this.dateTimePickerZatrudnienia.Text;
                 string pesel = this.textBoxPesel.Text;
                 string plec = (comboBoxPlec.SelectedItem as ComboboxItem).Hidden_Id.ToString();
-                string pwz = this.maskedTextBoxPwz.Text;
+                string pwz = this.textBoxPwz.Text;
 
                 string wojewodztwo = (comboBoxWojewodztwo.SelectedItem as ComboboxItem).Text.ToString();
                 string miasto = (comboBoxMiasto.SelectedItem as ComboboxItem).Text.ToString();
