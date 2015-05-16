@@ -17,12 +17,13 @@ namespace Gabinet
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             //Application.Run(new Start());
-            Application.Run(new Rejestracja());
+            //Application.Run(new Rejestracja());
             //Application.Run(new Login());
             //Application.Run(new DodajPacjent());
             //Application.Run(new dodajOpiekun());
-            //Application.Run(new organizacjaPrzychodni());
+            Application.Run(new organizacjaPrzychodni());
             //Application.Run(new harmonogram());
+            //Application.Run(new harmonogramZmien());
         }
     }
 }

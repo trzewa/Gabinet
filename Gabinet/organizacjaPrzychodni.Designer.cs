@@ -31,6 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(organizacjaPrzychodni));
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripButtonDodaj = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonHarmonogram = new System.Windows.Forms.ToolStripButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dataGridViewPracownicy = new System.Windows.Forms.DataGridView();
             this.nazwisko = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -39,7 +40,7 @@
             this.telefon = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.mail = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.rola = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.toolStripButtonHarmonogram = new System.Windows.Forms.ToolStripButton();
+            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.toolStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPracownicy)).BeginInit();
@@ -55,7 +56,7 @@
             this.toolStripButtonHarmonogram});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(691, 80);
+            this.toolStrip1.Size = new System.Drawing.Size(803, 80);
             this.toolStrip1.Stretch = true;
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
@@ -70,13 +71,23 @@
             this.toolStripButtonDodaj.Text = "Dodaj pracownika";
             this.toolStripButtonDodaj.Click += new System.EventHandler(this.toolStripButtonDodaj_Click);
             // 
+            // toolStripButtonHarmonogram
+            // 
+            this.toolStripButtonHarmonogram.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonHarmonogram.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonHarmonogram.Image")));
+            this.toolStripButtonHarmonogram.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonHarmonogram.Name = "toolStripButtonHarmonogram";
+            this.toolStripButtonHarmonogram.Size = new System.Drawing.Size(84, 77);
+            this.toolStripButtonHarmonogram.Text = "Ustaw harmonogram pracownika";
+            this.toolStripButtonHarmonogram.Click += new System.EventHandler(this.toolStripButtonHarmonogram_Click);
+            // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.dataGridViewPracownicy);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.groupBox1.Location = new System.Drawing.Point(12, 83);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(658, 263);
+            this.groupBox1.Size = new System.Drawing.Size(779, 263);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Pracownicy przychodni";
@@ -93,11 +104,12 @@
             this.pesel,
             this.telefon,
             this.mail,
-            this.rola});
+            this.rola,
+            this.id});
             this.dataGridViewPracownicy.Location = new System.Drawing.Point(6, 19);
             this.dataGridViewPracownicy.Name = "dataGridViewPracownicy";
             this.dataGridViewPracownicy.ReadOnly = true;
-            this.dataGridViewPracownicy.Size = new System.Drawing.Size(644, 238);
+            this.dataGridViewPracownicy.Size = new System.Drawing.Size(767, 238);
             this.dataGridViewPracownicy.TabIndex = 2;
             // 
             // nazwisko
@@ -142,22 +154,19 @@
             this.rola.Name = "rola";
             this.rola.ReadOnly = true;
             // 
-            // toolStripButtonHarmonogram
+            // id
             // 
-            this.toolStripButtonHarmonogram.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonHarmonogram.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonHarmonogram.Image")));
-            this.toolStripButtonHarmonogram.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonHarmonogram.Name = "toolStripButtonHarmonogram";
-            this.toolStripButtonHarmonogram.Size = new System.Drawing.Size(84, 77);
-            this.toolStripButtonHarmonogram.Text = "Ustaw harmonogram pracownika";
-            this.toolStripButtonHarmonogram.Click += new System.EventHandler(this.toolStripButtonHarmonogram_Click);
+            this.id.DataPropertyName = "idpracownik";
+            this.id.HeaderText = "ID";
+            this.id.Name = "id";
+            this.id.ReadOnly = true;
             // 
             // organizacjaPrzychodni
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.ClientSize = new System.Drawing.Size(691, 358);
+            this.ClientSize = new System.Drawing.Size(803, 358);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.toolStrip1);
             this.Name = "organizacjaPrzychodni";
@@ -176,12 +185,13 @@
         private System.Windows.Forms.ToolStripButton toolStripButtonDodaj;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.DataGridView dataGridViewPracownicy;
+        private System.Windows.Forms.ToolStripButton toolStripButtonHarmonogram;
         private System.Windows.Forms.DataGridViewTextBoxColumn nazwisko;
         private System.Windows.Forms.DataGridViewTextBoxColumn imie;
         private System.Windows.Forms.DataGridViewTextBoxColumn pesel;
         private System.Windows.Forms.DataGridViewTextBoxColumn telefon;
         private System.Windows.Forms.DataGridViewTextBoxColumn mail;
         private System.Windows.Forms.DataGridViewTextBoxColumn rola;
-        private System.Windows.Forms.ToolStripButton toolStripButtonHarmonogram;
+        private System.Windows.Forms.DataGridViewTextBoxColumn id;
     }
 }

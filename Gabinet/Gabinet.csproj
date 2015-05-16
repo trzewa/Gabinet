@@ -77,6 +77,12 @@
     <Compile Include="harmonogram.Designer.cs">
       <DependentUpon>harmonogram.cs</DependentUpon>
     </Compile>
+    <Compile Include="harmonogramZmien.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="harmonogramZmien.Designer.cs">
+      <DependentUpon>harmonogramZmien.cs</DependentUpon>
+    </Compile>
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -120,6 +126,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="harmonogram.resx">
       <DependentUpon>harmonogram.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="harmonogramZmien.resx">
+      <DependentUpon>harmonogramZmien.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
@@ -191,6 +200,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\dodajpacjenta.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\edit.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
