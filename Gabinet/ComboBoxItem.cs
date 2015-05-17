@@ -9,6 +9,7 @@ namespace Gabinet
     public class ComboboxItem
     {
         public string text = "";
+       
         public string hidden = "";
 
         public string Text
@@ -22,6 +23,7 @@ namespace Gabinet
                 text = value;
             }
         }
+        
         public string Hidden_Id
         {
             get

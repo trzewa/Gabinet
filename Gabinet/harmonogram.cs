@@ -15,8 +15,9 @@ namespace Gabinet
     public partial class harmonogram : Form
     {
         private string idpracownik;
+        private string idg1, idg2, idg3, idg4, idg5, idg6;
         private string id1, id2, id3, id4, id5, id6;
-        private string idPracownikGodziny;
+        //private string idPracownikGodziny;
         public string dbconnection_gabinet;
 
         public harmonogram(string idpracownikreceive)
@@ -59,7 +60,7 @@ namespace Gabinet
             {
                 MySqlDataAdapter myDataAdapter = new MySqlDataAdapter();
                 Database database = new Database();
-                myDataAdapter = database.Select("select * from pracownikgodziny inner join godzinyprzyjec on godzinyprzyjec.idgodziny=pracownikgodziny.idgodziny where idpracownik='" + this.idpracownik + "'", this.dbconnection_gabinet);
+                myDataAdapter = database.Select("select id, pracownikgodziny.idgodziny, dzien_tygodnia, godz_od, godz_do from pracownikgodziny inner join godzinyprzyjec on godzinyprzyjec.idgodziny=pracownikgodziny.idgodziny where idpracownik='" + this.idpracownik + "'", this.dbconnection_gabinet);
 
                 DataTable dt = new DataTable();
                 myDataAdapter.Fill(dt);
@@ -76,31 +77,37 @@ namespace Gabinet
                             this.textBoxPonOd.Text = element["godz_od"].ToString();
                             this.textBoxPonDo.Text = element["godz_do"].ToString();
                             this.id1 = element["id"].ToString();
+                            this.idg1 = element["idgodziny"].ToString();
                             break;
                         case 2:
                             this.textBoxWtOd.Text = element["godz_od"].ToString();
                             this.textBoxWtDo.Text = element["godz_do"].ToString();
                             this.id2 = element["id"].ToString();
+                            this.idg2 = element["idgodziny"].ToString();
                             break;
                         case 3:
                             this.textBoxSrOd.Text = element["godz_od"].ToString();
                             this.textBoxSrDo.Text = element["godz_do"].ToString();
                             this.id3 = element["id"].ToString();
+                            this.idg3 = element["idgodziny"].ToString();
                             break;
                         case 4:
                             this.textBoxCzOd.Text = element["godz_od"].ToString();
                             this.textBoxCzDo.Text = element["godz_do"].ToString();
                             this.id4 = element["id"].ToString();
+                            this.idg4 = element["idgodziny"].ToString();
                             break;
                         case 5:
                             this.textBoxPiOd.Text = element["godz_od"].ToString();
                             this.textBoxPiDo.Text = element["godz_do"].ToString();
                             this.id5 = element["id"].ToString();
+                            this.idg5 = element["idgodziny"].ToString();
                             break;
                         case 6:
                             this.textBoxSoOd.Text = element["godz_od"].ToString();
                             this.textBoxSoDo.Text = element["godz_do"].ToString();
                             this.id6 = element["id"].ToString();
+                            this.idg6 = element["idgodziny"].ToString();
                             break;
                         default :                           
                             break;
@@ -133,7 +140,7 @@ namespace Gabinet
             }
             if (IsOpen == false)
             {                
-                harmonogramZmien f2 = new harmonogramZmien(this.id1, this.idpracownik, 1, this.textBoxPonOd.Text.ToString() , this.textBoxPonDo.Text.ToString());
+                harmonogramZmien f2 = new harmonogramZmien(this.idg1, this.id1, this.idpracownik, 1, this.textBoxPonOd.Text.ToString() , this.textBoxPonDo.Text.ToString());
                 f2.ShowDialog();
                 Update_Czas();
             }
@@ -154,7 +161,7 @@ namespace Gabinet
             }
             if (IsOpen == false)
             {
-                harmonogramZmien f2 = new harmonogramZmien(this.id2, this.idpracownik, 2, this.textBoxWtOd.Text.ToString(), this.textBoxWtDo.Text.ToString());
+                harmonogramZmien f2 = new harmonogramZmien(this.idg2, this.id2, this.idpracownik, 2, this.textBoxWtOd.Text.ToString(), this.textBoxWtDo.Text.ToString());
                 f2.ShowDialog();
                 Update_Czas();
             }
@@ -175,7 +182,7 @@ namespace Gabinet
             }
             if (IsOpen == false)
             {
-                harmonogramZmien f2 = new harmonogramZmien(this.id3, this.idpracownik, 3, this.textBoxSrOd.Text.ToString(), this.textBoxSrDo.Text.ToString());
+                harmonogramZmien f2 = new harmonogramZmien(this.idg3, this.id3, this.idpracownik, 3, this.textBoxSrOd.Text.ToString(), this.textBoxSrDo.Text.ToString());
                 f2.ShowDialog();
                 Update_Czas();
             }
@@ -196,7 +203,7 @@ namespace Gabinet
             }
             if (IsOpen == false)
             {
-                harmonogramZmien f2 = new harmonogramZmien(this.id4, this.idpracownik, 4, this.textBoxCzOd.Text.ToString(), this.textBoxCzDo.Text.ToString());
+                harmonogramZmien f2 = new harmonogramZmien(this.idg4, this.id4, this.idpracownik, 4, this.textBoxCzOd.Text.ToString(), this.textBoxCzDo.Text.ToString());
                 f2.ShowDialog();
                 Update_Czas();
             }
@@ -217,7 +224,7 @@ namespace Gabinet
             }
             if (IsOpen == false)
             {
-                harmonogramZmien f2 = new harmonogramZmien(this.id5, this.idpracownik, 5, this.textBoxPiOd.Text.ToString(), this.textBoxPiDo.Text.ToString());
+                harmonogramZmien f2 = new harmonogramZmien(this.idg5, this.id5, this.idpracownik, 5, this.textBoxPiOd.Text.ToString(), this.textBoxPiDo.Text.ToString());
                 f2.ShowDialog();
                 Update_Czas();
             }
@@ -238,7 +245,7 @@ namespace Gabinet
             }
             if (IsOpen == false)
             {
-                harmonogramZmien f2 = new harmonogramZmien(this.id6, this.idpracownik, 6, this.textBoxSoOd.Text.ToString(), this.textBoxSoDo.Text.ToString());
+                harmonogramZmien f2 = new harmonogramZmien(this.idg6, this.id6, this.idpracownik, 6, this.textBoxSoOd.Text.ToString(), this.textBoxSoDo.Text.ToString());
                 f2.ShowDialog();
                 Update_Czas();
             }
