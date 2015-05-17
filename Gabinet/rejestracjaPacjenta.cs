@@ -16,6 +16,7 @@ namespace Gabinet
     {
         public string dbconnection_gabinet;
         private string idpacjent;
+        private int dzienTygodnia;
 
         public rejestracjaPacjenta(string idpacjentreceive)
         {
@@ -68,6 +69,26 @@ namespace Gabinet
                     item.Hidden_Id = dt.Rows[i]["idpracownik"].ToString();
                     comboBoxDaneLekarza.Items.Add(item);
                 }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        public void Update_Harmonogram()
+        {
+            try
+            {
+                string selected_item = (comboBoxDaneLekarza.SelectedItem as ComboboxItem).Hidden_Id.ToString();
+                string date = monthCalendar1.SelectionStart.ToString();
+                Database database = new Database();
+                MySqlDataAdapter myDataAdapter = new MySqlDataAdapter();
+                myDataAdapter = database.Select("select nazwisko, imie, pesel, godzina from wizyta inner join pacjent on pacjent.idpacjent=wizyta.idpacjent where idpracownik='" + selected_item + "' and wizyta.idpacjent='" + this.idpacjent + "' and data='" + date + "'", this.dbconnection_gabinet);
+                DataTable dt = new DataTable();
+                myDataAdapter.Fill(dt);
+
+                dataGridViewTerminarz.DataSource = dt.DefaultView;
 
             }
             catch (Exception ex)
@@ -76,9 +97,18 @@ namespace Gabinet
             }
         }
 
-        private void comboBoxDaneLekarza_SelectedIndexChanged(object sender, EventArgs e)
+        private void comboBoxDaneLekarza_DropDownClosed(object sender, EventArgs e)
         {
+            Update_Harmonogram();
+        }
 
+        private void monthCalendar1_DateSelected(object sender, DateRangeEventArgs e)
+        {
+            if (comboBoxDaneLekarza.SelectedItem != null)
+            {
+                Update_Harmonogram();
+            }
+            else MessageBox.Show("Wybierz lekarza");
         }
     }
 }

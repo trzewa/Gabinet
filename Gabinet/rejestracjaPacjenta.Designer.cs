@@ -35,18 +35,22 @@
             this.comboBoxDaneLekarza = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.dateTimePickerHarmonogram = new System.Windows.Forms.DateTimePicker();
+            this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.dataGridViewTerminarz = new System.Windows.Forms.DataGridView();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.listView1 = new System.Windows.Forms.ListView();
+            this.columnHeaderGodz = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Godzina = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Pacjent = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.imie = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Pesel = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTerminarz)).BeginInit();
+            this.groupBox5.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -63,6 +67,7 @@
             // 
             // textBoxDanePacjenta
             // 
+            this.textBoxDanePacjenta.Enabled = false;
             this.textBoxDanePacjenta.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.textBoxDanePacjenta.Location = new System.Drawing.Point(9, 32);
             this.textBoxDanePacjenta.Name = "textBoxDanePacjenta";
@@ -98,7 +103,7 @@
             this.comboBoxDaneLekarza.Name = "comboBoxDaneLekarza";
             this.comboBoxDaneLekarza.Size = new System.Drawing.Size(185, 21);
             this.comboBoxDaneLekarza.TabIndex = 0;
-            this.comboBoxDaneLekarza.SelectedIndexChanged += new System.EventHandler(this.comboBoxDaneLekarza_SelectedIndexChanged);
+            this.comboBoxDaneLekarza.SelectedIndexChanged += new System.EventHandler(this.comboBoxDaneLekarza_DropDownClosed);
             // 
             // label2
             // 
@@ -112,33 +117,21 @@
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.label3);
-            this.groupBox3.Controls.Add(this.dateTimePickerHarmonogram);
+            this.groupBox3.Controls.Add(this.monthCalendar1);
             this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.groupBox3.Location = new System.Drawing.Point(12, 154);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(200, 69);
+            this.groupBox3.Size = new System.Drawing.Size(200, 200);
             this.groupBox3.TabIndex = 0;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Harmonogram";
             // 
-            // label3
+            // monthCalendar1
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label3.Location = new System.Drawing.Point(6, 16);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(30, 13);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "Data";
-            // 
-            // dateTimePickerHarmonogram
-            // 
-            this.dateTimePickerHarmonogram.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.dateTimePickerHarmonogram.Location = new System.Drawing.Point(6, 32);
-            this.dateTimePickerHarmonogram.Name = "dateTimePickerHarmonogram";
-            this.dateTimePickerHarmonogram.Size = new System.Drawing.Size(188, 20);
-            this.dateTimePickerHarmonogram.TabIndex = 1;
+            this.monthCalendar1.Location = new System.Drawing.Point(12, 25);
+            this.monthCalendar1.Name = "monthCalendar1";
+            this.monthCalendar1.TabIndex = 3;
+            this.monthCalendar1.DateChanged += new System.Windows.Forms.DateRangeEventHandler(this.monthCalendar1_DateSelected);
             // 
             // groupBox4
             // 
@@ -146,10 +139,10 @@
             this.groupBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.groupBox4.Location = new System.Drawing.Point(218, 12);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(359, 312);
+            this.groupBox4.Size = new System.Drawing.Size(474, 342);
             this.groupBox4.TabIndex = 0;
             this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Terminarz";
+            this.groupBox4.Text = "Ustalone wizyty";
             // 
             // dataGridViewTerminarz
             // 
@@ -159,24 +152,62 @@
             this.dataGridViewTerminarz.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Godzina,
             this.Pacjent,
+            this.imie,
             this.Pesel});
             this.dataGridViewTerminarz.Location = new System.Drawing.Point(6, 16);
             this.dataGridViewTerminarz.Name = "dataGridViewTerminarz";
             this.dataGridViewTerminarz.ReadOnly = true;
-            this.dataGridViewTerminarz.Size = new System.Drawing.Size(345, 290);
+            this.dataGridViewTerminarz.Size = new System.Drawing.Size(454, 320);
             this.dataGridViewTerminarz.TabIndex = 1;
+            // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.listView1);
+            this.groupBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.groupBox5.Location = new System.Drawing.Point(713, 12);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(155, 342);
+            this.groupBox5.TabIndex = 1;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "Dostępne godziny";
+            // 
+            // listView1
+            // 
+            this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeaderGodz});
+            this.listView1.GridLines = true;
+            this.listView1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.listView1.Location = new System.Drawing.Point(6, 16);
+            this.listView1.Name = "listView1";
+            this.listView1.Size = new System.Drawing.Size(143, 320);
+            this.listView1.TabIndex = 0;
+            this.listView1.UseCompatibleStateImageBehavior = false;
+            this.listView1.View = System.Windows.Forms.View.List;
+            // 
+            // columnHeaderGodz
+            // 
+            this.columnHeaderGodz.Text = "Godziny";
             // 
             // Godzina
             // 
+            this.Godzina.DataPropertyName = "godzina";
             this.Godzina.HeaderText = "Godzina";
             this.Godzina.Name = "Godzina";
             this.Godzina.ReadOnly = true;
             // 
             // Pacjent
             // 
-            this.Pacjent.HeaderText = "Pacjent";
+            this.Pacjent.DataPropertyName = "nazwisko";
+            this.Pacjent.HeaderText = "Nazwisko pacjenta";
             this.Pacjent.Name = "Pacjent";
             this.Pacjent.ReadOnly = true;
+            // 
+            // imie
+            // 
+            this.imie.DataPropertyName = "imie";
+            this.imie.HeaderText = "Imie pacjenta";
+            this.imie.Name = "imie";
+            this.imie.ReadOnly = true;
             // 
             // Pesel
             // 
@@ -190,7 +221,8 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.ClientSize = new System.Drawing.Size(587, 335);
+            this.ClientSize = new System.Drawing.Size(880, 366);
+            this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
@@ -202,9 +234,9 @@
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
             this.groupBox4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTerminarz)).EndInit();
+            this.groupBox5.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -219,11 +251,14 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.DateTimePicker dateTimePickerHarmonogram;
         private System.Windows.Forms.DataGridView dataGridViewTerminarz;
+        private System.Windows.Forms.GroupBox groupBox5;
+        private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.ColumnHeader columnHeaderGodz;
+        private System.Windows.Forms.MonthCalendar monthCalendar1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Godzina;
         private System.Windows.Forms.DataGridViewTextBoxColumn Pacjent;
+        private System.Windows.Forms.DataGridViewTextBoxColumn imie;
         private System.Windows.Forms.DataGridViewTextBoxColumn Pesel;
     }
 }

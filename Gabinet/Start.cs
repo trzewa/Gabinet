@@ -21,5 +21,45 @@ namespace Gabinet
         {
 
         }
+
+        private void btnRejestracja_Click(object sender, EventArgs e)
+        {
+            bool IsOpen = false;
+
+            foreach (Form f in Application.OpenForms)
+            {
+                if (f.Text == "Rejestracja")
+                {
+                    IsOpen = true;
+                    f.Focus();
+                    break;
+                }
+            }
+            if (IsOpen == false)
+            {
+                Rejestracja f2 = new Rejestracja();
+                f2.Show();                
+            }
+        }
+
+        private void btnKonfiguracja_Click(object sender, EventArgs e)
+        {
+            bool IsOpen = false;
+
+            foreach (Form f in Application.OpenForms)
+            {
+                if (f.Text == "Zarządzanie przychodnią")
+                {
+                    IsOpen = true;
+                    f.Focus();
+                    break;
+                }
+            }
+            if (IsOpen == false)
+            {
+                organizacjaPrzychodni f2 = new organizacjaPrzychodni();
+                f2.Show();                
+            }
+        }
     }
 }

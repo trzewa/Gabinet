@@ -56,6 +56,7 @@
             this.btnKonfiguracja.Text = "Organizacja";
             this.btnKonfiguracja.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnKonfiguracja.UseVisualStyleBackColor = true;
+            this.btnKonfiguracja.Click += new System.EventHandler(this.btnKonfiguracja_Click);
             // 
             // btnRejestracja
             // 
@@ -69,6 +70,7 @@
             this.btnRejestracja.Text = "Rejestracja";
             this.btnRejestracja.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnRejestracja.UseVisualStyleBackColor = true;
+            this.btnRejestracja.Click += new System.EventHandler(this.btnRejestracja_Click);
             // 
             // btnGabinet
             // 
