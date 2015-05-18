@@ -16,7 +16,8 @@ namespace Gabinet
     {
         public string dbconnection_gabinet;
         private string idpacjent;
-        private int dzienTygodnia;
+        private string godzOd;
+        private string godzDo;
 
         public rejestracjaPacjenta(string idpacjentreceive)
         {
@@ -84,7 +85,7 @@ namespace Gabinet
                 string date = monthCalendar1.SelectionStart.ToString();
                 Database database = new Database();
                 MySqlDataAdapter myDataAdapter = new MySqlDataAdapter();
-                myDataAdapter = database.Select("select nazwisko, imie, pesel, godzina from wizyta inner join pacjent on pacjent.idpacjent=wizyta.idpacjent where idpracownik='" + selected_item + "' and wizyta.idpacjent='" + this.idpacjent + "' and data='" + date + "'", this.dbconnection_gabinet);
+                myDataAdapter = database.Select("select nazwisko, imie, pesel, data from wizyta inner join pacjent on pacjent.idpacjent=wizyta.idpacjent where idpracownik='" + selected_item + "' and wizyta.idpacjent='" + this.idpacjent + "' and data='" + date + "'", this.dbconnection_gabinet);
                 DataTable dt = new DataTable();
                 myDataAdapter.Fill(dt);
 
@@ -97,16 +98,73 @@ namespace Gabinet
             }
         }
 
+        public void Update_Godziny()
+        {
+            try
+            {
+                string idpracownik_selected = (comboBoxDaneLekarza.SelectedItem as ComboboxItem).Hidden_Id.ToString();
+                DateTime selected_date = (DateTime)monthCalendar1.SelectionStart;
+                string date = selected_date.ToString("yyyy-MM-dd");
+                int dzienTygodnia = (int)selected_date.DayOfWeek;                
+                Database database = new Database();
+                MySqlDataAdapter myDataAdapter = new MySqlDataAdapter();
+                MySqlDataAdapter myDA = new MySqlDataAdapter();
+                myDataAdapter = database.Select("select godz_od, godz_do from godzinyprzyjec inner join pracownikgodziny on pracownikgodziny.idgodziny=godzinyprzyjec.idgodziny where dzien_tygodnia='" + dzienTygodnia + "' and idpracownik='" + idpracownik_selected + "'", this.dbconnection_gabinet);
+                myDA = database.Select("select * from wizyta where idpracownik='" + idpracownik_selected + "' and data='" + date + "'", this.dbconnection_gabinet);
+                DataTable dt = new DataTable();
+                DataTable dT = new DataTable();
+                myDataAdapter.Fill(dt); //godziny przyjęć
+                myDA.Fill(dT); //godziny zamówionych wizyt
+
+                //ZROBIĆ: wyszukanie w wizytach godzin ewentualnych wizyt zgodne z wybranym dniem i wykluczenie jej z listy dostępnych godzin
+
+                if (dt.Rows.Count == 1)
+                {                    
+                    DataRow element = dt.Rows[0];
+                    this.godzOd = element["godz_od"].ToString();
+                    this.godzDo = element["godz_do"].ToString();
+
+
+                    string hod = this.godzOd[0].ToString() + this.godzOd[1].ToString();
+                    string mod = this.godzOd[3].ToString() + this.godzOd[4].ToString();
+                    string hdo = this.godzDo[0].ToString() + this.godzDo[1].ToString();
+                    string mdo = this.godzDo[3].ToString() + this.godzDo[4].ToString();
+
+                    DateTime dateOd = new DateTime(selected_date.Year, selected_date.Month, selected_date.Day, Convert.ToInt32(hod), Convert.ToInt32(mod), 0);
+                    DateTime dateDo = new DateTime(selected_date.Year, selected_date.Month, selected_date.Day, Convert.ToInt32(hdo), Convert.ToInt32(mdo), 0);
+                    TimeSpan result = dateDo - dateOd;
+                    double resulth = result.TotalMinutes;
+
+                    this.listViewGodziny.Clear();
+                    double skok = 20;
+                    for (int i = 0; i <= (resulth / 20); i++)
+                    {
+                        ListViewItem item = new ListViewItem(dateOd.ToString("HH:mm"));
+                        listViewGodziny.Items.Add(item);
+                        dateOd = dateOd.AddMinutes(skok);
+                    }
+                }
+                else this.listViewGodziny.Clear();
+                
+            }            
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
         private void comboBoxDaneLekarza_DropDownClosed(object sender, EventArgs e)
         {
-            Update_Harmonogram();
+            Update_Harmonogram();            
+            Update_Godziny();
         }
 
         private void monthCalendar1_DateSelected(object sender, DateRangeEventArgs e)
         {
             if (comboBoxDaneLekarza.SelectedItem != null)
             {
-                Update_Harmonogram();
+                Update_Harmonogram();                
+                Update_Godziny();
             }
             else MessageBox.Show("Wybierz lekarza");
         }

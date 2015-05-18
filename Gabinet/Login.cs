@@ -52,7 +52,7 @@ namespace Gabinet
                 {
                     //MessageBox.Show("Login i Hasło są prawidłowe");
                     this.Visible = false;
-                    Rejestracja r = new Rejestracja();
+                    Start r = new Start();
                     r.ShowDialog();
                     this.Close();
                 }

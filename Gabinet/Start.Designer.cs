@@ -43,6 +43,7 @@
             this.btnZakoncz.Size = new System.Drawing.Size(39, 37);
             this.btnZakoncz.TabIndex = 3;
             this.btnZakoncz.UseVisualStyleBackColor = true;
+            this.btnZakoncz.Click += new System.EventHandler(this.btnZakoncz_Click);
             // 
             // btnKonfiguracja
             // 

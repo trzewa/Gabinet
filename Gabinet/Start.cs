@@ -38,7 +38,7 @@ namespace Gabinet
             if (IsOpen == false)
             {
                 Rejestracja f2 = new Rejestracja();
-                f2.Show();                
+                f2.ShowDialog();                
             }
         }
 
@@ -60,6 +60,11 @@ namespace Gabinet
                 organizacjaPrzychodni f2 = new organizacjaPrzychodni();
                 f2.Show();                
             }
+        }
+
+        private void btnZakoncz_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

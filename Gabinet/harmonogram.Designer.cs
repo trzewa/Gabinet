@@ -96,6 +96,7 @@
             // 
             // textBoxStanowisko
             // 
+            this.textBoxStanowisko.Enabled = false;
             this.textBoxStanowisko.Location = new System.Drawing.Point(182, 32);
             this.textBoxStanowisko.Name = "textBoxStanowisko";
             this.textBoxStanowisko.Size = new System.Drawing.Size(132, 20);
@@ -103,6 +104,7 @@
             // 
             // textBoxDanePracownika
             // 
+            this.textBoxDanePracownika.Enabled = false;
             this.textBoxDanePracownika.Location = new System.Drawing.Point(15, 32);
             this.textBoxDanePracownika.Name = "textBoxDanePracownika";
             this.textBoxDanePracownika.Size = new System.Drawing.Size(161, 20);

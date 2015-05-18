@@ -38,13 +38,12 @@
             this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.dataGridViewTerminarz = new System.Windows.Forms.DataGridView();
-            this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.listView1 = new System.Windows.Forms.ListView();
-            this.columnHeaderGodz = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Godzina = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Pacjent = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.imie = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Pesel = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.listViewGodziny = new System.Windows.Forms.ListView();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -160,38 +159,10 @@
             this.dataGridViewTerminarz.Size = new System.Drawing.Size(454, 320);
             this.dataGridViewTerminarz.TabIndex = 1;
             // 
-            // groupBox5
-            // 
-            this.groupBox5.Controls.Add(this.listView1);
-            this.groupBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.groupBox5.Location = new System.Drawing.Point(713, 12);
-            this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(155, 342);
-            this.groupBox5.TabIndex = 1;
-            this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "Dostępne godziny";
-            // 
-            // listView1
-            // 
-            this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeaderGodz});
-            this.listView1.GridLines = true;
-            this.listView1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.listView1.Location = new System.Drawing.Point(6, 16);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(143, 320);
-            this.listView1.TabIndex = 0;
-            this.listView1.UseCompatibleStateImageBehavior = false;
-            this.listView1.View = System.Windows.Forms.View.List;
-            // 
-            // columnHeaderGodz
-            // 
-            this.columnHeaderGodz.Text = "Godziny";
-            // 
             // Godzina
             // 
-            this.Godzina.DataPropertyName = "godzina";
-            this.Godzina.HeaderText = "Godzina";
+            this.Godzina.DataPropertyName = "data";
+            this.Godzina.HeaderText = "Termin";
             this.Godzina.Name = "Godzina";
             this.Godzina.ReadOnly = true;
             // 
@@ -216,12 +187,35 @@
             this.Pesel.Name = "Pesel";
             this.Pesel.ReadOnly = true;
             // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.listViewGodziny);
+            this.groupBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.groupBox5.Location = new System.Drawing.Point(713, 12);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(122, 342);
+            this.groupBox5.TabIndex = 1;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "Dostępne godziny";
+            // 
+            // listViewGodziny
+            // 
+            this.listViewGodziny.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.listViewGodziny.GridLines = true;
+            this.listViewGodziny.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.listViewGodziny.Location = new System.Drawing.Point(6, 16);
+            this.listViewGodziny.Name = "listViewGodziny";
+            this.listViewGodziny.Size = new System.Drawing.Size(110, 320);
+            this.listViewGodziny.TabIndex = 0;
+            this.listViewGodziny.UseCompatibleStateImageBehavior = false;
+            this.listViewGodziny.View = System.Windows.Forms.View.SmallIcon;
+            // 
             // rejestracjaPacjenta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.ClientSize = new System.Drawing.Size(880, 366);
+            this.ClientSize = new System.Drawing.Size(842, 366);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox3);
@@ -253,8 +247,7 @@
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.DataGridView dataGridViewTerminarz;
         private System.Windows.Forms.GroupBox groupBox5;
-        private System.Windows.Forms.ListView listView1;
-        private System.Windows.Forms.ColumnHeader columnHeaderGodz;
+        private System.Windows.Forms.ListView listViewGodziny;
         private System.Windows.Forms.MonthCalendar monthCalendar1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Godzina;
         private System.Windows.Forms.DataGridViewTextBoxColumn Pacjent;
