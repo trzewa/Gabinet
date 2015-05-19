@@ -18,6 +18,7 @@ namespace Gabinet
         private string idpacjent;
         private string godzOd;
         private string godzDo;
+        private string godzWizyty;
 
         public rejestracjaPacjenta(string idpacjentreceive)
         {
@@ -26,6 +27,7 @@ namespace Gabinet
             this.dbconnection_gabinet = "datasource=" + mysettings.Default.datasource + ";database=" + mysettings.Default.database + ";port=" + mysettings.Default.port + ";username=" + mysettings.Default.user + ";password=" + mysettings.Default.password;
             Update_danePacjent();
             Update_daneLekarza();
+            
         }
 
         public void Update_danePacjent()
@@ -83,9 +85,10 @@ namespace Gabinet
             {
                 string selected_item = (comboBoxDaneLekarza.SelectedItem as ComboboxItem).Hidden_Id.ToString();
                 string date = monthCalendar1.SelectionStart.ToString();
+                string stan = "0";
                 Database database = new Database();
                 MySqlDataAdapter myDataAdapter = new MySqlDataAdapter();
-                myDataAdapter = database.Select("select nazwisko, imie, pesel, data from wizyta inner join pacjent on pacjent.idpacjent=wizyta.idpacjent where idpracownik='" + selected_item + "' and wizyta.idpacjent='" + this.idpacjent + "' and data='" + date + "'", this.dbconnection_gabinet);
+                myDataAdapter = database.Select("select nazwisko, imie, pesel, data, godzina from wizyta inner join pacjent on pacjent.idpacjent=wizyta.idpacjent where idpracownik='" + selected_item + "' and data='" + date + "' and stan='" + stan + "'", this.dbconnection_gabinet);
                 DataTable dt = new DataTable();
                 myDataAdapter.Fill(dt);
 
@@ -103,6 +106,7 @@ namespace Gabinet
             try
             {
                 string idpracownik_selected = (comboBoxDaneLekarza.SelectedItem as ComboboxItem).Hidden_Id.ToString();
+                string stan = "0";
                 DateTime selected_date = (DateTime)monthCalendar1.SelectionStart;
                 string date = selected_date.ToString("yyyy-MM-dd");
                 int dzienTygodnia = (int)selected_date.DayOfWeek;                
@@ -110,13 +114,11 @@ namespace Gabinet
                 MySqlDataAdapter myDataAdapter = new MySqlDataAdapter();
                 MySqlDataAdapter myDA = new MySqlDataAdapter();
                 myDataAdapter = database.Select("select godz_od, godz_do from godzinyprzyjec inner join pracownikgodziny on pracownikgodziny.idgodziny=godzinyprzyjec.idgodziny where dzien_tygodnia='" + dzienTygodnia + "' and idpracownik='" + idpracownik_selected + "'", this.dbconnection_gabinet);
-                myDA = database.Select("select * from wizyta where idpracownik='" + idpracownik_selected + "' and data='" + date + "'", this.dbconnection_gabinet);
+                myDA = database.Select("select * from wizyta where idpracownik='" + idpracownik_selected + "' and data='" + date + "' and stan='" + stan + "'", this.dbconnection_gabinet);
                 DataTable dt = new DataTable();
                 DataTable dT = new DataTable();
                 myDataAdapter.Fill(dt); //godziny przyjęć
-                myDA.Fill(dT); //godziny zamówionych wizyt
-
-                //ZROBIĆ: wyszukanie w wizytach godzin ewentualnych wizyt zgodne z wybranym dniem i wykluczenie jej z listy dostępnych godzin
+                myDA.Fill(dT); //godziny zamówionych wizyt                
 
                 if (dt.Rows.Count == 1)
                 {                    
@@ -137,15 +139,33 @@ namespace Gabinet
 
                     this.listViewGodziny.Clear();
                     double skok = 20;
+                    bool flaga = true;
+
                     for (int i = 0; i <= (resulth / 20); i++)
                     {
-                        ListViewItem item = new ListViewItem(dateOd.ToString("HH:mm"));
-                        listViewGodziny.Items.Add(item);
-                        dateOd = dateOd.AddMinutes(skok);
+                        string dateOdControl = dateOd.ToString("HH:mm");
+                        
+                        for (int j =0; j < dT.Rows.Count; j++)
+                        {
+                            this.godzWizyty = dT.Rows[j]["godzina"].ToString();
+                            if (this.godzWizyty.Contains(dateOdControl))
+                            {
+                                flaga = false;
+                                dateOd = dateOd.AddMinutes(skok);
+                            }
+                        }
+
+                        if (flaga)
+                        {
+                            ListViewItem item = new ListViewItem(dateOd.ToString("HH:mm"));
+                            listViewGodziny.Items.Add(item);
+                            dateOd = dateOd.AddMinutes(skok);
+                        }
+                        flaga = true;
                     }
                 }
                 else this.listViewGodziny.Clear();
-                
+             
             }            
             catch (Exception ex)
             {
@@ -167,6 +187,40 @@ namespace Gabinet
                 Update_Godziny();
             }
             else MessageBox.Show("Wybierz lekarza");
+        } 
+       
+
+
+        private void listViewGodziny_MouseDoubleClick(object sender, EventArgs e)
+        {
+            string idpracownik_selected = (comboBoxDaneLekarza.SelectedItem as ComboboxItem).Hidden_Id.ToString();
+            DateTime selected_date = (DateTime)monthCalendar1.SelectionStart;
+            string date = selected_date.ToString("yyyy-MM-dd");
+            string stan = "0";
+
+            if (listViewGodziny.SelectedIndices.Count <= 0)
+                {
+                    return;
+                }
+                int intselectedindex = listViewGodziny.SelectedIndices[0];
+                if (intselectedindex >= 0)
+                {
+                    string wybranaGodzina = listViewGodziny.Items[intselectedindex].Text;
+                    String message = "Wybrano godzinę " + wybranaGodzina + "\n Czy chcesz zarejestrować wizyte?";
+                    String caption = "Rejestracja wizyty";
+                    var result = MessageBox.Show(message, caption,
+                                         MessageBoxButtons.YesNo,
+                                         MessageBoxIcon.Question);
+                    if (result == DialogResult.Yes)
+                    {
+                        Database database = new Database();
+                        database.Insert("insert into wizyta (idpracownik, idpacjent, data, godzina, stan) values ('" + idpracownik_selected + "', '" + this.idpacjent + "', '" + date + "', '" + wybranaGodzina + "', '" + stan + "')", this.dbconnection_gabinet);
+                        Update_Harmonogram();
+                        Update_Godziny();
+                    }
+                }            
         }
+
+        
     }
 }
