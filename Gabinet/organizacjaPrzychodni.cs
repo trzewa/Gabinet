@@ -28,7 +28,7 @@ namespace Gabinet
         {
             MySqlDataAdapter myDataAdapter = new MySqlDataAdapter();
             Database database = new Database();
-            myDataAdapter = database.Select("select nazwisko, imie, pesel, telefon, mail, nazwa, pracownikkontakt.idpracownik from pracownikkontakt inner join pracownik on pracownikkontakt.idpracownik=pracownik.idpracownik inner join kontakt on  kontakt.idkontakt=pracownikkontakt.idkontakt inner join stanowisko on stanowisko.idstanowisko=pracownik.idstanowisko ", this.dbconnection_gabinet);
+            myDataAdapter = database.Select("select nazwisko, imie, pesel, nazwa, idpracownik from pracownik inner join stanowisko on stanowisko.idstanowisko=pracownik.idstanowisko ", this.dbconnection_gabinet);
 
             DataTable dt = new DataTable();
             myDataAdapter.Fill(dt);
@@ -75,7 +75,7 @@ namespace Gabinet
                 if (dataGridViewPracownicy.RowCount != 0)
                 {
                     int row = dataGridViewPracownicy.CurrentCell.RowIndex;
-                    string id = dataGridViewPracownicy.Rows[row].Cells[6].Value.ToString();
+                    string id = dataGridViewPracownicy.Rows[row].Cells[4].Value.ToString();
                     harmonogram f2 = new harmonogram(id);
                     f2.ShowDialog();
                 }

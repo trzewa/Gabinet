@@ -14,6 +14,7 @@ namespace Gabinet
 {
     public partial class Login : Form
     {
+        private string idpracownika;
                 
         public Login()
         {
@@ -41,7 +42,7 @@ namespace Gabinet
                 MySqlCommand com = new MySqlCommand("select * from gabinet.user where login='" + this.textBoxLogin.Text + "' and haslo='" + this.textBoxPasword.Text + "';",con);
                 con.Open();
                 MySqlDataReader myRead = com.ExecuteReader();
-
+                
                 int count = 0;
 
                 while (myRead.Read())
@@ -51,8 +52,9 @@ namespace Gabinet
                 if (count == 1)
                 {
                     //MessageBox.Show("Login i Hasło są prawidłowe");
+                    this.idpracownika = myRead.GetString(1);
                     this.Visible = false;
-                    Start r = new Start();
+                    Start r = new Start(this.idpracownika);
                     r.ShowDialog();
                     this.Close();
                 }

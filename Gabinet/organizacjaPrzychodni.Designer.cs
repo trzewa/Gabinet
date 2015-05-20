@@ -37,8 +37,6 @@
             this.nazwisko = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.imie = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pesel = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.telefon = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.mail = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.rola = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.toolStrip1.SuspendLayout();
@@ -56,7 +54,7 @@
             this.toolStripButtonHarmonogram});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(803, 80);
+            this.toolStrip1.Size = new System.Drawing.Size(596, 80);
             this.toolStrip1.Stretch = true;
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
@@ -87,7 +85,7 @@
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.groupBox1.Location = new System.Drawing.Point(12, 83);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(779, 263);
+            this.groupBox1.Size = new System.Drawing.Size(570, 263);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Pracownicy przychodni";
@@ -102,14 +100,12 @@
             this.nazwisko,
             this.imie,
             this.pesel,
-            this.telefon,
-            this.mail,
             this.rola,
             this.id});
             this.dataGridViewPracownicy.Location = new System.Drawing.Point(6, 19);
             this.dataGridViewPracownicy.Name = "dataGridViewPracownicy";
             this.dataGridViewPracownicy.ReadOnly = true;
-            this.dataGridViewPracownicy.Size = new System.Drawing.Size(767, 238);
+            this.dataGridViewPracownicy.Size = new System.Drawing.Size(556, 238);
             this.dataGridViewPracownicy.TabIndex = 2;
             // 
             // nazwisko
@@ -133,20 +129,6 @@
             this.pesel.Name = "pesel";
             this.pesel.ReadOnly = true;
             // 
-            // telefon
-            // 
-            this.telefon.DataPropertyName = "telefon";
-            this.telefon.HeaderText = "Telefon";
-            this.telefon.Name = "telefon";
-            this.telefon.ReadOnly = true;
-            // 
-            // mail
-            // 
-            this.mail.DataPropertyName = "mail";
-            this.mail.HeaderText = "Mail";
-            this.mail.Name = "mail";
-            this.mail.ReadOnly = true;
-            // 
             // rola
             // 
             this.rola.DataPropertyName = "nazwa";
@@ -166,7 +148,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.ClientSize = new System.Drawing.Size(803, 358);
+            this.ClientSize = new System.Drawing.Size(596, 358);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.toolStrip1);
             this.Name = "organizacjaPrzychodni";
@@ -189,8 +171,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn nazwisko;
         private System.Windows.Forms.DataGridViewTextBoxColumn imie;
         private System.Windows.Forms.DataGridViewTextBoxColumn pesel;
-        private System.Windows.Forms.DataGridViewTextBoxColumn telefon;
-        private System.Windows.Forms.DataGridViewTextBoxColumn mail;
         private System.Windows.Forms.DataGridViewTextBoxColumn rola;
         private System.Windows.Forms.DataGridViewTextBoxColumn id;
     }

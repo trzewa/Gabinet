@@ -32,6 +32,8 @@
             this.btnKonfiguracja = new System.Windows.Forms.Button();
             this.btnRejestracja = new System.Windows.Forms.Button();
             this.btnGabinet = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnZakoncz
@@ -63,6 +65,7 @@
             // 
             this.btnRejestracja.BackgroundImage = global::Gabinet.Properties.Resources.pacjent;
             this.btnRejestracja.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnRejestracja.Enabled = false;
             this.btnRejestracja.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.btnRejestracja.Location = new System.Drawing.Point(229, 27);
             this.btnRejestracja.Name = "btnRejestracja";
@@ -87,6 +90,24 @@
             this.btnGabinet.UseVisualStyleBackColor = true;
             this.btnGabinet.Click += new System.EventHandler(this.btnGabinet_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label1.Location = new System.Drawing.Point(49, 212);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(79, 13);
+            this.label1.TabIndex = 4;
+            this.label1.Text = "Zalogowany:";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(139, 212);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(0, 13);
+            this.label2.TabIndex = 5;
+            // 
             // Start
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -94,6 +115,8 @@
             this.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(572, 252);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.btnZakoncz);
             this.Controls.Add(this.btnKonfiguracja);
             this.Controls.Add(this.btnRejestracja);
@@ -101,7 +124,9 @@
             this.MaximizeBox = false;
             this.Name = "Start";
             this.Text = "Panel";
+            this.Load += new System.EventHandler(this.Start_Load);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -111,6 +136,8 @@
         private System.Windows.Forms.Button btnRejestracja;
         private System.Windows.Forms.Button btnKonfiguracja;
         private System.Windows.Forms.Button btnZakoncz;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
     }
 }
 

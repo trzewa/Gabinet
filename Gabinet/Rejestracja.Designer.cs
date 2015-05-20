@@ -34,6 +34,13 @@
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripBtnDodaj = new System.Windows.Forms.ToolStripButton();
             this.dataGridViewPacjenci = new System.Windows.Forms.DataGridView();
+            this.nazwisko = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.imie = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pesel = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.telefon = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.mail = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idpacjent = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.plec = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.buttonZnajdz = new System.Windows.Forms.Button();
@@ -42,13 +49,6 @@
             this.textBoxImie = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.nazwisko = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.imie = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.pesel = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.telefon = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.mail = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.idpacjent = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.plec = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPacjenci)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -132,6 +132,57 @@
             this.dataGridViewPacjenci.Size = new System.Drawing.Size(813, 262);
             this.dataGridViewPacjenci.TabIndex = 1;
             // 
+            // nazwisko
+            // 
+            this.nazwisko.DataPropertyName = "nazwisko";
+            this.nazwisko.HeaderText = "Nazwisko";
+            this.nazwisko.Name = "nazwisko";
+            this.nazwisko.ReadOnly = true;
+            // 
+            // imie
+            // 
+            this.imie.DataPropertyName = "imie";
+            this.imie.HeaderText = "Imie";
+            this.imie.Name = "imie";
+            this.imie.ReadOnly = true;
+            // 
+            // pesel
+            // 
+            this.pesel.DataPropertyName = "pesel";
+            this.pesel.HeaderText = "PESEL";
+            this.pesel.Name = "pesel";
+            this.pesel.ReadOnly = true;
+            // 
+            // telefon
+            // 
+            this.telefon.DataPropertyName = "telefon";
+            this.telefon.HeaderText = "Telefon";
+            this.telefon.Name = "telefon";
+            this.telefon.ReadOnly = true;
+            this.telefon.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            // 
+            // mail
+            // 
+            this.mail.DataPropertyName = "mail";
+            this.mail.HeaderText = "Mail";
+            this.mail.Name = "mail";
+            this.mail.ReadOnly = true;
+            this.mail.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            // 
+            // idpacjent
+            // 
+            this.idpacjent.DataPropertyName = "idpacjent";
+            this.idpacjent.HeaderText = "ID pacjenta";
+            this.idpacjent.Name = "idpacjent";
+            this.idpacjent.ReadOnly = true;
+            // 
+            // plec
+            // 
+            this.plec.DataPropertyName = "plec";
+            this.plec.HeaderText = "Plec";
+            this.plec.Name = "plec";
+            this.plec.ReadOnly = true;
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -212,57 +263,6 @@
             this.label2.TabIndex = 3;
             this.label2.Text = "Nazwisko";
             // 
-            // nazwisko
-            // 
-            this.nazwisko.DataPropertyName = "nazwisko";
-            this.nazwisko.HeaderText = "Nazwisko";
-            this.nazwisko.Name = "nazwisko";
-            this.nazwisko.ReadOnly = true;
-            // 
-            // imie
-            // 
-            this.imie.DataPropertyName = "imie";
-            this.imie.HeaderText = "Imie";
-            this.imie.Name = "imie";
-            this.imie.ReadOnly = true;
-            // 
-            // pesel
-            // 
-            this.pesel.DataPropertyName = "pesel";
-            this.pesel.HeaderText = "PESEL";
-            this.pesel.Name = "pesel";
-            this.pesel.ReadOnly = true;
-            // 
-            // telefon
-            // 
-            this.telefon.DataPropertyName = "telefon";
-            this.telefon.HeaderText = "Telefon";
-            this.telefon.Name = "telefon";
-            this.telefon.ReadOnly = true;
-            this.telefon.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            // 
-            // mail
-            // 
-            this.mail.DataPropertyName = "mail";
-            this.mail.HeaderText = "Mail";
-            this.mail.Name = "mail";
-            this.mail.ReadOnly = true;
-            this.mail.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            // 
-            // idpacjent
-            // 
-            this.idpacjent.DataPropertyName = "idpacjent";
-            this.idpacjent.HeaderText = "ID pacjenta";
-            this.idpacjent.Name = "idpacjent";
-            this.idpacjent.ReadOnly = true;
-            // 
-            // plec
-            // 
-            this.plec.DataPropertyName = "plec";
-            this.plec.HeaderText = "Plec";
-            this.plec.Name = "plec";
-            this.plec.ReadOnly = true;
-            // 
             // Rejestracja
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -272,7 +272,7 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.toolStrip1);
             this.Name = "Rejestracja";
-            this.Text = "Rejestracja";
+            this.Text = "Panel rejestracja";
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPacjenci)).EndInit();
