@@ -31,23 +31,24 @@
             this.toolStrip2 = new System.Windows.Forms.ToolStrip();
             this.toolStripBtnWizyta = new System.Windows.Forms.ToolStripButton();
             this.groupBoxLekarz = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.textBoxImieNazwisko = new System.Windows.Forms.TextBox();
             this.textBoxStanowisko = new System.Windows.Forms.TextBox();
+            this.textBoxImieNazwisko = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dataGridViewWizyta = new System.Windows.Forms.DataGridView();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.textBoxGodzDo = new System.Windows.Forms.TextBox();
+            this.textBoxGodzOd = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.godzina = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nazwisko = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.imie = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pesel = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.textBoxGodzOd = new System.Windows.Forms.TextBox();
-            this.textBoxGodzDo = new System.Windows.Forms.TextBox();
+            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.toolStrip2.SuspendLayout();
             this.groupBoxLekarz.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -65,7 +66,7 @@
             this.toolStripBtnWizyta});
             this.toolStrip2.Location = new System.Drawing.Point(0, 0);
             this.toolStrip2.Name = "toolStrip2";
-            this.toolStrip2.Size = new System.Drawing.Size(717, 80);
+            this.toolStrip2.Size = new System.Drawing.Size(764, 80);
             this.toolStrip2.Stretch = true;
             this.toolStrip2.TabIndex = 1;
             this.toolStrip2.Text = "toolStrip2";
@@ -81,6 +82,7 @@
             this.toolStripBtnWizyta.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.toolStripBtnWizyta.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.toolStripBtnWizyta.ToolTipText = "Rozpocznij wizyte";
+            this.toolStripBtnWizyta.Click += new System.EventHandler(this.toolStripBtnWizyta_Click);
             // 
             // groupBoxLekarz
             // 
@@ -95,14 +97,21 @@
             this.groupBoxLekarz.TabStop = false;
             this.groupBoxLekarz.Text = "Dane lekarza";
             // 
-            // label1
+            // textBoxStanowisko
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(20, 16);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(79, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Nazwisko i imie";
+            this.textBoxStanowisko.Enabled = false;
+            this.textBoxStanowisko.Location = new System.Drawing.Point(23, 71);
+            this.textBoxStanowisko.Name = "textBoxStanowisko";
+            this.textBoxStanowisko.Size = new System.Drawing.Size(171, 20);
+            this.textBoxStanowisko.TabIndex = 3;
+            // 
+            // textBoxImieNazwisko
+            // 
+            this.textBoxImieNazwisko.Enabled = false;
+            this.textBoxImieNazwisko.Location = new System.Drawing.Point(23, 32);
+            this.textBoxImieNazwisko.Name = "textBoxImieNazwisko";
+            this.textBoxImieNazwisko.Size = new System.Drawing.Size(171, 20);
+            this.textBoxImieNazwisko.TabIndex = 2;
             // 
             // label2
             // 
@@ -113,21 +122,14 @@
             this.label2.TabIndex = 1;
             this.label2.Text = "Stanowisko";
             // 
-            // textBoxImieNazwisko
+            // label1
             // 
-            this.textBoxImieNazwisko.Enabled = false;
-            this.textBoxImieNazwisko.Location = new System.Drawing.Point(23, 32);
-            this.textBoxImieNazwisko.Name = "textBoxImieNazwisko";
-            this.textBoxImieNazwisko.Size = new System.Drawing.Size(171, 20);
-            this.textBoxImieNazwisko.TabIndex = 2;
-            // 
-            // textBoxStanowisko
-            // 
-            this.textBoxStanowisko.Enabled = false;
-            this.textBoxStanowisko.Location = new System.Drawing.Point(23, 71);
-            this.textBoxStanowisko.Name = "textBoxStanowisko";
-            this.textBoxStanowisko.Size = new System.Drawing.Size(171, 20);
-            this.textBoxStanowisko.TabIndex = 3;
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(20, 16);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(79, 13);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Nazwisko i imie";
             // 
             // groupBox1
             // 
@@ -144,13 +146,14 @@
             this.monthCalendar1.Location = new System.Drawing.Point(23, 25);
             this.monthCalendar1.Name = "monthCalendar1";
             this.monthCalendar1.TabIndex = 4;
+            this.monthCalendar1.DateChanged += new System.Windows.Forms.DateRangeEventHandler(this.monthCalendar1_DateSelected);
             // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.dataGridViewWizyta);
             this.groupBox2.Location = new System.Drawing.Point(218, 83);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(487, 395);
+            this.groupBox2.Size = new System.Drawing.Size(535, 395);
             this.groupBox2.TabIndex = 4;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Lista zarejestrowanych pacjentów";
@@ -163,11 +166,62 @@
             this.godzina,
             this.nazwisko,
             this.imie,
-            this.pesel});
+            this.pesel,
+            this.id});
             this.dataGridViewWizyta.Location = new System.Drawing.Point(6, 19);
+            this.dataGridViewWizyta.MultiSelect = false;
             this.dataGridViewWizyta.Name = "dataGridViewWizyta";
-            this.dataGridViewWizyta.Size = new System.Drawing.Size(475, 358);
+            this.dataGridViewWizyta.ReadOnly = true;
+            this.dataGridViewWizyta.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridViewWizyta.Size = new System.Drawing.Size(521, 358);
             this.dataGridViewWizyta.TabIndex = 5;
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.textBoxGodzDo);
+            this.groupBox3.Controls.Add(this.textBoxGodzOd);
+            this.groupBox3.Controls.Add(this.label5);
+            this.groupBox3.Controls.Add(this.label4);
+            this.groupBox3.Location = new System.Drawing.Point(12, 193);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(200, 74);
+            this.groupBox3.TabIndex = 5;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Godziny pracy";
+            // 
+            // textBoxGodzDo
+            // 
+            this.textBoxGodzDo.Enabled = false;
+            this.textBoxGodzDo.Location = new System.Drawing.Point(111, 39);
+            this.textBoxGodzDo.Name = "textBoxGodzDo";
+            this.textBoxGodzDo.Size = new System.Drawing.Size(75, 20);
+            this.textBoxGodzDo.TabIndex = 4;
+            // 
+            // textBoxGodzOd
+            // 
+            this.textBoxGodzOd.Enabled = false;
+            this.textBoxGodzOd.Location = new System.Drawing.Point(15, 39);
+            this.textBoxGodzOd.Name = "textBoxGodzOd";
+            this.textBoxGodzOd.Size = new System.Drawing.Size(76, 20);
+            this.textBoxGodzOd.TabIndex = 3;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(108, 23);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(21, 13);
+            this.label5.TabIndex = 2;
+            this.label5.Text = "Do";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(12, 23);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(21, 13);
+            this.label4.TabIndex = 1;
+            this.label4.Text = "Od";
             // 
             // godzina
             // 
@@ -175,6 +229,7 @@
             this.godzina.HeaderText = "Godzina";
             this.godzina.Name = "godzina";
             this.godzina.ReadOnly = true;
+            this.godzina.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             // 
             // nazwisko
             // 
@@ -196,60 +251,24 @@
             this.pesel.HeaderText = "PESEL";
             this.pesel.Name = "pesel";
             this.pesel.ReadOnly = true;
+            this.pesel.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             // 
-            // groupBox3
+            // id
             // 
-            this.groupBox3.Controls.Add(this.textBoxGodzDo);
-            this.groupBox3.Controls.Add(this.textBoxGodzOd);
-            this.groupBox3.Controls.Add(this.label5);
-            this.groupBox3.Controls.Add(this.label4);
-            this.groupBox3.Location = new System.Drawing.Point(12, 193);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(200, 74);
-            this.groupBox3.TabIndex = 5;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Godziny pracy";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(12, 23);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(21, 13);
-            this.label4.TabIndex = 1;
-            this.label4.Text = "Od";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(108, 23);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(21, 13);
-            this.label5.TabIndex = 2;
-            this.label5.Text = "Do";
-            // 
-            // textBoxGodzOd
-            // 
-            this.textBoxGodzOd.Enabled = false;
-            this.textBoxGodzOd.Location = new System.Drawing.Point(15, 39);
-            this.textBoxGodzOd.Name = "textBoxGodzOd";
-            this.textBoxGodzOd.Size = new System.Drawing.Size(76, 20);
-            this.textBoxGodzOd.TabIndex = 3;
-            // 
-            // textBoxGodzDo
-            // 
-            this.textBoxGodzDo.Enabled = false;
-            this.textBoxGodzDo.Location = new System.Drawing.Point(111, 39);
-            this.textBoxGodzDo.Name = "textBoxGodzDo";
-            this.textBoxGodzDo.Size = new System.Drawing.Size(75, 20);
-            this.textBoxGodzDo.TabIndex = 4;
+            this.id.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.id.DataPropertyName = "idwizyta";
+            this.id.HeaderText = "ID wizyty";
+            this.id.Name = "id";
+            this.id.ReadOnly = true;
+            this.id.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.id.Width = 69;
             // 
             // panelLekarza
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.ClientSize = new System.Drawing.Size(717, 489);
+            this.ClientSize = new System.Drawing.Size(764, 489);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
@@ -284,15 +303,16 @@
         private System.Windows.Forms.MonthCalendar monthCalendar1;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.DataGridView dataGridViewWizyta;
-        private System.Windows.Forms.DataGridViewTextBoxColumn godzina;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nazwisko;
-        private System.Windows.Forms.DataGridViewTextBoxColumn imie;
-        private System.Windows.Forms.DataGridViewTextBoxColumn pesel;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.TextBox textBoxGodzDo;
         private System.Windows.Forms.TextBox textBoxGodzOd;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn godzina;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nazwisko;
+        private System.Windows.Forms.DataGridViewTextBoxColumn imie;
+        private System.Windows.Forms.DataGridViewTextBoxColumn pesel;
+        private System.Windows.Forms.DataGridViewTextBoxColumn id;
 
     }
 }
