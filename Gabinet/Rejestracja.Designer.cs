@@ -124,6 +124,7 @@
             this.idpacjent,
             this.plec});
             this.dataGridViewPacjenci.Location = new System.Drawing.Point(6, 60);
+            this.dataGridViewPacjenci.MultiSelect = false;
             this.dataGridViewPacjenci.Name = "dataGridViewPacjenci";
             this.dataGridViewPacjenci.ReadOnly = true;
             this.dataGridViewPacjenci.RowHeadersWidth = 110;

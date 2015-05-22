@@ -124,7 +124,7 @@
             this.MaximizeBox = false;
             this.Name = "Start";
             this.Text = "Panel";
-            this.Load += new System.EventHandler(this.Start_Load);
+            this.Load += new System.EventHandler(this.Start_Closing);
             this.ResumeLayout(false);
             this.PerformLayout();
 

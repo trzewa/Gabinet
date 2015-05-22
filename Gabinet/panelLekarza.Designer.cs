@@ -39,16 +39,16 @@
             this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dataGridViewWizyta = new System.Windows.Forms.DataGridView();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.textBoxGodzDo = new System.Windows.Forms.TextBox();
-            this.textBoxGodzOd = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
             this.godzina = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nazwisko = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.imie = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pesel = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.textBoxGodzDo = new System.Windows.Forms.TextBox();
+            this.textBoxGodzOd = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.toolStrip2.SuspendLayout();
             this.groupBoxLekarz.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -160,6 +160,9 @@
             // 
             // dataGridViewWizyta
             // 
+            this.dataGridViewWizyta.AllowUserToAddRows = false;
+            this.dataGridViewWizyta.AllowUserToDeleteRows = false;
+            this.dataGridViewWizyta.AllowUserToResizeColumns = false;
             this.dataGridViewWizyta.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
             this.dataGridViewWizyta.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewWizyta.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -175,6 +178,46 @@
             this.dataGridViewWizyta.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewWizyta.Size = new System.Drawing.Size(521, 358);
             this.dataGridViewWizyta.TabIndex = 5;
+            // 
+            // godzina
+            // 
+            this.godzina.DataPropertyName = "godzina";
+            this.godzina.HeaderText = "Godzina";
+            this.godzina.Name = "godzina";
+            this.godzina.ReadOnly = true;
+            this.godzina.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            // 
+            // nazwisko
+            // 
+            this.nazwisko.DataPropertyName = "nazwisko";
+            this.nazwisko.HeaderText = "Nazwisko pacjenta";
+            this.nazwisko.Name = "nazwisko";
+            this.nazwisko.ReadOnly = true;
+            // 
+            // imie
+            // 
+            this.imie.DataPropertyName = "imie";
+            this.imie.HeaderText = "Imie pacjenta";
+            this.imie.Name = "imie";
+            this.imie.ReadOnly = true;
+            // 
+            // pesel
+            // 
+            this.pesel.DataPropertyName = "pesel";
+            this.pesel.HeaderText = "PESEL";
+            this.pesel.Name = "pesel";
+            this.pesel.ReadOnly = true;
+            this.pesel.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            // 
+            // id
+            // 
+            this.id.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.id.DataPropertyName = "idwizyta";
+            this.id.HeaderText = "ID wizyty";
+            this.id.Name = "id";
+            this.id.ReadOnly = true;
+            this.id.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.id.Width = 69;
             // 
             // groupBox3
             // 
@@ -222,46 +265,6 @@
             this.label4.Size = new System.Drawing.Size(21, 13);
             this.label4.TabIndex = 1;
             this.label4.Text = "Od";
-            // 
-            // godzina
-            // 
-            this.godzina.DataPropertyName = "godzina";
-            this.godzina.HeaderText = "Godzina";
-            this.godzina.Name = "godzina";
-            this.godzina.ReadOnly = true;
-            this.godzina.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            // 
-            // nazwisko
-            // 
-            this.nazwisko.DataPropertyName = "nazwisko";
-            this.nazwisko.HeaderText = "Nazwisko pacjenta";
-            this.nazwisko.Name = "nazwisko";
-            this.nazwisko.ReadOnly = true;
-            // 
-            // imie
-            // 
-            this.imie.DataPropertyName = "imie";
-            this.imie.HeaderText = "Imie pacjenta";
-            this.imie.Name = "imie";
-            this.imie.ReadOnly = true;
-            // 
-            // pesel
-            // 
-            this.pesel.DataPropertyName = "pesel";
-            this.pesel.HeaderText = "PESEL";
-            this.pesel.Name = "pesel";
-            this.pesel.ReadOnly = true;
-            this.pesel.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            // 
-            // id
-            // 
-            this.id.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.id.DataPropertyName = "idwizyta";
-            this.id.HeaderText = "ID wizyty";
-            this.id.Name = "id";
-            this.id.ReadOnly = true;
-            this.id.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.id.Width = 69;
             // 
             // panelLekarza
             // 

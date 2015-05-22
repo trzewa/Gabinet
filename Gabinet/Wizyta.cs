@@ -18,6 +18,10 @@ namespace Gabinet
         public string dbconnection_gabinet;
         private string idwizyta;
         private string idpacjent;
+        public string kodChoroby;
+        public string nazwaChoroby;
+        public string idChoroby = null;
+        public string idTypBadania = null;
         
 
         public Wizyta(string idwizytaReceive)
@@ -46,7 +50,7 @@ namespace Gabinet
                 }
 
                 MySqlDataAdapter myDataAdapter = new MySqlDataAdapter();                
-                myDataAdapter = database.Select("select nazwisko, imie, ulica, nr_budynku, nr_lokalu, miasto, kod_pocztowy, mail, telefon from wizyta inner join pacjent on pacjent.idpacjent=wizyta.idpacjent inner join pacjentadres on wizyta.idpacjent=pacjentadres.idpacjent inner join adres on adres.idadres=pacjentadres.idadres inner join pacjentkontakt on wizyta.idpacjent=pacjentkontakt.idpacjent inner join kontakt on pacjentkontakt.idkontakt=kontakt.idkontakt where wizyta.idpacjent='" + this.idpacjent + "'", this.dbconnection_gabinet);
+                myDataAdapter = database.Select("select nazwisko, imie, ulica, nr_budynku, nr_lokalu, miasto, kod_pocztowy, mail, telefon from pacjent inner join pacjentadres on pacjent.idpacjent=pacjentadres.idpacjent inner join adres on adres.idadres=pacjentadres.idadres inner join pacjentkontakt on pacjent.idpacjent=pacjentkontakt.idpacjent inner join kontakt on pacjentkontakt.idkontakt=kontakt.idkontakt where pacjent.idpacjent='" + this.idpacjent + "'", this.dbconnection_gabinet);
                 DataTable dt = new DataTable();
                 myDataAdapter.Fill(dt);
 
@@ -65,6 +69,75 @@ namespace Gabinet
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void buttonSzukajProcedury_Click(object sender, EventArgs e)
+        {
+            bool IsOpen = false;
+
+            foreach (Form f in Application.OpenForms)
+            {
+                if (f.Text == "Wyszukiwanie")
+                {
+                    IsOpen = true;
+                    f.Focus();
+                    break;
+                }
+            }
+            if (IsOpen == false)
+            {
+                int button = 1;
+                szukajProcedury f2 = new szukajProcedury(this, button);
+                f2.Owner = this;
+                f2.ShowDialog();
+                textBoxKod.Text = kodChoroby;
+                textBoxNazwa.Text = nazwaChoroby;                
+            }
+        }
+
+        private void buttonSzukajChoroby_Click(object sender, EventArgs e)
+        {
+            bool IsOpen = false;
+
+            foreach (Form f in Application.OpenForms)
+            {
+                if (f.Text == "Wyszukiwanie")
+                {
+                    IsOpen = true;
+                    f.Focus();
+                    break;
+                }
+            }
+            if (IsOpen == false)
+            {
+                int button = 2;
+                szukajProcedury f2 = new szukajProcedury(this, button);
+                f2.Owner = this;
+                f2.ShowDialog();
+                textBoxKodChoroby.Text = kodChoroby;
+                textBoxNazwaChoroby.Text = nazwaChoroby;                
+            }
+        }
+
+        private void buttonAnuluj_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void buttonZakoncz_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Database database = new Database();
+                database.Update("update wizyta set idchoroby='" + idChoroby + "', idtyp_badania='" + idTypBadania + "' where idwizyta='" + idwizyta + "'", this.dbconnection_gabinet);
+                Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                //MessageBox.Show("Nie zostały wypełnione pola obowiązkowe");
+            }
+            
         }
     }
 }

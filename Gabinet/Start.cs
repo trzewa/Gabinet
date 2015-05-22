@@ -145,7 +145,7 @@ namespace Gabinet
             }
         }
 
-        private void Start_Load(object sender, EventArgs e)
+        private void Start_Closing(object sender, EventArgs e)
         {
 
         }
