@@ -20,6 +20,8 @@ namespace Gabinet
         public dodajOpiekun()
         {
             InitializeComponent();
+            this.MaximumSize = this.Size;
+            this.MinimumSize = this.Size;
             this.dbconnection_gabinet = "datasource=" + mysettings.Default.datasource + ";database=" + mysettings.Default.database + ";port=" + mysettings.Default.port + ";username=" + mysettings.Default.user + ";password=" + mysettings.Default.password;
             //this.idopiekunSend = idopiekun;
             Update_comboBoxTelefon();

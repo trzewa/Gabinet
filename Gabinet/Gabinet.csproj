@@ -89,6 +89,12 @@
     <Compile Include="Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
     </Compile>
+    <Compile Include="Logout.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Logout.Designer.cs">
+      <DependentUpon>Logout.cs</DependentUpon>
+    </Compile>
     <Compile Include="organizacjaPrzychodni.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -150,6 +156,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Logout.resx">
+      <DependentUpon>Logout.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="organizacjaPrzychodni.resx">
       <DependentUpon>organizacjaPrzychodni.cs</DependentUpon>
@@ -233,6 +242,24 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\depositphotos_38100335-Stethoscope-icon.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\home-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\exit-button-hi.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\inside-logout-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\stop-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\unlock-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lock.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

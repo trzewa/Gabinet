@@ -210,6 +210,7 @@
             this.Controls.Add(this.label5);
             this.Controls.Add(this.groupBox1);
             this.Name = "dodajOpiekun";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Dodawanie opiekuna";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

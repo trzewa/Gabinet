@@ -73,6 +73,16 @@ namespace Gabinet.Properties {
         /// <summary>
         ///   Wyszukuje zlokalizowany zasób typu System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _lock {
+            get {
+                object obj = ResourceManager.GetObject("lock", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Wyszukuje zlokalizowany zasób typu System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap depositphotos_38100335_Stethoscope_icon {
             get {
                 object obj = ResourceManager.GetObject("depositphotos_38100335-Stethoscope-icon", resourceCulture);
@@ -96,6 +106,36 @@ namespace Gabinet.Properties {
         internal static System.Drawing.Bitmap edit {
             get {
                 object obj = ResourceManager.GetObject("edit", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Wyszukuje zlokalizowany zasób typu System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap exit_button_hi {
+            get {
+                object obj = ResourceManager.GetObject("exit-button-hi", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Wyszukuje zlokalizowany zasób typu System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap home_icon {
+            get {
+                object obj = ResourceManager.GetObject("home-icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Wyszukuje zlokalizowany zasób typu System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap inside_logout_icon {
+            get {
+                object obj = ResourceManager.GetObject("inside-logout-icon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -156,6 +196,26 @@ namespace Gabinet.Properties {
         internal static System.Drawing.Bitmap rejestruj2 {
             get {
                 object obj = ResourceManager.GetObject("rejestruj2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Wyszukuje zlokalizowany zasób typu System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap stop_icon {
+            get {
+                object obj = ResourceManager.GetObject("stop-icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Wyszukuje zlokalizowany zasób typu System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap unlock_icon {
+            get {
+                object obj = ResourceManager.GetObject("unlock-icon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.textBoxPwz = new System.Windows.Forms.TextBox();
             this.comboBoxPlec = new System.Windows.Forms.ComboBox();
             this.label19 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -69,7 +70,6 @@
             this.label20 = new System.Windows.Forms.Label();
             this.buttonZapisz = new System.Windows.Forms.Button();
             this.buttonAnuluj = new System.Windows.Forms.Button();
-            this.textBoxPwz = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -96,6 +96,14 @@
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Dane podstawowe";
+            // 
+            // textBoxPwz
+            // 
+            this.textBoxPwz.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.textBoxPwz.Location = new System.Drawing.Point(328, 76);
+            this.textBoxPwz.Name = "textBoxPwz";
+            this.textBoxPwz.Size = new System.Drawing.Size(91, 20);
+            this.textBoxPwz.TabIndex = 10;
             // 
             // comboBoxPlec
             // 
@@ -493,14 +501,6 @@
             this.buttonAnuluj.UseVisualStyleBackColor = true;
             this.buttonAnuluj.Click += new System.EventHandler(this.buttonAnuluj_Click);
             // 
-            // textBoxPwz
-            // 
-            this.textBoxPwz.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.textBoxPwz.Location = new System.Drawing.Point(328, 76);
-            this.textBoxPwz.Name = "textBoxPwz";
-            this.textBoxPwz.Size = new System.Drawing.Size(91, 20);
-            this.textBoxPwz.TabIndex = 10;
-            // 
             // dodajPracownika
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -514,6 +514,7 @@
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Name = "dodajPracownika";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Dodawanie pracownika";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

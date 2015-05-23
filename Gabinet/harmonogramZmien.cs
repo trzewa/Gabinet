@@ -32,6 +32,8 @@ namespace Gabinet
         public harmonogramZmien(string idgodzinyR, string idPracownikGodzinyR, string idpracownikR, int dzienR, string godz_odR, string godz_doR)
         {
             InitializeComponent();
+            this.MaximumSize = this.Size;
+            this.MinimumSize = this.Size;
             this.dbconnection_gabinet = "datasource=" + mysettings.Default.datasource + ";database=" + mysettings.Default.database + ";port=" + mysettings.Default.port + ";username=" + mysettings.Default.user + ";password=" + mysettings.Default.password;
             this.idgodziny = idgodzinyR;
             this.idPracownikGodziny = idPracownikGodzinyR;

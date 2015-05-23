@@ -23,6 +23,8 @@ namespace Gabinet
         public harmonogram(string idpracownikreceive)
         {
             InitializeComponent();
+            this.MaximumSize = this.Size;
+            this.MinimumSize = this.Size;
             this.idpracownik = idpracownikreceive;
             this.dbconnection_gabinet = "datasource=" + mysettings.Default.datasource + ";database=" + mysettings.Default.database + ";port=" + mysettings.Default.port + ";username=" + mysettings.Default.user + ";password=" + mysettings.Default.password;
             Update_daneLekarza();
@@ -139,10 +141,12 @@ namespace Gabinet
                 }
             }
             if (IsOpen == false)
-            {                
+            {
+                this.Opacity = 0.5;
                 harmonogramZmien f2 = new harmonogramZmien(this.idg1, this.id1, this.idpracownik, 1, this.textBoxPonOd.Text.ToString() , this.textBoxPonDo.Text.ToString());
                 f2.ShowDialog();
                 Update_Czas();
+                this.Opacity = 1;
             }
         }
 
@@ -161,9 +165,11 @@ namespace Gabinet
             }
             if (IsOpen == false)
             {
+                this.Opacity = 0.5;
                 harmonogramZmien f2 = new harmonogramZmien(this.idg2, this.id2, this.idpracownik, 2, this.textBoxWtOd.Text.ToString(), this.textBoxWtDo.Text.ToString());
                 f2.ShowDialog();
                 Update_Czas();
+                this.Opacity = 1;
             }
         }
 
@@ -182,9 +188,11 @@ namespace Gabinet
             }
             if (IsOpen == false)
             {
+                this.Opacity = 0.5;
                 harmonogramZmien f2 = new harmonogramZmien(this.idg3, this.id3, this.idpracownik, 3, this.textBoxSrOd.Text.ToString(), this.textBoxSrDo.Text.ToString());
                 f2.ShowDialog();
                 Update_Czas();
+                this.Opacity = 1;
             }
         }
 
@@ -203,9 +211,11 @@ namespace Gabinet
             }
             if (IsOpen == false)
             {
+                this.Opacity = 0.5;
                 harmonogramZmien f2 = new harmonogramZmien(this.idg4, this.id4, this.idpracownik, 4, this.textBoxCzOd.Text.ToString(), this.textBoxCzDo.Text.ToString());
                 f2.ShowDialog();
                 Update_Czas();
+                this.Opacity = 1;
             }
         }
 
@@ -224,9 +234,11 @@ namespace Gabinet
             }
             if (IsOpen == false)
             {
+                this.Opacity = 0.5;
                 harmonogramZmien f2 = new harmonogramZmien(this.idg5, this.id5, this.idpracownik, 5, this.textBoxPiOd.Text.ToString(), this.textBoxPiDo.Text.ToString());
                 f2.ShowDialog();
                 Update_Czas();
+                this.Opacity = 1;
             }
         }
 
@@ -245,9 +257,11 @@ namespace Gabinet
             }
             if (IsOpen == false)
             {
+                this.Opacity = 0.5;
                 harmonogramZmien f2 = new harmonogramZmien(this.idg6, this.id6, this.idpracownik, 6, this.textBoxSoOd.Text.ToString(), this.textBoxSoDo.Text.ToString());
                 f2.ShowDialog();
                 Update_Czas();
+                this.Opacity = 1;
             }
         }        
     }

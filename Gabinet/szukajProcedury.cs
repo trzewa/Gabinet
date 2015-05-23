@@ -24,7 +24,8 @@ namespace Gabinet
         public szukajProcedury(Wizyta parent, int buttonReceive)
         {
             InitializeComponent();
-            
+            this.MaximumSize = this.Size;
+            this.MinimumSize = this.Size;
             this.rodzicWizyta = parent;
             this.button = buttonReceive;
             this.dbconnection_gabinet = "datasource=" + mysettings.Default.datasource + ";database=" + mysettings.Default.database + ";port=" + mysettings.Default.port + ";username=" + mysettings.Default.user + ";password=" + mysettings.Default.password;
@@ -152,15 +153,15 @@ namespace Gabinet
             if (button.Equals(1))
             {
                 row = dataGridViewProcedury.CurrentCell.RowIndex;
-                rodzicWizyta.kodChoroby = dataGridViewProcedury.Rows[row].Cells[1].Value.ToString();
-                rodzicWizyta.nazwaChoroby = dataGridViewProcedury.Rows[row].Cells[2].Value.ToString();
+                rodzicWizyta.kod = dataGridViewProcedury.Rows[row].Cells[1].Value.ToString();
+                rodzicWizyta.nazwa = dataGridViewProcedury.Rows[row].Cells[2].Value.ToString();
                 rodzicWizyta.idTypBadania = dataGridViewProcedury.Rows[row].Cells[0].Value.ToString();
             }
             else
             {
                 row = dataGridViewChoroba.CurrentCell.RowIndex;
-                rodzicWizyta.kodChoroby = dataGridViewChoroba.Rows[row].Cells[1].Value.ToString();
-                rodzicWizyta.nazwaChoroby = dataGridViewChoroba.Rows[row].Cells[2].Value.ToString();
+                rodzicWizyta.kod = dataGridViewChoroba.Rows[row].Cells[1].Value.ToString();
+                rodzicWizyta.nazwa = dataGridViewChoroba.Rows[row].Cells[2].Value.ToString();
                 rodzicWizyta.idChoroby = dataGridViewChoroba.Rows[row].Cells[0].Value.ToString();
             }           
             

@@ -19,6 +19,7 @@ namespace Gabinet
             //Application.Run(new Start());
             //Application.Run(new Rejestracja());
             Application.Run(new Login());
+            //Application.Run(new Logout());
             //Application.Run(new DodajPacjent());
             //Application.Run(new dodajOpiekun());
             //Application.Run(new organizacjaPrzychodni());

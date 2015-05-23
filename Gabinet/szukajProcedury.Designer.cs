@@ -32,18 +32,18 @@
             this.textBoxNazwa = new System.Windows.Forms.TextBox();
             this.buttonSzukaj = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.dataGridViewProcedury = new System.Windows.Forms.DataGridView();
-            this.buttonWybierz = new System.Windows.Forms.Button();
             this.dataGridViewChoroba = new System.Windows.Forms.DataGridView();
-            this.kod = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nazwa = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.idtypbadania = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nazwachoroby = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.idchoroby = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewProcedury = new System.Windows.Forms.DataGridView();
+            this.kod = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nazwa = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idtypbadania = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.buttonWybierz = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewProcedury)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewChoroba)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewProcedury)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -83,6 +83,44 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Wyniki wyszukiwania";
             // 
+            // dataGridViewChoroba
+            // 
+            this.dataGridViewChoroba.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.dataGridViewChoroba.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewChoroba.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.id,
+            this.nazwachoroby,
+            this.idchoroby});
+            this.dataGridViewChoroba.Location = new System.Drawing.Point(6, 19);
+            this.dataGridViewChoroba.MultiSelect = false;
+            this.dataGridViewChoroba.Name = "dataGridViewChoroba";
+            this.dataGridViewChoroba.Size = new System.Drawing.Size(367, 258);
+            this.dataGridViewChoroba.TabIndex = 4;
+            // 
+            // id
+            // 
+            this.id.DataPropertyName = "kod_mkch";
+            this.id.HeaderText = "Kod ICD-10";
+            this.id.Name = "id";
+            this.id.ReadOnly = true;
+            this.id.Width = 70;
+            // 
+            // nazwachoroby
+            // 
+            this.nazwachoroby.DataPropertyName = "nazwa_choroby";
+            this.nazwachoroby.HeaderText = "Nazwa choroby";
+            this.nazwachoroby.Name = "nazwachoroby";
+            this.nazwachoroby.ReadOnly = true;
+            this.nazwachoroby.Width = 250;
+            // 
+            // idchoroby
+            // 
+            this.idchoroby.DataPropertyName = "idchoroby";
+            this.idchoroby.HeaderText = "Column1";
+            this.idchoroby.Name = "idchoroby";
+            this.idchoroby.ReadOnly = true;
+            this.idchoroby.Visible = false;
+            // 
             // dataGridViewProcedury
             // 
             this.dataGridViewProcedury.AllowUserToAddRows = false;
@@ -100,30 +138,6 @@
             this.dataGridViewProcedury.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewProcedury.Size = new System.Drawing.Size(367, 258);
             this.dataGridViewProcedury.TabIndex = 0;
-            // 
-            // buttonWybierz
-            // 
-            this.buttonWybierz.Location = new System.Drawing.Point(303, 340);
-            this.buttonWybierz.Name = "buttonWybierz";
-            this.buttonWybierz.Size = new System.Drawing.Size(75, 23);
-            this.buttonWybierz.TabIndex = 1;
-            this.buttonWybierz.Text = "Wybierz";
-            this.buttonWybierz.UseVisualStyleBackColor = true;
-            this.buttonWybierz.Click += new System.EventHandler(this.buttonWybierz_Click);
-            // 
-            // dataGridViewChoroba
-            // 
-            this.dataGridViewChoroba.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.dataGridViewChoroba.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewChoroba.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.id,
-            this.nazwachoroby,
-            this.idchoroby});
-            this.dataGridViewChoroba.Location = new System.Drawing.Point(6, 19);
-            this.dataGridViewChoroba.MultiSelect = false;
-            this.dataGridViewChoroba.Name = "dataGridViewChoroba";
-            this.dataGridViewChoroba.Size = new System.Drawing.Size(367, 258);
-            this.dataGridViewChoroba.TabIndex = 4;
             // 
             // kod
             // 
@@ -150,29 +164,15 @@
             this.idtypbadania.ReadOnly = true;
             this.idtypbadania.Visible = false;
             // 
-            // id
+            // buttonWybierz
             // 
-            this.id.DataPropertyName = "kod_mkch";
-            this.id.HeaderText = "Kod ICD-10";
-            this.id.Name = "id";
-            this.id.ReadOnly = true;
-            this.id.Width = 70;
-            // 
-            // nazwachoroby
-            // 
-            this.nazwachoroby.DataPropertyName = "nazwa_choroby";
-            this.nazwachoroby.HeaderText = "Nazwa choroby";
-            this.nazwachoroby.Name = "nazwachoroby";
-            this.nazwachoroby.ReadOnly = true;
-            this.nazwachoroby.Width = 250;
-            // 
-            // idchoroby
-            // 
-            this.idchoroby.DataPropertyName = "idchoroby";
-            this.idchoroby.HeaderText = "Column1";
-            this.idchoroby.Name = "idchoroby";
-            this.idchoroby.ReadOnly = true;
-            this.idchoroby.Visible = false;
+            this.buttonWybierz.Location = new System.Drawing.Point(303, 340);
+            this.buttonWybierz.Name = "buttonWybierz";
+            this.buttonWybierz.Size = new System.Drawing.Size(75, 23);
+            this.buttonWybierz.TabIndex = 1;
+            this.buttonWybierz.Text = "Wybierz";
+            this.buttonWybierz.UseVisualStyleBackColor = true;
+            this.buttonWybierz.Click += new System.EventHandler(this.buttonWybierz_Click);
             // 
             // szukajProcedury
             // 
@@ -186,10 +186,11 @@
             this.Controls.Add(this.textBoxNazwa);
             this.Controls.Add(this.label1);
             this.Name = "szukajProcedury";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Wyszukiwanie";
             this.groupBox1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewProcedury)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewChoroba)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewProcedury)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

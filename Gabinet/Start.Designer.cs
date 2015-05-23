@@ -115,6 +115,7 @@
             this.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(572, 252);
+            this.ControlBox = false;
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnZakoncz);
@@ -123,7 +124,8 @@
             this.Controls.Add(this.btnGabinet);
             this.MaximizeBox = false;
             this.Name = "Start";
-            this.Text = "Panel";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Panel główny";
             this.Load += new System.EventHandler(this.Start_Closing);
             this.ResumeLayout(false);
             this.PerformLayout();

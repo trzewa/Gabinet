@@ -18,8 +18,10 @@ namespace Gabinet
         public string dbconnection_gabinet;
         private string idwizyta;
         private string idpacjent;
-        public string kodChoroby;
-        public string nazwaChoroby;
+        private string idrecepta;
+        private string idzwolnienie;
+        public string kod;
+        public string nazwa;
         public string idChoroby = null;
         public string idTypBadania = null;
         
@@ -27,6 +29,8 @@ namespace Gabinet
         public Wizyta(string idwizytaReceive)
         {
             InitializeComponent();
+            this.MaximumSize = this.Size;
+            this.MinimumSize = this.Size;
             this.dbconnection_gabinet = "datasource=" + mysettings.Default.datasource + ";database=" + mysettings.Default.database + ";port=" + mysettings.Default.port + ";username=" + mysettings.Default.user + ";password=" + mysettings.Default.password;
             this.idwizyta = idwizytaReceive;
             Update_danePacjent();
@@ -86,12 +90,14 @@ namespace Gabinet
             }
             if (IsOpen == false)
             {
+                this.Opacity = 0.5;
                 int button = 1;
                 szukajProcedury f2 = new szukajProcedury(this, button);
                 f2.Owner = this;
                 f2.ShowDialog();
-                textBoxKod.Text = kodChoroby;
-                textBoxNazwa.Text = nazwaChoroby;                
+                textBoxKod.Text = kod;
+                textBoxNazwa.Text = nazwa;
+                this.Opacity = 1;
             }
         }
 
@@ -110,12 +116,14 @@ namespace Gabinet
             }
             if (IsOpen == false)
             {
+                this.Opacity = 0.5;
                 int button = 2;
                 szukajProcedury f2 = new szukajProcedury(this, button);
                 f2.Owner = this;
                 f2.ShowDialog();
-                textBoxKodChoroby.Text = kodChoroby;
-                textBoxNazwaChoroby.Text = nazwaChoroby;                
+                textBoxKodChoroby.Text = kod;
+                textBoxNazwaChoroby.Text = nazwa;
+                this.Opacity = 1;
             }
         }
 
@@ -126,17 +134,34 @@ namespace Gabinet
 
         private void buttonZakoncz_Click(object sender, EventArgs e)
         {
-            try
+            DateTime dt = DateTime.Now;
+            string data = dt.ToString("yyyy-MM-dd");
+            string godzina = dt.ToString("HH:mm:ss");
+
+            if (idTypBadania != null && idChoroby != null)
             {
-                Database database = new Database();
-                database.Update("update wizyta set idchoroby='" + idChoroby + "', idtyp_badania='" + idTypBadania + "' where idwizyta='" + idwizyta + "'", this.dbconnection_gabinet);
-                Close();
+                this.Opacity = 0.5;
+                String message = "Czy chcesz zatwierdzić wizyte?\nUWAGA!\nPo zatwierdzeniu wizyty nie będzie możliwości wykonania w niej żadnych zmian!";
+                String caption = "Kończenie wizyty";
+                var result = MessageBox.Show(message, caption, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (result == DialogResult.Yes)
+                {
+                    try
+                    {
+                        Database database = new Database();
+                        database.Update("update wizyta set idchoroby='" + idChoroby + "', idtyp_badania='" + idTypBadania + "', data='" + data + "', godzina='" + godzina + "', stan='1' where idwizyta='" + idwizyta + "'", this.dbconnection_gabinet);
+                        Close();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);                        
+                    }
+                }
+                else this.Opacity = 1;
+                
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-                //MessageBox.Show("Nie zostały wypełnione pola obowiązkowe");
-            }
+            else MessageBox.Show("Wprowadź typ badania i/lub rozpoznanie!", "Brak danych", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            
             
         }
     }

@@ -20,6 +20,8 @@ namespace Gabinet
         public organizacjaPrzychodni()
         {
             InitializeComponent();
+            this.MaximumSize = this.Size;
+            this.MinimumSize = this.Size;
             this.dbconnection_gabinet = "datasource=" + mysettings.Default.datasource + ";database=" + mysettings.Default.database + ";port=" + mysettings.Default.port + ";username=" + mysettings.Default.user + ";password=" + mysettings.Default.password;
             Update_dataGridViewPracownicy();
         }
@@ -51,9 +53,11 @@ namespace Gabinet
             }
             if (IsOpen == false)
             {
+                this.Visible = false;
                 dodajPracownika f2 = new dodajPracownika();
                 f2.ShowDialog();
                 Update_dataGridViewPracownicy();
+                this.Visible = true;
             }
         }
 
@@ -74,10 +78,12 @@ namespace Gabinet
             {
                 if (dataGridViewPracownicy.RowCount != 0)
                 {
+                    this.Visible = false;
                     int row = dataGridViewPracownicy.CurrentCell.RowIndex;
                     string id = dataGridViewPracownicy.Rows[row].Cells[4].Value.ToString();
                     harmonogram f2 = new harmonogram(id);
                     f2.ShowDialog();
+                    this.Visible = true;
                 }
                 else
                 {

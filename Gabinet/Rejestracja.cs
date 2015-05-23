@@ -19,6 +19,8 @@ namespace Gabinet
         public Rejestracja()
         {
             InitializeComponent();
+            this.MaximumSize = this.Size;
+            this.MinimumSize = this.Size;
             this.dbconnection_gabinet = "datasource=" + mysettings.Default.datasource + ";database=" + mysettings.Default.database + ";port=" + mysettings.Default.port + ";username=" + mysettings.Default.user + ";password=" + mysettings.Default.password;
             
         }
@@ -38,8 +40,10 @@ namespace Gabinet
             }
             if (IsOpen == false)
             {
+                this.Visible = false;
                 DodajPacjent f2 = new DodajPacjent();
                 f2.ShowDialog();
+                this.Visible = true;
             }
         }
 
@@ -60,10 +64,12 @@ namespace Gabinet
             {
                 if (dataGridViewPacjenci.RowCount != 0)
                 {
+                    this.Visible = false;
                     int row = dataGridViewPacjenci.CurrentCell.RowIndex;
                     string id = dataGridViewPacjenci.Rows[row].Cells[5].Value.ToString();
                     rejestracjaPacjenta f2 = new rejestracjaPacjenta(id);
                     f2.ShowDialog();
+                    this.Visible = true;
                 }
                 else
                 {

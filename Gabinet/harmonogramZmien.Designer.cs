@@ -184,6 +184,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.ClientSize = new System.Drawing.Size(271, 123);
             this.Controls.Add(this.buttonDodaj);
             this.Controls.Add(this.buttonZmien);
@@ -198,6 +199,7 @@
             this.Controls.Add(this.textBoxDzien);
             this.Controls.Add(this.label1);
             this.Name = "harmonogramZmien";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Zmień godziny";
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownHOd)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownMOd)).EndInit();

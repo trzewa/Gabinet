@@ -535,6 +535,7 @@
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Name = "harmonogram";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Harmonogram pracy";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

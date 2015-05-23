@@ -278,6 +278,7 @@
             this.Controls.Add(this.groupBoxLekarz);
             this.Controls.Add(this.toolStrip2);
             this.Name = "panelLekarza";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Panel lekarza";
             this.Load += new System.EventHandler(this.panelLekarza_Load);
             this.toolStrip2.ResumeLayout(false);

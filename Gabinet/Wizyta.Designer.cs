@@ -36,7 +36,11 @@
             this.labelAdres = new System.Windows.Forms.Label();
             this.labelNazwiskoImie = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.textBoxNazwaChoroby = new System.Windows.Forms.TextBox();
             this.buttonSzukajChoroby = new System.Windows.Forms.Button();
+            this.textBoxKodChoroby = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.textBoxWywiad = new System.Windows.Forms.TextBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
@@ -51,10 +55,6 @@
             this.buttonSkierowanie = new System.Windows.Forms.Button();
             this.buttonZwolnienie = new System.Windows.Forms.Button();
             this.buttonRecepta = new System.Windows.Forms.Button();
-            this.textBoxNazwaChoroby = new System.Windows.Forms.TextBox();
-            this.textBoxKodChoroby = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -153,6 +153,16 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Rozpoznanie";
             // 
+            // textBoxNazwaChoroby
+            // 
+            this.textBoxNazwaChoroby.Enabled = false;
+            this.textBoxNazwaChoroby.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.textBoxNazwaChoroby.Location = new System.Drawing.Point(9, 76);
+            this.textBoxNazwaChoroby.Multiline = true;
+            this.textBoxNazwaChoroby.Name = "textBoxNazwaChoroby";
+            this.textBoxNazwaChoroby.Size = new System.Drawing.Size(231, 48);
+            this.textBoxNazwaChoroby.TabIndex = 18;
+            // 
             // buttonSzukajChoroby
             // 
             this.buttonSzukajChoroby.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
@@ -163,6 +173,35 @@
             this.buttonSzukajChoroby.Text = "Szukaj choroby";
             this.buttonSzukajChoroby.UseVisualStyleBackColor = true;
             this.buttonSzukajChoroby.Click += new System.EventHandler(this.buttonSzukajChoroby_Click);
+            // 
+            // textBoxKodChoroby
+            // 
+            this.textBoxKodChoroby.Enabled = false;
+            this.textBoxKodChoroby.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.textBoxKodChoroby.Location = new System.Drawing.Point(9, 37);
+            this.textBoxKodChoroby.Name = "textBoxKodChoroby";
+            this.textBoxKodChoroby.Size = new System.Drawing.Size(67, 20);
+            this.textBoxKodChoroby.TabIndex = 17;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label6.Location = new System.Drawing.Point(6, 19);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(62, 13);
+            this.label6.TabIndex = 15;
+            this.label6.Text = "Kod ICD-10";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label5.Location = new System.Drawing.Point(8, 60);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(81, 13);
+            this.label5.TabIndex = 16;
+            this.label5.Text = "Nazwa choroby";
             // 
             // groupBox3
             // 
@@ -307,45 +346,6 @@
             this.buttonRecepta.Text = "Recepta";
             this.buttonRecepta.UseVisualStyleBackColor = true;
             // 
-            // textBoxNazwaChoroby
-            // 
-            this.textBoxNazwaChoroby.Enabled = false;
-            this.textBoxNazwaChoroby.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.textBoxNazwaChoroby.Location = new System.Drawing.Point(9, 76);
-            this.textBoxNazwaChoroby.Multiline = true;
-            this.textBoxNazwaChoroby.Name = "textBoxNazwaChoroby";
-            this.textBoxNazwaChoroby.Size = new System.Drawing.Size(231, 48);
-            this.textBoxNazwaChoroby.TabIndex = 18;
-            // 
-            // textBoxKodChoroby
-            // 
-            this.textBoxKodChoroby.Enabled = false;
-            this.textBoxKodChoroby.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.textBoxKodChoroby.Location = new System.Drawing.Point(9, 37);
-            this.textBoxKodChoroby.Name = "textBoxKodChoroby";
-            this.textBoxKodChoroby.Size = new System.Drawing.Size(67, 20);
-            this.textBoxKodChoroby.TabIndex = 17;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label5.Location = new System.Drawing.Point(8, 60);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(81, 13);
-            this.label5.TabIndex = 16;
-            this.label5.Text = "Nazwa choroby";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label6.Location = new System.Drawing.Point(6, 19);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(62, 13);
-            this.label6.TabIndex = 15;
-            this.label6.Text = "Kod ICD-10";
-            // 
             // Wizyta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -360,6 +360,7 @@
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Name = "Wizyta";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Wizyta";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

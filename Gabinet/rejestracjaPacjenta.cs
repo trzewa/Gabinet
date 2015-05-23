@@ -23,6 +23,8 @@ namespace Gabinet
         public rejestracjaPacjenta(string idpacjentreceive)
         {
             InitializeComponent();
+            this.MaximumSize = this.Size;
+            this.MinimumSize = this.Size;
             this.idpacjent = idpacjentreceive;
             this.dbconnection_gabinet = "datasource=" + mysettings.Default.datasource + ";database=" + mysettings.Default.database + ";port=" + mysettings.Default.port + ";username=" + mysettings.Default.user + ";password=" + mysettings.Default.password;
             Update_danePacjent();

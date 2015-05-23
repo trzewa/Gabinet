@@ -273,6 +273,7 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.toolStrip1);
             this.Name = "Rejestracja";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Panel rejestracja";
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();

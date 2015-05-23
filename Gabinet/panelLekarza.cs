@@ -21,6 +21,8 @@ namespace Gabinet
         public panelLekarza(string idpracownikReceive)
         {
             InitializeComponent();
+            this.MaximumSize = this.Size;
+            this.MinimumSize = this.Size;
             this.idpracownik = idpracownikReceive;
             this.dbconnection_gabinet = "datasource=" + mysettings.Default.datasource + ";database=" + mysettings.Default.database + ";port=" + mysettings.Default.port + ";username=" + mysettings.Default.user + ";password=" + mysettings.Default.password;
             Update_daneLekarza();               
@@ -114,10 +116,13 @@ namespace Gabinet
             {
                 if (dataGridViewWizyta.RowCount != 0)
                 {
+                    this.Visible = false;
                     int row = dataGridViewWizyta.CurrentCell.RowIndex;
                     this.idwizyta = dataGridViewWizyta.Rows[row].Cells[4].Value.ToString();
                     Wizyta f2 = new Wizyta(this.idwizyta);
                     f2.ShowDialog();
+                    this.Visible = true;
+                    Update_Godziny();
                 }
                 else
                 {

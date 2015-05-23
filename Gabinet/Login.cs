@@ -15,11 +15,13 @@ namespace Gabinet
     public partial class Login : Form
     {
         private string idpracownika;
-                
+               
         public Login()
         {
             InitializeComponent();
-            
+            this.MaximumSize = this.Size;
+            this.MinimumSize = this.Size;
+                     
         }
 
         private void textBoxLogin_TextChanged(object sender, EventArgs e)
@@ -29,7 +31,7 @@ namespace Gabinet
 
         private void textBoxPasword_TextChanged(object sender, EventArgs e)
         {
-
+           
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
@@ -52,11 +54,14 @@ namespace Gabinet
                 if (count == 1)
                 {
                     //MessageBox.Show("Login i Hasło są prawidłowe");
+                    
                     this.idpracownika = myRead.GetString(1);
+                    
                     this.Visible = false;
-                    Start r = new Start(this.idpracownika);
+                    Start r = new Start(this.idpracownika, this);
+                    r.Owner = this;
                     r.ShowDialog();
-                    this.Close();
+                    
                 }
                 else if (count > 1)
                 {

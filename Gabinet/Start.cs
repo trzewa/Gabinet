@@ -14,14 +14,18 @@ namespace Gabinet
 {
     public partial class Start : Form
     {
-        private string idpracownik;
+        public string idpracownik;
         private int idstanowiska;
         public string dbconnection_gabinet;
+        public Login rodzic;
 
-        public Start(string idpracownikaReceive)
+        public Start(string idpracownikReceive, Login login)
         {
             InitializeComponent();
-            this.idpracownik = idpracownikaReceive;
+            this.MaximumSize = this.Size;
+            this.MinimumSize = this.Size;           
+            this.idpracownik = idpracownikReceive;
+            this.rodzic = login;
             this.dbconnection_gabinet = "datasource=" + mysettings.Default.datasource + ";database=" + mysettings.Default.database + ";port=" + mysettings.Default.port + ";username=" + mysettings.Default.user + ";password=" + mysettings.Default.password;
             User_Control();
         }
@@ -41,8 +45,10 @@ namespace Gabinet
             }
             if (IsOpen == false)
             {
+                this.Visible = false;
                 panelLekarza f2 = new panelLekarza(this.idpracownik);
                 f2.ShowDialog();
+                this.Visible = true;
             }
         }
 
@@ -61,8 +67,10 @@ namespace Gabinet
             }
             if (IsOpen == false)
             {
+                this.Visible = false;
                 Rejestracja f2 = new Rejestracja();
-                f2.ShowDialog();                
+                f2.ShowDialog();
+                this.Visible = true;
             }
         }
 
@@ -81,14 +89,35 @@ namespace Gabinet
             }
             if (IsOpen == false)
             {
+                this.Visible = false;
                 organizacjaPrzychodni f2 = new organizacjaPrzychodni();
-                f2.Show();                
+                f2.ShowDialog();
+                this.Visible = true;
             }
         }
 
         private void btnZakoncz_Click(object sender, EventArgs e)
         {
-            this.Close();
+            bool IsOpen = false;
+
+            foreach (Form f in Application.OpenForms)
+            {
+                if (f.Text == "Zakończ pracę ...")
+                {
+                    IsOpen = true;
+                    f.Focus();
+                    break;
+                }
+            }
+            if (IsOpen == false)
+            {
+                this.Opacity = 0.5;
+                Logout f2 = new Logout(this);
+                f2.Owner = this;
+                f2.ShowDialog();
+                //this.Close();
+                
+            }
         }
 
         public void User_Control()

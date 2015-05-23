@@ -152,6 +152,7 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.toolStrip1);
             this.Name = "organizacjaPrzychodni";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Zarządzanie przychodnią";
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();

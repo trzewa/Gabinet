@@ -21,6 +21,8 @@ namespace Gabinet
         public DodajPacjent()
         {
             InitializeComponent();
+            this.MaximumSize = this.Size;
+            this.MinimumSize = this.Size;
             this.dbconnection_gabinet = "datasource=" + mysettings.Default.datasource + ";database=" + mysettings.Default.database + ";port=" + mysettings.Default.port + ";username=" + mysettings.Default.user + ";password=" + mysettings.Default.password;
             this.idopiekun = null;
             Update_comboBoxUprawnienia();
@@ -289,10 +291,11 @@ namespace Gabinet
             }
             if (IsOpen == false)
             {
-                
+                this.Opacity = 0.5;
                 dodajOpiekun f2 = new dodajOpiekun();                
                 f2.ShowDialog();
                 this.idopiekun = f2.idopiekunSend;
+                this.Opacity = 1;
             }
 
         }
