@@ -15,7 +15,7 @@ namespace Gabinet
     public partial class Rejestracja : Form
     {
         public string dbconnection_gabinet;
-
+        
         public Rejestracja()
         {
             InitializeComponent();
@@ -79,25 +79,52 @@ namespace Gabinet
         }
 
         private void buttonZnajdz_Click(object sender, EventArgs e)
-        {
+        {            
             try
-            {
+            {                
                 string imie = this.textBoxImie.Text;
                 string nazwisko = this.textBoxNazwisko.Text;
                 string pesel = this.textBoxPesel.Text;
 
                 MySqlDataAdapter myDataAdapter = new MySqlDataAdapter();
                 Database database = new Database();
-                myDataAdapter = database.Select("select nazwisko, imie, pesel, telefon, mail, pacjent.idpacjent, plec from pacjentkontakt inner join pacjent on pacjentkontakt.idpacjent=pacjent.idpacjent inner join plec on plec.idplec=pacjent.idplec inner join kontakt on pacjentkontakt.idkontakt=kontakt.idkontakt where imie='" + imie.ToString() + "' or nazwisko='" + nazwisko.ToString() + "' or pesel='" + pesel + "'", this.dbconnection_gabinet);
+                myDataAdapter = database.Select("select nazwisko, imie, pesel, telefon, mail, pacjent.idpacjent, plec from pacjentkontakt inner join pacjent on pacjentkontakt.idpacjent=pacjent.idpacjent inner join plec on plec.idplec=pacjent.idplec inner join kontakt on pacjentkontakt.idkontakt=kontakt.idkontakt where pesel like '%" + pesel + "%' and nazwisko like '%" + nazwisko.ToString() + "%' and imie like '%" + imie.ToString() + "%'", this.dbconnection_gabinet);
 
                 DataTable dt = new DataTable();
                 myDataAdapter.Fill(dt);               
 
                 dataGridViewPacjenci.DataSource = dt.DefaultView;
+                textBoxImie.Clear();
+                textBoxNazwisko.Clear();
+                textBoxPesel.Clear();
             }
             catch(Exception ex)
             {
                 MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void toolStripBtnDanePacjent_Click(object sender, EventArgs e)
+        {
+            int row = dataGridViewPacjenci.CurrentCell.RowIndex;
+            string id = dataGridViewPacjenci.Rows[row].Cells[5].Value.ToString();
+            bool IsOpen = false;
+
+            foreach (Form f in Application.OpenForms)
+            {
+                if (f.Text == "Dane pacjenta")
+                {
+                    IsOpen = true;
+                    f.Focus();
+                    break;
+                }
+            }
+            if (IsOpen == false)
+            {
+                this.Opacity = 0.5;
+                danePacjent f2 = new danePacjent(id);
+                f2.ShowDialog();
+                this.Opacity = 1;
             }
         }        
     }

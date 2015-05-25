@@ -83,6 +83,16 @@ namespace Gabinet.Properties {
         /// <summary>
         ///   Wyszukuje zlokalizowany zasób typu System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap addition_icon {
+            get {
+                object obj = ResourceManager.GetObject("addition-icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Wyszukuje zlokalizowany zasób typu System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap depositphotos_38100335_Stethoscope_icon {
             get {
                 object obj = ResourceManager.GetObject("depositphotos_38100335-Stethoscope-icon", resourceCulture);
@@ -96,6 +106,16 @@ namespace Gabinet.Properties {
         internal static System.Drawing.Bitmap dodajpacjenta {
             get {
                 object obj = ResourceManager.GetObject("dodajpacjenta", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Wyszukuje zlokalizowany zasób typu System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap download_3_icon {
+            get {
+                object obj = ResourceManager.GetObject("download-3-icon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -126,6 +146,26 @@ namespace Gabinet.Properties {
         internal static System.Drawing.Bitmap home_icon {
             get {
                 object obj = ResourceManager.GetObject("home-icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Wyszukuje zlokalizowany zasób typu System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap info_icon {
+            get {
+                object obj = ResourceManager.GetObject("info-icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Wyszukuje zlokalizowany zasób typu System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap information_icon {
+            get {
+                object obj = ResourceManager.GetObject("information-icon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -166,6 +206,26 @@ namespace Gabinet.Properties {
         internal static System.Drawing.Bitmap pacjent {
             get {
                 object obj = ResourceManager.GetObject("pacjent", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Wyszukuje zlokalizowany zasób typu System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap pencil_icon {
+            get {
+                object obj = ResourceManager.GetObject("pencil-icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Wyszukuje zlokalizowany zasób typu System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap play_icon {
+            get {
+                object obj = ResourceManager.GetObject("play-icon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -246,6 +306,16 @@ namespace Gabinet.Properties {
         internal static System.Drawing.Bitmap zmień {
             get {
                 object obj = ResourceManager.GetObject("zmień", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Wyszukuje zlokalizowany zasób typu System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap zoom_search_2_icon {
+            get {
+                object obj = ResourceManager.GetObject("zoom-search-2-icon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

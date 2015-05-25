@@ -17,6 +17,7 @@ namespace Gabinet
         public string dbconnection_gabinet;
         private string idpracownik;
         private string idwizyta;
+        private string idpacjent;
 
         public panelLekarza(string idpracownikReceive)
         {
@@ -70,7 +71,7 @@ namespace Gabinet
                 MySqlDataAdapter myDataAdapter = new MySqlDataAdapter();
                 MySqlDataAdapter myDA = new MySqlDataAdapter();
                 myDataAdapter = database.Select("select godz_od, godz_do from godzinyprzyjec inner join pracownikgodziny on pracownikgodziny.idgodziny=godzinyprzyjec.idgodziny where dzien_tygodnia='" + dzienTygodnia + "' and idpracownik='" + this.idpracownik + "'", this.dbconnection_gabinet);
-                myDA = database.Select("select godzina, nazwisko, imie, pesel, idwizyta from wizyta inner join pacjent on pacjent.idpacjent=wizyta.idpacjent where idpracownik='" + this.idpracownik + "' and data='" + date + "' and stan='" + stan + "'", this.dbconnection_gabinet);
+                myDA = database.Select("select godzina, nazwisko, imie, pesel, idwizyta, wizyta.idpacjent from wizyta inner join pacjent on pacjent.idpacjent=wizyta.idpacjent where idpracownik='" + this.idpracownik + "' and data='" + date + "' and stan='" + stan + "'", this.dbconnection_gabinet);
                 DataTable dt = new DataTable();
                 DataTable dT = new DataTable();
                 myDataAdapter.Fill(dt); //godziny przyjęć
@@ -81,12 +82,9 @@ namespace Gabinet
                     DataRow element = dt.Rows[0];
                     textBoxGodzOd.Text = element["godz_od"].ToString();
                     textBoxGodzDo.Text = element["godz_do"].ToString();
-                }
+                }                
 
                 dataGridViewWizyta.DataSource = dT.DefaultView;
-
-
-
             }
             catch (Exception ex)
             {
@@ -128,6 +126,30 @@ namespace Gabinet
                 {
                     MessageBox.Show("Musisz wybrać wizyte!");
                 }
+            }
+        }
+
+        private void toolStripButtonDanePacjenta_Click(object sender, EventArgs e)
+        {
+            int row = dataGridViewWizyta.CurrentCell.RowIndex;
+            string id = dataGridViewWizyta.Rows[row].Cells[5].Value.ToString();
+            bool IsOpen = false;
+
+            foreach (Form f in Application.OpenForms)
+            {
+                if (f.Text == "Dane pacjenta")
+                {
+                    IsOpen = true;
+                    f.Focus();
+                    break;
+                }
+            }
+            if (IsOpen == false)
+            {
+                this.Opacity = 0.5;
+                danePacjent f2 = new danePacjent(id);
+                f2.ShowDialog();
+                this.Opacity = 1;
             }
         }
     }

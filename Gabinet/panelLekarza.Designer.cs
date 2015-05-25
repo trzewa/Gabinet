@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.toolStrip2 = new System.Windows.Forms.ToolStrip();
-            this.toolStripBtnWizyta = new System.Windows.Forms.ToolStripButton();
             this.groupBoxLekarz = new System.Windows.Forms.GroupBox();
             this.textBoxStanowisko = new System.Windows.Forms.TextBox();
             this.textBoxImieNazwisko = new System.Windows.Forms.TextBox();
@@ -39,16 +38,19 @@
             this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dataGridViewWizyta = new System.Windows.Forms.DataGridView();
-            this.godzina = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nazwisko = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.imie = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.pesel = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.textBoxGodzDo = new System.Windows.Forms.TextBox();
             this.textBoxGodzOd = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.toolStripBtnWizyta = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonDanePacjenta = new System.Windows.Forms.ToolStripButton();
+            this.godzina = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nazwisko = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.imie = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pesel = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IDpacjent = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.toolStrip2.SuspendLayout();
             this.groupBoxLekarz.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -63,26 +65,14 @@
             this.toolStrip2.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.toolStrip2.ImageScalingSize = new System.Drawing.Size(80, 80);
             this.toolStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripBtnWizyta});
+            this.toolStripBtnWizyta,
+            this.toolStripButtonDanePacjenta});
             this.toolStrip2.Location = new System.Drawing.Point(0, 0);
             this.toolStrip2.Name = "toolStrip2";
             this.toolStrip2.Size = new System.Drawing.Size(764, 80);
             this.toolStrip2.Stretch = true;
             this.toolStrip2.TabIndex = 1;
             this.toolStrip2.Text = "toolStrip2";
-            // 
-            // toolStripBtnWizyta
-            // 
-            this.toolStripBtnWizyta.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripBtnWizyta.Image = global::Gabinet.Properties.Resources.depositphotos_38100335_Stethoscope_icon;
-            this.toolStripBtnWizyta.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripBtnWizyta.Name = "toolStripBtnWizyta";
-            this.toolStripBtnWizyta.Size = new System.Drawing.Size(84, 77);
-            this.toolStripBtnWizyta.Text = "Rozpocznij wizyte";
-            this.toolStripBtnWizyta.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.toolStripBtnWizyta.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
-            this.toolStripBtnWizyta.ToolTipText = "Rozpocznij wizyte";
-            this.toolStripBtnWizyta.Click += new System.EventHandler(this.toolStripBtnWizyta_Click);
             // 
             // groupBoxLekarz
             // 
@@ -170,7 +160,8 @@
             this.nazwisko,
             this.imie,
             this.pesel,
-            this.id});
+            this.id,
+            this.IDpacjent});
             this.dataGridViewWizyta.Location = new System.Drawing.Point(6, 19);
             this.dataGridViewWizyta.MultiSelect = false;
             this.dataGridViewWizyta.Name = "dataGridViewWizyta";
@@ -178,46 +169,6 @@
             this.dataGridViewWizyta.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewWizyta.Size = new System.Drawing.Size(521, 358);
             this.dataGridViewWizyta.TabIndex = 5;
-            // 
-            // godzina
-            // 
-            this.godzina.DataPropertyName = "godzina";
-            this.godzina.HeaderText = "Godzina";
-            this.godzina.Name = "godzina";
-            this.godzina.ReadOnly = true;
-            this.godzina.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            // 
-            // nazwisko
-            // 
-            this.nazwisko.DataPropertyName = "nazwisko";
-            this.nazwisko.HeaderText = "Nazwisko pacjenta";
-            this.nazwisko.Name = "nazwisko";
-            this.nazwisko.ReadOnly = true;
-            // 
-            // imie
-            // 
-            this.imie.DataPropertyName = "imie";
-            this.imie.HeaderText = "Imie pacjenta";
-            this.imie.Name = "imie";
-            this.imie.ReadOnly = true;
-            // 
-            // pesel
-            // 
-            this.pesel.DataPropertyName = "pesel";
-            this.pesel.HeaderText = "PESEL";
-            this.pesel.Name = "pesel";
-            this.pesel.ReadOnly = true;
-            this.pesel.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            // 
-            // id
-            // 
-            this.id.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.id.DataPropertyName = "idwizyta";
-            this.id.HeaderText = "ID wizyty";
-            this.id.Name = "id";
-            this.id.ReadOnly = true;
-            this.id.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.id.Width = 69;
             // 
             // groupBox3
             // 
@@ -266,6 +217,77 @@
             this.label4.TabIndex = 1;
             this.label4.Text = "Od";
             // 
+            // toolStripBtnWizyta
+            // 
+            this.toolStripBtnWizyta.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripBtnWizyta.Image = global::Gabinet.Properties.Resources.play_icon;
+            this.toolStripBtnWizyta.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripBtnWizyta.Name = "toolStripBtnWizyta";
+            this.toolStripBtnWizyta.Size = new System.Drawing.Size(84, 77);
+            this.toolStripBtnWizyta.Text = "Rozpocznij wizyte";
+            this.toolStripBtnWizyta.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.toolStripBtnWizyta.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.toolStripBtnWizyta.ToolTipText = "Rozpocznij wizyte";
+            this.toolStripBtnWizyta.Click += new System.EventHandler(this.toolStripBtnWizyta_Click);
+            // 
+            // toolStripButtonDanePacjenta
+            // 
+            this.toolStripButtonDanePacjenta.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonDanePacjenta.Image = global::Gabinet.Properties.Resources.info_icon;
+            this.toolStripButtonDanePacjenta.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonDanePacjenta.Name = "toolStripButtonDanePacjenta";
+            this.toolStripButtonDanePacjenta.Size = new System.Drawing.Size(84, 77);
+            this.toolStripButtonDanePacjenta.Text = "Dane pacjenta";
+            this.toolStripButtonDanePacjenta.Click += new System.EventHandler(this.toolStripButtonDanePacjenta_Click);
+            // 
+            // godzina
+            // 
+            this.godzina.DataPropertyName = "godzina";
+            this.godzina.HeaderText = "Godzina";
+            this.godzina.Name = "godzina";
+            this.godzina.ReadOnly = true;
+            this.godzina.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            // 
+            // nazwisko
+            // 
+            this.nazwisko.DataPropertyName = "nazwisko";
+            this.nazwisko.HeaderText = "Nazwisko pacjenta";
+            this.nazwisko.Name = "nazwisko";
+            this.nazwisko.ReadOnly = true;
+            // 
+            // imie
+            // 
+            this.imie.DataPropertyName = "imie";
+            this.imie.HeaderText = "Imie pacjenta";
+            this.imie.Name = "imie";
+            this.imie.ReadOnly = true;
+            // 
+            // pesel
+            // 
+            this.pesel.DataPropertyName = "pesel";
+            this.pesel.HeaderText = "PESEL";
+            this.pesel.Name = "pesel";
+            this.pesel.ReadOnly = true;
+            this.pesel.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            // 
+            // id
+            // 
+            this.id.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.id.DataPropertyName = "idwizyta";
+            this.id.HeaderText = "ID wizyty";
+            this.id.Name = "id";
+            this.id.ReadOnly = true;
+            this.id.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.id.Width = 69;
+            // 
+            // IDpacjent
+            // 
+            this.IDpacjent.DataPropertyName = "idpacjent";
+            this.IDpacjent.HeaderText = "ID pacjent";
+            this.IDpacjent.Name = "IDpacjent";
+            this.IDpacjent.ReadOnly = true;
+            this.IDpacjent.Visible = false;
+            // 
             // panelLekarza
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -312,11 +334,13 @@
         private System.Windows.Forms.TextBox textBoxGodzOd;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ToolStripButton toolStripButtonDanePacjenta;
         private System.Windows.Forms.DataGridViewTextBoxColumn godzina;
         private System.Windows.Forms.DataGridViewTextBoxColumn nazwisko;
         private System.Windows.Forms.DataGridViewTextBoxColumn imie;
         private System.Windows.Forms.DataGridViewTextBoxColumn pesel;
         private System.Windows.Forms.DataGridViewTextBoxColumn id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IDpacjent;
 
     }
 }

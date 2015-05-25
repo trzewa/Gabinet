@@ -23,6 +23,7 @@ namespace Gabinet
             //Application.Run(new DodajPacjent());
             //Application.Run(new dodajOpiekun());
             //Application.Run(new organizacjaPrzychodni());
+            //Application.Run(new danePacjent());
 
             
         }

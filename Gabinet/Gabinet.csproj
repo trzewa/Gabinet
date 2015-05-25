@@ -32,9 +32,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
     <Reference Include="MySql.Data, Version=6.9.6.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web.Services" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -46,6 +49,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ComboBoxItem.cs" />
+    <Compile Include="danePacjent.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="danePacjent.Designer.cs">
+      <DependentUpon>danePacjent.cs</DependentUpon>
+    </Compile>
     <Compile Include="Database.cs" />
     <Compile Include="dodajOpiekun.cs">
       <SubType>Form</SubType>
@@ -139,6 +148,9 @@
     <Compile Include="Wizyta.Designer.cs">
       <DependentUpon>Wizyta.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="danePacjent.resx">
+      <DependentUpon>danePacjent.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="dodajOpiekun.resx">
       <DependentUpon>dodajOpiekun.cs</DependentUpon>
     </EmbeddedResource>
@@ -260,6 +272,27 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\lock.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\information-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\addition-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\download-3-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pencil-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\info-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\zoom-search-2-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\play-icon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
