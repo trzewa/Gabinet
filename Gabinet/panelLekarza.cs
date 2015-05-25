@@ -16,8 +16,7 @@ namespace Gabinet
     {
         public string dbconnection_gabinet;
         private string idpracownik;
-        private string idwizyta;
-        private string idpacjent;
+        private string idwizyta;        
 
         public panelLekarza(string idpracownikReceive)
         {

@@ -93,6 +93,16 @@ namespace Gabinet.Properties {
         /// <summary>
         ///   Wyszukuje zlokalizowany zasób typu System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap clock_icon {
+            get {
+                object obj = ResourceManager.GetObject("clock-icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Wyszukuje zlokalizowany zasób typu System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap depositphotos_38100335_Stethoscope_icon {
             get {
                 object obj = ResourceManager.GetObject("depositphotos_38100335-Stethoscope-icon", resourceCulture);
@@ -203,6 +213,26 @@ namespace Gabinet.Properties {
         /// <summary>
         ///   Wyszukuje zlokalizowany zasób typu System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap myspace_2_icon {
+            get {
+                object obj = ResourceManager.GetObject("myspace-2-icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Wyszukuje zlokalizowany zasób typu System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap myspace_icon {
+            get {
+                object obj = ResourceManager.GetObject("myspace-icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Wyszukuje zlokalizowany zasób typu System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap pacjent {
             get {
                 object obj = ResourceManager.GetObject("pacjent", resourceCulture);
@@ -256,6 +286,16 @@ namespace Gabinet.Properties {
         internal static System.Drawing.Bitmap rejestruj2 {
             get {
                 object obj = ResourceManager.GetObject("rejestruj2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Wyszukuje zlokalizowany zasób typu System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap settings_3_icon {
+            get {
+                object obj = ResourceManager.GetObject("settings-3-icon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

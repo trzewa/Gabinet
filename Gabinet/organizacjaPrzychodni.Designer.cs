@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(organizacjaPrzychodni));
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripButtonDodaj = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonHarmonogram = new System.Windows.Forms.ToolStripButton();
@@ -62,7 +61,7 @@
             // toolStripButtonDodaj
             // 
             this.toolStripButtonDodaj.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonDodaj.Image = global::Gabinet.Properties.Resources.dodajpacjenta;
+            this.toolStripButtonDodaj.Image = global::Gabinet.Properties.Resources.addition_icon;
             this.toolStripButtonDodaj.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonDodaj.Name = "toolStripButtonDodaj";
             this.toolStripButtonDodaj.Size = new System.Drawing.Size(84, 77);
@@ -72,7 +71,7 @@
             // toolStripButtonHarmonogram
             // 
             this.toolStripButtonHarmonogram.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonHarmonogram.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonHarmonogram.Image")));
+            this.toolStripButtonHarmonogram.Image = global::Gabinet.Properties.Resources.clock_icon;
             this.toolStripButtonHarmonogram.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonHarmonogram.Name = "toolStripButtonHarmonogram";
             this.toolStripButtonHarmonogram.Size = new System.Drawing.Size(84, 77);
