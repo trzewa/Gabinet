@@ -28,10 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(organizacjaPrzychodni));
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.toolStripButtonDodaj = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButtonHarmonogram = new System.Windows.Forms.ToolStripButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dataGridViewPracownicy = new System.Windows.Forms.DataGridView();
             this.nazwisko = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -39,6 +36,8 @@
             this.pesel = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.rola = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.toolStripButtonDodaj = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonHarmonogram = new System.Windows.Forms.ToolStripButton();
             this.toolStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPracownicy)).BeginInit();
@@ -58,26 +57,6 @@
             this.toolStrip1.Stretch = true;
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
-            // 
-            // toolStripButtonDodaj
-            // 
-            this.toolStripButtonDodaj.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonDodaj.Image = global::Gabinet.Properties.Resources.dodajpacjenta;
-            this.toolStripButtonDodaj.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonDodaj.Name = "toolStripButtonDodaj";
-            this.toolStripButtonDodaj.Size = new System.Drawing.Size(84, 77);
-            this.toolStripButtonDodaj.Text = "Dodaj pracownika";
-            this.toolStripButtonDodaj.Click += new System.EventHandler(this.toolStripButtonDodaj_Click);
-            // 
-            // toolStripButtonHarmonogram
-            // 
-            this.toolStripButtonHarmonogram.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonHarmonogram.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonHarmonogram.Image")));
-            this.toolStripButtonHarmonogram.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonHarmonogram.Name = "toolStripButtonHarmonogram";
-            this.toolStripButtonHarmonogram.Size = new System.Drawing.Size(84, 77);
-            this.toolStripButtonHarmonogram.Text = "Ustaw harmonogram pracownika";
-            this.toolStripButtonHarmonogram.Click += new System.EventHandler(this.toolStripButtonHarmonogram_Click);
             // 
             // groupBox1
             // 
@@ -142,6 +121,26 @@
             this.id.HeaderText = "ID";
             this.id.Name = "id";
             this.id.ReadOnly = true;
+            // 
+            // toolStripButtonDodaj
+            // 
+            this.toolStripButtonDodaj.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonDodaj.Image = global::Gabinet.Properties.Resources.addition_icon1;
+            this.toolStripButtonDodaj.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonDodaj.Name = "toolStripButtonDodaj";
+            this.toolStripButtonDodaj.Size = new System.Drawing.Size(84, 77);
+            this.toolStripButtonDodaj.Text = "Dodaj pracownika";
+            this.toolStripButtonDodaj.Click += new System.EventHandler(this.toolStripButtonDodaj_Click);
+            // 
+            // toolStripButtonHarmonogram
+            // 
+            this.toolStripButtonHarmonogram.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonHarmonogram.Image = global::Gabinet.Properties.Resources.clock_icon;
+            this.toolStripButtonHarmonogram.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonHarmonogram.Name = "toolStripButtonHarmonogram";
+            this.toolStripButtonHarmonogram.Size = new System.Drawing.Size(84, 77);
+            this.toolStripButtonHarmonogram.Text = "Ustaw harmonogram pracownika";
+            this.toolStripButtonHarmonogram.Click += new System.EventHandler(this.toolStripButtonHarmonogram_Click);
             // 
             // organizacjaPrzychodni
             // 

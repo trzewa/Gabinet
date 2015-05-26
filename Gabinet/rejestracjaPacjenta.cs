@@ -62,7 +62,7 @@ namespace Gabinet
             {
                 MySqlDataAdapter myDataAdapter = new MySqlDataAdapter();
                 Database database = new Database();
-                myDataAdapter = database.Select("select * from pracownik where idstanowisko='1' or idstanowisko='3'", this.dbconnection_gabinet);
+                myDataAdapter = database.Select("select * from pracownik where idstanowisko='1' or idstanowisko='3' or idstanowisko='4'", this.dbconnection_gabinet);
 
                 DataTable dt = new DataTable();
                 myDataAdapter.Fill(dt);
