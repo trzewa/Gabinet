@@ -2,23 +2,23 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Gabinet.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
-    <Setting Name="database" Type="System.String" Scope="User">
-      <Value Profile="(Default)">gabinet</Value>
+    <Setting Name="database" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">aneu_gabinet</Value>
     </Setting>
     <Setting Name="port" Type="System.String" Scope="User">
       <Value Profile="(Default)">3306</Value>
     </Setting>
     <Setting Name="user" Type="System.String" Scope="User">
-      <Value Profile="(Default)">root</Value>
+      <Value Profile="(Default)">aneu_gabinet</Value>
     </Setting>
     <Setting Name="password" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
+      <Value Profile="(Default)">kolunio1</Value>
     </Setting>
     <Setting Name="database1" Type="System.String" Scope="User">
       <Value Profile="(Default)">gus</Value>
     </Setting>
     <Setting Name="datasource" Type="System.String" Scope="User">
-      <Value Profile="(Default)">localhost</Value>
+      <Value Profile="(Default)">193.17.184.51</Value>
     </Setting>
   </Settings>
 </SettingsFile>

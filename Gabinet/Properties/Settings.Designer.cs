@@ -23,15 +23,12 @@ namespace Gabinet.Properties {
             }
         }
         
-        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("gabinet")]
+        [global::System.Configuration.DefaultSettingValueAttribute("aneu_gabinet")]
         public string database {
             get {
                 return ((string)(this["database"]));
-            }
-            set {
-                this["database"] = value;
             }
         }
         
@@ -49,7 +46,7 @@ namespace Gabinet.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("root")]
+        [global::System.Configuration.DefaultSettingValueAttribute("aneu_gabinet")]
         public string user {
             get {
                 return ((string)(this["user"]));
@@ -61,7 +58,7 @@ namespace Gabinet.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.DefaultSettingValueAttribute("kolunio1")]
         public string password {
             get {
                 return ((string)(this["password"]));
@@ -85,7 +82,7 @@ namespace Gabinet.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("localhost")]
+        [global::System.Configuration.DefaultSettingValueAttribute("193.17.184.51")]
         public string datasource {
             get {
                 return ((string)(this["datasource"]));

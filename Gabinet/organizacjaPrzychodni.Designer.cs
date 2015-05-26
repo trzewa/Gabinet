@@ -29,8 +29,6 @@
         private void InitializeComponent()
         {
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.toolStripButtonDodaj = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButtonHarmonogram = new System.Windows.Forms.ToolStripButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dataGridViewPracownicy = new System.Windows.Forms.DataGridView();
             this.nazwisko = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -38,6 +36,9 @@
             this.pesel = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.rola = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.toolStripButtonDodaj = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonHarmonogram = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonBaza = new System.Windows.Forms.ToolStripButton();
             this.toolStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPracownicy)).BeginInit();
@@ -50,33 +51,14 @@
             this.toolStrip1.ImageScalingSize = new System.Drawing.Size(80, 80);
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripButtonDodaj,
-            this.toolStripButtonHarmonogram});
+            this.toolStripButtonHarmonogram,
+            this.toolStripButtonBaza});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(596, 80);
             this.toolStrip1.Stretch = true;
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
-            // 
-            // toolStripButtonDodaj
-            // 
-            this.toolStripButtonDodaj.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonDodaj.Image = global::Gabinet.Properties.Resources.addition_icon;
-            this.toolStripButtonDodaj.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonDodaj.Name = "toolStripButtonDodaj";
-            this.toolStripButtonDodaj.Size = new System.Drawing.Size(84, 77);
-            this.toolStripButtonDodaj.Text = "Dodaj pracownika";
-            this.toolStripButtonDodaj.Click += new System.EventHandler(this.toolStripButtonDodaj_Click);
-            // 
-            // toolStripButtonHarmonogram
-            // 
-            this.toolStripButtonHarmonogram.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonHarmonogram.Image = global::Gabinet.Properties.Resources.clock_icon;
-            this.toolStripButtonHarmonogram.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonHarmonogram.Name = "toolStripButtonHarmonogram";
-            this.toolStripButtonHarmonogram.Size = new System.Drawing.Size(84, 77);
-            this.toolStripButtonHarmonogram.Text = "Ustaw harmonogram pracownika";
-            this.toolStripButtonHarmonogram.Click += new System.EventHandler(this.toolStripButtonHarmonogram_Click);
             // 
             // groupBox1
             // 
@@ -142,6 +124,37 @@
             this.id.Name = "id";
             this.id.ReadOnly = true;
             // 
+            // toolStripButtonDodaj
+            // 
+            this.toolStripButtonDodaj.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonDodaj.Image = global::Gabinet.Properties.Resources.addition_icon;
+            this.toolStripButtonDodaj.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonDodaj.Name = "toolStripButtonDodaj";
+            this.toolStripButtonDodaj.Size = new System.Drawing.Size(84, 77);
+            this.toolStripButtonDodaj.Text = "Dodaj pracownika";
+            this.toolStripButtonDodaj.Click += new System.EventHandler(this.toolStripButtonDodaj_Click);
+            // 
+            // toolStripButtonHarmonogram
+            // 
+            this.toolStripButtonHarmonogram.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonHarmonogram.Image = global::Gabinet.Properties.Resources.clock_icon;
+            this.toolStripButtonHarmonogram.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonHarmonogram.Name = "toolStripButtonHarmonogram";
+            this.toolStripButtonHarmonogram.Size = new System.Drawing.Size(84, 77);
+            this.toolStripButtonHarmonogram.Text = "Ustaw harmonogram pracownika";
+            this.toolStripButtonHarmonogram.Click += new System.EventHandler(this.toolStripButtonHarmonogram_Click);
+            // 
+            // toolStripButtonBaza
+            // 
+            this.toolStripButtonBaza.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.toolStripButtonBaza.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonBaza.Image = global::Gabinet.Properties.Resources.share_2_icon;
+            this.toolStripButtonBaza.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonBaza.Name = "toolStripButtonBaza";
+            this.toolStripButtonBaza.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.toolStripButtonBaza.Size = new System.Drawing.Size(84, 77);
+            this.toolStripButtonBaza.Text = "Konfiguracja bazy danych";
+            // 
             // organizacjaPrzychodni
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -173,5 +186,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn pesel;
         private System.Windows.Forms.DataGridViewTextBoxColumn rola;
         private System.Windows.Forms.DataGridViewTextBoxColumn id;
+        private System.Windows.Forms.ToolStripButton toolStripButtonBaza;
     }
 }
