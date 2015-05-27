@@ -43,7 +43,7 @@ namespace Gabinet
                 //String myCon = "datasource=localhost;port=3306;username=root;password=";
                 MySqlConnection con = new MySqlConnection(this.dbconnection_gabinet);
 
-                MySqlCommand com = new MySqlCommand("select * from gabinet.user where login='" + this.textBoxLogin.Text + "' and haslo='" + this.textBoxPasword.Text + "';",con);
+                MySqlCommand com = new MySqlCommand("select * from user where login='" + this.textBoxLogin.Text + "' and haslo='" + this.textBoxPasword.Text + "';",con);
                 con.Open();
                 MySqlDataReader myRead = com.ExecuteReader();
                 
