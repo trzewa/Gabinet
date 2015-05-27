@@ -38,6 +38,7 @@
             this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.toolStripButtonDodaj = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonHarmonogram = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPracownicy)).BeginInit();
@@ -50,7 +51,8 @@
             this.toolStrip1.ImageScalingSize = new System.Drawing.Size(80, 80);
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripButtonDodaj,
-            this.toolStripButtonHarmonogram});
+            this.toolStripButtonHarmonogram,
+            this.toolStripButton1});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(596, 80);
@@ -142,6 +144,17 @@
             this.toolStripButtonHarmonogram.Text = "Ustaw harmonogram pracownika";
             this.toolStripButtonHarmonogram.Click += new System.EventHandler(this.toolStripButtonHarmonogram_Click);
             // 
+            // toolStripButton1
+            // 
+            this.toolStripButton1.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton1.Image = global::Gabinet.Properties.Resources.share_2_icon;
+            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton1.Name = "toolStripButton1";
+            this.toolStripButton1.Size = new System.Drawing.Size(84, 77);
+            this.toolStripButton1.Text = "Konfiguracja serwera";
+            this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
+            // 
             // organizacjaPrzychodni
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -173,5 +186,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn pesel;
         private System.Windows.Forms.DataGridViewTextBoxColumn rola;
         private System.Windows.Forms.DataGridViewTextBoxColumn id;
+        private System.Windows.Forms.ToolStripButton toolStripButton1;
     }
 }

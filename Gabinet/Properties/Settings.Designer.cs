@@ -25,7 +25,7 @@ namespace Gabinet.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("gabinet")]
+        [global::System.Configuration.DefaultSettingValueAttribute("localhost")]
         public string database {
             get {
                 return ((string)(this["database"]));

@@ -3,7 +3,7 @@
   <Profiles />
   <Settings>
     <Setting Name="database" Type="System.String" Scope="User">
-      <Value Profile="(Default)">gabinet</Value>
+      <Value Profile="(Default)">localhost</Value>
     </Setting>
     <Setting Name="port" Type="System.String" Scope="User">
       <Value Profile="(Default)">3306</Value>

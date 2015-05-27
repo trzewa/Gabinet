@@ -8,20 +8,22 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
-
+using mysettings = Gabinet.Properties.Settings;
 
 namespace Gabinet
 {
     public partial class Login : Form
     {
         private string idpracownika;
-               
+        public string dbconnection_gabinet;
+       
         public Login()
         {
             InitializeComponent();
             this.MaximumSize = this.Size;
             this.MinimumSize = this.Size;
-                     
+            this.dbconnection_gabinet = "datasource=" + mysettings.Default.datasource + ";database=" + mysettings.Default.database + ";port=" + mysettings.Default.port + ";username=" + mysettings.Default.user + ";password=" + mysettings.Default.password;
+         
         }
 
         private void textBoxLogin_TextChanged(object sender, EventArgs e)
@@ -38,10 +40,10 @@ namespace Gabinet
         {
             try
             {
-                String myCon = "datasource=localhost;port=3306;username=root;password=";
-                MySqlConnection con = new MySqlConnection(myCon);
+                //String myCon = "datasource=91.228.198.167;database=aneu_gabinet;port=3306;username=aneu_gabinet;password=kolunio1";
+                MySqlConnection con = new MySqlConnection(this.dbconnection_gabinet);
 
-                MySqlCommand com = new MySqlCommand("select * from gabinet.user where login='" + this.textBoxLogin.Text + "' and haslo='" + this.textBoxPasword.Text + "';",con);
+                MySqlCommand com = new MySqlCommand("select * from user where login='" + this.textBoxLogin.Text + "' and haslo='" + this.textBoxPasword.Text + "';", con);
                 con.Open();
                 MySqlDataReader myRead = com.ExecuteReader();
                 

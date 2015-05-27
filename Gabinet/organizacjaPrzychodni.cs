@@ -91,5 +91,28 @@ namespace Gabinet
                 }                              
             }
         }
+
+        private void toolStripButton1_Click(object sender, EventArgs e)
+        {
+            bool IsOpen = false;
+
+            foreach (Form f in Application.OpenForms)
+            {
+                if (f.Text == "Ustawienia dostępu do bazy")
+                {
+                    IsOpen = true;
+                    f.Focus();
+                    break;
+                }
+            }
+            if (IsOpen == false)
+            {
+                this.Visible = false;
+                bazaDane f2 = new bazaDane();
+                f2.ShowDialog();
+                Update_dataGridViewPracownicy();
+                this.Visible = true;
+            }
+        }
     }
 }
