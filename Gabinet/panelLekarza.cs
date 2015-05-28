@@ -130,8 +130,7 @@ namespace Gabinet
 
         private void toolStripButtonDanePacjenta_Click(object sender, EventArgs e)
         {
-            int row = dataGridViewWizyta.CurrentCell.RowIndex;
-            string id = dataGridViewWizyta.Rows[row].Cells[5].Value.ToString();
+           
             bool IsOpen = false;
 
             foreach (Form f in Application.OpenForms)
@@ -145,10 +144,19 @@ namespace Gabinet
             }
             if (IsOpen == false)
             {
-                this.Opacity = 0.5;
-                danePacjent f2 = new danePacjent(id);
-                f2.ShowDialog();
-                this.Opacity = 1;
+                if (dataGridViewWizyta.RowCount != 0)
+                {
+                    int row = dataGridViewWizyta.CurrentCell.RowIndex;
+                    string id = dataGridViewWizyta.Rows[row].Cells[5].Value.ToString();
+                    this.Opacity = 0.5;
+                    danePacjent f2 = new danePacjent(id);
+                    f2.ShowDialog();
+                    this.Opacity = 1;
+                }
+                else
+                {
+                    MessageBox.Show("Musisz wybrać pacjenta!");
+                }
             }
         }
     }
