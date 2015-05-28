@@ -122,6 +122,12 @@
     <Compile Include="panelLekarza.Designer.cs">
       <DependentUpon>panelLekarza.cs</DependentUpon>
     </Compile>
+    <Compile Include="zwolnienie.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="zwolnienie.Designer.cs">
+      <DependentUpon>zwolnienie.cs</DependentUpon>
+    </Compile>
     <Compile Include="Rejestracja.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -187,6 +193,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="panelLekarza.resx">
       <DependentUpon>panelLekarza.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="zwolnienie.resx">
+      <DependentUpon>zwolnienie.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Rejestracja.resx">
       <DependentUpon>Rejestracja.cs</DependentUpon>
@@ -322,6 +331,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\share-2-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\zuszla.JPG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ZLA-page-001.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
