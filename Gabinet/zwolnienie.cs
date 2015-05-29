@@ -29,6 +29,7 @@ namespace Gabinet
             Set_IDs();
             Update_danePacjent();
             Update_adresPacjent();
+            Update_danePracownik();
             Update_comboBoxes();
         }
 
@@ -64,6 +65,8 @@ namespace Gabinet
                 textBoxNazwisko.Text = element["nazwisko"].ToString();
                 textBoxPesel.Text = element["pesel"].ToString();
                 dateTimePicker1.Text = element["data_urodzenia"].ToString();
+                textBoxZaklad.Text = element["miejsce_pracy"].ToString();
+                textBoxNip.Text = element["nip_platnika"].ToString();
             }
             textBoxChoroba.Text = this.rodzicWizyta.textBoxKodChoroby.Text;
         }
@@ -84,6 +87,21 @@ namespace Gabinet
                 textBoxUlica.Text = element["ulica"].ToString();
                 textBoxNrDomu.Text = element["nr_budynku"].ToString();
                 textBoxNrLokalu.Text = element["nr_lokalu"].ToString();
+            }
+        }
+
+        public void Update_danePracownik()
+        {
+            Database database = new Database();
+            MySqlDataAdapter myDataAdapter = new MySqlDataAdapter();
+            myDataAdapter = database.Select("select numer_pwz from pracownik where idpracownik='" + this.idpracownik + "'", this.dbconnection_gabinet);
+            DataTable dt = new DataTable();
+            myDataAdapter.Fill(dt);
+
+            if (dt.Rows.Count == 1)
+            {
+                DataRow element = dt.Rows[0];
+                textBoxLekarz.Text = element["numer_pwz"].ToString();                
             }
         }
 
@@ -113,6 +131,20 @@ namespace Gabinet
             comboBoxWskazania.DataSource = new BindingSource(itemWskazania, null);
             comboBoxWskazania.DisplayMember = "Value";
             comboBoxWskazania.ValueMember = "Key";
+
+        }
+
+        private void buttonZapisz_Click(object sender, EventArgs e)
+        {
+            string dataOd = dateTimePickerOd.Text;
+            string dataDo = dateTimePickerDo.Text;
+            string ubezpieczony = ((KeyValuePair<string, string>)comboBoxUbezpieczonyW.SelectedItem).Value;
+            string wskazania = ((KeyValuePair<string, string>)comboBoxWskazania.SelectedItem).Value;
+            string szpital = textBoxSzpital.Text;
+            string kody = ((KeyValuePair<string, string>)comboBoxKody.SelectedItem).Value;
+
+            Database database = new Database();
+            
 
         }
     }

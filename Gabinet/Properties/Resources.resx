@@ -177,10 +177,7 @@
   </data>
   <data name="zoom-search-2-icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\zoom-search-2-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="zuszla" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\zuszla.JPG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
+  </data>  
   <data name="lock" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\lock.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -216,8 +213,5 @@
   </data>
   <data name="zmień" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\zmień.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="ZLA-page-001" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ZLA-page-001.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
+  </data>  
 </root>
