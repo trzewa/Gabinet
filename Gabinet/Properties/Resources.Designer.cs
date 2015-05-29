@@ -363,6 +363,16 @@ namespace Gabinet.Properties {
         /// <summary>
         ///   Wyszukuje zlokalizowany zasób typu System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap ZLA_page_001 {
+            get {
+                object obj = ResourceManager.GetObject("ZLA-page-001", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Wyszukuje zlokalizowany zasób typu System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap zmień {
             get {
                 object obj = ResourceManager.GetObject("zmień", resourceCulture);
@@ -376,6 +386,16 @@ namespace Gabinet.Properties {
         internal static System.Drawing.Bitmap zoom_search_2_icon {
             get {
                 object obj = ResourceManager.GetObject("zoom-search-2-icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Wyszukuje zlokalizowany zasób typu System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap zuszla {
+            get {
+                object obj = ResourceManager.GetObject("zuszla", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

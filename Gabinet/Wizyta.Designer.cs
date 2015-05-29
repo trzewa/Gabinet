@@ -336,6 +336,7 @@
             this.buttonZwolnienie.TabIndex = 1;
             this.buttonZwolnienie.Text = "Zwolnienie";
             this.buttonZwolnienie.UseVisualStyleBackColor = true;
+            this.buttonZwolnienie.Click += new System.EventHandler(this.buttonZwolnienie_Click);
             // 
             // buttonRecepta
             // 
@@ -401,9 +402,9 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox textBoxNazwaChoroby;
-        private System.Windows.Forms.TextBox textBoxKodChoroby;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
+        public System.Windows.Forms.TextBox textBoxKodChoroby;
 
     }
 }

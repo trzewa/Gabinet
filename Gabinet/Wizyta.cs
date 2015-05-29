@@ -16,10 +16,10 @@ namespace Gabinet
     {
 
         public string dbconnection_gabinet;
-        private string idwizyta;
-        private string idpacjent;
-        private string idrecepta;
-        private string idzwolnienie;
+        public string idwizyta;
+        public string idpacjent;
+        public string idrecepta;
+        public string idzwolnienie;
         public string kod;
         public string nazwa;
         public string idChoroby = null;
@@ -163,6 +163,33 @@ namespace Gabinet
             else MessageBox.Show("Wprowadź typ badania i/lub rozpoznanie!", "Brak danych", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             
             
+        }
+
+        private void buttonZwolnienie_Click(object sender, EventArgs e)
+        {
+            bool IsOpen = false;
+
+            foreach (Form f in Application.OpenForms)
+            {
+                if (f.Text == "Tworzenie zwolnienia")
+                {
+                    IsOpen = true;
+                    f.Focus();
+                    break;
+                }
+            }
+            if (IsOpen == false)
+            {
+                if (idChoroby != null)
+                {
+                    this.Opacity = 0.5;
+                    zwolnienie f2 = new zwolnienie(this);
+                    f2.Owner = this;
+                    f2.ShowDialog();
+                    this.Opacity = 1;
+                }
+                else MessageBox.Show("Aby wystawić zwolnienie trzeba wybrać kod choroby!", "Brak rozpoznania", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
     }
 }
