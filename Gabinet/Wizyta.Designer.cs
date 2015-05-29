@@ -353,6 +353,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.ClientSize = new System.Drawing.Size(728, 375);
+            this.ControlBox = false;
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.buttonAnuluj);
             this.Controls.Add(this.buttonZakoncz);
@@ -360,6 +361,7 @@
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
+            this.MaximizeBox = false;
             this.Name = "Wizyta";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Wizyta";

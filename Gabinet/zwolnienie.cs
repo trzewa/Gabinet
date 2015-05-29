@@ -144,8 +144,25 @@ namespace Gabinet
             string kody = ((KeyValuePair<string, string>)comboBoxKody.SelectedItem).Value;
 
             Database database = new Database();
-            
+            database.Insert("insert into zwolnienie (od, do, wskazania, szpital, kody, ubezpieczony) values ('" + dataOd + "','" + dataDo + "','" + wskazania.ToString() + "','" + szpital.ToString() + "','" + kody.ToString() + "','" + ubezpieczony.ToString() + "')", this.dbconnection_gabinet);
+            this.Opacity = 0.5;
+            String message = "Zwolnienie zostało utworzone.";
+            String caption = "Zwolnienie";
+            var result = MessageBox.Show(message, caption, MessageBoxButtons.OK, MessageBoxIcon.Information);
+            if (result == DialogResult.OK)
+                {
+                    MySqlDataAdapter myDataAdapter = new MySqlDataAdapter();
+                    myDataAdapter = database.Select("select max(idzwolnienia) from zwolnienie", this.dbconnection_gabinet);
+                    DataTable dt = new DataTable();
+                    myDataAdapter.Fill(dt);
 
+                    if (dt.Rows.Count == 1)
+                    {
+                        DataRow element = dt.Rows[0];
+                        rodzicWizyta.idzwolnienie = element["max(idzwolnienia)"].ToString();
+                    }
+                    this.Close();
+                }
         }
     }
 }

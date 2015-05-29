@@ -19,7 +19,7 @@ namespace Gabinet
         public string idwizyta;
         public string idpacjent;
         public string idrecepta;
-        public string idzwolnienie;
+        public string idzwolnienie = null;
         public string kod;
         public string nazwa;
         public string idChoroby = null;
@@ -129,6 +129,18 @@ namespace Gabinet
 
         private void buttonAnuluj_Click(object sender, EventArgs e)
         {
+            if (this.idzwolnienie != null)
+            {
+                try
+                {
+                    Database database = new Database();
+                    database.Delete("delete from zwolnienie where idzwolnienia='" + this.idzwolnienie + "'", this.dbconnection_gabinet);                    
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
             this.Close();
         }
 
@@ -137,6 +149,7 @@ namespace Gabinet
             DateTime dt = DateTime.Now;
             string data = dt.ToString("yyyy-MM-dd");
             string godzina = dt.ToString("HH:mm:ss");
+            string wywiad = this.textBoxWywiad.Text;
 
             if (idTypBadania != null && idChoroby != null)
             {
@@ -149,7 +162,11 @@ namespace Gabinet
                     try
                     {
                         Database database = new Database();
-                        database.Update("update wizyta set idchoroby='" + idChoroby + "', idtyp_badania='" + idTypBadania + "', data='" + data + "', godzina='" + godzina + "', stan='1' where idwizyta='" + idwizyta + "'", this.dbconnection_gabinet);
+                        database.Update("update wizyta set idchoroby='" + idChoroby + "', idtyp_badania='" + idTypBadania + "', data='" + data + "', godzina='" + godzina + "', wywiad='" + wywiad + "', stan='1' where idwizyta='" + idwizyta + "'", this.dbconnection_gabinet);
+                        if (this.idzwolnienie != null)
+                        {
+                            database.Update("update wizyta set idzwolnienia='" + idzwolnienie + "' where idwizyta='" + idwizyta + "'", this.dbconnection_gabinet);
+                        }
                         Close();
                     }
                     catch (Exception ex)
@@ -187,6 +204,7 @@ namespace Gabinet
                     f2.Owner = this;
                     f2.ShowDialog();
                     this.Opacity = 1;
+                    buttonZwolnienie.Enabled = false;
                 }
                 else MessageBox.Show("Aby wystawić zwolnienie trzeba wybrać kod choroby!", "Brak rozpoznania", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
