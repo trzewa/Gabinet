@@ -14,9 +14,8 @@ namespace Gabinet
 {
     public partial class szukajProcedury : Form
     {
-        public string dbconnection_gabinet;
-        private string _searchText = string.Empty;
-        private int _searchColumnID = 1;
+        public string dbconnection_gabinet;        
+        private int _searchColumnID = 2;
         private int _searchRowID = 0;
         private Wizyta rodzicWizyta;
         private int button;
@@ -79,12 +78,7 @@ namespace Gabinet
         private void buttonSzukaj_Click(object sender, EventArgs e)
         {
             if (textBoxNazwa.Text != string.Empty)
-            {
-                if (textBoxNazwa.Text != _searchText)
-                {
-                    _searchText = textBoxNazwa.Text;
-                    _searchRowID = 0;                    
-                }
+            {            
                 Search();
             }
             else
@@ -100,44 +94,45 @@ namespace Gabinet
             bool found = false;
 
             for (int i = _searchRowID; i < dataGridViewProcedury.Rows.Count; i++)
-            {
-                string columnText = dataGridViewProcedury.Rows[i].Cells[_searchColumnID].Value.ToString().ToUpper();
-                if (columnText.Contains(searchText))
                 {
-                    found = true;
-                    if (i <= dataGridViewProcedury.Rows.Count - 1)
+                    string columnText = dataGridViewProcedury.Rows[i].Cells[_searchColumnID].Value.ToString().ToUpper();
+                    if (columnText.Contains(searchText))
                     {
-                        _searchRowID = i + 1;
+                        found = true;
+                        if (i <= dataGridViewProcedury.Rows.Count - 1)
+                        {
+                            _searchRowID = i + 1;
+                        }
+                        else
+                        {
+                            _searchRowID = 0;
+                        }
+                        dataGridViewProcedury.Rows[i].Selected = true;
+                        dataGridViewProcedury.FirstDisplayedScrollingRowIndex = i;
+                        break;
                     }
-                    else
-                    {
-                        _searchRowID = 0;
-                    }
-                    dataGridViewProcedury.Rows[i].Selected = true;
-                    dataGridViewProcedury.FirstDisplayedScrollingRowIndex = i;                    
-                    break;
                 }
-            }
-
-            for (int i = _searchRowID; i < dataGridViewChoroba.Rows.Count; i++)
-            {
-                string columnText = dataGridViewChoroba.Rows[i].Cells[_searchColumnID].Value.ToString().ToUpper();
-                if (columnText.Contains(searchText))
+           
+                for (int i = _searchRowID; i < dataGridViewChoroba.Rows.Count; i++)
                 {
-                    found = true;
-                    if (i <= dataGridViewChoroba.Rows.Count - 1)
+                    string columnText = dataGridViewChoroba.Rows[i].Cells[_searchColumnID].Value.ToString().ToUpper();
+                    if (columnText.Contains(searchText))
                     {
-                        _searchRowID = i + 1;
+                        found = true;
+                        if (i <= dataGridViewChoroba.Rows.Count - 1)
+                        {
+                            _searchRowID = i + 1;
+                        }
+                        else
+                        {
+                            _searchRowID = 0;
+                        }
+                        dataGridViewChoroba.Rows[i].Selected = true;
+                        dataGridViewChoroba.FirstDisplayedScrollingRowIndex = i;
+                        break;
                     }
-                    else
-                    {
-                        _searchRowID = 0;
-                    }
-                    dataGridViewChoroba.Rows[i].Selected = true;
-                    dataGridViewChoroba.FirstDisplayedScrollingRowIndex = i;
-                    break;
                 }
-            }
+            
 
             if (!found)
             {

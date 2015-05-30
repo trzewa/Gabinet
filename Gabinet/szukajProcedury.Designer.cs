@@ -85,6 +85,8 @@
             // 
             // dataGridViewChoroba
             // 
+            this.dataGridViewChoroba.AllowUserToAddRows = false;
+            this.dataGridViewChoroba.AllowUserToDeleteRows = false;
             this.dataGridViewChoroba.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dataGridViewChoroba.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewChoroba.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -94,6 +96,8 @@
             this.dataGridViewChoroba.Location = new System.Drawing.Point(6, 19);
             this.dataGridViewChoroba.MultiSelect = false;
             this.dataGridViewChoroba.Name = "dataGridViewChoroba";
+            this.dataGridViewChoroba.ReadOnly = true;
+            this.dataGridViewChoroba.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewChoroba.Size = new System.Drawing.Size(367, 258);
             this.dataGridViewChoroba.TabIndex = 4;
             // 

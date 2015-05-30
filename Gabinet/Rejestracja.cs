@@ -64,10 +64,11 @@ namespace Gabinet
             {
                 if (dataGridViewPacjenci.RowCount != 0)
                 {
-                    this.Visible = false;
+                    this.Visible = false;                    
                     int row = dataGridViewPacjenci.CurrentCell.RowIndex;
                     string id = dataGridViewPacjenci.Rows[row].Cells[5].Value.ToString();
-                    rejestracjaPacjenta f2 = new rejestracjaPacjenta(id);
+                    rejestracjaPacjenta f2 = new rejestracjaPacjenta(id, this);
+                    f2.Owner = this;
                     f2.ShowDialog();
                     this.Visible = true;
                 }
@@ -128,6 +129,37 @@ namespace Gabinet
                     danePacjent f2 = new danePacjent(id);
                     f2.ShowDialog();
                     this.Opacity = 1;
+                }
+                else
+                {
+                    MessageBox.Show("Musisz wybrać pacjenta!");
+                }
+            }
+        }
+
+        private void toolStripZmien_Click(object sender, EventArgs e)
+        {
+            bool IsOpen = false;
+
+            foreach (Form f in Application.OpenForms)
+            {
+                if (f.Text == "Zmiana terminu wizyty")
+                {
+                    IsOpen = true;
+                    f.Focus();
+                    break;
+                }
+            }
+            if (IsOpen == false)
+            {
+                if (dataGridViewPacjenci.RowCount != 0)
+                {
+                    this.Visible = false;
+                    int row = dataGridViewPacjenci.CurrentCell.RowIndex;
+                    string id = dataGridViewPacjenci.Rows[row].Cells[5].Value.ToString();
+                    pacjentWizyta f2 = new pacjentWizyta(id);
+                    f2.ShowDialog();
+                    this.Visible = true;
                 }
                 else
                 {

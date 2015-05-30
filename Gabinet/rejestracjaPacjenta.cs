@@ -18,18 +18,37 @@ namespace Gabinet
         private string idpacjent;
         private string godzOd;
         private string godzDo;
-        private string godzWizyty;
+        private string godzWizyty;        
+        private Rejestracja rodzicRejestracja;
+        private pacjentWizyta rodzicWizyta;
 
-        public rejestracjaPacjenta(string idpacjentreceive)
+        public rejestracjaPacjenta(string idpacjentreceive, Rejestracja parent)
         {
             InitializeComponent();
             this.MaximumSize = this.Size;
             this.MinimumSize = this.Size;
             this.idpacjent = idpacjentreceive;
+            this.rodzicRejestracja = parent;            
+            this.dbconnection_gabinet = "datasource=" + mysettings.Default.datasource + ";database=" + mysettings.Default.database + ";port=" + mysettings.Default.port + ";username=" + mysettings.Default.user + ";password=" + mysettings.Default.password;
+            Update_danePacjent();
+            Update_daneLekarza();            
+        }
+
+        public rejestracjaPacjenta(string idpacjentreceive, pacjentWizyta parent)
+        {
+            InitializeComponent();
+            this.MaximumSize = this.Size;
+            this.MinimumSize = this.Size;
+            this.idpacjent = idpacjentreceive;
+            this.rodzicWizyta = parent;
             this.dbconnection_gabinet = "datasource=" + mysettings.Default.datasource + ";database=" + mysettings.Default.database + ";port=" + mysettings.Default.port + ";username=" + mysettings.Default.user + ";password=" + mysettings.Default.password;
             Update_danePacjent();
             Update_daneLekarza();
+            //zrobic aby na starcie w comboboxlekarz wybrany był pobrany z pacjentwizyta
+            comboBoxDaneLekarza.SelectionStart.Equals(rodzicWizyta.pracownik);
+
             
+            monthCalendar1.SetDate(Convert.ToDateTime(rodzicWizyta.data));
         }
 
         public void Update_danePacjent()
