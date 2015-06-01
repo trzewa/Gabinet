@@ -341,6 +341,21 @@
   <ItemGroup>
     <None Include="Resources\share-2-icon.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\stat-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\phonebook-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\close-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fastrewind-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fastforward-icon.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -81,7 +81,12 @@ namespace Gabinet
                     DataRow element = dt.Rows[0];
                     textBoxGodzOd.Text = element["godz_od"].ToString();
                     textBoxGodzDo.Text = element["godz_do"].ToString();
-                }                
+                }
+                else
+                {
+                    textBoxGodzOd.Text = "brak";
+                    textBoxGodzDo.Text = "brak";
+                }               
 
                 dataGridViewWizyta.DataSource = dT.DefaultView;
             }

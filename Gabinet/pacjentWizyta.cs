@@ -19,6 +19,8 @@ namespace Gabinet
         public string idwizyta;
         public string pracownik;
         public string data;
+        private Rejestracja rodzicRejestracja;
+        private bool flag = false;
 
         public pacjentWizyta(string idpacjentreceive)
         {
@@ -31,12 +33,36 @@ namespace Gabinet
             
         }
 
+        public pacjentWizyta(string idpacjentreceive, Rejestracja parent, bool flagreceive)
+        {
+            InitializeComponent();
+            this.MaximumSize = this.Size;
+            this.MinimumSize = this.Size;
+            this.idpacjent = idpacjentreceive;
+            this.rodzicRejestracja = parent;
+            this.dbconnection_gabinet = "datasource=" + mysettings.Default.datasource + ";database=" + mysettings.Default.database + ";port=" + mysettings.Default.port + ";username=" + mysettings.Default.user + ";password=" + mysettings.Default.password;
+            this.flag = flagreceive;
+            if (flag)
+            {
+                this.Text = "Historia wizyt pacjenta";
+            }
+            else this.Text = "Zaplanowane wizyty pacjenta";
+            
+            groupBox1.Text = "Lista wizyt pacjenta";
+            buttonZmien.Visible = false;
+            Update_wizyta();
+        }
+
         public void Update_wizyta()
         {
             try
             {
                 MySqlDataAdapter myDataAdapter = new MySqlDataAdapter();
                 Database database = new Database();
+                if (flag)
+                {
+                    myDataAdapter = database.Select("select data, godzina, idwizyta, wizyta.idpracownik, nazwisko, imie from wizyta inner join pracownik on pracownik.idpracownik=wizyta.idpracownik where idpacjent='" + this.idpacjent + "' and stan='1'", this.dbconnection_gabinet);
+                } else
                 myDataAdapter = database.Select("select data, godzina, idwizyta, wizyta.idpracownik, nazwisko, imie from wizyta inner join pracownik on pracownik.idpracownik=wizyta.idpracownik where idpacjent='" + this.idpacjent + "' and stan='0'", this.dbconnection_gabinet);
 
                 DataTable dt = new DataTable();
@@ -76,10 +102,11 @@ namespace Gabinet
                     f2.Owner = this;
                     f2.ShowDialog();
                     this.Visible = true;
+                    this.Close();
                 }
                 else
                 {
-                    MessageBox.Show("Musisz wybrać pacjenta!");
+                    MessageBox.Show("Musisz wybrać wizyte!");
                 }
             }
         }

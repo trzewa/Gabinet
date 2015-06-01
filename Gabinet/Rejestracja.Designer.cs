@@ -29,11 +29,7 @@
         private void InitializeComponent()
         {
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.toolStripBtnRejestruj = new System.Windows.Forms.ToolStripButton();
-            this.toolStripZmien = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripBtnDodaj = new System.Windows.Forms.ToolStripButton();
-            this.toolStripBtnDanePacjent = new System.Windows.Forms.ToolStripButton();
             this.dataGridViewPacjenci = new System.Windows.Forms.DataGridView();
             this.nazwisko = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.imie = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -50,6 +46,14 @@
             this.textBoxImie = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripBtnRejestruj = new System.Windows.Forms.ToolStripButton();
+            this.toolStripZmien = new System.Windows.Forms.ToolStripButton();
+            this.toolStripBtnDodaj = new System.Windows.Forms.ToolStripButton();
+            this.toolStripBtnDanePacjent = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonHistoria = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonListaWizyt = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonHarmonogram = new System.Windows.Forms.ToolStripButton();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPacjenci)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -65,7 +69,11 @@
             this.toolStripZmien,
             this.toolStripSeparator1,
             this.toolStripBtnDodaj,
-            this.toolStripBtnDanePacjent});
+            this.toolStripBtnDanePacjent,
+            this.toolStripButtonHistoria,
+            this.toolStripButtonListaWizyt,
+            this.toolStripSeparator2,
+            this.toolStripButtonHarmonogram});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(850, 80);
@@ -73,55 +81,10 @@
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
             // 
-            // toolStripBtnRejestruj
-            // 
-            this.toolStripBtnRejestruj.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripBtnRejestruj.Image = global::Gabinet.Properties.Resources.download_3_icon;
-            this.toolStripBtnRejestruj.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripBtnRejestruj.Name = "toolStripBtnRejestruj";
-            this.toolStripBtnRejestruj.Size = new System.Drawing.Size(84, 77);
-            this.toolStripBtnRejestruj.Text = "Rejestruj";
-            this.toolStripBtnRejestruj.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.toolStripBtnRejestruj.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
-            this.toolStripBtnRejestruj.ToolTipText = "Rejestruj";
-            this.toolStripBtnRejestruj.Click += new System.EventHandler(this.toolStripBtnRejestruj_Click);
-            // 
-            // toolStripZmien
-            // 
-            this.toolStripZmien.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripZmien.Image = global::Gabinet.Properties.Resources.pencil_icon;
-            this.toolStripZmien.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripZmien.Name = "toolStripZmien";
-            this.toolStripZmien.Size = new System.Drawing.Size(84, 77);
-            this.toolStripZmien.Text = "Zmień termin wizyty";
-            this.toolStripZmien.Click += new System.EventHandler(this.toolStripZmien_Click);
-            // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(6, 80);
-            // 
-            // toolStripBtnDodaj
-            // 
-            this.toolStripBtnDodaj.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.toolStripBtnDodaj.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripBtnDodaj.Image = global::Gabinet.Properties.Resources.addition_icon;
-            this.toolStripBtnDodaj.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripBtnDodaj.Name = "toolStripBtnDodaj";
-            this.toolStripBtnDodaj.Size = new System.Drawing.Size(84, 77);
-            this.toolStripBtnDodaj.Text = "Dodaj pacjenta";
-            this.toolStripBtnDodaj.Click += new System.EventHandler(this.toolStripBtnDodaj_Click);
-            // 
-            // toolStripBtnDanePacjent
-            // 
-            this.toolStripBtnDanePacjent.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.toolStripBtnDanePacjent.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripBtnDanePacjent.Image = global::Gabinet.Properties.Resources.info_icon;
-            this.toolStripBtnDanePacjent.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripBtnDanePacjent.Name = "toolStripBtnDanePacjent";
-            this.toolStripBtnDanePacjent.Size = new System.Drawing.Size(84, 77);
-            this.toolStripBtnDanePacjent.Text = "Informacja o pacjencie";
-            this.toolStripBtnDanePacjent.Click += new System.EventHandler(this.toolStripBtnDanePacjent_Click);
             // 
             // dataGridViewPacjenci
             // 
@@ -279,6 +242,86 @@
             this.label2.TabIndex = 3;
             this.label2.Text = "Nazwisko";
             // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 80);
+            // 
+            // toolStripBtnRejestruj
+            // 
+            this.toolStripBtnRejestruj.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripBtnRejestruj.Image = global::Gabinet.Properties.Resources.download_3_icon;
+            this.toolStripBtnRejestruj.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripBtnRejestruj.Name = "toolStripBtnRejestruj";
+            this.toolStripBtnRejestruj.Size = new System.Drawing.Size(84, 77);
+            this.toolStripBtnRejestruj.Text = "Rejestruj";
+            this.toolStripBtnRejestruj.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.toolStripBtnRejestruj.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.toolStripBtnRejestruj.ToolTipText = "Rejestruj";
+            this.toolStripBtnRejestruj.Click += new System.EventHandler(this.toolStripBtnRejestruj_Click);
+            // 
+            // toolStripZmien
+            // 
+            this.toolStripZmien.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripZmien.Image = global::Gabinet.Properties.Resources.pencil_icon;
+            this.toolStripZmien.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripZmien.Name = "toolStripZmien";
+            this.toolStripZmien.Size = new System.Drawing.Size(84, 77);
+            this.toolStripZmien.Text = "Zmień termin wizyty";
+            this.toolStripZmien.Click += new System.EventHandler(this.toolStripZmien_Click);
+            // 
+            // toolStripBtnDodaj
+            // 
+            this.toolStripBtnDodaj.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.toolStripBtnDodaj.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripBtnDodaj.Image = global::Gabinet.Properties.Resources.addition_icon;
+            this.toolStripBtnDodaj.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripBtnDodaj.Name = "toolStripBtnDodaj";
+            this.toolStripBtnDodaj.Size = new System.Drawing.Size(84, 77);
+            this.toolStripBtnDodaj.Text = "Dodaj pacjenta";
+            this.toolStripBtnDodaj.Click += new System.EventHandler(this.toolStripBtnDodaj_Click);
+            // 
+            // toolStripBtnDanePacjent
+            // 
+            this.toolStripBtnDanePacjent.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.toolStripBtnDanePacjent.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripBtnDanePacjent.Image = global::Gabinet.Properties.Resources.info_icon;
+            this.toolStripBtnDanePacjent.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripBtnDanePacjent.Name = "toolStripBtnDanePacjent";
+            this.toolStripBtnDanePacjent.Size = new System.Drawing.Size(84, 77);
+            this.toolStripBtnDanePacjent.Text = "Informacja o pacjencie";
+            this.toolStripBtnDanePacjent.Click += new System.EventHandler(this.toolStripBtnDanePacjent_Click);
+            // 
+            // toolStripButtonHistoria
+            // 
+            this.toolStripButtonHistoria.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonHistoria.Image = global::Gabinet.Properties.Resources.fastrewind_icon;
+            this.toolStripButtonHistoria.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonHistoria.Name = "toolStripButtonHistoria";
+            this.toolStripButtonHistoria.Size = new System.Drawing.Size(84, 77);
+            this.toolStripButtonHistoria.Text = "Historia wizyt pacjenta";
+            this.toolStripButtonHistoria.Click += new System.EventHandler(this.toolStripButtonHistoria_Click);
+            // 
+            // toolStripButtonListaWizyt
+            // 
+            this.toolStripButtonListaWizyt.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonListaWizyt.Image = global::Gabinet.Properties.Resources.fastforward_icon;
+            this.toolStripButtonListaWizyt.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonListaWizyt.Name = "toolStripButtonListaWizyt";
+            this.toolStripButtonListaWizyt.Size = new System.Drawing.Size(84, 77);
+            this.toolStripButtonListaWizyt.Text = "Wizyty zarezerwowane";
+            this.toolStripButtonListaWizyt.Click += new System.EventHandler(this.toolStripButtonListaWizyt_Click);
+            // 
+            // toolStripButtonHarmonogram
+            // 
+            this.toolStripButtonHarmonogram.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonHarmonogram.Image = global::Gabinet.Properties.Resources.phonebook_icon;
+            this.toolStripButtonHarmonogram.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonHarmonogram.Name = "toolStripButtonHarmonogram";
+            this.toolStripButtonHarmonogram.Size = new System.Drawing.Size(84, 77);
+            this.toolStripButtonHarmonogram.Text = "Harmonogram";
+            this.toolStripButtonHarmonogram.Click += new System.EventHandler(this.toolStripButtonHarmonogram_Click);
+            // 
             // Rejestracja
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -323,5 +366,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn idpacjent;
         private System.Windows.Forms.DataGridViewTextBoxColumn plec;
         private System.Windows.Forms.ToolStripButton toolStripBtnDanePacjent;
+        private System.Windows.Forms.ToolStripButton toolStripButtonHistoria;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.ToolStripButton toolStripButtonHarmonogram;
+        private System.Windows.Forms.ToolStripButton toolStripButtonListaWizyt;
     }
 }

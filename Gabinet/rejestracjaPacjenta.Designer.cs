@@ -45,12 +45,18 @@
             this.Pesel = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.listViewGodziny = new System.Windows.Forms.ListView();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.textBoxGodzDo = new System.Windows.Forms.TextBox();
+            this.textBoxGodzOd = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTerminarz)).BeginInit();
             this.groupBox5.SuspendLayout();
+            this.groupBox6.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -146,6 +152,7 @@
             // 
             // dataGridViewTerminarz
             // 
+            this.dataGridViewTerminarz.AllowUserToAddRows = false;
             this.dataGridViewTerminarz.AllowUserToDeleteRows = false;
             this.dataGridViewTerminarz.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
             this.dataGridViewTerminarz.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -156,8 +163,10 @@
             this.imie,
             this.Pesel});
             this.dataGridViewTerminarz.Location = new System.Drawing.Point(6, 16);
+            this.dataGridViewTerminarz.MultiSelect = false;
             this.dataGridViewTerminarz.Name = "dataGridViewTerminarz";
             this.dataGridViewTerminarz.ReadOnly = true;
+            this.dataGridViewTerminarz.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewTerminarz.Size = new System.Drawing.Size(564, 320);
             this.dataGridViewTerminarz.TabIndex = 1;
             // 
@@ -227,6 +236,59 @@
             this.listViewGodziny.View = System.Windows.Forms.View.SmallIcon;
             this.listViewGodziny.ItemActivate += new System.EventHandler(this.listViewGodziny_MouseDoubleClick);
             // 
+            // groupBox6
+            // 
+            this.groupBox6.Controls.Add(this.textBoxGodzDo);
+            this.groupBox6.Controls.Add(this.textBoxGodzOd);
+            this.groupBox6.Controls.Add(this.label5);
+            this.groupBox6.Controls.Add(this.label4);
+            this.groupBox6.Enabled = false;
+            this.groupBox6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.groupBox6.Location = new System.Drawing.Point(12, 12);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(200, 63);
+            this.groupBox6.TabIndex = 6;
+            this.groupBox6.TabStop = false;
+            this.groupBox6.Text = "Godziny pracy";
+            // 
+            // textBoxGodzDo
+            // 
+            this.textBoxGodzDo.Enabled = false;
+            this.textBoxGodzDo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.textBoxGodzDo.Location = new System.Drawing.Point(119, 32);
+            this.textBoxGodzDo.Name = "textBoxGodzDo";
+            this.textBoxGodzDo.Size = new System.Drawing.Size(75, 20);
+            this.textBoxGodzDo.TabIndex = 4;
+            // 
+            // textBoxGodzOd
+            // 
+            this.textBoxGodzOd.Enabled = false;
+            this.textBoxGodzOd.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.textBoxGodzOd.Location = new System.Drawing.Point(23, 32);
+            this.textBoxGodzOd.Name = "textBoxGodzOd";
+            this.textBoxGodzOd.Size = new System.Drawing.Size(76, 20);
+            this.textBoxGodzOd.TabIndex = 3;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label5.Location = new System.Drawing.Point(116, 16);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(21, 13);
+            this.label5.TabIndex = 2;
+            this.label5.Text = "Do";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label4.Location = new System.Drawing.Point(20, 16);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(21, 13);
+            this.label4.TabIndex = 1;
+            this.label4.Text = "Od";
+            // 
             // rejestracjaPacjenta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -238,6 +300,7 @@
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.groupBox6);
             this.Name = "rejestracjaPacjenta";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Rejestracja pacjenta";
@@ -249,6 +312,8 @@
             this.groupBox4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTerminarz)).EndInit();
             this.groupBox5.ResumeLayout(false);
+            this.groupBox6.ResumeLayout(false);
+            this.groupBox6.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -272,5 +337,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Pacjent;
         private System.Windows.Forms.DataGridViewTextBoxColumn imie;
         private System.Windows.Forms.DataGridViewTextBoxColumn Pesel;
+        private System.Windows.Forms.GroupBox groupBox6;
+        private System.Windows.Forms.TextBox textBoxGodzDo;
+        private System.Windows.Forms.TextBox textBoxGodzOd;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label4;
     }
 }

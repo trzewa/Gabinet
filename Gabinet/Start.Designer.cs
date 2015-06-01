@@ -32,11 +32,11 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             this.btnZakoncz = new System.Windows.Forms.Button();
             this.btnKonfiguracja = new System.Windows.Forms.Button();
             this.btnRejestracja = new System.Windows.Forms.Button();
             this.btnGabinet = new System.Windows.Forms.Button();
-            this.label5 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -77,15 +77,26 @@
             this.label4.TabIndex = 7;
             this.label4.Text = "Rejestracja";
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label5.Location = new System.Drawing.Point(430, 150);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(95, 17);
+            this.label5.TabIndex = 8;
+            this.label5.Text = "Organizacja";
+            // 
             // btnZakoncz
             // 
-            this.btnZakoncz.BackgroundImage = global::Gabinet.Properties.Resources.x;
+            this.btnZakoncz.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.btnZakoncz.BackgroundImage = global::Gabinet.Properties.Resources.close_icon;
             this.btnZakoncz.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnZakoncz.Location = new System.Drawing.Point(497, 188);
             this.btnZakoncz.Name = "btnZakoncz";
             this.btnZakoncz.Size = new System.Drawing.Size(39, 37);
             this.btnZakoncz.TabIndex = 3;
-            this.btnZakoncz.UseVisualStyleBackColor = true;
+            this.btnZakoncz.UseVisualStyleBackColor = false;
             this.btnZakoncz.Click += new System.EventHandler(this.btnZakoncz_Click);
             // 
             // btnKonfiguracja
@@ -130,16 +141,6 @@
             this.btnGabinet.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnGabinet.UseVisualStyleBackColor = false;
             this.btnGabinet.Click += new System.EventHandler(this.btnGabinet_Click);
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label5.Location = new System.Drawing.Point(430, 150);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(95, 17);
-            this.label5.TabIndex = 8;
-            this.label5.Text = "Organizacja";
             // 
             // Start
             // 

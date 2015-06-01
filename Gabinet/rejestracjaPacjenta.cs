@@ -21,15 +21,17 @@ namespace Gabinet
         private string godzWizyty;        
         private Rejestracja rodzicRejestracja;
         private pacjentWizyta rodzicWizyta;
+        private bool form = false;
+        private bool flag = false;
 
-        public rejestracjaPacjenta(string idpacjentreceive, Rejestracja parent)
+        public rejestracjaPacjenta(string idpacjentreceive)
         {
             InitializeComponent();
             this.MaximumSize = this.Size;
             this.MinimumSize = this.Size;
-            this.idpacjent = idpacjentreceive;
-            this.rodzicRejestracja = parent;            
+            this.idpacjent = idpacjentreceive;                      
             this.dbconnection_gabinet = "datasource=" + mysettings.Default.datasource + ";database=" + mysettings.Default.database + ";port=" + mysettings.Default.port + ";username=" + mysettings.Default.user + ";password=" + mysettings.Default.password;
+            groupBox6.Visible = false;
             Update_danePacjent();
             Update_daneLekarza();            
         }
@@ -42,13 +44,60 @@ namespace Gabinet
             this.idpacjent = idpacjentreceive;
             this.rodzicWizyta = parent;
             this.dbconnection_gabinet = "datasource=" + mysettings.Default.datasource + ";database=" + mysettings.Default.database + ";port=" + mysettings.Default.port + ";username=" + mysettings.Default.user + ";password=" + mysettings.Default.password;
+            groupBox6.Visible = false;
             Update_danePacjent();
-            Update_daneLekarza();
-            //zrobic aby na starcie w comboboxlekarz wybrany był pobrany z pacjentwizyta
-            comboBoxDaneLekarza.SelectionStart.Equals(rodzicWizyta.pracownik);
+            Update_daneLekarza();          
+            comboBoxDaneLekarza.SelectedIndex = comboBoxDaneLekarza.FindStringExact(rodzicWizyta.pracownik);            
+            monthCalendar1.SetDate(Convert.ToDateTime(rodzicWizyta.data));           
+            this.form = true;
+        }
 
-            
-            monthCalendar1.SetDate(Convert.ToDateTime(rodzicWizyta.data));
+        public rejestracjaPacjenta(Rejestracja parent)
+        {
+            InitializeComponent();
+            this.MaximumSize = this.Size;
+            this.MinimumSize = this.Size;
+            this.rodzicRejestracja = parent;
+            this.flag = true;
+            this.dbconnection_gabinet = "datasource=" + mysettings.Default.datasource + ";database=" + mysettings.Default.database + ";port=" + mysettings.Default.port + ";username=" + mysettings.Default.user + ";password=" + mysettings.Default.password;
+            groupBox1.Visible = false;
+            groupBox5.Visible = false;
+            groupBox6.Visible = true;
+            this.Text = "Harmonogram wizyt";
+            Update_daneLekarza();
+        }
+
+        public void Update_GodzinyPracy()
+        {
+            try
+            {
+                
+                string selected_item = (comboBoxDaneLekarza.SelectedItem as ComboboxItem).Hidden_Id.ToString();
+                DateTime selected_date = (DateTime)monthCalendar1.SelectionStart;
+                string date = selected_date.ToString("yyyy-MM-dd");
+                int dzienTygodnia = (int)selected_date.DayOfWeek;
+                Database database = new Database();
+                MySqlDataAdapter myDataAdapter = new MySqlDataAdapter();
+                myDataAdapter = database.Select("select godz_od, godz_do from godzinyprzyjec inner join pracownikgodziny on pracownikgodziny.idgodziny=godzinyprzyjec.idgodziny where dzien_tygodnia='" + dzienTygodnia + "' and idpracownik='" + selected_item + "'", this.dbconnection_gabinet);
+                DataTable dt = new DataTable();
+                myDataAdapter.Fill(dt); //godziny przyjęć
+
+                if (dt.Rows.Count == 1)
+                {
+                    DataRow element = dt.Rows[0];
+                    textBoxGodzOd.Text = element["godz_od"].ToString();
+                    textBoxGodzDo.Text = element["godz_do"].ToString();
+                }
+                else
+                {
+                    textBoxGodzOd.Text = "brak";
+                    textBoxGodzDo.Text = "brak";
+                }  
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         public void Update_danePacjent()
@@ -196,16 +245,32 @@ namespace Gabinet
 
         private void comboBoxDaneLekarza_DropDownClosed(object sender, EventArgs e)
         {
-            Update_Harmonogram();            
-            Update_Godziny();
+            if (flag)
+            {
+                Update_Harmonogram();
+                Update_GodzinyPracy();
+            }
+            else
+            {
+                Update_Harmonogram();
+                Update_Godziny();
+            }
         }
 
         private void monthCalendar1_DateSelected(object sender, DateRangeEventArgs e)
         {
             if (comboBoxDaneLekarza.SelectedItem != null)
             {
-                Update_Harmonogram();                
-                Update_Godziny();
+                if (flag)
+                {
+                    Update_Harmonogram();
+                    Update_GodzinyPracy();
+                }
+                else
+                {
+                    Update_Harmonogram();
+                    Update_Godziny();
+                }
             }
             else MessageBox.Show("Wybierz lekarza");
         } 
@@ -219,25 +284,47 @@ namespace Gabinet
             string date = selected_date.ToString("yyyy-MM-dd");
             string stan = "0";
 
-            if (listViewGodziny.SelectedIndices.Count <= 0)
+                if (listViewGodziny.SelectedIndices.Count <= 0)
                 {
                     return;
                 }
+
                 int intselectedindex = listViewGodziny.SelectedIndices[0];
+
                 if (intselectedindex >= 0)
                 {
-                    string wybranaGodzina = listViewGodziny.Items[intselectedindex].Text;
-                    String message = "Wybrano godzinę " + wybranaGodzina + "\n Czy chcesz zarejestrować wizyte?";
-                    String caption = "Rejestracja wizyty";
-                    var result = MessageBox.Show(message, caption,
-                                         MessageBoxButtons.YesNo,
-                                         MessageBoxIcon.Question);
-                    if (result == DialogResult.Yes)
+                    if (form)
                     {
-                        Database database = new Database();
-                        database.Insert("insert into wizyta (idpracownik, idpacjent, data, godzina, stan) values ('" + idpracownik_selected + "', '" + this.idpacjent + "', '" + date + "', '" + wybranaGodzina + "', '" + stan + "')", this.dbconnection_gabinet);
-                        Update_Harmonogram();
-                        Update_Godziny();
+                        string wybranaGodzina = listViewGodziny.Items[intselectedindex].Text;
+                        String message = "Czy napewno chcesz zmienić termin wizyty na \n" + date + " " + wybranaGodzina + "?";
+                        String caption = "Zmiana terminu wizyty";
+                        var result = MessageBox.Show(message, caption,
+                                             MessageBoxButtons.YesNo,
+                                             MessageBoxIcon.Question);
+                        if (result == DialogResult.Yes)
+                        {
+                            Database database = new Database();
+                            database.Update("update wizyta set idpracownik='" + idpracownik_selected + "', data='" + date + "', godzina='" + wybranaGodzina + "' where idwizyta='" + rodzicWizyta.idwizyta + "'", this.dbconnection_gabinet);
+                            Update_Harmonogram();
+                            Update_Godziny();
+                        }
+                        
+                    }
+                    else
+                    {
+                        string wybranaGodzina = listViewGodziny.Items[intselectedindex].Text;
+                        String message = "Wybrano godzinę " + wybranaGodzina + "\n Czy chcesz zarejestrować wizyte?";
+                        String caption = "Rejestracja wizyty";
+                        var result = MessageBox.Show(message, caption,
+                                             MessageBoxButtons.YesNo,
+                                             MessageBoxIcon.Question);
+                        if (result == DialogResult.Yes)
+                        {
+                            Database database = new Database();
+                            database.Insert("insert into wizyta (idpracownik, idpacjent, data, godzina, stan) values ('" + idpracownik_selected + "', '" + this.idpacjent + "', '" + date + "', '" + wybranaGodzina + "', '" + stan + "')", this.dbconnection_gabinet);
+                            Update_Harmonogram();
+                            Update_Godziny();
+                        }
                     }
                 }            
         }

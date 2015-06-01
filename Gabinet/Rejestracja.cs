@@ -67,8 +67,7 @@ namespace Gabinet
                     this.Visible = false;                    
                     int row = dataGridViewPacjenci.CurrentCell.RowIndex;
                     string id = dataGridViewPacjenci.Rows[row].Cells[5].Value.ToString();
-                    rejestracjaPacjenta f2 = new rejestracjaPacjenta(id, this);
-                    f2.Owner = this;
+                    rejestracjaPacjenta f2 = new rejestracjaPacjenta(id);                    
                     f2.ShowDialog();
                     this.Visible = true;
                 }
@@ -160,6 +159,91 @@ namespace Gabinet
                     pacjentWizyta f2 = new pacjentWizyta(id);
                     f2.ShowDialog();
                     this.Visible = true;
+                }
+                else
+                {
+                    MessageBox.Show("Musisz wybrać pacjenta!");
+                }
+            }
+        }
+
+        private void toolStripButtonHarmonogram_Click(object sender, EventArgs e)
+        {
+            bool IsOpen = false;
+
+            foreach (Form f in Application.OpenForms)
+            {
+                if (f.Text == "Harmonogram wizyt")
+                {
+                    IsOpen = true;
+                    f.Focus();
+                    break;
+                }
+            }
+            if (IsOpen == false)
+            {
+                this.Visible = false;
+                rejestracjaPacjenta f2 = new rejestracjaPacjenta(this);
+                f2.ShowDialog();
+                this.Visible = true;              
+            }
+        }
+
+        private void toolStripButtonHistoria_Click(object sender, EventArgs e)
+        {
+            
+            bool IsOpen = false;
+
+            foreach (Form f in Application.OpenForms)
+            {
+                if (f.Text == "Historia wizyt pacjenta")
+                {
+                    IsOpen = true;
+                    f.Focus();
+                    break;
+                }
+            }
+            if (IsOpen == false)
+            {
+                if (dataGridViewPacjenci.RowCount != 0)
+                {
+                    this.Opacity = 0.5;                    
+                    int row = dataGridViewPacjenci.CurrentCell.RowIndex;
+                    string id = dataGridViewPacjenci.Rows[row].Cells[5].Value.ToString();
+                    pacjentWizyta f2 = new pacjentWizyta(id, this, true);                    
+                    f2.ShowDialog();
+                    this.Opacity = 1;
+                }
+                else
+                {
+                    MessageBox.Show("Musisz wybrać pacjenta!");
+                }
+            }
+        }
+
+        private void toolStripButtonListaWizyt_Click(object sender, EventArgs e)
+        {
+            bool IsOpen = false;
+
+            foreach (Form f in Application.OpenForms)
+            {
+                if (f.Text == "Zaplanowane wizyty pacjenta")
+                {
+                    IsOpen = true;
+                    f.Focus();
+                    break;
+                }
+            }
+            if (IsOpen == false)
+            {
+                if (dataGridViewPacjenci.RowCount != 0)
+                {
+                    this.Opacity = 0.5;
+                    int row = dataGridViewPacjenci.CurrentCell.RowIndex;
+                    string id = dataGridViewPacjenci.Rows[row].Cells[5].Value.ToString();
+                    pacjentWizyta f2 = new pacjentWizyta(id, this, false);
+                    f2.ShowDialog();
+                    this.Opacity = 1;
                 }
                 else
                 {
