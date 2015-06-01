@@ -3,22 +3,19 @@
   <Profiles />
   <Settings>
     <Setting Name="database" Type="System.String" Scope="User">
-      <Value Profile="(Default)">gabinet</Value>
+      <Value Profile="(Default)">aneu_gabinet</Value>
     </Setting>
     <Setting Name="port" Type="System.String" Scope="User">
       <Value Profile="(Default)">3306</Value>
     </Setting>
     <Setting Name="user" Type="System.String" Scope="User">
-      <Value Profile="(Default)">root</Value>
+      <Value Profile="(Default)">aneu_gabinet</Value>
     </Setting>
     <Setting Name="password" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
-    </Setting>
-    <Setting Name="database1" Type="System.String" Scope="User">
-      <Value Profile="(Default)">gus</Value>
+      <Value Profile="(Default)">kolunio1</Value>
     </Setting>
     <Setting Name="datasource" Type="System.String" Scope="User">
-      <Value Profile="(Default)">localhost</Value>
+      <Value Profile="(Default)">1an.eu</Value>
     </Setting>
   </Settings>
 </SettingsFile>

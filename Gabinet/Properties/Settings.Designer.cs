@@ -25,7 +25,7 @@ namespace Gabinet.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("gabinet")]
+        [global::System.Configuration.DefaultSettingValueAttribute("aneu_gabinet")]
         public string database {
             get {
                 return ((string)(this["database"]));
@@ -49,7 +49,7 @@ namespace Gabinet.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("root")]
+        [global::System.Configuration.DefaultSettingValueAttribute("aneu_gabinet")]
         public string user {
             get {
                 return ((string)(this["user"]));
@@ -61,7 +61,7 @@ namespace Gabinet.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.DefaultSettingValueAttribute("kolunio1")]
         public string password {
             get {
                 return ((string)(this["password"]));
@@ -73,19 +73,7 @@ namespace Gabinet.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("gus")]
-        public string database1 {
-            get {
-                return ((string)(this["database1"]));
-            }
-            set {
-                this["database1"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("localhost")]
+        [global::System.Configuration.DefaultSettingValueAttribute("1an.eu")]
         public string datasource {
             get {
                 return ((string)(this["datasource"]));
