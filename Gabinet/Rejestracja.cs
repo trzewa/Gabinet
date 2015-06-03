@@ -142,7 +142,7 @@ namespace Gabinet
 
             foreach (Form f in Application.OpenForms)
             {
-                if (f.Text == "Zmiana terminu wizyty")
+                if (f.Text == "Edycja terminu wizyty")
                 {
                     IsOpen = true;
                     f.Focus();
@@ -244,6 +244,37 @@ namespace Gabinet
                     pacjentWizyta f2 = new pacjentWizyta(id, this, false);
                     f2.ShowDialog();
                     this.Opacity = 1;
+                }
+                else
+                {
+                    MessageBox.Show("Musisz wybrać pacjenta!");
+                }
+            }
+        }
+
+        private void toolStripButtonEdycjaDane_Click(object sender, EventArgs e)
+        {
+            bool IsOpen = false;
+
+            foreach (Form f in Application.OpenForms)
+            {
+                if (f.Text == "Edycja danych pacjenta")
+                {
+                    IsOpen = true;
+                    f.Focus();
+                    break;
+                }
+            }
+            if (IsOpen == false)
+            {
+                if (dataGridViewPacjenci.RowCount != 0)
+                {
+                    int row = dataGridViewPacjenci.CurrentCell.RowIndex;
+                    string id = dataGridViewPacjenci.Rows[row].Cells[5].Value.ToString();
+                    this.Visible = false;
+                    DodajPacjent f2 = new DodajPacjent(id);
+                    f2.ShowDialog();
+                    this.Visible = true;
                 }
                 else
                 {

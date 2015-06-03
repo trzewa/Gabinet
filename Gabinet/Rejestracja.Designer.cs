@@ -30,6 +30,7 @@
         {
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.dataGridViewPacjenci = new System.Windows.Forms.DataGridView();
             this.nazwisko = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.imie = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -46,7 +47,6 @@
             this.textBoxImie = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripBtnRejestruj = new System.Windows.Forms.ToolStripButton();
             this.toolStripZmien = new System.Windows.Forms.ToolStripButton();
             this.toolStripBtnDodaj = new System.Windows.Forms.ToolStripButton();
@@ -54,6 +54,7 @@
             this.toolStripButtonHistoria = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonListaWizyt = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonHarmonogram = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonEdycjaDane = new System.Windows.Forms.ToolStripButton();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPacjenci)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -69,10 +70,11 @@
             this.toolStripZmien,
             this.toolStripSeparator1,
             this.toolStripBtnDodaj,
+            this.toolStripButtonEdycjaDane,
             this.toolStripBtnDanePacjent,
+            this.toolStripSeparator2,
             this.toolStripButtonHistoria,
             this.toolStripButtonListaWizyt,
-            this.toolStripSeparator2,
             this.toolStripButtonHarmonogram});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
@@ -85,6 +87,11 @@
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(6, 80);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 80);
             // 
             // dataGridViewPacjenci
             // 
@@ -242,11 +249,6 @@
             this.label2.TabIndex = 3;
             this.label2.Text = "Nazwisko";
             // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 80);
-            // 
             // toolStripBtnRejestruj
             // 
             this.toolStripBtnRejestruj.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
@@ -322,6 +324,16 @@
             this.toolStripButtonHarmonogram.Text = "Harmonogram";
             this.toolStripButtonHarmonogram.Click += new System.EventHandler(this.toolStripButtonHarmonogram_Click);
             // 
+            // toolStripButtonEdycjaDane
+            // 
+            this.toolStripButtonEdycjaDane.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonEdycjaDane.Image = global::Gabinet.Properties.Resources.contact_icon;
+            this.toolStripButtonEdycjaDane.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonEdycjaDane.Name = "toolStripButtonEdycjaDane";
+            this.toolStripButtonEdycjaDane.Size = new System.Drawing.Size(84, 77);
+            this.toolStripButtonEdycjaDane.Text = "Edytuj dane pacjenta";
+            this.toolStripButtonEdycjaDane.Click += new System.EventHandler(this.toolStripButtonEdycjaDane_Click);
+            // 
             // Rejestracja
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -370,5 +382,6 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripButton toolStripButtonHarmonogram;
         private System.Windows.Forms.ToolStripButton toolStripButtonListaWizyt;
+        private System.Windows.Forms.ToolStripButton toolStripButtonEdycjaDane;
     }
 }

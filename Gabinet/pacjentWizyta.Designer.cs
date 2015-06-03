@@ -37,6 +37,7 @@
             this.idw = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.idp = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.buttonZmien = new System.Windows.Forms.Button();
+            this.buttonUsun = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewWizyty)).BeginInit();
             this.SuspendLayout();
@@ -127,17 +128,28 @@
             this.buttonZmien.UseVisualStyleBackColor = true;
             this.buttonZmien.Click += new System.EventHandler(this.buttonZmien_Click);
             // 
+            // buttonUsun
+            // 
+            this.buttonUsun.Location = new System.Drawing.Point(334, 244);
+            this.buttonUsun.Name = "buttonUsun";
+            this.buttonUsun.Size = new System.Drawing.Size(75, 23);
+            this.buttonUsun.TabIndex = 2;
+            this.buttonUsun.Text = "Usuń";
+            this.buttonUsun.UseVisualStyleBackColor = true;
+            this.buttonUsun.Click += new System.EventHandler(this.button1_Click);
+            // 
             // pacjentWizyta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.ClientSize = new System.Drawing.Size(502, 275);
+            this.Controls.Add(this.buttonUsun);
             this.Controls.Add(this.buttonZmien);
             this.Controls.Add(this.groupBox1);
             this.Name = "pacjentWizyta";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Zmiana terminu wizyty";
+            this.Text = "Edycja terminu wizyty";
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewWizyty)).EndInit();
             this.ResumeLayout(false);
@@ -155,5 +167,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn imie;
         private System.Windows.Forms.DataGridViewTextBoxColumn idw;
         private System.Windows.Forms.DataGridViewTextBoxColumn idp;
+        private System.Windows.Forms.Button buttonUsun;
     }
 }

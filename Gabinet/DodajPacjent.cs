@@ -17,6 +17,7 @@ namespace Gabinet
     {
         public string dbconnection_gabinet;
         public string idopiekun;
+        public string idpacjent;
         
         public DodajPacjent()
         {
@@ -25,12 +26,29 @@ namespace Gabinet
             this.MinimumSize = this.Size;
             this.dbconnection_gabinet = "datasource=" + mysettings.Default.datasource + ";database=" + mysettings.Default.database + ";port=" + mysettings.Default.port + ";username=" + mysettings.Default.user + ";password=" + mysettings.Default.password;
             this.idopiekun = null;
+            buttonZmien.Visible = false;
             Update_comboBoxUprawnienia();
             Update_comboBoxNfz();
             Update_comboBoxPlec();
             Update_comboBoxWojewodztwo();
             Update_comboBoxMiasto();
             Update_comboBoxUlica();            
+        }
+
+        public DodajPacjent(string idpacjentReceive)
+        {
+            InitializeComponent();
+            this.MaximumSize = this.Size;
+            this.MinimumSize = this.Size;
+            this.idpacjent = idpacjentReceive;
+            this.dbconnection_gabinet = "datasource=" + mysettings.Default.datasource + ";database=" + mysettings.Default.database + ";port=" + mysettings.Default.port + ";username=" + mysettings.Default.user + ";password=" + mysettings.Default.password;
+            buttonZapisz.Visible = false;
+            this.Text = "Edycja danych pacjenta";
+            textBoxImie.Enabled = false;
+            textBoxPesel.Enabled = false;
+            maskedTextBoxNip.Enabled = false;
+            comboBoxPlec.Enabled = false;
+            dateTimePickerUrodzenia.Enabled = false;
         }
 
         private void comboBoxUprawnienia_SelectedIndexChanged(object sender, EventArgs e)

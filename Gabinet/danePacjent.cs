@@ -48,7 +48,8 @@ namespace Gabinet
                         DataRow element = dt.Rows[0];
                         this.textBoxImie.Text = element["imie"].ToString();
                         this.textBoxNazwisko.Text = element["nazwisko"].ToString();
-                        this.textBoxDataUrodzenia.Text = element["data_urodzenia"].ToString();
+                        DateTime dateTime = (DateTime)element["data_urodzenia"];
+                        this.textBoxDataUrodzenia.Text = dateTime.ToString("yyyy-MM-dd");
                         this.textBoxPesel.Text = element["pesel"].ToString();
                         this.maskedTextBoxNipPracownika.Text = element["nip"].ToString();
                         this.textBoxZakladNazwa.Text = element["miejsce_pracy"].ToString();

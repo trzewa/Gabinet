@@ -123,6 +123,16 @@ namespace Gabinet.Properties {
         /// <summary>
         ///   Wyszukuje zlokalizowany zasób typu System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap contact_icon {
+            get {
+                object obj = ResourceManager.GetObject("contact-icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Wyszukuje zlokalizowany zasób typu System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap depositphotos_38100335_Stethoscope_icon {
             get {
                 object obj = ResourceManager.GetObject("depositphotos_38100335-Stethoscope-icon", resourceCulture);

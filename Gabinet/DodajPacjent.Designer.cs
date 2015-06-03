@@ -74,6 +74,7 @@
             this.buttonAnuluj = new System.Windows.Forms.Button();
             this.label20 = new System.Windows.Forms.Label();
             this.buttonDodajOpiekun = new System.Windows.Forms.Button();
+            this.buttonZmien = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -557,12 +558,22 @@
             this.buttonDodajOpiekun.UseVisualStyleBackColor = true;
             this.buttonDodajOpiekun.Click += new System.EventHandler(this.buttonDodajOpiekun_Click);
             // 
+            // buttonZmien
+            // 
+            this.buttonZmien.Location = new System.Drawing.Point(259, 557);
+            this.buttonZmien.Name = "buttonZmien";
+            this.buttonZmien.Size = new System.Drawing.Size(75, 23);
+            this.buttonZmien.TabIndex = 7;
+            this.buttonZmien.Text = "Zmień";
+            this.buttonZmien.UseVisualStyleBackColor = true;
+            // 
             // DodajPacjent
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.ClientSize = new System.Drawing.Size(455, 592);
+            this.Controls.Add(this.buttonZmien);
             this.Controls.Add(this.buttonDodajOpiekun);
             this.Controls.Add(this.label20);
             this.Controls.Add(this.buttonAnuluj);
@@ -635,5 +646,6 @@
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Button buttonDodajOpiekun;
+        private System.Windows.Forms.Button buttonZmien;
     }
 }

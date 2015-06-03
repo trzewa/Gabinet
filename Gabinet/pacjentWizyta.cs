@@ -50,6 +50,7 @@ namespace Gabinet
             
             groupBox1.Text = "Lista wizyt pacjenta";
             buttonZmien.Visible = false;
+            buttonUsun.Visible = false;
             Update_wizyta();
         }
 
@@ -106,8 +107,32 @@ namespace Gabinet
                 }
                 else
                 {
-                    MessageBox.Show("Musisz wybrać wizyte!");
+                    MessageBox.Show("Brak wizyt do edycji!", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (dataGridViewWizyty.RowCount != 0)
+            {
+                int row = dataGridViewWizyty.CurrentCell.RowIndex;
+                this.idwizyta = dataGridViewWizyty.Rows[row].Cells[2].Value.ToString();                
+                String message = "Czy napewno chcesz usunąć wizyte?";
+                String caption = "Usuwanie wizyty";
+                var result = MessageBox.Show(message, caption,
+                                     MessageBoxButtons.YesNo,
+                                     MessageBoxIcon.Question);
+                if (result == DialogResult.Yes)
+                {
+                    Database database = new Database();
+                    database.Delete("delete from wizyta where idwizyta='" + this.idwizyta + "'", this.dbconnection_gabinet);
+                    Update_wizyta();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Brak wizyt do edycji!", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
     }
