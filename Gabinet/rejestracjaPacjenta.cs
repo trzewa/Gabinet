@@ -29,8 +29,8 @@ namespace Gabinet
             InitializeComponent();
             this.MaximumSize = this.Size;
             this.MinimumSize = this.Size;
-            this.idpacjent = idpacjentreceive;                      
-            this.dbconnection_gabinet = "datasource=" + mysettings.Default.datasource + ";database=" + mysettings.Default.database + ";port=" + mysettings.Default.port + ";username=" + mysettings.Default.user + ";password=" + mysettings.Default.password;
+            this.idpacjent = idpacjentreceive;
+            this.dbconnection_gabinet = "datasource=" + mysettings.Default.datasource + ";database=" + mysettings.Default.database + ";port=" + mysettings.Default.port + ";username=" + mysettings.Default.user + ";password=" + mysettings.Default.password + ";charset=utf8";
             groupBox6.Visible = false;
             Update_danePacjent();
             Update_daneLekarza();            
@@ -43,7 +43,7 @@ namespace Gabinet
             this.MinimumSize = this.Size;
             this.idpacjent = idpacjentreceive;
             this.rodzicWizyta = parent;
-            this.dbconnection_gabinet = "datasource=" + mysettings.Default.datasource + ";database=" + mysettings.Default.database + ";port=" + mysettings.Default.port + ";username=" + mysettings.Default.user + ";password=" + mysettings.Default.password;
+            this.dbconnection_gabinet = "datasource=" + mysettings.Default.datasource + ";database=" + mysettings.Default.database + ";port=" + mysettings.Default.port + ";username=" + mysettings.Default.user + ";password=" + mysettings.Default.password + ";charset=utf8";
             groupBox6.Visible = false;
             Update_danePacjent();
             Update_daneLekarza();          
@@ -59,7 +59,7 @@ namespace Gabinet
             this.MinimumSize = this.Size;
             this.rodzicRejestracja = parent;
             this.flag = true;
-            this.dbconnection_gabinet = "datasource=" + mysettings.Default.datasource + ";database=" + mysettings.Default.database + ";port=" + mysettings.Default.port + ";username=" + mysettings.Default.user + ";password=" + mysettings.Default.password;
+            this.dbconnection_gabinet = "datasource=" + mysettings.Default.datasource + ";database=" + mysettings.Default.database + ";port=" + mysettings.Default.port + ";username=" + mysettings.Default.user + ";password=" + mysettings.Default.password + ";charset=utf8";
             groupBox1.Visible = false;
             groupBox5.Visible = false;
             groupBox6.Visible = true;

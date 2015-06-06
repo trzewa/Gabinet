@@ -112,6 +112,7 @@
             this.textBoxMail.Name = "textBoxMail";
             this.textBoxMail.Size = new System.Drawing.Size(124, 20);
             this.textBoxMail.TabIndex = 3;
+            this.textBoxMail.TextChanged += new System.EventHandler(this.textBoxMail_TextChanged);
             // 
             // textBoxTelefon
             // 
@@ -120,6 +121,7 @@
             this.textBoxTelefon.Name = "textBoxTelefon";
             this.textBoxTelefon.Size = new System.Drawing.Size(118, 20);
             this.textBoxTelefon.TabIndex = 2;
+            this.textBoxTelefon.TextChanged += new System.EventHandler(this.textBoxTelefon_TextChanged);
             // 
             // textBoxNazwisko
             // 
@@ -128,6 +130,7 @@
             this.textBoxNazwisko.Name = "textBoxNazwisko";
             this.textBoxNazwisko.Size = new System.Drawing.Size(253, 20);
             this.textBoxNazwisko.TabIndex = 1;
+            this.textBoxNazwisko.TextChanged += new System.EventHandler(this.textBoxNazwisko_TextChanged);
             // 
             // textBoxImie
             // 
@@ -136,6 +139,7 @@
             this.textBoxImie.Name = "textBoxImie";
             this.textBoxImie.Size = new System.Drawing.Size(253, 20);
             this.textBoxImie.TabIndex = 0;
+            this.textBoxImie.TextChanged += new System.EventHandler(this.textBoxImie_TextChanged);
             // 
             // label5
             // 

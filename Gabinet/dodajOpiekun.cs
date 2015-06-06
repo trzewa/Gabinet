@@ -15,14 +15,14 @@ namespace Gabinet
     public partial class dodajOpiekun : Form
     {
         public string dbconnection_gabinet;
-        public string idopiekunSend;
+        public string idopiekunSend = null;
 
         public dodajOpiekun()
         {
             InitializeComponent();
             this.MaximumSize = this.Size;
             this.MinimumSize = this.Size;
-            this.dbconnection_gabinet = "datasource=" + mysettings.Default.datasource + ";database=" + mysettings.Default.database + ";port=" + mysettings.Default.port + ";username=" + mysettings.Default.user + ";password=" + mysettings.Default.password;
+            this.dbconnection_gabinet = "datasource=" + mysettings.Default.datasource + ";database=" + mysettings.Default.database + ";port=" + mysettings.Default.port + ";username=" + mysettings.Default.user + ";password=" + mysettings.Default.password + ";charset=utf8";
             //this.idopiekunSend = idopiekun;
             Update_comboBoxTelefon();
         }
@@ -107,7 +107,7 @@ namespace Gabinet
                 string selected_item = (comboBoxTelefon.SelectedItem as ComboboxItem).Hidden_Id.ToString();
                 Database database = new Database();
                 MySqlDataAdapter myDataAdapter = new MySqlDataAdapter();
-                myDataAdapter = database.Select("select opiekunkontakt.idopiekun, opiekunkontakt.idopiekun, imie, nazwisko, telefon, mail from opiekunkontakt INNER JOIN opiekun ON opiekun.idopiekun = opiekunkontakt.idopiekun INNER JOIN kontakt ON kontakt.idkontakt = opiekunkontakt.idkontakt WHERE opiekunkontakt.idkontakt='" + selected_item + "'", this.dbconnection_gabinet);
+                myDataAdapter = database.Select("select opiekunkontakt.idopiekun, imie, nazwisko, telefon, mail from opiekunkontakt INNER JOIN opiekun ON opiekun.idopiekun = opiekunkontakt.idopiekun INNER JOIN kontakt ON kontakt.idkontakt = opiekunkontakt.idkontakt WHERE opiekunkontakt.idkontakt='" + selected_item + "'", this.dbconnection_gabinet);
 
                 DataTable dt = new DataTable();
                 myDataAdapter.Fill(dt);
@@ -132,6 +132,26 @@ namespace Gabinet
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void textBoxImie_TextChanged(object sender, EventArgs e)
+        {
+            this.idopiekunSend = null;
+        }
+
+        private void textBoxNazwisko_TextChanged(object sender, EventArgs e)
+        {
+            this.idopiekunSend = null;
+        }
+
+        private void textBoxTelefon_TextChanged(object sender, EventArgs e)
+        {
+            this.idopiekunSend = null;
+        }
+
+        private void textBoxMail_TextChanged(object sender, EventArgs e)
+        {
+            this.idopiekunSend = null;
         }        
     }
 }

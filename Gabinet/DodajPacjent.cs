@@ -16,15 +16,18 @@ namespace Gabinet
     public partial class DodajPacjent : Form
     {
         public string dbconnection_gabinet;
-        public string idopiekun;
+        public string idopiekun = null;
+        public string idopiekunDrugi = null;
         public string idpacjent;
+        private string idadres;
+        private string idkontakt;
         
         public DodajPacjent()
         {
             InitializeComponent();
             this.MaximumSize = this.Size;
             this.MinimumSize = this.Size;
-            this.dbconnection_gabinet = "datasource=" + mysettings.Default.datasource + ";database=" + mysettings.Default.database + ";port=" + mysettings.Default.port + ";username=" + mysettings.Default.user + ";password=" + mysettings.Default.password;
+            this.dbconnection_gabinet = "datasource=" + mysettings.Default.datasource + ";database=" + mysettings.Default.database + ";port=" + mysettings.Default.port + ";username=" + mysettings.Default.user + ";password=" + mysettings.Default.password + ";charset=utf8";
             this.idopiekun = null;
             buttonZmien.Visible = false;
             Update_comboBoxUprawnienia();
@@ -38,17 +41,22 @@ namespace Gabinet
         public DodajPacjent(string idpacjentReceive)
         {
             InitializeComponent();
+                
             this.MaximumSize = this.Size;
             this.MinimumSize = this.Size;
             this.idpacjent = idpacjentReceive;
-            this.dbconnection_gabinet = "datasource=" + mysettings.Default.datasource + ";database=" + mysettings.Default.database + ";port=" + mysettings.Default.port + ";username=" + mysettings.Default.user + ";password=" + mysettings.Default.password;
+            this.dbconnection_gabinet = "datasource=" + mysettings.Default.datasource + ";database=" + mysettings.Default.database + ";port=" + mysettings.Default.port + ";username=" + mysettings.Default.user + ";password=" + mysettings.Default.password + ";charset=utf8";            
             buttonZapisz.Visible = false;
+            buttonDodajOpiekun.Visible = false;
             this.Text = "Edycja danych pacjenta";
             textBoxImie.Enabled = false;
             textBoxPesel.Enabled = false;
             maskedTextBoxNip.Enabled = false;
             comboBoxPlec.Enabled = false;
-            dateTimePickerUrodzenia.Enabled = false;
+            dateTimePickerUrodzenia.Enabled = false;                      
+            Update_danePodstawowe();
+            Update_daneAdresowe();
+            Update_daneKontaktowe();
         }
 
         private void comboBoxUprawnienia_SelectedIndexChanged(object sender, EventArgs e)
@@ -275,6 +283,11 @@ namespace Gabinet
                 database.Insert("insert pacjentopiekun (idpacjent, idopiekun) select max(idpacjent), '" + idopiekun + "' from pacjent, opiekun", this.dbconnection_gabinet);
             }
 
+            if (this.idopiekunDrugi != null)
+            {
+                database.Insert("insert pacjentopiekun (idpacjent, idopiekun) select max(idpacjent), '" + idopiekunDrugi + "' from pacjent, opiekun", this.dbconnection_gabinet);
+            }
+
             DialogResult result = MessageBox.Show("Pacjent dodany");
 
             if (result == System.Windows.Forms.DialogResult.OK)
@@ -309,18 +322,194 @@ namespace Gabinet
             }
             if (IsOpen == false)
             {
-                this.Opacity = 0.5;
-                dodajOpiekun f2 = new dodajOpiekun();                
-                f2.ShowDialog();
-                this.idopiekun = f2.idopiekunSend;
-                this.Opacity = 1;
+                if (idopiekun == null)
+                {
+                    this.Opacity = 0.5;
+                    dodajOpiekun f2 = new dodajOpiekun();
+                    f2.ShowDialog();
+                    this.idopiekun = f2.idopiekunSend;
+                    this.Opacity = 1;
+                    if (idopiekun != null)
+                    {
+                        buttonDodajOpiekun.Text = "Dodaj drugiego opiekuna";
+                    }
+                }
+                else
+                {
+                    this.Opacity = 0.5;
+                    dodajOpiekun f2 = new dodajOpiekun();
+                    f2.ShowDialog();
+                    this.idopiekunDrugi = f2.idopiekunSend;
+                    this.Opacity = 1;
+                    if (idopiekunDrugi != null)
+                    {
+                        buttonDodajOpiekun.Text = "Niedostępne";
+                        buttonDodajOpiekun.Enabled = false;
+                    }
+                }                
             }
-
         }
 
         void form2_FormClosed(object sender, FormClosedEventArgs e)
         {
             
+        }
+
+        public void Update_danePodstawowe()
+        {
+            Update_comboBoxUprawnienia();
+            Update_comboBoxNfz();
+            Update_comboBoxPlec(); 
+
+            try
+            {
+                MySqlDataAdapter myDataAdapter = new MySqlDataAdapter();
+                Database database = new Database();
+                myDataAdapter = database.Select("select * from pacjent inner join ubezpieczenia on ubezpieczenia.idubezpieczenia=pacjent.idubezpieczenia inner join fundusz on fundusz.idfundusz=pacjent.idfundusz inner join plec on plec.idplec=pacjent.idplec where idpacjent='" + this.idpacjent + "'", this.dbconnection_gabinet);
+                DataTable dt = new DataTable();
+                myDataAdapter.Fill(dt);
+
+                if (dt.Rows.Count == 1)
+                {
+                    DataRow element = dt.Rows[0];
+                    this.textBoxImie.Text = element["imie"].ToString();
+                    this.textBoxNazwisko.Text = element["nazwisko"].ToString();
+                    DateTime dateTime = (DateTime)element["data_urodzenia"];
+                    this.dateTimePickerUrodzenia.Text = dateTime.ToString("yyyy-MM-dd");
+                    this.textBoxPesel.Text = element["pesel"].ToString();
+                    this.maskedTextBoxNip.Text = element["nip"].ToString();
+                    this.textBoxZakladNazwa.Text = element["miejsce_pracy"].ToString();
+                    this.textBoxZawod.Text = element["zawod"].ToString();
+                    this.maskedTextBoxNipPraca.Text = element["nip_platnika"].ToString();
+                    this.comboBoxPlec.SelectedIndex = comboBoxPlec.FindStringExact(element["plec"].ToString());
+                    this.comboBoxUprawnienia.SelectedIndex = comboBoxUprawnienia.FindStringExact(element["kod"].ToString());
+                    this.comboBoxNfz.SelectedIndex = comboBoxNfz.FindStringExact(element["oddzial"].ToString());
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+        }
+
+        public void Update_daneAdresowe()
+        {
+            Update_comboBoxMiasto();
+            Update_comboBoxUlica();
+            Update_comboBoxWojewodztwo();
+
+            try
+            {
+                MySqlDataAdapter myDataAdapter = new MySqlDataAdapter();
+                Database database = new Database();
+                myDataAdapter = database.Select("select * from adres inner join pacjentadres on adres.idadres=pacjentadres.idadres where idpacjent='" + this.idpacjent + "'", this.dbconnection_gabinet);
+                DataTable dt = new DataTable();
+                myDataAdapter.Fill(dt);
+
+                if (dt.Rows.Count == 1)
+                {
+                    DataRow element = dt.Rows[0];
+                    this.comboBoxWojewodztwo.SelectedIndex = comboBoxWojewodztwo.FindStringExact(element["wojewodztwo"].ToString());
+                    this.comboBoxMiasto.SelectedIndex = comboBoxMiasto.FindStringExact(element["miasto"].ToString());
+                    this.comboBoxUlica.SelectedIndex = comboBoxUlica.FindStringExact(element["ulica"].ToString());
+                    this.textBoxNrDomu.Text = element["nr_budynku"].ToString();
+                    this.textBoxNrMieszkania.Text = element["nr_lokalu"].ToString();
+                    this.maskedTextBoxKod.Text = element["kod_pocztowy"].ToString();
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        public void Update_daneKontaktowe()
+        {
+            try
+            {
+                MySqlDataAdapter myDataAdapter = new MySqlDataAdapter();
+                Database database = new Database();
+                myDataAdapter = database.Select("select * from kontakt inner join pacjentkontakt on kontakt.idkontakt=pacjentkontakt.idkontakt where idpacjent='" + this.idpacjent + "'", this.dbconnection_gabinet);
+                DataTable dt = new DataTable();
+                myDataAdapter.Fill(dt);
+
+                if (dt.Rows.Count == 1)
+                {
+                    DataRow element = dt.Rows[0];
+                    this.textBoxMail.Text = element["mail"].ToString();
+                    this.textBoxTelefon.Text = element["telefon"].ToString();
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void buttonZmien_Click(object sender, EventArgs e)
+        {     
+
+            try
+            {                
+                string nazwisko = this.textBoxNazwisko.Text;                
+
+                string wojewodztwo = (comboBoxWojewodztwo.SelectedItem as ComboboxItem).Text.ToString();
+                string miasto = (comboBoxMiasto.SelectedItem as ComboboxItem).Text.ToString();
+                string ulica = (comboBoxUlica.SelectedItem as ComboboxItem).Text.ToString();
+                string nrDomu = this.textBoxNrDomu.Text;
+                string nrMieszkania = this.textBoxNrMieszkania.Text;
+                string kod = this.maskedTextBoxKod.Text;
+                string telefon = this.textBoxTelefon.Text;
+                string mail = this.textBoxMail.Text;
+
+                string uprawnienia = (comboBoxUprawnienia.SelectedItem as ComboboxItem).Hidden_Id.ToString();
+                string nfz = (comboBoxNfz.SelectedItem as ComboboxItem).Hidden_Id.ToString();
+
+                string zaklad = this.textBoxZakladNazwa.Text;
+                string zawod = this.textBoxZawod.Text;
+                string nipPraca = this.maskedTextBoxNipPraca.Text;
+
+                Database database = new Database();
+                MySqlDataAdapter myDataAdapter = new MySqlDataAdapter();
+                myDataAdapter = database.Select("select idadres from pacjentadres where idpacjent='" + idpacjent + "'", this.dbconnection_gabinet);
+                DataTable dt = new DataTable();
+                myDataAdapter.Fill(dt);
+
+                if (dt.Rows.Count == 1)
+                {
+                    DataRow element = dt.Rows[0];
+                    this.idadres = element["idadres"].ToString();
+                    dt.Clear();
+                }
+
+                myDataAdapter = database.Select("select idkontakt from pacjentkontakt where idpacjent='" + idpacjent + "'", this.dbconnection_gabinet);
+                myDataAdapter.Fill(dt);
+
+                if (dt.Rows.Count == 1)
+                {
+                    DataRow element = dt.Rows[0];
+                    this.idkontakt = element["idkontakt"].ToString();                   
+                }
+
+                database.Update("update pacjent set idubezpieczenia = '" + uprawnienia + "', idfundusz = '" + nfz + "', nazwisko = '" + nazwisko.ToString() + "', miejsce_pracy = '" + zaklad.ToString() + "', zawod = '" + zawod.ToString() + "', nip_platnika = '" + nipPraca.ToString() + "' where idpacjent = '" + this.idpacjent + "'", this.dbconnection_gabinet);
+                database.Update("update adres set wojewodztwo = '" + wojewodztwo.ToString() + "', miasto = '" + miasto.ToString() + "', kod_pocztowy = '" + kod.ToString() + "', ulica = '" + ulica.ToString() + "', nr_budynku = '" + nrDomu + "', nr_lokalu = '" + nrMieszkania + "' where idadres = '" + this.idadres + "'", this.dbconnection_gabinet);
+                database.Update("update kontakt set telefon = '" + telefon.ToString() + "', mail = '" + mail.ToString() + "' where idkontakt = '" + this.idkontakt + "'", this.dbconnection_gabinet);
+                
+                DialogResult result = MessageBox.Show("Zaktualizowano dane pacjenta");
+
+                if (result == System.Windows.Forms.DialogResult.OK)
+                {
+                    DodajPacjent.ActiveForm.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);               
+            }
         }
     }
 }

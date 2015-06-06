@@ -552,7 +552,7 @@
             // 
             this.buttonDodajOpiekun.Location = new System.Drawing.Point(21, 135);
             this.buttonDodajOpiekun.Name = "buttonDodajOpiekun";
-            this.buttonDodajOpiekun.Size = new System.Drawing.Size(110, 23);
+            this.buttonDodajOpiekun.Size = new System.Drawing.Size(162, 23);
             this.buttonDodajOpiekun.TabIndex = 6;
             this.buttonDodajOpiekun.Text = "Dodaj opiekuna";
             this.buttonDodajOpiekun.UseVisualStyleBackColor = true;
@@ -566,6 +566,7 @@
             this.buttonZmien.TabIndex = 7;
             this.buttonZmien.Text = "Zmień";
             this.buttonZmien.UseVisualStyleBackColor = true;
+            this.buttonZmien.Click += new System.EventHandler(this.buttonZmien_Click);
             // 
             // DodajPacjent
             // 

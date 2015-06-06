@@ -21,7 +21,7 @@ namespace Gabinet
             InitializeComponent();
             this.MaximumSize = this.Size;
             this.MinimumSize = this.Size;
-            this.dbconnection_gabinet = "datasource=" + mysettings.Default.datasource + ";database=" + mysettings.Default.database + ";port=" + mysettings.Default.port + ";username=" + mysettings.Default.user + ";password=" + mysettings.Default.password;
+            this.dbconnection_gabinet = "datasource=" + mysettings.Default.datasource + ";database=" + mysettings.Default.database + ";port=" + mysettings.Default.port + ";username=" + mysettings.Default.user + ";password=" + mysettings.Default.password + ";charset=utf8";
             
         }
         
@@ -275,6 +275,41 @@ namespace Gabinet
                     DodajPacjent f2 = new DodajPacjent(id);
                     f2.ShowDialog();
                     this.Visible = true;
+                    while (dataGridViewPacjenci.Rows.Count != 0)
+                    {
+                        dataGridViewPacjenci.Rows.RemoveAt(0);
+                    }                    
+                }
+                else
+                {
+                    MessageBox.Show("Musisz wybrać pacjenta!");
+                }
+            }
+        }
+
+        private void toolStripButtonOpiekun_Click(object sender, EventArgs e)
+        {
+            bool IsOpen = false;
+
+            foreach (Form f in Application.OpenForms)
+            {
+                if (f.Text == "Opiekun")
+                {
+                    IsOpen = true;
+                    f.Focus();
+                    break;
+                }
+            }
+            if (IsOpen == false)
+            {
+                if (dataGridViewPacjenci.RowCount != 0)
+                {
+                    int row = dataGridViewPacjenci.CurrentCell.RowIndex;
+                    string id = dataGridViewPacjenci.Rows[row].Cells[5].Value.ToString();
+                    this.Opacity = 0.5;
+                    edytujOpiekun f2 = new edytujOpiekun(id);
+                    f2.ShowDialog();
+                    this.Opacity = 1;
                 }
                 else
                 {

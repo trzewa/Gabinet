@@ -27,7 +27,7 @@ namespace Gabinet
             this.MinimumSize = this.Size;
             this.rodzicWizyta = parent;
             this.button = buttonReceive;
-            this.dbconnection_gabinet = "datasource=" + mysettings.Default.datasource + ";database=" + mysettings.Default.database + ";port=" + mysettings.Default.port + ";username=" + mysettings.Default.user + ";password=" + mysettings.Default.password;
+            this.dbconnection_gabinet = "datasource=" + mysettings.Default.datasource + ";database=" + mysettings.Default.database + ";port=" + mysettings.Default.port + ";username=" + mysettings.Default.user + ";password=" + mysettings.Default.password + ";charset=utf8";
             if (this.button.Equals(1))
             {
                 Update_Procedury();
