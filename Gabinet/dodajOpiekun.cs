@@ -60,7 +60,7 @@ namespace Gabinet
                     }                    
                 }
                 
-                DialogResult result = MessageBox.Show("Opiekun dodany");
+                DialogResult result = MessageBox.Show("Opiekun dodany", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 if (result == System.Windows.Forms.DialogResult.OK)
                     {                    
