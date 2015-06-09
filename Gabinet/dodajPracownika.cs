@@ -17,6 +17,8 @@ namespace Gabinet
     {
         public string dbconnection_gabinet;
         private string idpracownik;
+        private string idkontakt;
+        private string idadres;
 
         public dodajPracownika()
         {
@@ -24,12 +26,30 @@ namespace Gabinet
             this.MaximumSize = this.Size;
             this.MinimumSize = this.Size;
             this.dbconnection_gabinet = "datasource=" + mysettings.Default.datasource + ";database=" + mysettings.Default.database + ";port=" + mysettings.Default.port + ";username=" + mysettings.Default.user + ";password=" + mysettings.Default.password + ";charset=utf8";
-
+            buttonZmien.Visible = false;
             Update_comboBoxPlec();
             Update_comboBoxWojewodztwo();
             Update_comboBoxMiasto();
             Update_comboBoxUlica();
             Update_comboBoxStanowisko();
+        }
+
+        public dodajPracownika(string idpracownikReceive)
+        {
+            InitializeComponent();
+            this.MaximumSize = this.Size;
+            this.MinimumSize = this.Size;
+            this.dbconnection_gabinet = "datasource=" + mysettings.Default.datasource + ";database=" + mysettings.Default.database + ";port=" + mysettings.Default.port + ";username=" + mysettings.Default.user + ";password=" + mysettings.Default.password + ";charset=utf8";
+            this.idpracownik = idpracownikReceive;
+            buttonZapisz.Visible = false;
+            this.Text = "Edycja danych pracownika";
+            textBoxImie.Enabled = false;
+            textBoxPesel.Enabled = false;
+            comboBoxPlec.Enabled = false;
+            dateTimePickerZatrudnienia.Enabled = false;
+            Update_daneAdresowe();
+            Update_daneKontaktowe();
+            Update_danePodstawowe();
         }
 
         public void Update_comboBoxPlec()
@@ -194,7 +214,7 @@ namespace Gabinet
 
                 MySqlDataAdapter myDataAdapter = new MySqlDataAdapter();
                 Database database = new Database();
-                database.Insert("insert into pracownik (idstanowisko, idplec, imie, nazwisko, pesel, numer_pwz) VALUES('" + stanowisko + "','" + plec + "','" + imie.ToString() + "','" + nazwisko.ToString() + "','" + pesel + "','" + pwz.ToString() + "')", this.dbconnection_gabinet);
+                database.Insert("insert into pracownik (idstanowisko, idplec, imie, nazwisko, pesel, numer_pwz, data_zatrudnienia) VALUES('" + stanowisko + "','" + plec + "','" + imie.ToString() + "','" + nazwisko.ToString() + "','" + pesel + "','" + pwz.ToString() + "','" + dataZatrudnienia + "')", this.dbconnection_gabinet);
                 database.Insert("insert into adres (wojewodztwo, miasto, kod_pocztowy, ulica, nr_budynku, nr_lokalu) VALUES('" + wojewodztwo.ToString() + "','" + miasto.ToString() + "','" + kod.ToString() + "','" + ulica.ToString() + "','" + nrDomu + "','" + nrMieszkania + "')", this.dbconnection_gabinet);
                 database.Insert("insert into kontakt (telefon, mail) VALUES('" + telefon.ToString() + "','" + mail.ToString() + "')", this.dbconnection_gabinet);
                 database.Insert("insert pracownikadres (idpracownik, idadres) select max(idpracownik), max(idadres) from pracownik, adres", this.dbconnection_gabinet);
@@ -230,6 +250,156 @@ namespace Gabinet
         private void buttonAnuluj_Click(object sender, EventArgs e)
         {
             this.Close();
-        }        
+        }
+
+        public void Update_danePodstawowe()
+        {
+            Update_comboBoxStanowisko();
+            Update_comboBoxPlec();
+
+            try
+            {
+                MySqlDataAdapter myDataAdapter = new MySqlDataAdapter();
+                Database database = new Database();
+                myDataAdapter = database.Select("select * from pracownik inner join stanowisko on stanowisko.idstanowisko=pracownik.idstanowisko inner join plec on plec.idplec=pracownik.idplec inner join user on user.idpracownik=pracownik.idpracownik where pracownik.idpracownik='" + this.idpracownik + "'", this.dbconnection_gabinet);
+                DataTable dt = new DataTable();
+                myDataAdapter.Fill(dt);
+
+                if (dt.Rows.Count == 1)
+                {
+                    DataRow element = dt.Rows[0];
+                    this.textBoxImie.Text = element["imie"].ToString();
+                    this.textBoxNazwisko.Text = element["nazwisko"].ToString();
+                    DateTime dateTime = (DateTime)element["data_zatrudnienia"];
+                    this.dateTimePickerZatrudnienia.Text = dateTime.ToString("yyyy-MM-dd");
+                    this.textBoxPesel.Text = element["pesel"].ToString();
+                    this.textBoxPwz.Text = element["numer_pwz"].ToString();                    
+                    this.comboBoxPlec.SelectedIndex = comboBoxPlec.FindStringExact(element["plec"].ToString());
+                    this.comboBoxStanowisko.SelectedIndex = comboBoxStanowisko.FindStringExact(element["nazwa"].ToString());
+                    this.textBoxLogin.Text = element["login"].ToString();
+                    this.textBoxHaslo.Text = element["haslo"].ToString();
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+        }
+
+        public void Update_daneAdresowe()
+        {
+            Update_comboBoxMiasto();
+            Update_comboBoxUlica();
+            Update_comboBoxWojewodztwo();
+
+            try
+            {
+                MySqlDataAdapter myDataAdapter = new MySqlDataAdapter();
+                Database database = new Database();
+                myDataAdapter = database.Select("select * from adres inner join pracownikadres on adres.idadres=pracownikadres.idadres where idpracownik='" + this.idpracownik + "'", this.dbconnection_gabinet);
+                DataTable dt = new DataTable();
+                myDataAdapter.Fill(dt);
+
+                if (dt.Rows.Count == 1)
+                {
+                    DataRow element = dt.Rows[0];
+                    this.comboBoxWojewodztwo.SelectedIndex = comboBoxWojewodztwo.FindStringExact(element["wojewodztwo"].ToString());
+                    this.comboBoxMiasto.SelectedIndex = comboBoxMiasto.FindStringExact(element["miasto"].ToString());
+                    this.comboBoxUlica.SelectedIndex = comboBoxUlica.FindStringExact(element["ulica"].ToString());
+                    this.textBoxNrDomu.Text = element["nr_budynku"].ToString();
+                    this.textBoxNrMieszkania.Text = element["nr_lokalu"].ToString();
+                    this.maskedTextBoxKod.Text = element["kod_pocztowy"].ToString();
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        public void Update_daneKontaktowe()
+        {
+            try
+            {
+                MySqlDataAdapter myDataAdapter = new MySqlDataAdapter();
+                Database database = new Database();
+                myDataAdapter = database.Select("select * from kontakt inner join pracownikkontakt on kontakt.idkontakt=pracownikkontakt.idkontakt where idpracownik='" + this.idpracownik + "'", this.dbconnection_gabinet);
+                DataTable dt = new DataTable();
+                myDataAdapter.Fill(dt);
+
+                if (dt.Rows.Count == 1)
+                {
+                    DataRow element = dt.Rows[0];
+                    this.textBoxMail.Text = element["mail"].ToString();
+                    this.textBoxTelefon.Text = element["telefon"].ToString();
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void buttonZmien_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string nazwisko = this.textBoxNazwisko.Text;
+                string pwz = this.textBoxPwz.Text;
+                string wojewodztwo = (comboBoxWojewodztwo.SelectedItem as ComboboxItem).Text.ToString();
+                string miasto = (comboBoxMiasto.SelectedItem as ComboboxItem).Text.ToString();
+                string ulica = (comboBoxUlica.SelectedItem as ComboboxItem).Text.ToString();
+                string nrDomu = this.textBoxNrDomu.Text;
+                string nrMieszkania = this.textBoxNrMieszkania.Text;
+                string kod = this.maskedTextBoxKod.Text;
+                string telefon = this.textBoxTelefon.Text;
+                string mail = this.textBoxMail.Text;
+                string login = this.textBoxLogin.Text;
+                string haslo = this.textBoxHaslo.Text;
+                string stanowisko = (comboBoxStanowisko.SelectedItem as ComboboxItem).Hidden_Id.ToString();
+                
+                Database database = new Database();
+                MySqlDataAdapter myDataAdapter = new MySqlDataAdapter();
+                myDataAdapter = database.Select("select idadres from pracownikadres where idpracownik='" + this.idpracownik + "'", this.dbconnection_gabinet);
+                DataTable dt = new DataTable();
+                myDataAdapter.Fill(dt);
+
+                if (dt.Rows.Count == 1)
+                {
+                    DataRow element = dt.Rows[0];
+                    this.idadres = element["idadres"].ToString();
+                    dt.Clear();
+                }
+
+                myDataAdapter = database.Select("select idkontakt from pracownikkontakt where idpracownik='" + this.idpracownik + "'", this.dbconnection_gabinet);
+                myDataAdapter.Fill(dt);
+
+                if (dt.Rows.Count == 1)
+                {
+                    DataRow element = dt.Rows[0];
+                    this.idkontakt = element["idkontakt"].ToString();
+                }
+
+                database.Update("update pracownik set idstanowisko = '" + stanowisko + "', nazwisko = '" + nazwisko.ToString() + "', numer_pwz = '" + pwz.ToString() + "'  where idpracownik = '" + this.idpracownik + "'", this.dbconnection_gabinet);
+                database.Update("update user set login = '" + login.ToString() + "', haslo = '" + haslo.ToString() + "' where idpracownik = '" + this.idpracownik + "'", this.dbconnection_gabinet);
+                database.Update("update adres set wojewodztwo = '" + wojewodztwo.ToString() + "', miasto = '" + miasto.ToString() + "', kod_pocztowy = '" + kod.ToString() + "', ulica = '" + ulica.ToString() + "', nr_budynku = '" + nrDomu + "', nr_lokalu = '" + nrMieszkania + "' where idadres = '" + this.idadres + "'", this.dbconnection_gabinet);
+                database.Update("update kontakt set telefon = '" + telefon.ToString() + "', mail = '" + mail.ToString() + "' where idkontakt = '" + this.idkontakt + "'", this.dbconnection_gabinet);
+
+                DialogResult result = MessageBox.Show("Zaktualizowano dane pracownika", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                if (result == System.Windows.Forms.DialogResult.OK)
+                {
+                    dodajPracownika.ActiveForm.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
     }
 }

@@ -114,5 +114,37 @@ namespace Gabinet
                 this.Visible = true;
             }
         }
+
+        private void toolStripButtonEdytuj_Click(object sender, EventArgs e)
+        {
+            bool IsOpen = false;
+
+            foreach (Form f in Application.OpenForms)
+            {
+                if (f.Text == "Edycja danych pracownika")
+                {
+                    IsOpen = true;
+                    f.Focus();
+                    break;
+                }
+            }
+            if (IsOpen == false)
+            {
+                if (dataGridViewPracownicy.RowCount != 0)
+                {
+                    int row = dataGridViewPracownicy.CurrentCell.RowIndex;
+                    string id = dataGridViewPracownicy.Rows[row].Cells[4].Value.ToString();
+                    this.Opacity = 0.5;
+                    dodajPracownika f2 = new dodajPracownika(id);
+                    f2.ShowDialog();
+                    Update_dataGridViewPracownicy();
+                    this.Opacity = 1;                    
+                }
+                else
+                {
+                    MessageBox.Show("Musisz wybrać pracownika!");
+                }
+            }
+        }
     }
 }

@@ -29,6 +29,9 @@
         private void InitializeComponent()
         {
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.toolStripButtonDodaj = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonHarmonogram = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dataGridViewPracownicy = new System.Windows.Forms.DataGridView();
             this.nazwisko = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -36,9 +39,7 @@
             this.pesel = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.rola = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.toolStripButtonDodaj = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButtonHarmonogram = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonEdytuj = new System.Windows.Forms.ToolStripButton();
             this.toolStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPracownicy)).BeginInit();
@@ -51,6 +52,7 @@
             this.toolStrip1.ImageScalingSize = new System.Drawing.Size(80, 80);
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripButtonDodaj,
+            this.toolStripButtonEdytuj,
             this.toolStripButtonHarmonogram,
             this.toolStripButton1});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
@@ -59,6 +61,37 @@
             this.toolStrip1.Stretch = true;
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
+            // 
+            // toolStripButtonDodaj
+            // 
+            this.toolStripButtonDodaj.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonDodaj.Image = global::Gabinet.Properties.Resources.addition_icon1;
+            this.toolStripButtonDodaj.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonDodaj.Name = "toolStripButtonDodaj";
+            this.toolStripButtonDodaj.Size = new System.Drawing.Size(84, 77);
+            this.toolStripButtonDodaj.Text = "Dodaj pracownika";
+            this.toolStripButtonDodaj.Click += new System.EventHandler(this.toolStripButtonDodaj_Click);
+            // 
+            // toolStripButtonHarmonogram
+            // 
+            this.toolStripButtonHarmonogram.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonHarmonogram.Image = global::Gabinet.Properties.Resources.clock_icon;
+            this.toolStripButtonHarmonogram.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonHarmonogram.Name = "toolStripButtonHarmonogram";
+            this.toolStripButtonHarmonogram.Size = new System.Drawing.Size(84, 77);
+            this.toolStripButtonHarmonogram.Text = "Ustaw harmonogram pracownika";
+            this.toolStripButtonHarmonogram.Click += new System.EventHandler(this.toolStripButtonHarmonogram_Click);
+            // 
+            // toolStripButton1
+            // 
+            this.toolStripButton1.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton1.Image = global::Gabinet.Properties.Resources.share_2_icon;
+            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton1.Name = "toolStripButton1";
+            this.toolStripButton1.Size = new System.Drawing.Size(84, 77);
+            this.toolStripButton1.Text = "Konfiguracja serwera";
+            this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
             // 
             // groupBox1
             // 
@@ -75,6 +108,7 @@
             // 
             this.dataGridViewPracownicy.AllowUserToAddRows = false;
             this.dataGridViewPracownicy.AllowUserToDeleteRows = false;
+            this.dataGridViewPracownicy.AllowUserToResizeRows = false;
             this.dataGridViewPracownicy.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
             this.dataGridViewPracownicy.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewPracownicy.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -84,8 +118,10 @@
             this.rola,
             this.id});
             this.dataGridViewPracownicy.Location = new System.Drawing.Point(6, 19);
+            this.dataGridViewPracownicy.MultiSelect = false;
             this.dataGridViewPracownicy.Name = "dataGridViewPracownicy";
             this.dataGridViewPracownicy.ReadOnly = true;
+            this.dataGridViewPracownicy.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewPracownicy.Size = new System.Drawing.Size(556, 238);
             this.dataGridViewPracownicy.TabIndex = 2;
             // 
@@ -124,36 +160,15 @@
             this.id.Name = "id";
             this.id.ReadOnly = true;
             // 
-            // toolStripButtonDodaj
+            // toolStripButtonEdytuj
             // 
-            this.toolStripButtonDodaj.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonDodaj.Image = global::Gabinet.Properties.Resources.addition_icon1;
-            this.toolStripButtonDodaj.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonDodaj.Name = "toolStripButtonDodaj";
-            this.toolStripButtonDodaj.Size = new System.Drawing.Size(84, 77);
-            this.toolStripButtonDodaj.Text = "Dodaj pracownika";
-            this.toolStripButtonDodaj.Click += new System.EventHandler(this.toolStripButtonDodaj_Click);
-            // 
-            // toolStripButtonHarmonogram
-            // 
-            this.toolStripButtonHarmonogram.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonHarmonogram.Image = global::Gabinet.Properties.Resources.clock_icon;
-            this.toolStripButtonHarmonogram.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonHarmonogram.Name = "toolStripButtonHarmonogram";
-            this.toolStripButtonHarmonogram.Size = new System.Drawing.Size(84, 77);
-            this.toolStripButtonHarmonogram.Text = "Ustaw harmonogram pracownika";
-            this.toolStripButtonHarmonogram.Click += new System.EventHandler(this.toolStripButtonHarmonogram_Click);
-            // 
-            // toolStripButton1
-            // 
-            this.toolStripButton1.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton1.Image = global::Gabinet.Properties.Resources.share_2_icon;
-            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(84, 77);
-            this.toolStripButton1.Text = "Konfiguracja serwera";
-            this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
+            this.toolStripButtonEdytuj.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonEdytuj.Image = global::Gabinet.Properties.Resources.pencil_icon;
+            this.toolStripButtonEdytuj.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonEdytuj.Name = "toolStripButtonEdytuj";
+            this.toolStripButtonEdytuj.Size = new System.Drawing.Size(84, 77);
+            this.toolStripButtonEdytuj.Text = "Edytuj dane pracownika";
+            this.toolStripButtonEdytuj.Click += new System.EventHandler(this.toolStripButtonEdytuj_Click);
             // 
             // organizacjaPrzychodni
             // 
@@ -187,5 +202,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn rola;
         private System.Windows.Forms.DataGridViewTextBoxColumn id;
         private System.Windows.Forms.ToolStripButton toolStripButton1;
+        private System.Windows.Forms.ToolStripButton toolStripButtonEdytuj;
     }
 }

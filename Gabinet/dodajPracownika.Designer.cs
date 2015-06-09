@@ -70,6 +70,7 @@
             this.label20 = new System.Windows.Forms.Label();
             this.buttonZapisz = new System.Windows.Forms.Button();
             this.buttonAnuluj = new System.Windows.Forms.Button();
+            this.buttonZmien = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -501,12 +502,23 @@
             this.buttonAnuluj.UseVisualStyleBackColor = true;
             this.buttonAnuluj.Click += new System.EventHandler(this.buttonAnuluj_Click);
             // 
+            // buttonZmien
+            // 
+            this.buttonZmien.Location = new System.Drawing.Point(275, 432);
+            this.buttonZmien.Name = "buttonZmien";
+            this.buttonZmien.Size = new System.Drawing.Size(75, 23);
+            this.buttonZmien.TabIndex = 8;
+            this.buttonZmien.Text = "Zmień";
+            this.buttonZmien.UseVisualStyleBackColor = true;
+            this.buttonZmien.Click += new System.EventHandler(this.buttonZmien_Click);
+            // 
             // dodajPracownika
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.ClientSize = new System.Drawing.Size(457, 467);
+            this.Controls.Add(this.buttonZmien);
             this.Controls.Add(this.buttonAnuluj);
             this.Controls.Add(this.buttonZapisz);
             this.Controls.Add(this.label20);
@@ -571,5 +583,6 @@
         private System.Windows.Forms.ComboBox comboBoxStanowisko;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.TextBox textBoxPwz;
+        private System.Windows.Forms.Button buttonZmien;
     }
 }
