@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.toolStrip2 = new System.Windows.Forms.ToolStrip();
+            this.toolStripBtnWizyta = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonDanePacjenta = new System.Windows.Forms.ToolStripButton();
             this.groupBoxLekarz = new System.Windows.Forms.GroupBox();
             this.textBoxStanowisko = new System.Windows.Forms.TextBox();
             this.textBoxImieNazwisko = new System.Windows.Forms.TextBox();
@@ -38,19 +40,19 @@
             this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dataGridViewWizyta = new System.Windows.Forms.DataGridView();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.textBoxGodzDo = new System.Windows.Forms.TextBox();
-            this.textBoxGodzOd = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.toolStripBtnWizyta = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButtonDanePacjenta = new System.Windows.Forms.ToolStripButton();
             this.godzina = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nazwisko = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.imie = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pesel = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.IDpacjent = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.textBoxGodzDo = new System.Windows.Forms.TextBox();
+            this.textBoxGodzOd = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.toolStripButtonHistoria = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonPlan = new System.Windows.Forms.ToolStripButton();
             this.toolStrip2.SuspendLayout();
             this.groupBoxLekarz.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -66,13 +68,38 @@
             this.toolStrip2.ImageScalingSize = new System.Drawing.Size(80, 80);
             this.toolStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripBtnWizyta,
-            this.toolStripButtonDanePacjenta});
+            this.toolStripButtonDanePacjenta,
+            this.toolStripButtonHistoria,
+            this.toolStripButtonPlan});
             this.toolStrip2.Location = new System.Drawing.Point(0, 0);
             this.toolStrip2.Name = "toolStrip2";
             this.toolStrip2.Size = new System.Drawing.Size(764, 80);
             this.toolStrip2.Stretch = true;
             this.toolStrip2.TabIndex = 1;
             this.toolStrip2.Text = "toolStrip2";
+            // 
+            // toolStripBtnWizyta
+            // 
+            this.toolStripBtnWizyta.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripBtnWizyta.Image = global::Gabinet.Properties.Resources.play_icon;
+            this.toolStripBtnWizyta.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripBtnWizyta.Name = "toolStripBtnWizyta";
+            this.toolStripBtnWizyta.Size = new System.Drawing.Size(84, 77);
+            this.toolStripBtnWizyta.Text = "Rozpocznij wizyte";
+            this.toolStripBtnWizyta.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.toolStripBtnWizyta.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.toolStripBtnWizyta.ToolTipText = "Rozpocznij wizyte";
+            this.toolStripBtnWizyta.Click += new System.EventHandler(this.toolStripBtnWizyta_Click);
+            // 
+            // toolStripButtonDanePacjenta
+            // 
+            this.toolStripButtonDanePacjenta.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonDanePacjenta.Image = global::Gabinet.Properties.Resources.info_icon;
+            this.toolStripButtonDanePacjenta.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonDanePacjenta.Name = "toolStripButtonDanePacjenta";
+            this.toolStripButtonDanePacjenta.Size = new System.Drawing.Size(84, 77);
+            this.toolStripButtonDanePacjenta.Text = "Dane pacjenta";
+            this.toolStripButtonDanePacjenta.Click += new System.EventHandler(this.toolStripButtonDanePacjenta_Click);
             // 
             // groupBoxLekarz
             // 
@@ -170,76 +197,6 @@
             this.dataGridViewWizyta.Size = new System.Drawing.Size(521, 358);
             this.dataGridViewWizyta.TabIndex = 5;
             // 
-            // groupBox3
-            // 
-            this.groupBox3.Controls.Add(this.textBoxGodzDo);
-            this.groupBox3.Controls.Add(this.textBoxGodzOd);
-            this.groupBox3.Controls.Add(this.label5);
-            this.groupBox3.Controls.Add(this.label4);
-            this.groupBox3.Location = new System.Drawing.Point(12, 193);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(200, 74);
-            this.groupBox3.TabIndex = 5;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Godziny pracy";
-            // 
-            // textBoxGodzDo
-            // 
-            this.textBoxGodzDo.Enabled = false;
-            this.textBoxGodzDo.Location = new System.Drawing.Point(111, 39);
-            this.textBoxGodzDo.Name = "textBoxGodzDo";
-            this.textBoxGodzDo.Size = new System.Drawing.Size(75, 20);
-            this.textBoxGodzDo.TabIndex = 4;
-            // 
-            // textBoxGodzOd
-            // 
-            this.textBoxGodzOd.Enabled = false;
-            this.textBoxGodzOd.Location = new System.Drawing.Point(15, 39);
-            this.textBoxGodzOd.Name = "textBoxGodzOd";
-            this.textBoxGodzOd.Size = new System.Drawing.Size(76, 20);
-            this.textBoxGodzOd.TabIndex = 3;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(108, 23);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(21, 13);
-            this.label5.TabIndex = 2;
-            this.label5.Text = "Do";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(12, 23);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(21, 13);
-            this.label4.TabIndex = 1;
-            this.label4.Text = "Od";
-            // 
-            // toolStripBtnWizyta
-            // 
-            this.toolStripBtnWizyta.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripBtnWizyta.Image = global::Gabinet.Properties.Resources.play_icon;
-            this.toolStripBtnWizyta.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripBtnWizyta.Name = "toolStripBtnWizyta";
-            this.toolStripBtnWizyta.Size = new System.Drawing.Size(84, 77);
-            this.toolStripBtnWizyta.Text = "Rozpocznij wizyte";
-            this.toolStripBtnWizyta.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.toolStripBtnWizyta.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
-            this.toolStripBtnWizyta.ToolTipText = "Rozpocznij wizyte";
-            this.toolStripBtnWizyta.Click += new System.EventHandler(this.toolStripBtnWizyta_Click);
-            // 
-            // toolStripButtonDanePacjenta
-            // 
-            this.toolStripButtonDanePacjenta.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonDanePacjenta.Image = global::Gabinet.Properties.Resources.info_icon;
-            this.toolStripButtonDanePacjenta.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonDanePacjenta.Name = "toolStripButtonDanePacjenta";
-            this.toolStripButtonDanePacjenta.Size = new System.Drawing.Size(84, 77);
-            this.toolStripButtonDanePacjenta.Text = "Dane pacjenta";
-            this.toolStripButtonDanePacjenta.Click += new System.EventHandler(this.toolStripButtonDanePacjenta_Click);
-            // 
             // godzina
             // 
             this.godzina.DataPropertyName = "godzina";
@@ -287,6 +244,73 @@
             this.IDpacjent.Name = "IDpacjent";
             this.IDpacjent.ReadOnly = true;
             this.IDpacjent.Visible = false;
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.textBoxGodzDo);
+            this.groupBox3.Controls.Add(this.textBoxGodzOd);
+            this.groupBox3.Controls.Add(this.label5);
+            this.groupBox3.Controls.Add(this.label4);
+            this.groupBox3.Location = new System.Drawing.Point(12, 193);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(200, 74);
+            this.groupBox3.TabIndex = 5;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Godziny pracy";
+            // 
+            // textBoxGodzDo
+            // 
+            this.textBoxGodzDo.Enabled = false;
+            this.textBoxGodzDo.Location = new System.Drawing.Point(111, 39);
+            this.textBoxGodzDo.Name = "textBoxGodzDo";
+            this.textBoxGodzDo.Size = new System.Drawing.Size(75, 20);
+            this.textBoxGodzDo.TabIndex = 4;
+            // 
+            // textBoxGodzOd
+            // 
+            this.textBoxGodzOd.Enabled = false;
+            this.textBoxGodzOd.Location = new System.Drawing.Point(15, 39);
+            this.textBoxGodzOd.Name = "textBoxGodzOd";
+            this.textBoxGodzOd.Size = new System.Drawing.Size(76, 20);
+            this.textBoxGodzOd.TabIndex = 3;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(108, 23);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(21, 13);
+            this.label5.TabIndex = 2;
+            this.label5.Text = "Do";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(12, 23);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(21, 13);
+            this.label4.TabIndex = 1;
+            this.label4.Text = "Od";
+            // 
+            // toolStripButtonHistoria
+            // 
+            this.toolStripButtonHistoria.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonHistoria.Image = global::Gabinet.Properties.Resources.fastrewind_icon;
+            this.toolStripButtonHistoria.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonHistoria.Name = "toolStripButtonHistoria";
+            this.toolStripButtonHistoria.Size = new System.Drawing.Size(84, 77);
+            this.toolStripButtonHistoria.Text = "Historia wizyt pacjenta";
+            this.toolStripButtonHistoria.Click += new System.EventHandler(this.toolStripButtonHistoria_Click);
+            // 
+            // toolStripButtonPlan
+            // 
+            this.toolStripButtonPlan.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonPlan.Image = global::Gabinet.Properties.Resources.fastforward_icon;
+            this.toolStripButtonPlan.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonPlan.Name = "toolStripButtonPlan";
+            this.toolStripButtonPlan.Size = new System.Drawing.Size(84, 77);
+            this.toolStripButtonPlan.Text = "Zarezerwowane wizyty pacjenta";
+            this.toolStripButtonPlan.Click += new System.EventHandler(this.toolStripButtonPlan_Click);
             // 
             // panelLekarza
             // 
@@ -341,6 +365,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn pesel;
         private System.Windows.Forms.DataGridViewTextBoxColumn id;
         private System.Windows.Forms.DataGridViewTextBoxColumn IDpacjent;
+        private System.Windows.Forms.ToolStripButton toolStripButtonHistoria;
+        private System.Windows.Forms.ToolStripButton toolStripButtonPlan;
 
     }
 }

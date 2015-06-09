@@ -19,7 +19,7 @@ namespace Gabinet
         public string idwizyta;
         public string pracownik;
         public string data;
-        private Rejestracja rodzicRejestracja;
+        //private Rejestracja rodzicRejestracja;
         private bool flag = false;
 
         public pacjentWizyta(string idpacjentreceive)
@@ -33,13 +33,13 @@ namespace Gabinet
             
         }
 
-        public pacjentWizyta(string idpacjentreceive, Rejestracja parent, bool flagreceive)
+        public pacjentWizyta(string idpacjentreceive, bool flagreceive)
         {
             InitializeComponent();
             this.MaximumSize = this.Size;
             this.MinimumSize = this.Size;
             this.idpacjent = idpacjentreceive;
-            this.rodzicRejestracja = parent;
+            //this.rodzicRejestracja = parent;
             this.dbconnection_gabinet = "datasource=" + mysettings.Default.datasource + ";database=" + mysettings.Default.database + ";port=" + mysettings.Default.port + ";username=" + mysettings.Default.user + ";password=" + mysettings.Default.password + ";charset=utf8";
             this.flag = flagreceive;
             if (flag)

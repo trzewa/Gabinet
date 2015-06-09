@@ -164,5 +164,67 @@ namespace Gabinet
                 }
             }
         }
+
+        private void toolStripButtonHistoria_Click(object sender, EventArgs e)
+        {
+            bool IsOpen = false;
+
+            foreach (Form f in Application.OpenForms)
+            {
+                if (f.Text == "Historia wizyt pacjenta")
+                {
+                    IsOpen = true;
+                    f.Focus();
+                    break;
+                }
+            }
+            if (IsOpen == false)
+            {
+                if (dataGridViewWizyta.RowCount != 0)
+                {
+                    this.Opacity = 0.5;
+                    int row = dataGridViewWizyta.CurrentCell.RowIndex;
+                    string id = dataGridViewWizyta.Rows[row].Cells[5].Value.ToString();
+                    pacjentWizyta f2 = new pacjentWizyta(id, true);
+                    f2.ShowDialog();
+                    this.Opacity = 1;
+                }
+                else
+                {
+                    MessageBox.Show("Musisz wybrać pacjenta!");
+                }
+            }
+        }
+
+        private void toolStripButtonPlan_Click(object sender, EventArgs e)
+        {
+            bool IsOpen = false;
+
+            foreach (Form f in Application.OpenForms)
+            {
+                if (f.Text == "Zaplanowane wizyty pacjenta")
+                {
+                    IsOpen = true;
+                    f.Focus();
+                    break;
+                }
+            }
+            if (IsOpen == false)
+            {
+                if (dataGridViewWizyta.RowCount != 0)
+                {
+                    this.Opacity = 0.5;
+                    int row = dataGridViewWizyta.CurrentCell.RowIndex;
+                    string id = dataGridViewWizyta.Rows[row].Cells[5].Value.ToString();
+                    pacjentWizyta f2 = new pacjentWizyta(id, false);
+                    f2.ShowDialog();
+                    this.Opacity = 1;
+                }
+                else
+                {
+                    MessageBox.Show("Musisz wybrać pacjenta!");
+                }
+            }
+        }
     }
 }

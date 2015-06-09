@@ -55,11 +55,16 @@
             this.buttonSkierowanie = new System.Windows.Forms.Button();
             this.buttonZwolnienie = new System.Windows.Forms.Button();
             this.buttonRecepta = new System.Windows.Forms.Button();
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.toolStripButtonInfo = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonHistoria = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonPlan = new System.Windows.Forms.ToolStripButton();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox5.SuspendLayout();
+            this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -347,6 +352,54 @@
             this.buttonRecepta.Text = "Recepta";
             this.buttonRecepta.UseVisualStyleBackColor = true;
             // 
+            // toolStrip1
+            // 
+            this.toolStrip1.AutoSize = false;
+            this.toolStrip1.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.toolStrip1.Dock = System.Windows.Forms.DockStyle.None;
+            this.toolStrip1.GripMargin = new System.Windows.Forms.Padding(0);
+            this.toolStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
+            this.toolStrip1.ImageScalingSize = new System.Drawing.Size(50, 50);
+            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripButtonInfo,
+            this.toolStripButtonHistoria,
+            this.toolStripButtonPlan});
+            this.toolStrip1.Location = new System.Drawing.Point(54, 315);
+            this.toolStrip1.Name = "toolStrip1";
+            this.toolStrip1.Size = new System.Drawing.Size(206, 51);
+            this.toolStrip1.TabIndex = 0;
+            this.toolStrip1.Text = "toolStrip1";
+            // 
+            // toolStripButtonInfo
+            // 
+            this.toolStripButtonInfo.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonInfo.Image = global::Gabinet.Properties.Resources.info_icon;
+            this.toolStripButtonInfo.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonInfo.Name = "toolStripButtonInfo";
+            this.toolStripButtonInfo.Size = new System.Drawing.Size(54, 48);
+            this.toolStripButtonInfo.Text = "Informacja o pacjencie";
+            this.toolStripButtonInfo.Click += new System.EventHandler(this.toolStripButtonInfo_Click);
+            // 
+            // toolStripButtonHistoria
+            // 
+            this.toolStripButtonHistoria.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonHistoria.Image = global::Gabinet.Properties.Resources.fastrewind_icon;
+            this.toolStripButtonHistoria.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonHistoria.Name = "toolStripButtonHistoria";
+            this.toolStripButtonHistoria.Size = new System.Drawing.Size(54, 48);
+            this.toolStripButtonHistoria.Text = "Historia wizyt";
+            this.toolStripButtonHistoria.Click += new System.EventHandler(this.toolStripButtonHistoria_Click);
+            // 
+            // toolStripButtonPlan
+            // 
+            this.toolStripButtonPlan.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonPlan.Image = global::Gabinet.Properties.Resources.fastforward_icon;
+            this.toolStripButtonPlan.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonPlan.Name = "toolStripButtonPlan";
+            this.toolStripButtonPlan.Size = new System.Drawing.Size(54, 48);
+            this.toolStripButtonPlan.Text = "Zarezerwowane wizyty";
+            this.toolStripButtonPlan.Click += new System.EventHandler(this.toolStripButtonPlan_Click);
+            // 
             // Wizyta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -354,6 +407,7 @@
             this.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.ClientSize = new System.Drawing.Size(728, 375);
             this.ControlBox = false;
+            this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.buttonAnuluj);
             this.Controls.Add(this.buttonZakoncz);
@@ -374,6 +428,8 @@
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             this.groupBox5.ResumeLayout(false);
+            this.toolStrip1.ResumeLayout(false);
+            this.toolStrip1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -407,6 +463,10 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
         public System.Windows.Forms.TextBox textBoxKodChoroby;
+        private System.Windows.Forms.ToolStrip toolStrip1;
+        private System.Windows.Forms.ToolStripButton toolStripButtonInfo;
+        private System.Windows.Forms.ToolStripButton toolStripButtonHistoria;
+        private System.Windows.Forms.ToolStripButton toolStripButtonPlan;
 
     }
 }

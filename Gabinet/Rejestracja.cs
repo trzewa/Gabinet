@@ -210,7 +210,7 @@ namespace Gabinet
                     this.Opacity = 0.5;                    
                     int row = dataGridViewPacjenci.CurrentCell.RowIndex;
                     string id = dataGridViewPacjenci.Rows[row].Cells[5].Value.ToString();
-                    pacjentWizyta f2 = new pacjentWizyta(id, this, true);                    
+                    pacjentWizyta f2 = new pacjentWizyta(id, true);                    
                     f2.ShowDialog();
                     this.Opacity = 1;
                 }
@@ -241,7 +241,7 @@ namespace Gabinet
                     this.Opacity = 0.5;
                     int row = dataGridViewPacjenci.CurrentCell.RowIndex;
                     string id = dataGridViewPacjenci.Rows[row].Cells[5].Value.ToString();
-                    pacjentWizyta f2 = new pacjentWizyta(id, this, false);
+                    pacjentWizyta f2 = new pacjentWizyta(id, false);
                     f2.ShowDialog();
                     this.Opacity = 1;
                 }

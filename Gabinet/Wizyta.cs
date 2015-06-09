@@ -209,5 +209,74 @@ namespace Gabinet
                 else MessageBox.Show("Aby wystawić zwolnienie trzeba wybrać kod choroby!", "Brak rozpoznania", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
+
+        private void toolStripButtonInfo_Click(object sender, EventArgs e)
+        {
+            bool IsOpen = false;
+
+            foreach (Form f in Application.OpenForms)
+            {
+                if (f.Text == "Dane pacjenta")
+                {
+                    IsOpen = true;
+                    f.Focus();
+                    break;
+                }
+            }
+            if (IsOpen == false)
+            {
+                    this.Opacity = 0.5;
+                    danePacjent f2 = new danePacjent(this.idpacjent);
+                    f2.ShowDialog();
+                    this.Opacity = 1;
+                
+            }
+        }
+
+        private void toolStripButtonHistoria_Click(object sender, EventArgs e)
+        {
+            bool IsOpen = false;
+
+            foreach (Form f in Application.OpenForms)
+            {
+                if (f.Text == "Historia wizyt pacjenta")
+                {
+                    IsOpen = true;
+                    f.Focus();
+                    break;
+                }
+            }
+            if (IsOpen == false)
+            {
+                
+                    this.Opacity = 0.5;                    
+                    pacjentWizyta f2 = new pacjentWizyta(this.idpacjent, true);
+                    f2.ShowDialog();
+                    this.Opacity = 1;
+                
+            }
+        }
+
+        private void toolStripButtonPlan_Click(object sender, EventArgs e)
+        {
+            bool IsOpen = false;
+
+            foreach (Form f in Application.OpenForms)
+            {
+                if (f.Text == "Zaplanowane wizyty pacjenta")
+                {
+                    IsOpen = true;
+                    f.Focus();
+                    break;
+                }
+            }
+            if (IsOpen == false)
+            {                
+                    this.Opacity = 0.5;                    
+                    pacjentWizyta f2 = new pacjentWizyta(this.idpacjent, false);
+                    f2.ShowDialog();
+                    this.Opacity = 1;               
+            }
+        }
     }
 }
