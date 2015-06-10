@@ -18,6 +18,7 @@ namespace Gabinet
         public string dbconnection_gabinet;
         public string idpracownik;
         public string idpacjent;
+        public string idzwolnienia;
 
         public zwolnienie(Wizyta parent)
         {
@@ -31,6 +32,29 @@ namespace Gabinet
             Update_adresPacjent();
             Update_danePracownik();
             Update_comboBoxes();
+        }
+
+        public zwolnienie(string idzwolnieniaReceive, Wizyta parent)
+        {
+            InitializeComponent();
+            this.MaximumSize = this.Size;
+            this.MinimumSize = this.Size;
+            this.dbconnection_gabinet = "datasource=" + mysettings.Default.datasource + ";database=" + mysettings.Default.database + ";port=" + mysettings.Default.port + ";username=" + mysettings.Default.user + ";password=" + mysettings.Default.password + ";charset=utf8";
+            this.idzwolnienia = idzwolnieniaReceive;
+            this.rodzicWizyta = parent;
+            this.Text = "Zwolnienie";
+            buttonZapisz.Visible = false;
+            comboBoxUbezpieczonyW.Enabled = false;
+            dateTimePickerOd.Enabled = false;
+            dateTimePickerDo.Enabled = false;
+            textBoxSzpital.Enabled = false;
+            comboBoxKody.Enabled = false;
+            comboBoxWskazania.Enabled = false;
+            Set_IDs();
+            Update_danePacjent();
+            Update_adresPacjent();
+            Update_danePracownik();
+            //UTWORZYĆ UPDATE POBRANIE DANYCH O ZWOLNIENIU
         }
 
         public void Set_IDs()

@@ -18,22 +18,39 @@ namespace Gabinet
         public string dbconnection_gabinet;
         public string idwizyta;
         public string idpacjent;
-        public string idrecepta;
+        public string idrecepta = null;
         public string idzwolnienie = null;
         public string kod;
         public string nazwa;
         public string idChoroby = null;
         public string idTypBadania = null;
-        
+        private bool flag;
 
-        public Wizyta(string idwizytaReceive)
+        public Wizyta(string idwizytaReceive, bool flagreceive)
         {
             InitializeComponent();
             this.MaximumSize = this.Size;
             this.MinimumSize = this.Size;
             this.dbconnection_gabinet = "datasource=" + mysettings.Default.datasource + ";database=" + mysettings.Default.database + ";port=" + mysettings.Default.port + ";username=" + mysettings.Default.user + ";password=" + mysettings.Default.password + ";charset=utf8";
             this.idwizyta = idwizytaReceive;
+            this.flag = flagreceive;
             Update_danePacjent();
+            buttonZamknij.Visible = false;
+            if (this.flag)
+            {
+                this.Text = "Szczegóły wizyty";
+                buttonZakoncz.Visible = false;
+                buttonAnuluj.Visible = false;
+                buttonZamknij.Visible = true;
+                toolStrip1.Visible = false;
+                buttonSzukajChoroby.Visible = false;
+                buttonSzukajProcedury.Visible = false;
+                textBoxWywiad.Enabled = false;
+                Update_badanie();
+                Update_choroba();
+                Update_wizyta();
+            }
+            
         }
 
         public void Update_danePacjent()
@@ -185,28 +202,53 @@ namespace Gabinet
         private void buttonZwolnienie_Click(object sender, EventArgs e)
         {
             bool IsOpen = false;
-
-            foreach (Form f in Application.OpenForms)
+            if (flag)
             {
-                if (f.Text == "Tworzenie zwolnienia")
+                foreach (Form f in Application.OpenForms)
                 {
-                    IsOpen = true;
-                    f.Focus();
-                    break;
+                    if (f.Text == "Zwolnienie")
+                    {
+                        IsOpen = true;
+                        f.Focus();
+                        break;
+                    }
+                }
+                if (IsOpen == false)
+                {                    
+                        this.Opacity = 0.8;
+                        zwolnienie f2 = new zwolnienie(this.idzwolnienie, this);
+                        f2.Owner = this;    
+                        f2.ShowDialog();
+                        this.Opacity = 1;                                            
                 }
             }
-            if (IsOpen == false)
+            else
             {
-                if (idChoroby != null)
+                foreach (Form f in Application.OpenForms)
                 {
-                    this.Opacity = 0.5;
-                    zwolnienie f2 = new zwolnienie(this);
-                    f2.Owner = this;
-                    f2.ShowDialog();
-                    this.Opacity = 1;
-                    buttonZwolnienie.Enabled = false;
+                    if (f.Text == "Tworzenie zwolnienia")
+                    {
+                        IsOpen = true;
+                        f.Focus();
+                        break;
+                    }
                 }
-                else MessageBox.Show("Aby wystawić zwolnienie trzeba wybrać kod choroby!", "Brak rozpoznania", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                if (IsOpen == false)
+                {
+                    if (idChoroby != null)
+                    {
+                        this.Opacity = 0.5;
+                        zwolnienie f2 = new zwolnienie(this);
+                        f2.Owner = this;
+                        f2.ShowDialog();
+                        this.Opacity = 1;
+                        if (idzwolnienie != null)
+                        {
+                            buttonZwolnienie.Enabled = false;
+                        }
+                    }
+                    else MessageBox.Show("Aby wystawić zwolnienie trzeba wybrać kod choroby!", "Brak rozpoznania", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
             }
         }
 
@@ -277,6 +319,92 @@ namespace Gabinet
                     f2.ShowDialog();
                     this.Opacity = 1;               
             }
+        }
+
+        public void Update_choroba()
+        {
+            try
+            {
+                Database database = new Database();
+                MySqlDataAdapter myDA = new MySqlDataAdapter();
+                myDA = database.Select("select kod_mkch, nazwa_choroby from choroba inner join wizyta on choroba.idchoroby=wizyta.idchoroby where idwizyta = '" + this.idwizyta + "'", this.dbconnection_gabinet);
+                DataTable dT = new DataTable();
+                myDA.Fill(dT);
+
+                if (dT.Rows.Count == 1)
+                {
+                    DataRow element = dT.Rows[0];
+                    this.textBoxKodChoroby.Text = element["kod_mkch"].ToString();
+                    this.textBoxNazwaChoroby.Text = element["nazwa_choroby"].ToString();                    
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        public void Update_badanie()
+        {
+            try
+            {
+                Database database = new Database();
+                MySqlDataAdapter myDA = new MySqlDataAdapter();
+                myDA = database.Select("select kod_badania, nazwa_badania from typbadania inner join wizyta on typbadania.idtyp_badania=wizyta.idtyp_badania where idwizyta = '" + this.idwizyta + "'", this.dbconnection_gabinet);
+                DataTable dT = new DataTable();
+                myDA.Fill(dT);
+
+                if (dT.Rows.Count == 1)
+                {
+                    DataRow element = dT.Rows[0];
+                    this.textBoxKod.Text = element["kod_badania"].ToString();
+                    this.textBoxNazwa.Text = element["nazwa_badania"].ToString();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        public void Update_wizyta()
+        {
+            try
+            {
+                Database database = new Database();
+                MySqlDataAdapter myDA = new MySqlDataAdapter();
+                myDA = database.Select("select idrecepty, idzwolnienia, skierowanie, wywiad from wizyta where idwizyta = '" + this.idwizyta + "'", this.dbconnection_gabinet);
+                DataTable dT = new DataTable();
+                myDA.Fill(dT);
+
+                if (dT.Rows.Count == 1)
+                {
+                    DataRow element = dT.Rows[0];                    
+                    this.idrecepta = element["idrecepty"].ToString();
+                    this.idzwolnienie = element["idzwolnienia"].ToString();
+                    textBoxWywiad.Text = element["wywiad"].ToString();
+                }
+
+                if (this.idrecepta == "")
+                {
+                    this.buttonRecepta.Enabled = false;
+                }
+
+                if (this.idzwolnienie == "")
+                {
+                    this.buttonZwolnienie.Enabled = false;
+                }
+               
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void buttonZamknij_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

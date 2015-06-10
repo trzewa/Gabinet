@@ -29,6 +29,7 @@ namespace Gabinet
             this.MinimumSize = this.Size;
             this.idpacjent = idpacjentreceive;
             this.dbconnection_gabinet = "datasource=" + mysettings.Default.datasource + ";database=" + mysettings.Default.database + ";port=" + mysettings.Default.port + ";username=" + mysettings.Default.user + ";password=" + mysettings.Default.password + ";charset=utf8";
+            buttonInfo.Visible = false;
             Update_wizyta();
             
         }
@@ -45,12 +46,17 @@ namespace Gabinet
             if (flag)
             {
                 this.Text = "Historia wizyt pacjenta";
+                buttonInfo.Visible = true;
             }
-            else this.Text = "Zaplanowane wizyty pacjenta";
-            
+            else
+            {
+                this.Text = "Zaplanowane wizyty pacjenta";
+                buttonInfo.Visible = false;
+            }
             groupBox1.Text = "Lista wizyt pacjenta";
             buttonZmien.Visible = false;
             buttonUsun.Visible = false;
+            
             Update_wizyta();
         }
 
@@ -133,6 +139,37 @@ namespace Gabinet
             else
             {
                 MessageBox.Show("Brak wizyt do edycji!", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void buttonInfo_Click(object sender, EventArgs e)
+        {
+            bool IsOpen = false;
+
+            foreach (Form f in Application.OpenForms)
+            {
+                if (f.Text == "Szczegóły wizyty")
+                {
+                    IsOpen = true;
+                    f.Focus();
+                    break;
+                }
+            }
+            if (IsOpen == false)
+            {
+                if (dataGridViewWizyty.RowCount != 0)
+                {
+                    this.Opacity = 0.8;
+                    int row = dataGridViewWizyty.CurrentCell.RowIndex;
+                    this.idwizyta = dataGridViewWizyty.Rows[row].Cells[2].Value.ToString();
+                    Wizyta f2 = new Wizyta(this.idwizyta, true);
+                    f2.ShowDialog();
+                    this.Opacity = 1;                    
+                }
+                else
+                {
+                    MessageBox.Show("Musisz wybrać wizyte!");
+                }
             }
         }
     }

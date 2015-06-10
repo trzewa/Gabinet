@@ -121,7 +121,7 @@ namespace Gabinet
                     this.Visible = false;
                     int row = dataGridViewWizyta.CurrentCell.RowIndex;
                     this.idwizyta = dataGridViewWizyta.Rows[row].Cells[4].Value.ToString();
-                    Wizyta f2 = new Wizyta(this.idwizyta);                    
+                    Wizyta f2 = new Wizyta(this.idwizyta, false);                    
                     f2.ShowDialog();
                     this.Visible = true;
                     Update_Godziny();

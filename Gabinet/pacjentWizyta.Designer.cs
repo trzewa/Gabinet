@@ -38,6 +38,7 @@
             this.idp = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.buttonZmien = new System.Windows.Forms.Button();
             this.buttonUsun = new System.Windows.Forms.Button();
+            this.buttonInfo = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewWizyty)).BeginInit();
             this.SuspendLayout();
@@ -138,12 +139,23 @@
             this.buttonUsun.UseVisualStyleBackColor = true;
             this.buttonUsun.Click += new System.EventHandler(this.button1_Click);
             // 
+            // buttonInfo
+            // 
+            this.buttonInfo.Location = new System.Drawing.Point(12, 244);
+            this.buttonInfo.Name = "buttonInfo";
+            this.buttonInfo.Size = new System.Drawing.Size(75, 23);
+            this.buttonInfo.TabIndex = 3;
+            this.buttonInfo.Text = "Szczegóły";
+            this.buttonInfo.UseVisualStyleBackColor = true;
+            this.buttonInfo.Click += new System.EventHandler(this.buttonInfo_Click);
+            // 
             // pacjentWizyta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.ClientSize = new System.Drawing.Size(502, 275);
+            this.Controls.Add(this.buttonInfo);
             this.Controls.Add(this.buttonUsun);
             this.Controls.Add(this.buttonZmien);
             this.Controls.Add(this.groupBox1);
@@ -168,5 +180,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn idw;
         private System.Windows.Forms.DataGridViewTextBoxColumn idp;
         private System.Windows.Forms.Button buttonUsun;
+        private System.Windows.Forms.Button buttonInfo;
     }
 }

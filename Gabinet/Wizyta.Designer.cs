@@ -59,6 +59,7 @@
             this.toolStripButtonInfo = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonHistoria = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonPlan = new System.Windows.Forms.ToolStripButton();
+            this.buttonZamknij = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -400,6 +401,16 @@
             this.toolStripButtonPlan.Text = "Zarezerwowane wizyty";
             this.toolStripButtonPlan.Click += new System.EventHandler(this.toolStripButtonPlan_Click);
             // 
+            // buttonZamknij
+            // 
+            this.buttonZamknij.Location = new System.Drawing.Point(642, 337);
+            this.buttonZamknij.Name = "buttonZamknij";
+            this.buttonZamknij.Size = new System.Drawing.Size(75, 23);
+            this.buttonZamknij.TabIndex = 15;
+            this.buttonZamknij.Text = "Zamknij";
+            this.buttonZamknij.UseVisualStyleBackColor = true;
+            this.buttonZamknij.Click += new System.EventHandler(this.buttonZamknij_Click);
+            // 
             // Wizyta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -407,6 +418,7 @@
             this.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.ClientSize = new System.Drawing.Size(728, 375);
             this.ControlBox = false;
+            this.Controls.Add(this.buttonZamknij);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.buttonAnuluj);
@@ -467,6 +479,7 @@
         private System.Windows.Forms.ToolStripButton toolStripButtonInfo;
         private System.Windows.Forms.ToolStripButton toolStripButtonHistoria;
         private System.Windows.Forms.ToolStripButton toolStripButtonPlan;
+        private System.Windows.Forms.Button buttonZamknij;
 
     }
 }
