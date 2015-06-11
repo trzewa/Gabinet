@@ -109,7 +109,8 @@ namespace Gabinet
                     f2.Owner = this;
                     f2.ShowDialog();
                     this.Visible = true;
-                    this.Close();
+                    Update_wizyta();
+                    //this.Close();
                 }
                 else
                 {

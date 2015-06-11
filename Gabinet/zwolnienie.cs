@@ -19,6 +19,7 @@ namespace Gabinet
         public string idpracownik;
         public string idpacjent;
         public string idzwolnienia;
+        public string data;
 
         public zwolnienie(Wizyta parent)
         {
@@ -54,14 +55,15 @@ namespace Gabinet
             Update_danePacjent();
             Update_adresPacjent();
             Update_danePracownik();
-            //UTWORZYĆ UPDATE POBRANIE DANYCH O ZWOLNIENIU
+            Update_daneNiezdolnosci();
+            
         }
 
         public void Set_IDs()
         {
             Database database = new Database();
             MySqlDataAdapter myDataAdapter = new MySqlDataAdapter();
-            myDataAdapter = database.Select("select idpracownik, idpacjent from wizyta where idwizyta='" + this.rodzicWizyta.idwizyta + "'", this.dbconnection_gabinet);
+            myDataAdapter = database.Select("select idpracownik, idpacjent, data from wizyta where idwizyta='" + this.rodzicWizyta.idwizyta + "'", this.dbconnection_gabinet);
             DataTable dt = new DataTable();
             myDataAdapter.Fill(dt);
             
@@ -71,6 +73,7 @@ namespace Gabinet
                 DataRow element = dt.Rows[0];
                 this.idpacjent = element["idpacjent"].ToString();
                 this.idpracownik = element["idpracownik"].ToString();
+                this.data = element["data"].ToString();
             }
         }
 
@@ -156,6 +159,28 @@ namespace Gabinet
             comboBoxWskazania.DisplayMember = "Value";
             comboBoxWskazania.ValueMember = "Key";
 
+        }
+
+        public void Update_daneNiezdolnosci()
+        {
+            Update_comboBoxes();
+            this.dateTimePickerWystawienia.Text = this.data.ToString();
+            Database database = new Database();
+            MySqlDataAdapter myDataAdapter = new MySqlDataAdapter();
+            myDataAdapter = database.Select("select * from zwolnienie where idzwolnienia='" + this.idzwolnienia + "'", this.dbconnection_gabinet);
+            DataTable dt = new DataTable();
+            myDataAdapter.Fill(dt);
+
+            if (dt.Rows.Count == 1)
+            {
+                DataRow element = dt.Rows[0];
+                dateTimePickerOd.Text = element["od"].ToString();
+                dateTimePickerDo.Text = element["do"].ToString();
+                this.textBoxSzpital.Text = element["szpital"].ToString();
+                this.comboBoxUbezpieczonyW.SelectedIndex = comboBoxUbezpieczonyW.FindStringExact(element["ubezpieczony"].ToString());
+                this.comboBoxKody.SelectedIndex = comboBoxKody.FindStringExact(element["kody"].ToString());
+                this.comboBoxWskazania.SelectedIndex = comboBoxWskazania.FindStringExact(element["wskazania"].ToString());
+            }
         }
 
         private void buttonZapisz_Click(object sender, EventArgs e)

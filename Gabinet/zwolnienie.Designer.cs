@@ -322,15 +322,15 @@
             // textBoxChoroba
             // 
             this.textBoxChoroba.Enabled = false;
-            this.textBoxChoroba.Location = new System.Drawing.Point(371, 73);
+            this.textBoxChoroba.Location = new System.Drawing.Point(173, 72);
             this.textBoxChoroba.Name = "textBoxChoroba";
-            this.textBoxChoroba.Size = new System.Drawing.Size(136, 20);
+            this.textBoxChoroba.Size = new System.Drawing.Size(134, 20);
             this.textBoxChoroba.TabIndex = 11;
             // 
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(368, 57);
+            this.label16.Location = new System.Drawing.Point(170, 58);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(139, 13);
             this.label16.TabIndex = 10;
@@ -348,15 +348,15 @@
             // comboBoxWskazania
             // 
             this.comboBoxWskazania.FormattingEnabled = true;
-            this.comboBoxWskazania.Location = new System.Drawing.Point(193, 72);
+            this.comboBoxWskazania.Location = new System.Drawing.Point(344, 72);
             this.comboBoxWskazania.Name = "comboBoxWskazania";
-            this.comboBoxWskazania.Size = new System.Drawing.Size(122, 21);
+            this.comboBoxWskazania.Size = new System.Drawing.Size(163, 21);
             this.comboBoxWskazania.TabIndex = 7;
             // 
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(190, 56);
+            this.label14.Location = new System.Drawing.Point(341, 58);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(105, 13);
             this.label14.TabIndex = 6;
@@ -364,15 +364,15 @@
             // 
             // textBoxSzpital
             // 
-            this.textBoxSzpital.Location = new System.Drawing.Point(371, 32);
+            this.textBoxSzpital.Location = new System.Drawing.Point(344, 32);
             this.textBoxSzpital.Name = "textBoxSzpital";
-            this.textBoxSzpital.Size = new System.Drawing.Size(136, 20);
+            this.textBoxSzpital.Size = new System.Drawing.Size(163, 20);
             this.textBoxSzpital.TabIndex = 5;
             // 
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(368, 16);
+            this.label13.Location = new System.Drawing.Point(341, 16);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(83, 13);
             this.label13.TabIndex = 4;
@@ -382,15 +382,15 @@
             // 
             this.dateTimePickerDo.CustomFormat = "yyyy-MM-dd";
             this.dateTimePickerDo.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePickerDo.Location = new System.Drawing.Point(193, 32);
+            this.dateTimePickerDo.Location = new System.Drawing.Point(173, 32);
             this.dateTimePickerDo.Name = "dateTimePickerDo";
-            this.dateTimePickerDo.Size = new System.Drawing.Size(122, 20);
+            this.dateTimePickerDo.Size = new System.Drawing.Size(134, 20);
             this.dateTimePickerDo.TabIndex = 3;
             // 
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(190, 16);
+            this.label12.Location = new System.Drawing.Point(170, 16);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(21, 13);
             this.label12.TabIndex = 2;
