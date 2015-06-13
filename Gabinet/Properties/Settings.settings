@@ -17,5 +17,14 @@
     <Setting Name="datasource" Type="System.String" Scope="User">
       <Value Profile="(Default)">1an.eu</Value>
     </Setting>
+    <Setting Name="provider" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Microsoft.Jet.OLEDB.4.0</Value>
+    </Setting>
+    <Setting Name="dsdbf" Type="System.String" Scope="User">
+      <Value Profile="(Default)">C:\Baza</Value>
+    </Setting>
+    <Setting Name="properties" Type="System.String" Scope="User">
+      <Value Profile="(Default)">dBASE IV</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

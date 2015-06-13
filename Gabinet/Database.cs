@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
+using System.Data.OleDb;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
@@ -23,6 +24,16 @@ namespace Gabinet
                 myConn.Open();
                 return myDataAdapter;
                 
+        }
+
+        public OleDbDataAdapter SelectDbf(string query, string db_connection)
+        {
+            OleDbConnection myConn = new OleDbConnection(db_connection);
+            OleDbDataAdapter myDataAdapter = new OleDbDataAdapter();
+            myDataAdapter.SelectCommand = new OleDbCommand(query, myConn);
+            OleDbCommandBuilder cb = new OleDbCommandBuilder(myDataAdapter);
+            myConn.Open();
+            return myDataAdapter;
         }
 
       public void Delete(string query, string db_connection)

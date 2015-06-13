@@ -154,6 +154,12 @@
     <Compile Include="pacjentWizyta.Designer.cs">
       <DependentUpon>pacjentWizyta.cs</DependentUpon>
     </Compile>
+    <Compile Include="recepta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="recepta.Designer.cs">
+      <DependentUpon>recepta.cs</DependentUpon>
+    </Compile>
     <Compile Include="zwolnienie.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -231,6 +237,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="pacjentWizyta.resx">
       <DependentUpon>pacjentWizyta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="recepta.resx">
+      <DependentUpon>recepta.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="zwolnienie.resx">
       <DependentUpon>zwolnienie.cs</DependentUpon>
