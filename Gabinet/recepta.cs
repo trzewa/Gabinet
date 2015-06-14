@@ -49,7 +49,7 @@ namespace Gabinet
                 string lek = this.textBoxLek.Text.ToUpper();
                 OleDbDataAdapter myDataAdapter = new OleDbDataAdapter();
                 Database database = new Database();
-                myDataAdapter = database.SelectDbf("select NAZWA, POSTAC, OPAKOWANIE from PODSTAW.DBF where NAZWA like '%" + lek + "%'", dbconnection_lek);
+                myDataAdapter = database.SelectDbf("select * from PODSTAW.DBF where NAZWA like '%" + lek + "%'", dbconnection_lek);
                 DataTable dt = new DataTable();
                 myDataAdapter.Fill(dt);
                 dataGridViewLek.DataSource = dt.DefaultView;
@@ -76,10 +76,15 @@ namespace Gabinet
             }
             if (IsOpen == false)
             {
+                int row = dataGridViewLek.CurrentCell.RowIndex;
+                string id = dataGridViewLek.Rows[row].Cells[0].Value.ToString();
                 this.Opacity = 0.5;
-                lekRecepta f2 = new lekRecepta();
+                lekRecepta f2 = new lekRecepta(id);
+                f2.Owner = this;
                 f2.ShowDialog();
                 this.Opacity = 1;
+                ListViewItem item = new ListViewItem(f2.nazwa + " - " + f2.opakowanie + "\nIlość: " + f2.ilosc + "\t" + f2.odplatnosc + "\n Dawkowanie: " + f2.dawkowanie);
+                listViewRecepta.Items.Add(item);
             }
         }
         

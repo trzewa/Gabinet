@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem("");
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.buttonDopisz = new System.Windows.Forms.Button();
             this.buttonZnajdz = new System.Windows.Forms.Button();
@@ -42,9 +43,9 @@
             this.textBoxLek = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.listViewRecepta = new System.Windows.Forms.ListView();
             this.buttonAnuluj = new System.Windows.Forms.Button();
             this.buttonZapisz = new System.Windows.Forms.Button();
-            this.listViewRecepta = new System.Windows.Forms.ListView();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewLek)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -196,6 +197,17 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Recepta";
             // 
+            // listViewRecepta
+            // 
+            this.listViewRecepta.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
+            listViewItem1});
+            this.listViewRecepta.Location = new System.Drawing.Point(6, 45);
+            this.listViewRecepta.Name = "listViewRecepta";
+            this.listViewRecepta.Size = new System.Drawing.Size(185, 273);
+            this.listViewRecepta.TabIndex = 4;
+            this.listViewRecepta.UseCompatibleStateImageBehavior = false;
+            this.listViewRecepta.View = System.Windows.Forms.View.Tile;
+            // 
             // buttonAnuluj
             // 
             this.buttonAnuluj.Location = new System.Drawing.Point(797, 351);
@@ -213,14 +225,6 @@
             this.buttonZapisz.TabIndex = 3;
             this.buttonZapisz.Text = "Zapisz";
             this.buttonZapisz.UseVisualStyleBackColor = true;
-            // 
-            // listViewRecepta
-            // 
-            this.listViewRecepta.Location = new System.Drawing.Point(6, 45);
-            this.listViewRecepta.Name = "listViewRecepta";
-            this.listViewRecepta.Size = new System.Drawing.Size(185, 273);
-            this.listViewRecepta.TabIndex = 4;
-            this.listViewRecepta.UseCompatibleStateImageBehavior = false;
             // 
             // recepta
             // 
