@@ -60,6 +60,28 @@ namespace Gabinet
                 MessageBox.Show(ex.Message);
             }
         }
+
+        private void buttonDopisz_Click(object sender, EventArgs e)
+        {
+            bool IsOpen = false;
+
+            foreach (Form f in Application.OpenForms)
+            {
+                if (f.Text == "Dopisz lek do recepty")
+                {
+                    IsOpen = true;
+                    f.Focus();
+                    break;
+                }
+            }
+            if (IsOpen == false)
+            {
+                this.Opacity = 0.5;
+                lekRecepta f2 = new lekRecepta();
+                f2.ShowDialog();
+                this.Opacity = 1;
+            }
+        }
         
     }
 }

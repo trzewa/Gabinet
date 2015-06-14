@@ -29,11 +29,9 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.textBoxLek = new System.Windows.Forms.TextBox();
-            this.dataGridViewLek = new System.Windows.Forms.DataGridView();
-            this.buttonZnajdz = new System.Windows.Forms.Button();
             this.buttonDopisz = new System.Windows.Forms.Button();
+            this.buttonZnajdz = new System.Windows.Forms.Button();
+            this.dataGridViewLek = new System.Windows.Forms.DataGridView();
             this.bazyl = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nazwa = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.postac = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -41,8 +39,15 @@
             this.opakowanie = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.sl_prod = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.wersja = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.textBoxLek = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.buttonAnuluj = new System.Windows.Forms.Button();
+            this.buttonZapisz = new System.Windows.Forms.Button();
+            this.listViewRecepta = new System.Windows.Forms.ListView();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewLek)).BeginInit();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -60,23 +65,27 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Wyszukaj lek";
             // 
-            // label1
+            // buttonDopisz
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label1.Location = new System.Drawing.Point(47, 22);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(63, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Nazwa leku";
+            this.buttonDopisz.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.buttonDopisz.Location = new System.Drawing.Point(532, 339);
+            this.buttonDopisz.Name = "buttonDopisz";
+            this.buttonDopisz.Size = new System.Drawing.Size(128, 23);
+            this.buttonDopisz.TabIndex = 3;
+            this.buttonDopisz.Text = "Dopisz do recepty";
+            this.buttonDopisz.UseVisualStyleBackColor = true;
+            this.buttonDopisz.Click += new System.EventHandler(this.buttonDopisz_Click);
             // 
-            // textBoxLek
+            // buttonZnajdz
             // 
-            this.textBoxLek.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.textBoxLek.Location = new System.Drawing.Point(116, 19);
-            this.textBoxLek.Name = "textBoxLek";
-            this.textBoxLek.Size = new System.Drawing.Size(282, 20);
-            this.textBoxLek.TabIndex = 1;
+            this.buttonZnajdz.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.buttonZnajdz.Location = new System.Drawing.Point(404, 17);
+            this.buttonZnajdz.Name = "buttonZnajdz";
+            this.buttonZnajdz.Size = new System.Drawing.Size(75, 23);
+            this.buttonZnajdz.TabIndex = 2;
+            this.buttonZnajdz.Text = "Znajdź";
+            this.buttonZnajdz.UseVisualStyleBackColor = true;
+            this.buttonZnajdz.Click += new System.EventHandler(this.buttonZnajdz_Click);
             // 
             // dataGridViewLek
             // 
@@ -100,27 +109,6 @@
             this.dataGridViewLek.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewLek.Size = new System.Drawing.Size(654, 273);
             this.dataGridViewLek.TabIndex = 1;
-            // 
-            // buttonZnajdz
-            // 
-            this.buttonZnajdz.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.buttonZnajdz.Location = new System.Drawing.Point(404, 17);
-            this.buttonZnajdz.Name = "buttonZnajdz";
-            this.buttonZnajdz.Size = new System.Drawing.Size(75, 23);
-            this.buttonZnajdz.TabIndex = 2;
-            this.buttonZnajdz.Text = "Znajdź";
-            this.buttonZnajdz.UseVisualStyleBackColor = true;
-            this.buttonZnajdz.Click += new System.EventHandler(this.buttonZnajdz_Click);
-            // 
-            // buttonDopisz
-            // 
-            this.buttonDopisz.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.buttonDopisz.Location = new System.Drawing.Point(532, 339);
-            this.buttonDopisz.Name = "buttonDopisz";
-            this.buttonDopisz.Size = new System.Drawing.Size(128, 23);
-            this.buttonDopisz.TabIndex = 3;
-            this.buttonDopisz.Text = "Dopisz do recepty";
-            this.buttonDopisz.UseVisualStyleBackColor = true;
             // 
             // bazyl
             // 
@@ -179,18 +167,78 @@
             this.wersja.ReadOnly = true;
             this.wersja.Visible = false;
             // 
+            // textBoxLek
+            // 
+            this.textBoxLek.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.textBoxLek.Location = new System.Drawing.Point(116, 19);
+            this.textBoxLek.Name = "textBoxLek";
+            this.textBoxLek.Size = new System.Drawing.Size(282, 20);
+            this.textBoxLek.TabIndex = 1;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label1.Location = new System.Drawing.Point(47, 22);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(63, 13);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Nazwa leku";
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.listViewRecepta);
+            this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.groupBox2.Location = new System.Drawing.Point(675, 12);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(197, 333);
+            this.groupBox2.TabIndex = 1;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Recepta";
+            // 
+            // buttonAnuluj
+            // 
+            this.buttonAnuluj.Location = new System.Drawing.Point(797, 351);
+            this.buttonAnuluj.Name = "buttonAnuluj";
+            this.buttonAnuluj.Size = new System.Drawing.Size(75, 23);
+            this.buttonAnuluj.TabIndex = 2;
+            this.buttonAnuluj.Text = "Anuluj";
+            this.buttonAnuluj.UseVisualStyleBackColor = true;
+            // 
+            // buttonZapisz
+            // 
+            this.buttonZapisz.Location = new System.Drawing.Point(716, 351);
+            this.buttonZapisz.Name = "buttonZapisz";
+            this.buttonZapisz.Size = new System.Drawing.Size(75, 23);
+            this.buttonZapisz.TabIndex = 3;
+            this.buttonZapisz.Text = "Zapisz";
+            this.buttonZapisz.UseVisualStyleBackColor = true;
+            // 
+            // listViewRecepta
+            // 
+            this.listViewRecepta.Location = new System.Drawing.Point(6, 45);
+            this.listViewRecepta.Name = "listViewRecepta";
+            this.listViewRecepta.Size = new System.Drawing.Size(185, 273);
+            this.listViewRecepta.TabIndex = 4;
+            this.listViewRecepta.UseCompatibleStateImageBehavior = false;
+            // 
             // recepta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.ClientSize = new System.Drawing.Size(779, 392);
+            this.ClientSize = new System.Drawing.Size(884, 392);
+            this.Controls.Add(this.buttonZapisz);
+            this.Controls.Add(this.buttonAnuluj);
+            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Name = "recepta";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Recepta";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewLek)).EndInit();
+            this.groupBox2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -210,5 +258,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn opakowanie;
         private System.Windows.Forms.DataGridViewTextBoxColumn sl_prod;
         private System.Windows.Forms.DataGridViewTextBoxColumn wersja;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.ListView listViewRecepta;
+        private System.Windows.Forms.Button buttonAnuluj;
+        private System.Windows.Forms.Button buttonZapisz;
     }
 }
