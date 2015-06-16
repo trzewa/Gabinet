@@ -25,8 +25,8 @@ namespace Gabinet
             //Application.Run(new danePacjent());
             //Application.Run(new bazaDane());
             //Application.Run(new zwolnienie());
-            //Application.Run(new recepta());
-            Application.Run(new Login());
+            Application.Run(new recepta());
+            //Application.Run(new Login());
         }
     }
 }

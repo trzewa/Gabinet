@@ -22,6 +22,7 @@ namespace Gabinet
         public string nazwa;
         public string opakowanie;
         public string postac;
+        public bool flag;
 
         public lekRecepta()
         {
@@ -72,6 +73,7 @@ namespace Gabinet
 
         private void buttonWróć_Click(object sender, EventArgs e)
         {
+            flag = false;
             this.Close();
         }
 
@@ -80,6 +82,7 @@ namespace Gabinet
             this.ilosc = comboBoxIlosc.SelectedItem.ToString();
             this.odplatnosc = comboBoxOdplatnosc.SelectedItem.ToString();
             this.dawkowanie = textBoxDawkowanie.Text.ToString();
+            flag = true;
             this.Close();
         }
     }

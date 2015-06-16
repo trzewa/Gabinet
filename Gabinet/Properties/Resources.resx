@@ -130,6 +130,9 @@
   <data name="x" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\x.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="addition-icon1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\addition-icon1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="settings-3-icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\settings-3-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -157,11 +160,11 @@
   <data name="dodajpacjenta" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\dodajpacjenta.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="contact-icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\contact-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="edit" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\edit.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="inside-logout-icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\inside-logout-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="myspace-icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\myspace-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -174,9 +177,6 @@
   </data>
   <data name="info-icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\info-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="stop-icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\stop-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="exit-button-hi" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\exit-button-hi.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -211,17 +211,20 @@
   <data name="clock-icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\clock-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="phonebook-icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\phonebook-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="pacjent" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\pacjent.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="download-3-icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\download-3-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="addition-icon1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\addition-icon1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="inside-logout-icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\inside-logout-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="phonebook-icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\phonebook-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="stop-icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\stop-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="lekarz" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\lekarz.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -229,7 +232,7 @@
   <data name="zmień" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\zmień.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="contact-icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\contact-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="usun" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\usun.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

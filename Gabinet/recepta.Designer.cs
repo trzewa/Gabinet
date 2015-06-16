@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem("");
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.buttonDopisz = new System.Windows.Forms.Button();
             this.buttonZnajdz = new System.Windows.Forms.Button();
@@ -43,9 +42,14 @@
             this.textBoxLek = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.comboBoxUprawnienia = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.listViewRecepta = new System.Windows.Forms.ListView();
             this.buttonAnuluj = new System.Windows.Forms.Button();
             this.buttonZapisz = new System.Windows.Forms.Button();
+            this.buttonUsun = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewLek)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -188,6 +192,11 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.buttonUsun);
+            this.groupBox2.Controls.Add(this.comboBoxUprawnienia);
+            this.groupBox2.Controls.Add(this.label3);
+            this.groupBox2.Controls.Add(this.label2);
+            this.groupBox2.Controls.Add(this.dateTimePicker1);
             this.groupBox2.Controls.Add(this.listViewRecepta);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.groupBox2.Location = new System.Drawing.Point(675, 12);
@@ -197,16 +206,57 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Recepta";
             // 
+            // comboBoxUprawnienia
+            // 
+            this.comboBoxUprawnienia.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.comboBoxUprawnienia.FormattingEnabled = true;
+            this.comboBoxUprawnienia.Location = new System.Drawing.Point(9, 297);
+            this.comboBoxUprawnienia.Name = "comboBoxUprawnienia";
+            this.comboBoxUprawnienia.Size = new System.Drawing.Size(182, 21);
+            this.comboBoxUprawnienia.TabIndex = 4;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label3.Location = new System.Drawing.Point(6, 281);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(66, 13);
+            this.label3.TabIndex = 3;
+            this.label3.Text = "Uprawnienia";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label2.Location = new System.Drawing.Point(6, 242);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(73, 13);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "Data realizacji";
+            // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.CustomFormat = "yyyy-MM-dd";
+            this.dateTimePicker1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTimePicker1.Location = new System.Drawing.Point(9, 258);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.ShowUpDown = true;
+            this.dateTimePicker1.Size = new System.Drawing.Size(110, 20);
+            this.dateTimePicker1.TabIndex = 1;
+            // 
             // listViewRecepta
             // 
-            this.listViewRecepta.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem1});
+            this.listViewRecepta.GridLines = true;
             this.listViewRecepta.Location = new System.Drawing.Point(6, 45);
             this.listViewRecepta.Name = "listViewRecepta";
-            this.listViewRecepta.Size = new System.Drawing.Size(185, 273);
-            this.listViewRecepta.TabIndex = 4;
+            this.listViewRecepta.RightToLeftLayout = true;
+            this.listViewRecepta.ShowItemToolTips = true;
+            this.listViewRecepta.Size = new System.Drawing.Size(185, 194);
+            this.listViewRecepta.TabIndex = 0;
             this.listViewRecepta.UseCompatibleStateImageBehavior = false;
-            this.listViewRecepta.View = System.Windows.Forms.View.Tile;
+            this.listViewRecepta.View = System.Windows.Forms.View.List;
             // 
             // buttonAnuluj
             // 
@@ -226,6 +276,18 @@
             this.buttonZapisz.Text = "Zapisz";
             this.buttonZapisz.UseVisualStyleBackColor = true;
             // 
+            // buttonUsun
+            // 
+            this.buttonUsun.BackColor = System.Drawing.Color.Transparent;
+            this.buttonUsun.BackgroundImage = global::Gabinet.Properties.Resources.usun;
+            this.buttonUsun.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.buttonUsun.Location = new System.Drawing.Point(6, 17);
+            this.buttonUsun.Name = "buttonUsun";
+            this.buttonUsun.Size = new System.Drawing.Size(23, 23);
+            this.buttonUsun.TabIndex = 5;
+            this.buttonUsun.UseVisualStyleBackColor = false;
+            this.buttonUsun.Click += new System.EventHandler(this.buttonUsun_Click);
+            // 
             // recepta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -243,6 +305,7 @@
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewLek)).EndInit();
             this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -263,8 +326,13 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn sl_prod;
         private System.Windows.Forms.DataGridViewTextBoxColumn wersja;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.ListView listViewRecepta;
         private System.Windows.Forms.Button buttonAnuluj;
         private System.Windows.Forms.Button buttonZapisz;
+        private System.Windows.Forms.ListView listViewRecepta;
+        private System.Windows.Forms.ComboBox comboBoxUprawnienia;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.Button buttonUsun;
     }
 }
