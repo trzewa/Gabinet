@@ -42,14 +42,19 @@
             this.textBoxLek = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.buttonUsun = new System.Windows.Forms.Button();
             this.comboBoxUprawnienia = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePickerRealizacja = new System.Windows.Forms.DateTimePicker();
             this.listViewRecepta = new System.Windows.Forms.ListView();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.buttonAnuluj = new System.Windows.Forms.Button();
             this.buttonZapisz = new System.Windows.Forms.Button();
-            this.buttonUsun = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewLek)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -196,7 +201,7 @@
             this.groupBox2.Controls.Add(this.comboBoxUprawnienia);
             this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Controls.Add(this.label2);
-            this.groupBox2.Controls.Add(this.dateTimePicker1);
+            this.groupBox2.Controls.Add(this.dateTimePickerRealizacja);
             this.groupBox2.Controls.Add(this.listViewRecepta);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.groupBox2.Location = new System.Drawing.Point(675, 12);
@@ -205,6 +210,18 @@
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Recepta";
+            // 
+            // buttonUsun
+            // 
+            this.buttonUsun.BackColor = System.Drawing.Color.Transparent;
+            this.buttonUsun.BackgroundImage = global::Gabinet.Properties.Resources.usun;
+            this.buttonUsun.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.buttonUsun.Location = new System.Drawing.Point(6, 17);
+            this.buttonUsun.Name = "buttonUsun";
+            this.buttonUsun.Size = new System.Drawing.Size(23, 23);
+            this.buttonUsun.TabIndex = 5;
+            this.buttonUsun.UseVisualStyleBackColor = false;
+            this.buttonUsun.Click += new System.EventHandler(this.buttonUsun_Click);
             // 
             // comboBoxUprawnienia
             // 
@@ -235,28 +252,57 @@
             this.label2.TabIndex = 2;
             this.label2.Text = "Data realizacji";
             // 
-            // dateTimePicker1
+            // dateTimePickerRealizacja
             // 
-            this.dateTimePicker1.CustomFormat = "yyyy-MM-dd";
-            this.dateTimePicker1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker1.Location = new System.Drawing.Point(9, 258);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.ShowUpDown = true;
-            this.dateTimePicker1.Size = new System.Drawing.Size(110, 20);
-            this.dateTimePicker1.TabIndex = 1;
+            this.dateTimePickerRealizacja.CustomFormat = "yyyy-MM-dd";
+            this.dateTimePickerRealizacja.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.dateTimePickerRealizacja.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTimePickerRealizacja.Location = new System.Drawing.Point(9, 258);
+            this.dateTimePickerRealizacja.Name = "dateTimePickerRealizacja";
+            this.dateTimePickerRealizacja.ShowUpDown = true;
+            this.dateTimePickerRealizacja.Size = new System.Drawing.Size(110, 20);
+            this.dateTimePickerRealizacja.TabIndex = 1;
             // 
             // listViewRecepta
             // 
-            this.listViewRecepta.GridLines = true;
+            this.listViewRecepta.BackColor = System.Drawing.Color.White;
+            this.listViewRecepta.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1,
+            this.columnHeader2,
+            this.columnHeader3,
+            this.columnHeader4,
+            this.columnHeader5});
+            this.listViewRecepta.FullRowSelect = true;
             this.listViewRecepta.Location = new System.Drawing.Point(6, 45);
+            this.listViewRecepta.MultiSelect = false;
             this.listViewRecepta.Name = "listViewRecepta";
             this.listViewRecepta.RightToLeftLayout = true;
             this.listViewRecepta.ShowItemToolTips = true;
             this.listViewRecepta.Size = new System.Drawing.Size(185, 194);
             this.listViewRecepta.TabIndex = 0;
             this.listViewRecepta.UseCompatibleStateImageBehavior = false;
-            this.listViewRecepta.View = System.Windows.Forms.View.List;
+            this.listViewRecepta.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "Dopisane leki";
+            this.columnHeader1.Width = 178;
+            // 
+            // columnHeader2
+            // 
+            this.columnHeader2.Width = 0;
+            // 
+            // columnHeader3
+            // 
+            this.columnHeader3.Width = 0;
+            // 
+            // columnHeader4
+            // 
+            this.columnHeader4.Width = 0;
+            // 
+            // columnHeader5
+            // 
+            this.columnHeader5.Width = 0;
             // 
             // buttonAnuluj
             // 
@@ -266,6 +312,7 @@
             this.buttonAnuluj.TabIndex = 2;
             this.buttonAnuluj.Text = "Anuluj";
             this.buttonAnuluj.UseVisualStyleBackColor = true;
+            this.buttonAnuluj.Click += new System.EventHandler(this.buttonAnuluj_Click);
             // 
             // buttonZapisz
             // 
@@ -275,18 +322,7 @@
             this.buttonZapisz.TabIndex = 3;
             this.buttonZapisz.Text = "Zapisz";
             this.buttonZapisz.UseVisualStyleBackColor = true;
-            // 
-            // buttonUsun
-            // 
-            this.buttonUsun.BackColor = System.Drawing.Color.Transparent;
-            this.buttonUsun.BackgroundImage = global::Gabinet.Properties.Resources.usun;
-            this.buttonUsun.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.buttonUsun.Location = new System.Drawing.Point(6, 17);
-            this.buttonUsun.Name = "buttonUsun";
-            this.buttonUsun.Size = new System.Drawing.Size(23, 23);
-            this.buttonUsun.TabIndex = 5;
-            this.buttonUsun.UseVisualStyleBackColor = false;
-            this.buttonUsun.Click += new System.EventHandler(this.buttonUsun_Click);
+            this.buttonZapisz.Click += new System.EventHandler(this.buttonZapisz_Click);
             // 
             // recepta
             // 
@@ -332,7 +368,12 @@
         private System.Windows.Forms.ComboBox comboBoxUprawnienia;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker dateTimePickerRealizacja;
         private System.Windows.Forms.Button buttonUsun;
+        private System.Windows.Forms.ColumnHeader columnHeader1;
+        private System.Windows.Forms.ColumnHeader columnHeader2;
+        private System.Windows.Forms.ColumnHeader columnHeader3;
+        private System.Windows.Forms.ColumnHeader columnHeader4;
+        private System.Windows.Forms.ColumnHeader columnHeader5;
     }
 }

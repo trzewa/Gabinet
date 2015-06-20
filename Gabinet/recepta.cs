@@ -8,25 +8,26 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.OleDb;
+using MySql.Data.MySqlClient;
 using mysettings = Gabinet.Properties.Settings;
 
 namespace Gabinet
 {
     public partial class recepta : Form
     {
-        public string dbconnection_lek;        
-        public List<string> bazylList = new List<string>();
-        public List<string> ilosc = new List<string>();
-        public List<string> odplatnosc = new List<string>();
-        public List<string> dawkowanie = new List<string>();
-
+        public string dbconnection_lek;
+        public string dbconnection_gabinet;
+        public string idrecepta = null;
+        
         public recepta()
         {
             InitializeComponent();
             this.MaximumSize = this.Size;
             this.MinimumSize = this.Size;
             this.dbconnection_lek = "Provider=" + mysettings.Default.provider + ";Data Source=" + mysettings.Default.dsdbf + ";Extended Properties=" + mysettings.Default.properties + ";";
-            Update_comboboxes();
+            this.dbconnection_gabinet = "datasource=" + mysettings.Default.datasource + ";database=" + mysettings.Default.database + ";port=" + mysettings.Default.port + ";username=" + mysettings.Default.user + ";password=" + mysettings.Default.password + ";charset=utf8";
+
+            Update_comboboxes();            
         }
 
         public void Update_lek()
@@ -50,6 +51,15 @@ namespace Gabinet
         {
             comboBoxUprawnienia.Items.AddRange(new object[] { "X - brak uprawnień", "IB - inwalida wojenny", "IW - inwalida wojskowy", "ZK - zasłużony krwiodawca" });
             comboBoxUprawnienia.SelectedIndex = 0;
+        }
+
+        private void Update_listView()
+        {
+            if (listViewRecepta.Items.Count != 0)
+            {
+                listViewRecepta.BackColor = System.Drawing.Color.SpringGreen;
+            }
+            else listViewRecepta.BackColor = System.Drawing.Color.White;
         }
 
         private void buttonZnajdz_Click(object sender, EventArgs e)
@@ -98,13 +108,13 @@ namespace Gabinet
                     if (f2.flag)
                     {
                         ListViewItem item = new ListViewItem(f2.nazwa);
+                        item.SubItems.Add(f2.bazyl);
+                        item.SubItems.Add(f2.ilosc);
+                        item.SubItems.Add(f2.odplatnosc);
+                        item.SubItems.Add(f2.dawkowanie);
                         item.ToolTipText = f2.nazwa + " - " + f2.opakowanie + "\nIlość: " + f2.ilosc + "\nOdpłatnośc: " + f2.odplatnosc + "\nDawkowanie: " + f2.dawkowanie;
                         listViewRecepta.Items.Add(item);
-                        bazylList.Add(f2.bazyl);
-                        ilosc.Add(f2.ilosc);
-                        odplatnosc.Add(f2.odplatnosc);
-                        dawkowanie.Add(f2.dawkowanie);
-                        
+                        Update_listView();                        
                     }
                 }
                 else
@@ -120,11 +130,61 @@ namespace Gabinet
             {
                 ListViewItem itm = listViewRecepta.SelectedItems[i];
                 listViewRecepta.Items[itm.Index].Remove();
-                bazylList.RemoveAt(i);
-                ilosc.RemoveAt(i);
-                odplatnosc.RemoveAt(i);
-                dawkowanie.RemoveAt(i);
+                Update_listView();
             }
+        }
+
+        private void buttonZapisz_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string uprawnienia = comboBoxUprawnienia.SelectedItem.ToString();
+                string dataRealizacji = this.dateTimePickerRealizacja.Text;
+
+
+                MySqlDataAdapter myDataAdapter = new MySqlDataAdapter();
+                Database database = new Database();
+                database.Insert("insert into recepta (data_realizacji, uprawnienia_dodatkowe) VALUES('" + dataRealizacji + "','" + uprawnienia + "')", this.dbconnection_gabinet);
+
+                myDataAdapter = database.Select("select max(idrecepty) from recepta", this.dbconnection_gabinet);
+                DataTable dt = new DataTable();
+                myDataAdapter.Fill(dt);
+                                
+                if (dt.Rows.Count == 1)
+                {
+                    DataRow element = dt.Rows[0];
+                    this.idrecepta = element["max(idrecepty)"].ToString();
+                }
+
+                for (int i = 0; i <= listViewRecepta.Items.Count - 1; i++)
+                
+                {
+                    string bazyl = listViewRecepta.Items[i].SubItems[1].Text.ToString();
+                    string dawkowanie = listViewRecepta.Items[i].SubItems[4].Text.ToString();
+                    string ilosc = listViewRecepta.Items[i].SubItems[2].Text.ToString();
+                    string odplatnosc = listViewRecepta.Items[i].SubItems[3].Text.ToString();
+
+                    database.Insert("insert into receptalek (idrecepty, bazyl, dawkowanie, ilosc, odplatnosc) VALUES('" + this.idrecepta + "','" + bazyl + "','" + dawkowanie + "', '" + ilosc + "','" + odplatnosc + "')", this.dbconnection_gabinet);
+                }
+
+
+                DialogResult result = MessageBox.Show("Recepta utworzona", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                if (result == System.Windows.Forms.DialogResult.OK)
+                {
+                    this.Close();
+                }
+                
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void buttonAnuluj_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
         
     }

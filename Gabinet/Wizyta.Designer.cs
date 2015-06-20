@@ -352,6 +352,7 @@
             this.buttonRecepta.TabIndex = 0;
             this.buttonRecepta.Text = "Recepta";
             this.buttonRecepta.UseVisualStyleBackColor = true;
+            this.buttonRecepta.Click += new System.EventHandler(this.buttonRecepta_Click);
             // 
             // toolStrip1
             // 

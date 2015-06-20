@@ -146,12 +146,26 @@ namespace Gabinet
 
         private void buttonAnuluj_Click(object sender, EventArgs e)
         {
+            Database database = new Database();  
+            
             if (this.idzwolnienie != null)
             {
                 try
                 {
-                    Database database = new Database();
                     database.Delete("delete from zwolnienie where idzwolnienia='" + this.idzwolnienie + "'", this.dbconnection_gabinet);                    
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
+            if (this.idrecepta != null)
+            {
+                try
+                {
+                    database.Delete("delete from receptalek where idrecepty='" + this.idrecepta + "'", this.dbconnection_gabinet);
+
+                    database.Delete("delete from recepta where idrecepty='" + this.idrecepta + "'", this.dbconnection_gabinet);
                 }
                 catch (Exception ex)
                 {
@@ -179,10 +193,15 @@ namespace Gabinet
                     try
                     {
                         Database database = new Database();
-                        database.Update("update wizyta set idchoroby='" + idChoroby + "', idtyp_badania='" + idTypBadania + "', data='" + data + "', godzina='" + godzina + "', wywiad='" + wywiad + "', stan='1' where idwizyta='" + idwizyta + "'", this.dbconnection_gabinet);
+                        database.Update("update wizyta set idchoroby='" + this.idChoroby + "', idtyp_badania='" + idTypBadania + "', data='" + data + "', godzina='" + godzina + "', wywiad='" + wywiad + "', stan='1' where idwizyta='" + idwizyta + "'", this.dbconnection_gabinet);
                         if (this.idzwolnienie != null)
                         {
                             database.Update("update wizyta set idzwolnienia='" + idzwolnienie + "' where idwizyta='" + idwizyta + "'", this.dbconnection_gabinet);
+                        }
+                        if (this.idrecepta != null)
+                        {
+                            database.Update("update wizyta set idrecepty='" + this.idrecepta + "' where idwizyta='" + idwizyta + "'", this.dbconnection_gabinet);
+
                         }
                         Close();
                     }
@@ -404,7 +423,37 @@ namespace Gabinet
 
         private void buttonZamknij_Click(object sender, EventArgs e)
         {
+            
             this.Close();
+
+        }
+
+        private void buttonRecepta_Click(object sender, EventArgs e)
+        {
+            bool IsOpen = false;
+
+            foreach (Form f in Application.OpenForms)
+            {
+                if (f.Text == "Recepta")
+                {
+                    IsOpen = true;
+                    f.Focus();
+                    break;
+                }
+            }
+            if (IsOpen == false)
+            {
+                this.Opacity = 0.5;
+                recepta f2 = new recepta();
+                f2.Owner = this;
+                f2.ShowDialog();
+                if (f2.idrecepta != null)
+                {
+                    this.idrecepta = f2.idrecepta;
+                    buttonRecepta.Enabled = false;
+                }
+                this.Opacity = 1;
+            }
         }
     }
 }
