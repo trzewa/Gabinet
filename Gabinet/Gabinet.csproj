@@ -149,6 +149,12 @@
     <Compile Include="panelLekarza.Designer.cs">
       <DependentUpon>panelLekarza.cs</DependentUpon>
     </Compile>
+    <Compile Include="pobranieBazyl.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="pobranieBazyl.Designer.cs">
+      <DependentUpon>pobranieBazyl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -246,6 +252,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="pacjentWizyta.resx">
       <DependentUpon>pacjentWizyta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="pobranieBazyl.resx">
+      <DependentUpon>pobranieBazyl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="recepta.resx">
       <DependentUpon>recepta.cs</DependentUpon>

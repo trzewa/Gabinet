@@ -27,6 +27,7 @@ namespace Gabinet
             //Application.Run(new zwolnienie());
             //Application.Run(new recepta());
             Application.Run(new Login());
+            //Application.Run(new pobranieBazyl());
         }
     }
 }

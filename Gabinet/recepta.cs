@@ -77,7 +77,8 @@ namespace Gabinet
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                
+                MessageBox.Show("Poinformuj administratora lub jeśli masz uprawnienia przejdź do sekcji Organizacja i pobierz plik","Brak plików bazy BAZYL", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
