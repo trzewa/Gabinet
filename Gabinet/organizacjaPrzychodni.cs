@@ -146,5 +146,28 @@ namespace Gabinet
                 }
             }
         }
+
+        private void toolStripButtonBazyl_Click(object sender, EventArgs e)
+        {
+            bool IsOpen = false;
+
+            foreach (Form f in Application.OpenForms)
+            {
+                if (f.Text == "Pobieranie pliku bazy leków BAZYL")
+                {
+                    IsOpen = true;
+                    f.Focus();
+                    break;
+                }
+            }
+            if (IsOpen == false)
+            {
+                this.Visible = false;
+                pobranieBazyl f2 = new pobranieBazyl();
+                f2.ShowDialog();
+                Update_dataGridViewPracownicy();
+                this.Visible = true;
+            }
+        }
     }
 }

@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.OleDb;
 using MySql.Data.MySqlClient;
+using System.IO;
 using mysettings = Gabinet.Properties.Settings;
 
 namespace Gabinet
@@ -26,8 +27,16 @@ namespace Gabinet
             this.MinimumSize = this.Size;
             this.dbconnection_lek = "Provider=" + mysettings.Default.provider + ";Data Source=" + mysettings.Default.dsdbf + ";Extended Properties=" + mysettings.Default.properties + ";";
             this.dbconnection_gabinet = "datasource=" + mysettings.Default.datasource + ";database=" + mysettings.Default.database + ";port=" + mysettings.Default.port + ";username=" + mysettings.Default.user + ";password=" + mysettings.Default.password + ";charset=utf8";
-
-            Update_comboboxes();            
+            Update_comboboxes();
+            if (File.Exists(@"c:\Baza\wersja.txt"))
+            {
+                string wersjaLokalna = File.ReadAllText(@"c:\Baza\wersja.txt");                
+                label5.Text = wersjaLokalna;
+            }
+            else
+            {                
+                label5.Text = "!Brak pliku!";
+            }
         }
 
         public void Update_lek()
