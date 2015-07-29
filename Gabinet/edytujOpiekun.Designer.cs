@@ -38,7 +38,6 @@
             this.textBoxTelefonOpieka = new System.Windows.Forms.TextBox();
             this.label21 = new System.Windows.Forms.Label();
             this.buttonDodaj = new System.Windows.Forms.Button();
-            this.buttonAnuluj = new System.Windows.Forms.Button();
             this.buttonZmien = new System.Windows.Forms.Button();
             this.buttonUsun = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
@@ -140,29 +139,19 @@
             // 
             // buttonDodaj
             // 
-            this.buttonDodaj.Location = new System.Drawing.Point(12, 122);
+            this.buttonDodaj.Location = new System.Drawing.Point(21, 122);
             this.buttonDodaj.Name = "buttonDodaj";
-            this.buttonDodaj.Size = new System.Drawing.Size(187, 23);
+            this.buttonDodaj.Size = new System.Drawing.Size(129, 23);
             this.buttonDodaj.TabIndex = 1;
             this.buttonDodaj.Text = "Dodaj opiekuna";
             this.buttonDodaj.UseVisualStyleBackColor = true;
             this.buttonDodaj.Click += new System.EventHandler(this.buttonDodaj_Click);
             // 
-            // buttonAnuluj
-            // 
-            this.buttonAnuluj.Location = new System.Drawing.Point(372, 151);
-            this.buttonAnuluj.Name = "buttonAnuluj";
-            this.buttonAnuluj.Size = new System.Drawing.Size(75, 23);
-            this.buttonAnuluj.TabIndex = 2;
-            this.buttonAnuluj.Text = "Anuluj";
-            this.buttonAnuluj.UseVisualStyleBackColor = true;
-            this.buttonAnuluj.Click += new System.EventHandler(this.buttonAnuluj_Click);
-            // 
             // buttonZmien
             // 
-            this.buttonZmien.Location = new System.Drawing.Point(372, 122);
+            this.buttonZmien.Location = new System.Drawing.Point(305, 122);
             this.buttonZmien.Name = "buttonZmien";
-            this.buttonZmien.Size = new System.Drawing.Size(75, 23);
+            this.buttonZmien.Size = new System.Drawing.Size(126, 23);
             this.buttonZmien.TabIndex = 3;
             this.buttonZmien.Text = "Zmień dane";
             this.buttonZmien.UseVisualStyleBackColor = true;
@@ -170,9 +159,9 @@
             // 
             // buttonUsun
             // 
-            this.buttonUsun.Location = new System.Drawing.Point(12, 151);
+            this.buttonUsun.Location = new System.Drawing.Point(156, 122);
             this.buttonUsun.Name = "buttonUsun";
-            this.buttonUsun.Size = new System.Drawing.Size(187, 23);
+            this.buttonUsun.Size = new System.Drawing.Size(143, 23);
             this.buttonUsun.TabIndex = 4;
             this.buttonUsun.Text = "Usuń opiekuna";
             this.buttonUsun.UseVisualStyleBackColor = true;
@@ -183,10 +172,9 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.ClientSize = new System.Drawing.Size(462, 182);
+            this.ClientSize = new System.Drawing.Size(462, 155);
             this.Controls.Add(this.buttonUsun);
             this.Controls.Add(this.buttonZmien);
-            this.Controls.Add(this.buttonAnuluj);
             this.Controls.Add(this.buttonDodaj);
             this.Controls.Add(this.groupBox1);
             this.Name = "edytujOpiekun";
@@ -210,7 +198,6 @@
         private System.Windows.Forms.TextBox textBoxTelefonOpieka;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.Button buttonDodaj;
-        private System.Windows.Forms.Button buttonAnuluj;
         private System.Windows.Forms.Button buttonZmien;
         private System.Windows.Forms.Button buttonUsun;
     }

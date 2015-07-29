@@ -29,6 +29,9 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.buttonDopisz = new System.Windows.Forms.Button();
             this.buttonZnajdz = new System.Windows.Forms.Button();
             this.dataGridViewLek = new System.Windows.Forms.DataGridView();
@@ -42,6 +45,7 @@
             this.textBoxLek = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.buttonUsun = new System.Windows.Forms.Button();
             this.comboBoxUprawnienia = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -55,9 +59,6 @@
             this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.buttonAnuluj = new System.Windows.Forms.Button();
             this.buttonZapisz = new System.Windows.Forms.Button();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewLek)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -80,6 +81,35 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Wyszukaj lek";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label6.Location = new System.Drawing.Point(6, 344);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(282, 13);
+            this.label6.TabIndex = 6;
+            this.label6.Text = "Farmaceutycznej Bazy Danych BAZYL firmy IMS HEALTH";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label5.Location = new System.Drawing.Point(214, 331);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(0, 13);
+            this.label5.TabIndex = 5;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label4.Location = new System.Drawing.Point(6, 331);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(202, 13);
+            this.label4.TabIndex = 4;
+            this.label4.Text = "Prezentowane dane pochodzą z wydania";
             // 
             // buttonDopisz
             // 
@@ -195,7 +225,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label1.Location = new System.Drawing.Point(47, 22);
+            this.label1.Location = new System.Drawing.Point(47, 17);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(63, 13);
             this.label1.TabIndex = 0;
@@ -203,6 +233,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.checkBox1);
             this.groupBox2.Controls.Add(this.buttonUsun);
             this.groupBox2.Controls.Add(this.comboBoxUprawnienia);
             this.groupBox2.Controls.Add(this.label3);
@@ -216,6 +247,16 @@
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Recepta";
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(125, 261);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(15, 14);
+            this.checkBox1.TabIndex = 6;
+            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckStateChanged);
             // 
             // buttonUsun
             // 
@@ -261,6 +302,7 @@
             // dateTimePickerRealizacja
             // 
             this.dateTimePickerRealizacja.CustomFormat = "yyyy-MM-dd";
+            this.dateTimePickerRealizacja.Enabled = false;
             this.dateTimePickerRealizacja.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.dateTimePickerRealizacja.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dateTimePickerRealizacja.Location = new System.Drawing.Point(9, 258);
@@ -330,35 +372,6 @@
             this.buttonZapisz.UseVisualStyleBackColor = true;
             this.buttonZapisz.Click += new System.EventHandler(this.buttonZapisz_Click);
             // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label4.Location = new System.Drawing.Point(6, 331);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(202, 13);
-            this.label4.TabIndex = 4;
-            this.label4.Text = "Prezentowane dane pochodzą z wydania";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label5.Location = new System.Drawing.Point(214, 331);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(0, 13);
-            this.label5.TabIndex = 5;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label6.Location = new System.Drawing.Point(6, 344);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(282, 13);
-            this.label6.TabIndex = 6;
-            this.label6.Text = "Farmaceutycznej Bazy Danych BAZYL firmy IMS HEALTH";
-            // 
             // recepta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -414,5 +427,6 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.CheckBox checkBox1;
     }
 }

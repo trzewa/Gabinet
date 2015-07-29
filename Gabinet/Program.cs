@@ -20,14 +20,16 @@ namespace Gabinet
             //Application.Run(new Rejestracja());            
             //Application.Run(new Logout());
             //Application.Run(new DodajPacjent());
-            //Application.Run(new dodajOpiekun());
+            //Application.Run(new dodajPracownika());
             //Application.Run(new organizacjaPrzychodni());
             //Application.Run(new danePacjent());
             //Application.Run(new bazaDane());
             //Application.Run(new zwolnienie());
             //Application.Run(new recepta());
             Application.Run(new Login());
+            //Application.Run(new Gabinet());
             //Application.Run(new pobranieBazyl());
+            //Application.Run(new receptaWidok());
         }
     }
 }

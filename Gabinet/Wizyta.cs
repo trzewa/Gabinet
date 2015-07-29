@@ -24,6 +24,8 @@ namespace Gabinet
         public string nazwa;
         public string idChoroby = null;
         public string idTypBadania = null;
+        public string data;
+        public bool stan;
         private bool flag;
 
         public Wizyta(string idwizytaReceive, bool flagreceive)
@@ -234,11 +236,11 @@ namespace Gabinet
                 }
                 if (IsOpen == false)
                 {                    
-                        this.Opacity = 0.8;
+                        this.Visible = false;
                         zwolnienie f2 = new zwolnienie(this.idzwolnienie, this);
                         f2.Owner = this;    
                         f2.ShowDialog();
-                        this.Opacity = 1;                                            
+                        this.Visible = true;                                            
                 }
             }
             else
@@ -392,7 +394,7 @@ namespace Gabinet
             {
                 Database database = new Database();
                 MySqlDataAdapter myDA = new MySqlDataAdapter();
-                myDA = database.Select("select idrecepty, idzwolnienia, skierowanie, wywiad from wizyta where idwizyta = '" + this.idwizyta + "'", this.dbconnection_gabinet);
+                myDA = database.Select("select idrecepty, idzwolnienia, wywiad from wizyta where idwizyta = '" + this.idwizyta + "'", this.dbconnection_gabinet);
                 DataTable dT = new DataTable();
                 myDA.Fill(dT);
 
@@ -428,31 +430,92 @@ namespace Gabinet
 
         }
 
+        private void Update_stan()
+        {
+            try
+            {
+                Database database = new Database();
+                MySqlDataAdapter myDA = new MySqlDataAdapter();
+                myDA = database.Select("select data, stan from wizyta where idwizyta = '" + this.idwizyta + "'", this.dbconnection_gabinet);
+                DataTable dT = new DataTable();
+                myDA.Fill(dT);
+
+                if (dT.Rows.Count == 1)
+                {
+                    string stanBool;
+                    DataRow element = dT.Rows[0];                    
+                    stanBool = element["stan"].ToString();
+                    if (stanBool.Equals("1"))
+                    {
+                        this.stan = true;
+                    }
+                    else this.stan = false;
+                    this.data = element["data"].ToString();                    
+                }               
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+        
+
         private void buttonRecepta_Click(object sender, EventArgs e)
         {
-            bool IsOpen = false;
+            Update_stan();
 
-            foreach (Form f in Application.OpenForms)
+            if (this.stan == false)
             {
-                if (f.Text == "Recepta")
+                DateTime dt = DateTime.Now;
+                this.data = dt.ToString("yyyy-MM-dd");
+            }
+
+            bool IsOpen = false;
+            if (flag)
+            {
+                foreach (Form f in Application.OpenForms)
                 {
-                    IsOpen = true;
-                    f.Focus();
-                    break;
+                    if (f.Text == "Widok recepty")
+                    {
+                        IsOpen = true;
+                        f.Focus();
+                        break;
+                    }
+                }
+                if (IsOpen == false)
+                {
+                    this.Visible = false;
+                    receptaWidok f2 = new receptaWidok(this.idrecepta, this.idpacjent, this.data);                    
+                    f2.ShowDialog();
+                    this.Visible = true;
                 }
             }
-            if (IsOpen == false)
+            else
             {
-                this.Opacity = 0.5;
-                recepta f2 = new recepta();
-                f2.Owner = this;
-                f2.ShowDialog();
-                if (f2.idrecepta != null)
+                foreach (Form f in Application.OpenForms)
                 {
-                    this.idrecepta = f2.idrecepta;
-                    buttonRecepta.Enabled = false;
+                    if (f.Text == "Recepta")
+                    {
+                        IsOpen = true;
+                        f.Focus();
+                        break;
+                    }
                 }
-                this.Opacity = 1;
+                if (IsOpen == false)
+                {
+                    this.Opacity = 0.5;
+                    recepta f2 = new recepta();
+                    f2.Owner = this;
+                    f2.ShowDialog();
+                    if (f2.idrecepta != null)
+                    {
+                        this.idrecepta = f2.idrecepta;
+                        //buttonRecepta.Enabled = false;
+                        flag = true;
+                        buttonRecepta.Text = "Wygeneruj recepte";
+                    }
+                    this.Opacity = 1;
+                }
             }
         }
     }

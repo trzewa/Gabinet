@@ -36,6 +36,11 @@ namespace Gabinet
             else
             {                
                 label5.Text = "!Brak pliku!";
+                buttonZnajdz.Visible = false;
+                buttonDopisz.Enabled = false;
+                buttonZapisz.Enabled = false;
+                textBoxLek.Visible = false;
+                label1.Text = "UWAGA!Brak pliku bazy BAZYL!Brak możliwości wyboru leków.\nPoinformuj administratora lub jeśli masz uprawnienia przejdź do sekcji Organizacja i pobierz plik";
             }
         }
 
@@ -86,9 +91,12 @@ namespace Gabinet
             }
             catch (Exception ex)
             {
+                MessageBox.Show(ex.Message);
+                //throw new Exception("Brak plików bazy BAZYL!\nPoinformuj administratora lub jeśli masz uprawnienia przejdź do sekcji Organizacja i pobierz plik", ex);
                 
-                MessageBox.Show("Poinformuj administratora lub jeśli masz uprawnienia przejdź do sekcji Organizacja i pobierz plik","Brak plików bazy BAZYL", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                //MessageBox.Show("Poinformuj administratora lub jeśli masz uprawnienia przejdź do sekcji Organizacja i pobierz plik","Brak plików bazy BAZYL", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+            
         }
 
         private void buttonDopisz_Click(object sender, EventArgs e)
@@ -148,8 +156,14 @@ namespace Gabinet
         {
             try
             {
+
                 string uprawnienia = comboBoxUprawnienia.SelectedItem.ToString();
-                string dataRealizacji = this.dateTimePickerRealizacja.Text;
+                string dataRealizacji;
+                if (checkBox1.CheckState == CheckState.Checked) 
+                {
+                    dataRealizacji = this.dateTimePickerRealizacja.Text;                    
+                }
+                else dataRealizacji = "X";
 
 
                 MySqlDataAdapter myDataAdapter = new MySqlDataAdapter();
@@ -195,6 +209,11 @@ namespace Gabinet
         private void buttonAnuluj_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void checkBox1_CheckStateChanged(object sender, EventArgs e)
+        {
+            dateTimePickerRealizacja.Enabled = (checkBox1.CheckState == CheckState.Checked);
         }
         
     }

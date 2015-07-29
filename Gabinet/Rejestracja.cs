@@ -15,14 +15,15 @@ namespace Gabinet
     public partial class Rejestracja : Form
     {
         public string dbconnection_gabinet;
-        
+        private string idprzychodni;
+
         public Rejestracja()
         {
             InitializeComponent();
             this.MaximumSize = this.Size;
             this.MinimumSize = this.Size;
             this.dbconnection_gabinet = "datasource=" + mysettings.Default.datasource + ";database=" + mysettings.Default.database + ";port=" + mysettings.Default.port + ";username=" + mysettings.Default.user + ";password=" + mysettings.Default.password + ";charset=utf8";
-            
+            Update_Przychodnia();
         }
         
         private void toolStripBtnDodaj_Click(object sender, EventArgs e)
@@ -316,6 +317,63 @@ namespace Gabinet
                     MessageBox.Show("Musisz wybrać pacjenta!");
                 }
             }
-        }        
+        }
+
+        public void Update_Przychodnia()
+        {
+            try
+            {
+                MySqlDataAdapter myDataAdapter = new MySqlDataAdapter();
+                Database database = new Database();
+                myDataAdapter = database.Select("select * from przychodnia ORDER BY idprzychodnia DESC LIMIT 1", this.dbconnection_gabinet);
+                DataTable dt = new DataTable();
+                myDataAdapter.Fill(dt);
+
+                if (dt.Rows.Count == 1)
+                {
+                    DataRow element = dt.Rows[0];
+                    this.label4.Text = element["nazwa"].ToString();
+                    this.idprzychodni = element["idprzychodnia"].ToString();
+                }
+
+                myDataAdapter = database.Select("select * from przychodniaadres where idprzychodnia='" + this.idprzychodni + "'", this.dbconnection_gabinet);
+                myDataAdapter.Fill(dt);
+
+                if (dt.Rows.Count >= 1)
+                {
+                    DataRow element = dt.Rows[1];
+                    string idadres = element["idadres"].ToString();
+                    myDataAdapter = database.Select("select * from adres where idadres='" + idadres + "'", this.dbconnection_gabinet);
+
+                    myDataAdapter.Fill(dt);
+                    if (dt.Rows.Count >= 1)
+                    {
+                        element = dt.Rows[2];
+                        this.label5.Text = element["ulica"].ToString() + " " + element["nr_budynku"].ToString() + ", " + element["kod_pocztowy"].ToString() + " " + element["miasto"].ToString();
+                    }
+                }
+
+                myDataAdapter = database.Select("select * from przychodniakontakt where idprzychodnia='" + this.idprzychodni + "'", this.dbconnection_gabinet);
+                myDataAdapter.Fill(dt);
+
+                if (dt.Rows.Count >= 1)
+                {
+                    DataRow element = dt.Rows[3];
+                    string idkontakt = element["idkontakt"].ToString();
+                    myDataAdapter = database.Select("select * from kontakt where idkontakt='" + idkontakt + "'", this.dbconnection_gabinet);
+
+                    myDataAdapter.Fill(dt);
+                    if (dt.Rows.Count >= 1)
+                    {
+                        element = dt.Rows[4];
+                        this.label6.Text = element["telefon"].ToString() + " ; " + element["mail"].ToString();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
     }
 }

@@ -52,7 +52,6 @@
             this.buttonZakoncz = new System.Windows.Forms.Button();
             this.buttonAnuluj = new System.Windows.Forms.Button();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.buttonSkierowanie = new System.Windows.Forms.Button();
             this.buttonZwolnienie = new System.Windows.Forms.Button();
             this.buttonRecepta = new System.Windows.Forms.Button();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
@@ -315,7 +314,6 @@
             // 
             // groupBox5
             // 
-            this.groupBox5.Controls.Add(this.buttonSkierowanie);
             this.groupBox5.Controls.Add(this.buttonZwolnienie);
             this.groupBox5.Controls.Add(this.buttonRecepta);
             this.groupBox5.Location = new System.Drawing.Point(12, 261);
@@ -325,20 +323,11 @@
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Dokumenty";
             // 
-            // buttonSkierowanie
-            // 
-            this.buttonSkierowanie.Location = new System.Drawing.Point(168, 19);
-            this.buttonSkierowanie.Name = "buttonSkierowanie";
-            this.buttonSkierowanie.Size = new System.Drawing.Size(75, 23);
-            this.buttonSkierowanie.TabIndex = 2;
-            this.buttonSkierowanie.Text = "Skierowanie";
-            this.buttonSkierowanie.UseVisualStyleBackColor = true;
-            // 
             // buttonZwolnienie
             // 
-            this.buttonZwolnienie.Location = new System.Drawing.Point(87, 19);
+            this.buttonZwolnienie.Location = new System.Drawing.Point(137, 19);
             this.buttonZwolnienie.Name = "buttonZwolnienie";
-            this.buttonZwolnienie.Size = new System.Drawing.Size(75, 23);
+            this.buttonZwolnienie.Size = new System.Drawing.Size(102, 23);
             this.buttonZwolnienie.TabIndex = 1;
             this.buttonZwolnienie.Text = "Zwolnienie";
             this.buttonZwolnienie.UseVisualStyleBackColor = true;
@@ -348,7 +337,7 @@
             // 
             this.buttonRecepta.Location = new System.Drawing.Point(6, 19);
             this.buttonRecepta.Name = "buttonRecepta";
-            this.buttonRecepta.Size = new System.Drawing.Size(75, 23);
+            this.buttonRecepta.Size = new System.Drawing.Size(125, 23);
             this.buttonRecepta.TabIndex = 0;
             this.buttonRecepta.Text = "Recepta";
             this.buttonRecepta.UseVisualStyleBackColor = true;
@@ -466,7 +455,6 @@
         private System.Windows.Forms.Button buttonZakoncz;
         private System.Windows.Forms.Button buttonAnuluj;
         private System.Windows.Forms.GroupBox groupBox5;
-        private System.Windows.Forms.Button buttonSkierowanie;
         private System.Windows.Forms.Button buttonZwolnienie;
         private System.Windows.Forms.Button buttonRecepta;
         private System.Windows.Forms.LinkLabel linkLabelMail;

@@ -29,16 +29,8 @@
         private void InitializeComponent()
         {
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.toolStripBtnRejestruj = new System.Windows.Forms.ToolStripButton();
-            this.toolStripZmien = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripBtnDodaj = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButtonEdycjaDane = new System.Windows.Forms.ToolStripButton();
-            this.toolStripBtnDanePacjent = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripButtonHistoria = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButtonListaWizyt = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButtonHarmonogram = new System.Windows.Forms.ToolStripButton();
             this.dataGridViewPacjenci = new System.Windows.Forms.DataGridView();
             this.nazwisko = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.imie = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -55,7 +47,18 @@
             this.textBoxImie = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.toolStripBtnRejestruj = new System.Windows.Forms.ToolStripButton();
+            this.toolStripZmien = new System.Windows.Forms.ToolStripButton();
+            this.toolStripBtnDodaj = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonEdycjaDane = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonOpiekun = new System.Windows.Forms.ToolStripButton();
+            this.toolStripBtnDanePacjent = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonHistoria = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonListaWizyt = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonHarmonogram = new System.Windows.Forms.ToolStripButton();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPacjenci)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -85,100 +88,15 @@
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
             // 
-            // toolStripBtnRejestruj
-            // 
-            this.toolStripBtnRejestruj.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripBtnRejestruj.Image = global::Gabinet.Properties.Resources.download_3_icon;
-            this.toolStripBtnRejestruj.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripBtnRejestruj.Name = "toolStripBtnRejestruj";
-            this.toolStripBtnRejestruj.Size = new System.Drawing.Size(84, 77);
-            this.toolStripBtnRejestruj.Text = "Rejestruj";
-            this.toolStripBtnRejestruj.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.toolStripBtnRejestruj.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
-            this.toolStripBtnRejestruj.ToolTipText = "Rejestruj";
-            this.toolStripBtnRejestruj.Click += new System.EventHandler(this.toolStripBtnRejestruj_Click);
-            // 
-            // toolStripZmien
-            // 
-            this.toolStripZmien.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripZmien.Image = global::Gabinet.Properties.Resources.pencil_icon;
-            this.toolStripZmien.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripZmien.Name = "toolStripZmien";
-            this.toolStripZmien.Size = new System.Drawing.Size(84, 77);
-            this.toolStripZmien.Text = "Zmień termin wizyty";
-            this.toolStripZmien.Click += new System.EventHandler(this.toolStripZmien_Click);
-            // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(6, 80);
             // 
-            // toolStripBtnDodaj
-            // 
-            this.toolStripBtnDodaj.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.toolStripBtnDodaj.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripBtnDodaj.Image = global::Gabinet.Properties.Resources.addition_icon;
-            this.toolStripBtnDodaj.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripBtnDodaj.Name = "toolStripBtnDodaj";
-            this.toolStripBtnDodaj.Size = new System.Drawing.Size(84, 77);
-            this.toolStripBtnDodaj.Text = "Dodaj pacjenta";
-            this.toolStripBtnDodaj.Click += new System.EventHandler(this.toolStripBtnDodaj_Click);
-            // 
-            // toolStripButtonEdycjaDane
-            // 
-            this.toolStripButtonEdycjaDane.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonEdycjaDane.Image = global::Gabinet.Properties.Resources.myspace_2_icon;
-            this.toolStripButtonEdycjaDane.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonEdycjaDane.Name = "toolStripButtonEdycjaDane";
-            this.toolStripButtonEdycjaDane.Size = new System.Drawing.Size(84, 77);
-            this.toolStripButtonEdycjaDane.Text = "Edytuj dane pacjenta";
-            this.toolStripButtonEdycjaDane.Click += new System.EventHandler(this.toolStripButtonEdycjaDane_Click);
-            // 
-            // toolStripBtnDanePacjent
-            // 
-            this.toolStripBtnDanePacjent.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.toolStripBtnDanePacjent.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripBtnDanePacjent.Image = global::Gabinet.Properties.Resources.info_icon;
-            this.toolStripBtnDanePacjent.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripBtnDanePacjent.Name = "toolStripBtnDanePacjent";
-            this.toolStripBtnDanePacjent.Size = new System.Drawing.Size(84, 77);
-            this.toolStripBtnDanePacjent.Text = "Informacja o pacjencie";
-            this.toolStripBtnDanePacjent.Click += new System.EventHandler(this.toolStripBtnDanePacjent_Click);
-            // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
             this.toolStripSeparator2.Size = new System.Drawing.Size(6, 80);
-            // 
-            // toolStripButtonHistoria
-            // 
-            this.toolStripButtonHistoria.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonHistoria.Image = global::Gabinet.Properties.Resources.fastrewind_icon;
-            this.toolStripButtonHistoria.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonHistoria.Name = "toolStripButtonHistoria";
-            this.toolStripButtonHistoria.Size = new System.Drawing.Size(84, 77);
-            this.toolStripButtonHistoria.Text = "Historia wizyt pacjenta";
-            this.toolStripButtonHistoria.Click += new System.EventHandler(this.toolStripButtonHistoria_Click);
-            // 
-            // toolStripButtonListaWizyt
-            // 
-            this.toolStripButtonListaWizyt.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonListaWizyt.Image = global::Gabinet.Properties.Resources.fastforward_icon;
-            this.toolStripButtonListaWizyt.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonListaWizyt.Name = "toolStripButtonListaWizyt";
-            this.toolStripButtonListaWizyt.Size = new System.Drawing.Size(84, 77);
-            this.toolStripButtonListaWizyt.Text = "Wizyty zarezerwowane";
-            this.toolStripButtonListaWizyt.Click += new System.EventHandler(this.toolStripButtonListaWizyt_Click);
-            // 
-            // toolStripButtonHarmonogram
-            // 
-            this.toolStripButtonHarmonogram.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonHarmonogram.Image = global::Gabinet.Properties.Resources.phonebook_icon;
-            this.toolStripButtonHarmonogram.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonHarmonogram.Name = "toolStripButtonHarmonogram";
-            this.toolStripButtonHarmonogram.Size = new System.Drawing.Size(84, 77);
-            this.toolStripButtonHarmonogram.Text = "Harmonogram";
-            this.toolStripButtonHarmonogram.Click += new System.EventHandler(this.toolStripButtonHarmonogram_Click);
             // 
             // dataGridViewPacjenci
             // 
@@ -268,6 +186,9 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.label6);
+            this.groupBox1.Controls.Add(this.label5);
+            this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.buttonZnajdz);
             this.groupBox1.Controls.Add(this.textBoxPesel);
             this.groupBox1.Controls.Add(this.textBoxNazwisko);
@@ -336,6 +257,50 @@
             this.label2.TabIndex = 3;
             this.label2.Text = "Nazwisko";
             // 
+            // toolStripBtnRejestruj
+            // 
+            this.toolStripBtnRejestruj.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripBtnRejestruj.Image = global::Gabinet.Properties.Resources.download_3_icon;
+            this.toolStripBtnRejestruj.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripBtnRejestruj.Name = "toolStripBtnRejestruj";
+            this.toolStripBtnRejestruj.Size = new System.Drawing.Size(84, 77);
+            this.toolStripBtnRejestruj.Text = "Rejestruj";
+            this.toolStripBtnRejestruj.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.toolStripBtnRejestruj.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.toolStripBtnRejestruj.ToolTipText = "Rejestruj";
+            this.toolStripBtnRejestruj.Click += new System.EventHandler(this.toolStripBtnRejestruj_Click);
+            // 
+            // toolStripZmien
+            // 
+            this.toolStripZmien.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripZmien.Image = global::Gabinet.Properties.Resources.pencil_icon;
+            this.toolStripZmien.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripZmien.Name = "toolStripZmien";
+            this.toolStripZmien.Size = new System.Drawing.Size(84, 77);
+            this.toolStripZmien.Text = "Zmień termin wizyty";
+            this.toolStripZmien.Click += new System.EventHandler(this.toolStripZmien_Click);
+            // 
+            // toolStripBtnDodaj
+            // 
+            this.toolStripBtnDodaj.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.toolStripBtnDodaj.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripBtnDodaj.Image = global::Gabinet.Properties.Resources.addition_icon;
+            this.toolStripBtnDodaj.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripBtnDodaj.Name = "toolStripBtnDodaj";
+            this.toolStripBtnDodaj.Size = new System.Drawing.Size(84, 77);
+            this.toolStripBtnDodaj.Text = "Dodaj pacjenta";
+            this.toolStripBtnDodaj.Click += new System.EventHandler(this.toolStripBtnDodaj_Click);
+            // 
+            // toolStripButtonEdycjaDane
+            // 
+            this.toolStripButtonEdycjaDane.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonEdycjaDane.Image = global::Gabinet.Properties.Resources.myspace_2_icon;
+            this.toolStripButtonEdycjaDane.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonEdycjaDane.Name = "toolStripButtonEdycjaDane";
+            this.toolStripButtonEdycjaDane.Size = new System.Drawing.Size(84, 77);
+            this.toolStripButtonEdycjaDane.Text = "Edytuj dane pacjenta";
+            this.toolStripButtonEdycjaDane.Click += new System.EventHandler(this.toolStripButtonEdycjaDane_Click);
+            // 
             // toolStripButtonOpiekun
             // 
             this.toolStripButtonOpiekun.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
@@ -345,6 +310,77 @@
             this.toolStripButtonOpiekun.Size = new System.Drawing.Size(84, 77);
             this.toolStripButtonOpiekun.Text = "Dodaj / Edytuj opiekuna";
             this.toolStripButtonOpiekun.Click += new System.EventHandler(this.toolStripButtonOpiekun_Click);
+            // 
+            // toolStripBtnDanePacjent
+            // 
+            this.toolStripBtnDanePacjent.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.toolStripBtnDanePacjent.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripBtnDanePacjent.Image = global::Gabinet.Properties.Resources.info_icon;
+            this.toolStripBtnDanePacjent.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripBtnDanePacjent.Name = "toolStripBtnDanePacjent";
+            this.toolStripBtnDanePacjent.Size = new System.Drawing.Size(84, 77);
+            this.toolStripBtnDanePacjent.Text = "Informacja o pacjencie";
+            this.toolStripBtnDanePacjent.Click += new System.EventHandler(this.toolStripBtnDanePacjent_Click);
+            // 
+            // toolStripButtonHistoria
+            // 
+            this.toolStripButtonHistoria.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonHistoria.Image = global::Gabinet.Properties.Resources.fastrewind_icon;
+            this.toolStripButtonHistoria.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonHistoria.Name = "toolStripButtonHistoria";
+            this.toolStripButtonHistoria.Size = new System.Drawing.Size(84, 77);
+            this.toolStripButtonHistoria.Text = "Historia wizyt pacjenta";
+            this.toolStripButtonHistoria.Click += new System.EventHandler(this.toolStripButtonHistoria_Click);
+            // 
+            // toolStripButtonListaWizyt
+            // 
+            this.toolStripButtonListaWizyt.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonListaWizyt.Image = global::Gabinet.Properties.Resources.fastforward_icon;
+            this.toolStripButtonListaWizyt.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonListaWizyt.Name = "toolStripButtonListaWizyt";
+            this.toolStripButtonListaWizyt.Size = new System.Drawing.Size(84, 77);
+            this.toolStripButtonListaWizyt.Text = "Wizyty zarezerwowane";
+            this.toolStripButtonListaWizyt.Click += new System.EventHandler(this.toolStripButtonListaWizyt_Click);
+            // 
+            // toolStripButtonHarmonogram
+            // 
+            this.toolStripButtonHarmonogram.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonHarmonogram.Image = global::Gabinet.Properties.Resources.phonebook_icon;
+            this.toolStripButtonHarmonogram.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonHarmonogram.Name = "toolStripButtonHarmonogram";
+            this.toolStripButtonHarmonogram.Size = new System.Drawing.Size(84, 77);
+            this.toolStripButtonHarmonogram.Text = "Harmonogram";
+            this.toolStripButtonHarmonogram.Click += new System.EventHandler(this.toolStripButtonHarmonogram_Click);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label4.Location = new System.Drawing.Point(570, 13);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(186, 13);
+            this.label4.TabIndex = 9;
+            this.label4.Text = "UWAGA!!! Brak danych o przychodni!";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label5.Location = new System.Drawing.Point(570, 29);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(222, 13);
+            this.label5.TabIndex = 10;
+            this.label5.Text = "Skontaktuj się z administratorem lub jeśli masz";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label6.Location = new System.Drawing.Point(570, 45);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(209, 13);
+            this.label6.TabIndex = 11;
+            this.label6.Text = "uprawnienia przejdź do panelu Organizacja";
             // 
             // Rejestracja
             // 
@@ -396,5 +432,8 @@
         private System.Windows.Forms.ToolStripButton toolStripButtonListaWizyt;
         private System.Windows.Forms.ToolStripButton toolStripButtonEdycjaDane;
         private System.Windows.Forms.ToolStripButton toolStripButtonOpiekun;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label4;
     }
 }

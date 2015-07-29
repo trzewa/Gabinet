@@ -139,9 +139,12 @@
             // 
             this.textBoxPesel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.textBoxPesel.Location = new System.Drawing.Point(177, 76);
+            this.textBoxPesel.MaxLength = 11;
             this.textBoxPesel.Name = "textBoxPesel";
             this.textBoxPesel.Size = new System.Drawing.Size(145, 20);
             this.textBoxPesel.TabIndex = 5;
+            this.textBoxPesel.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxPesel_KeyPress);
+            this.textBoxPesel.Leave += new System.EventHandler(this.textBoxPesel_Leave);
             // 
             // label4
             // 

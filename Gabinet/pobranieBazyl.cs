@@ -38,16 +38,22 @@ namespace Gabinet
         }
 
         private void buttonPobierz_Click(object sender, EventArgs e)
-        {            
+        {
+            try 
+            {
+ 
             FtpWebRequest request = (FtpWebRequest)WebRequest.Create(linke);
             request.Method = WebRequestMethods.Ftp.ListDirectory;
             request.Credentials = new NetworkCredential(login, haslo);
             FtpWebResponse response = (FtpWebResponse)request.GetResponse();
             Stream responseStream = response.GetResponseStream();
             StreamReader reader = new StreamReader(responseStream);
-            string wersjaFtp = reader.ReadToEnd().ToString().Substring(10, 4);
+            
+            string text = reader.ReadToEnd().ToString();
+            string wersjaFtp = text.Substring(text.IndexOf("1"), 4);
+            
             reader.Close();
-            response.Close(); 
+            response.Close();
 
             if (File.Exists(@"c:\Baza\wersja.txt"))
             {
@@ -62,19 +68,18 @@ namespace Gabinet
                 }
                 else
                 {
-                    string link = "http://karnet.waw.pl/bazyl/pliki/" + wersjaFtp + "/mps/mpdbf.exe";                   
+                    string link = "http://karnet.waw.pl/bazyl/pliki/" + wersjaFtp + "/mps/mpdbf.exe";
                     string[] temp = link.Split('/');
                     saveFileDialog1.FileName = @"c:\Baza\" + temp[temp.Length - 1];
-                    
+
                     if (DialogResult.OK == saveFileDialog1.ShowDialog())
-                    {                        
+                    {
                         client.DownloadFileCompleted += client_DownloadFileComleted;
                         client.DownloadProgressChanged += client_DownloadProgresChanged;
                         client.DownloadFileAsync(new Uri(link), saveFileDialog1.FileName);
                         File.WriteAllText(@"c:\Baza\wersja.txt", wersjaFtp);
                         buttonPobierz.Enabled = false;
                         buttonAnuluj.Enabled = true;
-                        
                         label5.Text = wersjaFtp;
                     }
                     else
@@ -87,27 +92,32 @@ namespace Gabinet
             else
             {
                 System.IO.Directory.CreateDirectory(@"c:\Baza");
-                string link = "http://karnet.waw.pl/bazyl/pliki/" + wersjaFtp + "/mps/mpdbf.exe";               
+                string link = "http://karnet.waw.pl/bazyl/pliki/" + wersjaFtp + "/mps/mpdbf.exe";
                 string[] temp = link.Split('/');
                 saveFileDialog1.FileName = @"c:\Baza\" + temp[temp.Length - 1];
-                
+
                 if (DialogResult.OK == saveFileDialog1.ShowDialog())
-                {                    
+                {
                     client.DownloadFileCompleted += client_DownloadFileComleted;
                     client.DownloadProgressChanged += client_DownloadProgresChanged;
-                    client.DownloadFileAsync(new Uri(link), saveFileDialog1.FileName);                    
+                    client.DownloadFileAsync(new Uri(link), saveFileDialog1.FileName);
                     File.WriteAllText(@"c:\Baza\wersja.txt", wersjaFtp);
                     buttonPobierz.Enabled = false;
                     buttonAnuluj.Enabled = true;
-                    
+
                     label5.Text = wersjaFtp;
                 }
                 else
                 {
                     MessageBox.Show(this, "Nie wybrano nazwy pliku", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-                label1.Text = "Wersja pobierana:";
-            }            
+                label1.Text = "Wersja pobierana:";            
+               }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void client_DownloadProgresChanged(object sender, DownloadProgressChangedEventArgs e)

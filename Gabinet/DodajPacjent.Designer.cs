@@ -131,6 +131,7 @@
             this.maskedTextBoxNip.Size = new System.Drawing.Size(91, 20);
             this.maskedTextBoxNip.TabIndex = 7;
             this.maskedTextBoxNip.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.maskedTextBoxNip.Leave += new System.EventHandler(this.maskedTextBoxNip_Leave);
             // 
             // label5
             // 
@@ -146,9 +147,13 @@
             // 
             this.textBoxPesel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.textBoxPesel.Location = new System.Drawing.Point(177, 76);
+            this.textBoxPesel.MaxLength = 11;
             this.textBoxPesel.Name = "textBoxPesel";
             this.textBoxPesel.Size = new System.Drawing.Size(145, 20);
             this.textBoxPesel.TabIndex = 5;
+            this.textBoxPesel.TextChanged += new System.EventHandler(this.textBoxPesel_TextChanged);
+            this.textBoxPesel.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxPesel_KeyPress);
+            this.textBoxPesel.Leave += new System.EventHandler(this.textBoxPesel_Leave);
             // 
             // label4
             // 
@@ -277,6 +282,7 @@
             this.textBoxMail.Name = "textBoxMail";
             this.textBoxMail.Size = new System.Drawing.Size(196, 20);
             this.textBoxMail.TabIndex = 15;
+            this.textBoxMail.Leave += new System.EventHandler(this.textBoxMail_Leave);
             // 
             // label13
             // 

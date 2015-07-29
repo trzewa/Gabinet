@@ -213,6 +213,16 @@ namespace Gabinet.Properties {
         /// <summary>
         ///   Wyszukuje zlokalizowany zasób typu System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap heart_plus_icon {
+            get {
+                object obj = ResourceManager.GetObject("heart-plus-icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Wyszukuje zlokalizowany zasób typu System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap home_icon {
             get {
                 object obj = ResourceManager.GetObject("home-icon", resourceCulture);

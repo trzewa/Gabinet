@@ -47,11 +47,32 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="I25, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>DLLs\I25.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>DLLs\Microsoft.ReportViewer.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.ProcessingObjectModel, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>DLLs\Microsoft.ReportViewer.ProcessingObjectModel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WebForms, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>DLLs\Microsoft.ReportViewer.WebForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>DLLs\Microsoft.ReportViewer.WinForms.dll</HintPath>
+    </Reference>
     <Reference Include="MySql.Data">
       <HintPath>..\packages\MySql.Data.6.9.6\lib\net45\MySql.Data.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Design" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -155,6 +176,7 @@
     <Compile Include="pobranieBazyl.Designer.cs">
       <DependentUpon>pobranieBazyl.cs</DependentUpon>
     </Compile>
+    <Compile Include="PrintingProvider.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -171,6 +193,23 @@
     </Compile>
     <Compile Include="recepta.Designer.cs">
       <DependentUpon>recepta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="receptaWidok.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="receptaWidok.Designer.cs">
+      <DependentUpon>receptaWidok.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Rp.cs">
+      <DependentUpon>Rp.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Rp.designer.cs">
+      <DependentUpon>Rp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Rp1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Rp.xsd</DependentUpon>
     </Compile>
     <Compile Include="zwolnienie.cs">
       <SubType>Form</SubType>
@@ -229,6 +268,9 @@
     <EmbeddedResource Include="edytujOpiekun.resx">
       <DependentUpon>edytujOpiekun.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Gabinet.resx">
+      <DependentUpon>Gabinet.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="harmonogram.resx">
       <DependentUpon>harmonogram.cs</DependentUpon>
     </EmbeddedResource>
@@ -259,6 +301,13 @@
     <EmbeddedResource Include="recepta.resx">
       <DependentUpon>recepta.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="receptaWidok.resx">
+      <DependentUpon>receptaWidok.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="Rp.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </None>
     <EmbeddedResource Include="zwolnienie.resx">
       <DependentUpon>zwolnienie.cs</DependentUpon>
     </EmbeddedResource>
@@ -292,6 +341,17 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="Rp.xsc">
+      <DependentUpon>Rp.xsd</DependentUpon>
+    </None>
+    <None Include="Rp.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Rp1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Rp.xss">
+      <DependentUpon>Rp.xsd</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -432,6 +492,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\download-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\heart-plus-icon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

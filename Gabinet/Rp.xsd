@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="Rp" targetNamespace="http://tempuri.org/Rp.xsd" xmlns:mstns="http://tempuri.org/Rp.xsd" xmlns="http://tempuri.org/Rp.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="Rp" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="Rp" msprop:Generator_DataSetName="Rp">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Medicines" msprop:Generator_UserTableName="Medicines" msprop:Generator_RowDeletedName="MedicinesRowDeleted" msprop:Generator_RowChangedName="MedicinesRowChanged" msprop:Generator_RowClassName="MedicinesRow" msprop:Generator_RowChangingName="MedicinesRowChanging" msprop:Generator_RowEvArgName="MedicinesRowChangeEvent" msprop:Generator_RowEvHandlerName="MedicinesRowChangeEventHandler" msprop:Generator_TableClassName="MedicinesDataTable" msprop:Generator_TableVarName="tableMedicines" msprop:Generator_RowDeletingName="MedicinesRowDeleting" msprop:Generator_TablePropName="Medicines">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="1" msprop:Generator_UserColumnName="ID" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" type="xs:int" />
+              <xs:element name="Name" msprop:Generator_UserColumnName="Name" msprop:Generator_ColumnVarNameInTable="columnName" msprop:Generator_ColumnPropNameInRow="Name" msprop:Generator_ColumnPropNameInTable="NameColumn" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:Medicines" />
+      <xs:field xpath="mstns:ID" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

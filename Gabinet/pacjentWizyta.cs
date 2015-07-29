@@ -160,12 +160,12 @@ namespace Gabinet
             {
                 if (dataGridViewWizyty.RowCount != 0)
                 {
-                    this.Opacity = 0.8;
+                    this.Visible = false;
                     int row = dataGridViewWizyty.CurrentCell.RowIndex;
                     this.idwizyta = dataGridViewWizyty.Rows[row].Cells[2].Value.ToString();
                     Wizyta f2 = new Wizyta(this.idwizyta, true);
                     f2.ShowDialog();
-                    this.Opacity = 1;                    
+                    this.Visible = true;                    
                 }
                 else
                 {

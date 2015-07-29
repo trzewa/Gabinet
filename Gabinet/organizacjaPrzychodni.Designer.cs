@@ -41,6 +41,7 @@
             this.toolStripButtonHarmonogram = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonBazyl = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.toolStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPracownicy)).BeginInit();
@@ -56,10 +57,11 @@
             this.toolStripButtonEdytuj,
             this.toolStripButtonHarmonogram,
             this.toolStripButton1,
-            this.toolStripButtonBazyl});
+            this.toolStripButtonBazyl,
+            this.toolStripButton2});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(596, 80);
+            this.toolStrip1.Size = new System.Drawing.Size(662, 80);
             this.toolStrip1.Stretch = true;
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
@@ -68,7 +70,7 @@
             // 
             this.groupBox1.Controls.Add(this.dataGridViewPracownicy);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.groupBox1.Location = new System.Drawing.Point(12, 83);
+            this.groupBox1.Location = new System.Drawing.Point(55, 83);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(570, 263);
             this.groupBox1.TabIndex = 1;
@@ -183,12 +185,23 @@
             this.toolStripButtonBazyl.Text = "Pobranie pliku bazy leków BAZYL";
             this.toolStripButtonBazyl.Click += new System.EventHandler(this.toolStripButtonBazyl_Click);
             // 
+            // toolStripButton2
+            // 
+            this.toolStripButton2.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.toolStripButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton2.Image = global::Gabinet.Properties.Resources.heart_plus_icon;
+            this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton2.Name = "toolStripButton2";
+            this.toolStripButton2.Size = new System.Drawing.Size(84, 77);
+            this.toolStripButton2.Text = "Dodanie / Edycja danych przychodni";
+            this.toolStripButton2.Click += new System.EventHandler(this.toolStripButton2_Click);
+            // 
             // organizacjaPrzychodni
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.ClientSize = new System.Drawing.Size(596, 358);
+            this.ClientSize = new System.Drawing.Size(662, 358);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.toolStrip1);
             this.Name = "organizacjaPrzychodni";
@@ -217,5 +230,6 @@
         private System.Windows.Forms.ToolStripButton toolStripButton1;
         private System.Windows.Forms.ToolStripButton toolStripButtonEdytuj;
         private System.Windows.Forms.ToolStripButton toolStripButtonBazyl;
+        private System.Windows.Forms.ToolStripButton toolStripButton2;
     }
 }

@@ -169,5 +169,27 @@ namespace Gabinet
                 this.Visible = true;
             }
         }
+
+        private void toolStripButton2_Click(object sender, EventArgs e)
+        {
+            bool IsOpen = false;
+
+            foreach (Form f in Application.OpenForms)
+            {
+                if (f.Text == "Dane przychodni")
+                {
+                    IsOpen = true;
+                    f.Focus();
+                    break;
+                }
+            }
+            if (IsOpen == false)
+            {
+                this.Visible = false;
+                Gabinet f2 = new Gabinet();
+                f2.ShowDialog();                
+                this.Visible = true;
+            }
+        }
     }
 }

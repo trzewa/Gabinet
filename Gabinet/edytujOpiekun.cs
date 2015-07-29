@@ -137,11 +137,6 @@ namespace Gabinet
             }
         }
 
-        private void buttonAnuluj_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
         private void buttonUsun_Click(object sender, EventArgs e)
         {
             if (comboBoxOpiekun.SelectedIndex == -1)

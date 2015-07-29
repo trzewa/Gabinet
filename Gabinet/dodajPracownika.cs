@@ -401,5 +401,26 @@ namespace Gabinet
                 MessageBox.Show(ex.Message);
             }
         }
+
+        private void textBoxPesel_Leave(object sender, EventArgs e)
+        {
+            if (textBoxPesel.TextLength != 11)
+            {
+                MessageBox.Show("Numer PESEL ma za mało cyfr!");
+                textBoxPesel.Select();
+            }
+        }
+
+        private void textBoxPesel_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar < '0' || e.KeyChar > '9')
+            {
+                if (e.KeyChar != (char)8)
+                {
+                    MessageBox.Show("Można używaż tylko cyfr!");
+                    e.KeyChar = (char)0;
+                }
+            }
+        }
     }
 }

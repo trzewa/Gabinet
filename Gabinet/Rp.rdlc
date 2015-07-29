@@ -1,0 +1,719 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2005/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <DataSources>
+    <DataSource Name="DummyDataSource">
+      <rd:DataSourceID>58ce73d5-b2e5-4ed9-bdcd-f8fd3ec72e5c</rd:DataSourceID>
+      <ConnectionProperties>
+        <DataProvider>SQL</DataProvider>
+        <ConnectString />
+      </ConnectionProperties>
+    </DataSource>
+  </DataSources>
+  <InteractiveHeight>0cm</InteractiveHeight>
+  <ReportParameters>
+    <ReportParameter Name="PrintWireframe">
+      <DataType>Boolean</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>TRUE</Value>
+        </Values>
+      </DefaultValue>
+      <AllowBlank>true</AllowBlank>
+      <Prompt>PrintWireframe</Prompt>
+      <Hidden>true</Hidden>
+    </ReportParameter>
+    <ReportParameter Name="PrintLabels">
+      <DataType>Boolean</DataType>
+      <AllowBlank>true</AllowBlank>
+      <Prompt>PrintLabels</Prompt>
+      <Hidden>true</Hidden>
+    </ReportParameter>
+    <ReportParameter Name="PrintedBy">
+      <DataType>String</DataType>
+      <Nullable>true</Nullable>
+      <DefaultValue>
+        <Values>
+          <Value>Wydruk własny</Value>
+        </Values>
+      </DefaultValue>
+      <AllowBlank>true</AllowBlank>
+      <Prompt>PrintedBy</Prompt>
+      <Hidden>true</Hidden>
+    </ReportParameter>
+    <ReportParameter Name="HealthcareProvider">
+      <DataType>String</DataType>
+      <Nullable>true</Nullable>
+      <AllowBlank>true</AllowBlank>
+      <Prompt>HealthcareProvider</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="PrintPrescriptionNumber">
+      <DataType>Boolean</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>TRUE</Value>
+        </Values>
+      </DefaultValue>
+      <AllowBlank>true</AllowBlank>
+      <Prompt>PrintPrescriptionNumber</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="PrescriptionNumber">
+      <DataType>String</DataType>
+      <Nullable>true</Nullable>
+      <AllowBlank>true</AllowBlank>
+      <Prompt>PrescriptionNumber</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="PESEL">
+      <DataType>String</DataType>
+      <Nullable>true</Nullable>
+      <AllowBlank>true</AllowBlank>
+      <Prompt>PESEL</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="PatientData">
+      <DataType>String</DataType>
+      <Prompt>PatientData</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="ProAuctoreFamilia">
+      <DataType>String</DataType>
+      <Nullable>true</Nullable>
+      <AllowBlank>true</AllowBlank>
+      <Prompt>ProAuctoreFamilia</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="NFZDivision">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>X</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>NFZDivision</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="PatientPersmissions">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>X</Value>
+        </Values>
+      </DefaultValue>      
+      <Prompt>PatientPersmissions</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="ChronicDisease">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>X</Value>
+        </Values>
+      </DefaultValue>      
+      <Prompt>ChronicDisease</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="PrescriptionDate">
+      <DataType>String</DataType>
+      <AllowBlank>true</AllowBlank>
+      <Prompt>PrescriptionDate</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="CITO">
+      <DataType>Boolean</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>FALSE</Value>
+        </Values>
+      </DefaultValue>
+      <AllowBlank>true</AllowBlank>
+      <Prompt>CITO</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="FromDate">
+      <DataType>String</DataType>
+      <AllowBlank>true</AllowBlank>
+      <Prompt>FromDate</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="PrintHCProvider">
+      <DataType>Boolean</DataType>
+      <AllowBlank>true</AllowBlank>
+      <Prompt>PrintHCProvider</Prompt>
+    </ReportParameter>
+  </ReportParameters>
+  <rd:DrawGrid>true</rd:DrawGrid>
+  <InteractiveWidth>0cm</InteractiveWidth>
+  <rd:GridSpacing>0.25cm</rd:GridSpacing>
+  <rd:SnapToGrid>true</rd:SnapToGrid>
+  <RightMargin>0.001cm</RightMargin>
+  <LeftMargin>0.001cm</LeftMargin>
+  <BottomMargin>0.001cm</BottomMargin>
+  <rd:ReportID>33e36b76-7a79-4f23-b197-bf979cb9fc66</rd:ReportID>
+  <CodeModules>
+    <CodeModule>System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</CodeModule>
+    <CodeModule>I25, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</CodeModule>
+  </CodeModules>
+  <PageWidth>10cm</PageWidth>
+  <DataSets>
+    <DataSet Name="Rp_Medicines">
+      <Fields>
+        <Field Name="ID">
+          <DataField>ID</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="Name">
+          <DataField>Name</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+      </Fields>
+      <Query>
+        <DataSourceName>DummyDataSource</DataSourceName>
+        <CommandText />
+        <rd:UseGenericDesigner>true</rd:UseGenericDesigner>
+      </Query>
+      <rd:DataSetInfo>
+        <rd:DataSetName>Rp</rd:DataSetName>
+        <rd:TableName>Medicines</rd:TableName>
+      </rd:DataSetInfo>
+    </DataSet>
+  </DataSets>
+  <Width>10cm</Width>
+  <Body>
+    <ColumnSpacing>1cm</ColumnSpacing>
+    <ReportItems>
+      <Textbox Name="Rp_Dates_From_DateFrom">
+        <Top>18.18253cm</Top>
+        <Width>3cm</Width>
+        <Style>
+          <BorderColor>
+            <Bottom>Black</Bottom>
+          </BorderColor>
+          <BorderStyle>
+            <Bottom>Solid</Bottom>
+          </BorderStyle>
+          <BorderWidth>
+            <Bottom>1pt</Bottom>
+          </BorderWidth>
+          <FontFamily>Tahoma</FontFamily>
+          <TextAlign>Center</TextAlign>
+          <VerticalAlign>Middle</VerticalAlign>
+          <PaddingLeft>2pt</PaddingLeft>
+        </Style>
+        <ZIndex>31</ZIndex>
+        <Height>0.6cm</Height>
+        <Value>=Parameters!FromDate.Value</Value>
+      </Textbox>
+      <Line Name="Rp_Line6">
+        <Top>16.959cm</Top>
+        <Width>8.14418cm</Width>
+        <Style>
+          <BorderColor>
+            <Default>=iif(Parameters!PrintWireframe.Value = TRUE, "Black", "White")</Default>
+          </BorderColor>
+          <BorderStyle>
+            <Default>Solid</Default>
+          </BorderStyle>
+        </Style>
+        <ZIndex>30</ZIndex>
+        <Left>0.02645cm</Left>
+        <Height>0cm</Height>
+      </Line>
+      <Textbox Name="Rp_Dates_Date">
+        <Top>17.25cm</Top>
+        <Width>3cm</Width>
+        <Style>
+          <BorderColor>
+            <Bottom>Black</Bottom>
+          </BorderColor>
+          <BorderStyle>
+            <Bottom>Solid</Bottom>
+          </BorderStyle>
+          <BorderWidth>
+            <Bottom>1pt</Bottom>
+          </BorderWidth>
+          <FontFamily>Tahoma</FontFamily>
+          <TextAlign>Center</TextAlign>
+          <VerticalAlign>Middle</VerticalAlign>
+          <PaddingLeft>2pt</PaddingLeft>
+        </Style>
+        <ZIndex>29</ZIndex>
+        <Height>0.6cm</Height>
+        <Value>=Parameters!PrescriptionDate.Value</Value>
+      </Textbox>
+      <Textbox Name="Rp_Dates_From_PrintedByData">
+        <Visibility>
+          <Hidden>=Not Parameters!PrintLabels.Value</Hidden>
+        </Visibility>
+        <Top>19.44446cm</Top>
+        <Width>8.46759cm</Width>
+        <Style>
+          <FontFamily>Tahoma</FontFamily>
+          <FontSize>7pt</FontSize>
+          <TextAlign>Left</TextAlign>
+          <PaddingLeft>2pt</PaddingLeft>
+        </Style>
+        <ZIndex>28</ZIndex>
+        <CanGrow>true</CanGrow>
+        <Height>0.30291cm</Height>
+        <Value>=Parameters!PrintedBy.Value</Value>
+      </Textbox>
+      <Textbox Name="Rp_DoctorIdentLabel">
+        <Top>17.03838cm</Top>
+        <Width>4.80292cm</Width>
+        <Style>
+          <Color>=iif(Parameters!PrintLabels.Value = TRUE, "Black", "White")</Color>
+          <FontFamily>Tahoma</FontFamily>
+          <PaddingLeft>2pt</PaddingLeft>
+        </Style>
+        <ZIndex>27</ZIndex>
+        <CanGrow>true</CanGrow>
+        <Left>4cm</Left>
+        <Height>0.46164cm</Height>
+        <Value>Dane ident. i podpis lekarza</Value>
+      </Textbox>
+      <Textbox Name="Rp_Dates_From_DateFromLabel">
+        <Top>17.87964cm</Top>
+        <Width>2.69114cm</Width>
+        <Style>
+          <Color>=iif(Parameters!PrintLabels.Value = TRUE, "Black", "White")</Color>
+          <FontFamily>Tahoma</FontFamily>
+          <FontSize>7pt</FontSize>
+          <PaddingLeft>2pt</PaddingLeft>
+        </Style>
+        <ZIndex>26</ZIndex>
+        <CanGrow>true</CanGrow>
+        <Left>0.2619cm</Left>
+        <Height>0.30291cm</Height>
+        <Value>Data realizacji od dnia</Value>
+      </Textbox>
+      <Textbox Name="Rp_DateLabel">
+        <Top>16.9709cm</Top>
+        <Width>2.13228cm</Width>
+        <Style>
+          <Color>=iif(Parameters!PrintLabels.Value = TRUE, "Black", "White")</Color>
+          <FontFamily>Tahoma</FontFamily>
+          <FontSize>7pt</FontSize>
+          <PaddingLeft>2pt</PaddingLeft>
+        </Style>
+        <ZIndex>25</ZIndex>
+        <CanGrow>true</CanGrow>
+        <Left>0.2619cm</Left>
+        <Height>0.3029cm</Height>
+        <Value>Data wystawienia</Value>
+      </Textbox>
+      <Textbox Name="Rp_SecondPrescriptionNumber">
+        <Top>16.57937cm</Top>
+        <Width>5.25cm</Width>
+        <Style>
+          <Color>=iif(Parameters!PrintPrescriptionNumber.Value = TRUE, "Black", "White")</Color>
+          <FontFamily>Tahoma</FontFamily>
+          <FontSize>8pt</FontSize>
+          <TextAlign>Center</TextAlign>
+          <PaddingLeft>2pt</PaddingLeft>
+        </Style>
+        <ZIndex>24</ZIndex>
+        <CanGrow>true</CanGrow>
+        <Left>1.90145cm</Left>
+        <Height>0.35582cm</Height>
+        <Value>=Parameters!PrescriptionNumber.Value</Value>
+      </Textbox>
+      <Image Name="Rp_Barcode">
+        <Sizing>AutoSize</Sizing>
+        <Top>15.81484cm</Top>
+        <Width>0.75cm</Width>
+        <MIMEType>image/png</MIMEType>
+        <Source>Database</Source>
+        <Style />
+        <ZIndex>23</ZIndex>
+        <Left>0.27645cm</Left>
+        <Height>0.75cm</Height>
+        <Value>=I25.I25.GenerateI25Barcode(Parameters!PrescriptionNumber.Value, false, 320, 30, Parameters!PrintPrescriptionNumber.Value)</Value>
+      </Image>
+      <Line Name="Rp_Middle_Line2">
+        <Top>7.42063cm</Top>
+        <Width>0cm</Width>
+        <Style>
+          <BorderColor>
+            <Default>=iif(Parameters!PrintWireframe.Value = TRUE, "Black", "White")</Default>
+          </BorderColor>
+          <BorderStyle>
+            <Default>Solid</Default>
+          </BorderStyle>
+        </Style>
+        <ZIndex>22</ZIndex>
+        <Left>5.94709cm</Left>
+        <Height>-3.46822cm</Height>
+      </Line>
+      <Line Name="Rp_Middle_Line3">
+        <Top>7.44711cm</Top>
+        <Width>8.14418cm</Width>
+        <Style>
+          <BorderColor>
+            <Default>=iif(Parameters!PrintWireframe.Value = TRUE, "Black", "White")</Default>
+          </BorderColor>
+          <BorderStyle>
+            <Default>Solid</Default>
+          </BorderStyle>
+        </Style>
+        <ZIndex>21</ZIndex>
+        <Left>0.13227cm</Left>
+        <Height>0cm</Height>
+      </Line>     
+      <Textbox Name="Rp_Middle_PermData">
+        <Top>6.44708cm</Top>
+        <Width>1.67063cm</Width>
+        <Style>
+          <FontFamily>Tahoma</FontFamily>
+          <FontSize>14pt</FontSize>
+          <TextAlign>Center</TextAlign>
+          <VerticalAlign>Middle</VerticalAlign>
+        </Style>
+        <ZIndex>18</ZIndex>
+        <Left>6.30291cm</Left>
+        <Height>0.53354cm</Height>
+        <Value>=Parameters!PatientPersmissions.Value</Value>
+      </Textbox>      
+      <Textbox Name="Rp_Middle_PermLabel">
+        <Top>7.02884cm</Top>
+        <Width>1.92063cm</Width>
+        <Style>
+          <Color>=iif(Parameters!PrintLabels.Value = TRUE, "Black", "White")</Color>
+          <FontFamily>Tahoma</FontFamily>
+          <FontSize>8pt</FontSize>
+          <PaddingLeft>2pt</PaddingLeft>
+        </Style>
+        <ZIndex>16</ZIndex>
+        <Left>6.03836cm</Left>
+        <Height>0.327cm</Height>
+        <Value>Uprawnienia</Value>
+      </Textbox>
+      <Rectangle Name="Rp_Middle_MedicinesListRect">
+        <Left>0.02645cm</Left>
+        <ZIndex>15</ZIndex>
+        <ReportItems>
+          <Table Name="Rp_Middle_MedicinesList">
+            <DataSetName>Rp_Medicines</DataSetName>
+            <Width>8.75cm</Width>
+            <Details>
+              <TableRows>
+                <TableRow>
+                  <TableCells>
+                    <TableCell>
+                      <ReportItems>
+                        <Textbox Name="ID">
+                          <rd:DefaultName>ID</rd:DefaultName>
+                          <Style>
+                            <FontSize>8pt</FontSize>
+                            <TextAlign>Right</TextAlign>
+                            <VerticalAlign>Middle</VerticalAlign>
+                          </Style>
+                          <CanGrow>true</CanGrow>
+                          <Value>=Fields!ID.Value</Value>
+                        </Textbox>
+                      </ReportItems>
+                    </TableCell>
+                    <TableCell>
+                      <ReportItems>
+                        <Textbox Name="Name">
+                          <rd:DefaultName>Name</rd:DefaultName>
+                          <Style>
+                            <FontSize>=iif(Fields!ID.Value mod 2 = 0, "8pt", "9pt")</FontSize>
+                            <FontWeight>=iif(Fields!ID.Value mod 2 = 0, "Normal", "Bold")</FontWeight>
+                            <TextAlign>=iif(Fields!ID.Value mod 2 = 0, "Right", "Left")</TextAlign>
+                            <VerticalAlign>Middle</VerticalAlign>
+                          </Style>
+                          <CanGrow>true</CanGrow>
+                          <Value>=Fields!Name.Value</Value>
+                        </Textbox>
+                      </ReportItems>
+                    </TableCell>
+                  </TableCells>
+                  <Height>0.4cm</Height>
+                </TableRow>
+                <TableRow>
+                  <Visibility>
+                    <Hidden>= iif(Fields!ID.Value mod 2 &lt;&gt; 0, TRUE, iif(Fields!ID.Value = Count(Fields!ID.Value, "Rp_Medicines"), TRUE, FALSE))</Hidden>
+                  </Visibility>
+                  <TableCells>
+                    <TableCell>
+                      <ReportItems>
+                        <Textbox Name="textbox23">
+                          <rd:DefaultName>textbox23</rd:DefaultName>
+                          <Style>
+                            <FontSize>8pt</FontSize>
+                            <TextAlign>Center</TextAlign>
+                            <VerticalAlign>Middle</VerticalAlign>
+                          </Style>
+                          <CanGrow>true</CanGrow>
+                          <Value>=Fields!ID.Value</Value>
+                        </Textbox>
+                      </ReportItems>
+                    </TableCell>
+                    <TableCell>
+                      <ReportItems>
+                        <Textbox Name="textbox24">
+                          <rd:DefaultName>textbox24</rd:DefaultName>
+                          <Style>
+                            <FontSize>8pt</FontSize>
+                            <TextAlign>Center</TextAlign>
+                            <VerticalAlign>Middle</VerticalAlign>
+                          </Style>
+                          <CanGrow>true</CanGrow>
+                          <Value>#</Value>
+                        </Textbox>
+                      </ReportItems>
+                    </TableCell>
+                  </TableCells>
+                  <Height>0.4cm</Height>
+                </TableRow>
+              </TableRows>
+            </Details>
+            <TableColumns>
+              <TableColumn>
+                <Visibility>
+                  <Hidden>true</Hidden>
+                </Visibility>
+                <Width>0.26514cm</Width>
+              </TableColumn>
+              <TableColumn>
+                <Width>8.48486cm</Width>
+              </TableColumn>
+            </TableColumns>
+            <Height>0.8cm</Height>
+          </Table>
+        </ReportItems>
+        <Top>8.22356cm</Top>
+        <Width>9cm</Width>
+        <Style>
+          <BackgroundColor>White</BackgroundColor>
+        </Style>
+        <Height>7.5cm</Height>
+      </Rectangle>
+      <Textbox Name="Rp_Middle_CITO">
+        <Visibility>
+          <Hidden>=NOT Parameters!CITO.Value</Hidden>
+        </Visibility>
+        <Top>7.61775cm</Top>
+        <Width>1.25cm</Width>
+        <Style>
+          <BorderStyle>
+            <Default>Solid</Default>
+          </BorderStyle>
+          <FontStyle>Italic</FontStyle>
+          <FontFamily>Tahoma</FontFamily>
+          <FontWeight>700</FontWeight>
+          <TextAlign>Center</TextAlign>
+          <PaddingLeft>2pt</PaddingLeft>
+        </Style>
+        <ZIndex>14</ZIndex>
+        <CanGrow>true</CanGrow>
+        <Left>3.77645cm</Left>
+        <Height>0.46164cm</Height>
+        <Value>CITO</Value>
+      </Textbox>
+      <Textbox Name="Rp_Middle_NFZData">
+        <Top>4.10583cm</Top>
+        <Width>1.67063cm</Width>
+        <Style>
+          <FontFamily>Tahoma</FontFamily>
+          <FontSize>14pt</FontSize>
+          <TextAlign>Center</TextAlign>
+          <VerticalAlign>Middle</VerticalAlign>
+        </Style>
+        <ZIndex>13</ZIndex>
+        <Left>6.30291cm</Left>
+        <Height>0.53354cm</Height>
+        <Value>=Parameters!NFZDivision.Value</Value>
+      </Textbox>
+      <Textbox Name="Rp_Middle_Auctore">
+        <Top>4.07937cm</Top>
+        <Width>2.75cm</Width>
+        <Style>
+          <FontStyle>Italic</FontStyle>
+          <FontFamily>Tahoma</FontFamily>
+          <FontWeight>700</FontWeight>
+          <PaddingLeft>2pt</PaddingLeft>
+        </Style>
+        <ZIndex>12</ZIndex>
+        <CanGrow>true</CanGrow>
+        <Left>2.77645cm</Left>
+        <Height>0.46164cm</Height>
+        <Value>=Parameters!ProAuctoreFamilia.Value</Value>
+      </Textbox>
+      <Textbox Name="Rp_Middle_PatientData">
+        <Top>4.61772cm</Top>
+        <Width>5.5cm</Width>
+        <Style>
+          <FontSize>9pt</FontSize>
+          <TextAlign>Left</TextAlign>
+          <PaddingLeft>2pt</PaddingLeft>
+        </Style>
+        <ZIndex>11</ZIndex>
+        <CanGrow>true</CanGrow>
+        <Left>0.27645cm</Left>
+        <Height>2.2381cm</Height>
+        <Value>=Parameters!PatientData.Value</Value>
+      </Textbox>
+      <Textbox Name="Rp_Middle_PESELData">
+        <Visibility>
+          <Hidden>=NOT (Len(Parameters!PESEL.Value) = 11)</Hidden>
+        </Visibility>
+        <Top>6.94711cm</Top>
+        <Width>3.5cm</Width>
+        <Style>
+          <FontFamily>Tahoma</FontFamily>
+          <TextAlign>Left</TextAlign>
+          <PaddingLeft>2pt</PaddingLeft>
+        </Style>
+        <ZIndex>10</ZIndex>
+        <Left>1.77645cm</Left>
+        <Height>0.38227cm</Height>
+        <Value>=Parameters!PESEL.Value</Value>
+      </Textbox>
+      <Textbox Name="Rp_Const_TopPrescriptionNumber">
+        <Width>5.22355cm</Width>
+        <Style>
+          <Color>=iif(Parameters!PrintPrescriptionNumber.Value = TRUE, "Black", "White")</Color>
+          <FontFamily>Tahoma</FontFamily>
+          <FontWeight>700</FontWeight>
+          <TextAlign>Center</TextAlign>
+          <PaddingLeft>2pt</PaddingLeft>
+        </Style>
+        <ZIndex>9</ZIndex>
+        <CanGrow>true</CanGrow>
+        <Left>3.52645cm</Left>
+        <Height>0.47619cm</Height>
+        <Value>=Parameters!PrescriptionNumber.Value</Value>
+      </Textbox>
+      <Textbox Name="Rp_Const_HealthCareProvider">
+        <Top>0.55291cm</Top>
+        <Width>8.25cm</Width>
+        <Style>
+          <Color>=iif(Parameters!PrintHCProvider.Value = TRUE, "Black", "White")</Color>
+          <FontSize>8pt</FontSize>
+          <TextAlign>Center</TextAlign>
+          <VerticalAlign>Middle</VerticalAlign>
+          <PaddingLeft>2pt</PaddingLeft>
+        </Style>
+        <ZIndex>8</ZIndex>
+        <Left>0.02645cm</Left>
+        <Height>2.75cm</Height>
+        <Value>=Parameters!HealthcareProvider.Value</Value>
+      </Textbox>
+      <Textbox Name="Rp_Middle_NDZLabel">
+        <Top>4.71165cm</Top>
+        <Width>2cm</Width>
+        <Style>
+          <Color>=iif(Parameters!PrintLabels.Value = TRUE, "Black", "White")</Color>
+          <FontFamily>Tahoma</FontFamily>
+          <FontSize>8pt</FontSize>
+          <PaddingLeft>2pt</PaddingLeft>
+        </Style>
+        <ZIndex>7</ZIndex>
+        <Left>6.03836cm</Left>
+        <Height>0.327cm</Height>
+        <Value>Oddział NFZ</Value>
+      </Textbox>
+      <Textbox Name="Rp_Middle_RpLabel">
+        <Top>7.61775cm</Top>
+        <Width>0.9881cm</Width>
+        <Style>
+          <Color>=iif(Parameters!PrintLabels.Value = TRUE, "Black", "White")</Color>
+          <FontFamily>Tahoma</FontFamily>
+          <FontWeight>700</FontWeight>
+          <PaddingLeft>2pt</PaddingLeft>
+        </Style>
+        <ZIndex>6</ZIndex>
+        <CanGrow>true</CanGrow>
+        <Left>0.2619cm</Left>
+        <Height>0.46164cm</Height>
+        <Value>Rp.</Value>
+      </Textbox>
+      <Textbox Name="Rp_Middle_PESEL">
+        <Top>6.94711cm</Top>
+        <Width>1.4881cm</Width>
+        <Style>
+          <Color>=iif(Parameters!PrintLabels.Value = TRUE, "Black", "White")</Color>
+          <FontFamily>Tahoma</FontFamily>
+          <FontWeight>700</FontWeight>
+          <PaddingLeft>2pt</PaddingLeft>
+        </Style>
+        <ZIndex>5</ZIndex>
+        <Left>0.2619cm</Left>
+        <Height>0.38227cm</Height>
+        <Value>PESEL</Value>
+      </Textbox>
+      <Textbox Name="Rp_Middle_PatientLabel">
+        <Top>4.07937cm</Top>
+        <Width>1.75cm</Width>
+        <Style>
+          <Color>=iif(Parameters!PrintLabels.Value = TRUE, "Black", "White")</Color>
+          <FontFamily>Tahoma</FontFamily>
+          <FontWeight>700</FontWeight>
+          <PaddingLeft>2pt</PaddingLeft>
+        </Style>
+        <ZIndex>4</ZIndex>
+        <CanGrow>true</CanGrow>
+        <Left>0.2619cm</Left>
+        <Height>0.46164cm</Height>
+        <Value>Pacjent</Value>
+      </Textbox>
+      <Textbox Name="Rp_Middle_ProviderLabel">
+        <Top>3.39418cm</Top>
+        <Width>3.7381cm</Width>
+        <Style>
+          <Color>=iif(Parameters!PrintLabels.Value = TRUE, "Black", "White")</Color>
+          <FontFamily>Tahoma</FontFamily>
+          <FontWeight>700</FontWeight>
+          <PaddingLeft>2pt</PaddingLeft>
+        </Style>
+        <ZIndex>3</ZIndex>
+        <CanGrow>true</CanGrow>
+        <Left>0.2619cm</Left>
+        <Height>0.43254cm</Height>
+        <Value>Świadczeniodawca</Value>
+      </Textbox>
+      <Textbox Name="Rp_Const_PrescriptionLabel">
+        <Width>2.17064cm</Width>
+        <Style>
+          <Color>=iif(Parameters!PrintLabels.Value = TRUE, "Black", "White")</Color>
+          <FontFamily>Tahoma</FontFamily>
+          <FontSize>11pt</FontSize>
+          <FontWeight>700</FontWeight>
+          <PaddingLeft>2pt</PaddingLeft>
+        </Style>
+        <ZIndex>2</ZIndex>
+        <CanGrow>true</CanGrow>
+        <Left>0.32936cm</Left>
+        <Height>0.47619cm</Height>
+        <Value>Recepta</Value>
+      </Textbox>
+      <Line Name="Rp_Middle_Line4">
+        <Top>5.71527cm</Top>
+        <Width>2.21164cm</Width>
+        <Style>
+          <BorderColor>
+            <Default>=iif(Parameters!PrintWireframe.Value = TRUE, "Black", "White")</Default>
+          </BorderColor>
+          <BorderStyle>
+            <Default>Solid</Default>
+          </BorderStyle>
+        </Style>
+        <ZIndex>1</ZIndex>
+        <Left>5.97354cm</Left>
+        <Height>0cm</Height>
+      </Line>
+      <Line Name="Rp_Middle_Line1">
+        <Top>3.94709cm</Top>
+        <Width>8.14418cm</Width>
+        <Style>
+          <BorderColor>
+            <Default>=iif(Parameters!PrintWireframe.Value = TRUE, "Black", "White")</Default>
+          </BorderColor>
+          <BorderStyle>
+            <Default>Solid</Default>
+          </BorderStyle>
+        </Style>
+        <Left>0.13227cm</Left>
+        <Height>0cm</Height>
+      </Line>
+    </ReportItems>
+    <Height>21.25cm</Height>
+    <Style>
+      <BackgroundColor>White</BackgroundColor>
+    </Style>
+  </Body>
+  <Language>en-US</Language>
+  <TopMargin>0.001cm</TopMargin>
+  <PageHeight>21.25cm</PageHeight>
+</Report>
