@@ -154,11 +154,13 @@ namespace Gabinet
             try
             {
                 string selected_item = (comboBoxDaneLekarza.SelectedItem as ComboboxItem).Hidden_Id.ToString();
-                string date = monthCalendar1.SelectionStart.ToString();
+                //string date = monthCalendar1.SelectionStart.ToString();
+                DateTime selected_date = (DateTime)monthCalendar1.SelectionStart;
+                string date = selected_date.ToString("yyyy-MM-dd");
                 string stan = "0";
                 Database database = new Database();
                 MySqlDataAdapter myDataAdapter = new MySqlDataAdapter();
-                myDataAdapter = database.Select("select nazwisko, imie, pesel, data, godzina from wizyta inner join pacjent on pacjent.idpacjent=wizyta.idpacjent where idpracownik='" + selected_item + "' and data='" + date + "' and stan='" + stan + "'", this.dbconnection_gabinet);
+                myDataAdapter = database.Select("select data, godzina, nazwisko, imie, pesel from wizyta inner join pacjent on pacjent.idpacjent=wizyta.idpacjent where idpracownik='" + selected_item + "' and data='" + date + "' and stan='" + stan + "'", this.dbconnection_gabinet);               
                 DataTable dt = new DataTable();
                 myDataAdapter.Fill(dt);
 
