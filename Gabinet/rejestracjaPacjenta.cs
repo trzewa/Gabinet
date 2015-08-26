@@ -8,13 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
-using mysettings = Gabinet.Properties.Settings;
+//using mysettings = Gabinet.Properties.Settings;
 
 namespace Gabinet
 {   
     public partial class rejestracjaPacjenta : Form
     {
-        public string dbconnection_gabinet;
+        //public string dbconnection_gabinet;
         private string idpacjent;
         private string godzOd;
         private string godzDo;
@@ -30,7 +30,7 @@ namespace Gabinet
             this.MaximumSize = this.Size;
             this.MinimumSize = this.Size;
             this.idpacjent = idpacjentreceive;
-            this.dbconnection_gabinet = "datasource=" + mysettings.Default.datasource + ";database=" + mysettings.Default.database + ";port=" + mysettings.Default.port + ";username=" + mysettings.Default.user + ";password=" + mysettings.Default.password + ";charset=utf8";
+            //database.Conect() = "datasource=" + mysettings.Default.datasource + ";database=" + mysettings.Default.database + ";port=" + mysettings.Default.port + ";username=" + mysettings.Default.user + ";password=" + mysettings.Default.password + ";charset=utf8";
             groupBox6.Visible = false;
             Update_danePacjent();
             Update_daneLekarza();            
@@ -43,7 +43,7 @@ namespace Gabinet
             this.MinimumSize = this.Size;
             this.idpacjent = idpacjentreceive;
             this.rodzicWizyta = parent;
-            this.dbconnection_gabinet = "datasource=" + mysettings.Default.datasource + ";database=" + mysettings.Default.database + ";port=" + mysettings.Default.port + ";username=" + mysettings.Default.user + ";password=" + mysettings.Default.password + ";charset=utf8";
+            //database.Conect() = "datasource=" + mysettings.Default.datasource + ";database=" + mysettings.Default.database + ";port=" + mysettings.Default.port + ";username=" + mysettings.Default.user + ";password=" + mysettings.Default.password + ";charset=utf8";
             groupBox6.Visible = false;
             Update_danePacjent();
             Update_daneLekarza();          
@@ -59,7 +59,7 @@ namespace Gabinet
             this.MinimumSize = this.Size;
             this.rodzicRejestracja = parent;
             this.flag = true;
-            this.dbconnection_gabinet = "datasource=" + mysettings.Default.datasource + ";database=" + mysettings.Default.database + ";port=" + mysettings.Default.port + ";username=" + mysettings.Default.user + ";password=" + mysettings.Default.password + ";charset=utf8";
+            //database.Conect() = "datasource=" + mysettings.Default.datasource + ";database=" + mysettings.Default.database + ";port=" + mysettings.Default.port + ";username=" + mysettings.Default.user + ";password=" + mysettings.Default.password + ";charset=utf8";
             groupBox1.Visible = false;
             groupBox5.Visible = false;
             groupBox6.Visible = true;
@@ -78,7 +78,7 @@ namespace Gabinet
                 int dzienTygodnia = (int)selected_date.DayOfWeek;
                 Database database = new Database();
                 MySqlDataAdapter myDataAdapter = new MySqlDataAdapter();
-                myDataAdapter = database.Select("select godz_od, godz_do from godzinyprzyjec inner join pracownikgodziny on pracownikgodziny.idgodziny=godzinyprzyjec.idgodziny where dzien_tygodnia='" + dzienTygodnia + "' and idpracownik='" + selected_item + "'", this.dbconnection_gabinet);
+                myDataAdapter = database.Select("select godz_od, godz_do from godzinyprzyjec inner join pracownikgodziny on pracownikgodziny.idgodziny=godzinyprzyjec.idgodziny where dzien_tygodnia='" + dzienTygodnia + "' and idpracownik='" + selected_item + "'", database.Conect());
                 DataTable dt = new DataTable();
                 myDataAdapter.Fill(dt); //godziny przyjęć
 
@@ -106,7 +106,7 @@ namespace Gabinet
             {
                 MySqlDataAdapter myDataAdapter = new MySqlDataAdapter();
                 Database database = new Database();
-                myDataAdapter = database.Select("select * from pacjent where idpacjent='" + this.idpacjent + "'", this.dbconnection_gabinet);
+                myDataAdapter = database.Select("select * from pacjent where idpacjent='" + this.idpacjent + "'", database.Conect());
 
                 DataTable dt = new DataTable();
                 myDataAdapter.Fill(dt);
@@ -130,7 +130,7 @@ namespace Gabinet
             {
                 MySqlDataAdapter myDataAdapter = new MySqlDataAdapter();
                 Database database = new Database();
-                myDataAdapter = database.Select("select * from pracownik where idstanowisko='1' or idstanowisko='3' or idstanowisko='4'", this.dbconnection_gabinet);
+                myDataAdapter = database.Select("select * from pracownik where idstanowisko='1' or idstanowisko='3' or idstanowisko='4'", database.Conect());
 
                 DataTable dt = new DataTable();
                 myDataAdapter.Fill(dt);
@@ -160,7 +160,7 @@ namespace Gabinet
                 string stan = "0";
                 Database database = new Database();
                 MySqlDataAdapter myDataAdapter = new MySqlDataAdapter();
-                myDataAdapter = database.Select("select data, godzina, nazwisko, imie, pesel from wizyta inner join pacjent on pacjent.idpacjent=wizyta.idpacjent where idpracownik='" + selected_item + "' and data='" + date + "' and stan='" + stan + "'", this.dbconnection_gabinet);               
+                myDataAdapter = database.Select("select data, godzina, nazwisko, imie, pesel from wizyta inner join pacjent on pacjent.idpacjent=wizyta.idpacjent where idpracownik='" + selected_item + "' and data='" + date + "' and stan='" + stan + "'", database.Conect());               
                 DataTable dt = new DataTable();
                 myDataAdapter.Fill(dt);
 
@@ -185,8 +185,8 @@ namespace Gabinet
                 Database database = new Database();
                 MySqlDataAdapter myDataAdapter = new MySqlDataAdapter();
                 MySqlDataAdapter myDA = new MySqlDataAdapter();
-                myDataAdapter = database.Select("select godz_od, godz_do from godzinyprzyjec inner join pracownikgodziny on pracownikgodziny.idgodziny=godzinyprzyjec.idgodziny where dzien_tygodnia='" + dzienTygodnia + "' and idpracownik='" + idpracownik_selected + "'", this.dbconnection_gabinet);
-                myDA = database.Select("select * from wizyta where idpracownik='" + idpracownik_selected + "' and data='" + date + "' and stan='" + stan + "'", this.dbconnection_gabinet);
+                myDataAdapter = database.Select("select godz_od, godz_do from godzinyprzyjec inner join pracownikgodziny on pracownikgodziny.idgodziny=godzinyprzyjec.idgodziny where dzien_tygodnia='" + dzienTygodnia + "' and idpracownik='" + idpracownik_selected + "'", database.Conect());
+                myDA = database.Select("select * from wizyta where idpracownik='" + idpracownik_selected + "' and data='" + date + "' and stan='" + stan + "'", database.Conect());
                 DataTable dt = new DataTable();
                 DataTable dT = new DataTable();
                 myDataAdapter.Fill(dt); //godziny przyjęć
@@ -306,7 +306,7 @@ namespace Gabinet
                         if (result == DialogResult.Yes)
                         {
                             Database database = new Database();
-                            database.Update("update wizyta set idpracownik='" + idpracownik_selected + "', data='" + date + "', godzina='" + wybranaGodzina + "' where idwizyta='" + rodzicWizyta.idwizyta + "'", this.dbconnection_gabinet);
+                            database.Update("update wizyta set idpracownik='" + idpracownik_selected + "', data='" + date + "', godzina='" + wybranaGodzina + "' where idwizyta='" + rodzicWizyta.idwizyta + "'", database.Conect());
                             Update_Harmonogram();
                             Update_Godziny();
                         }
@@ -323,7 +323,7 @@ namespace Gabinet
                         if (result == DialogResult.Yes)
                         {
                             Database database = new Database();
-                            database.Insert("insert into wizyta (idpracownik, idpacjent, data, godzina, stan) values ('" + idpracownik_selected + "', '" + this.idpacjent + "', '" + date + "', '" + wybranaGodzina + "', '" + stan + "')", this.dbconnection_gabinet);
+                            database.Insert("insert into wizyta (idpracownik, idpacjent, data, godzina, stan) values ('" + idpracownik_selected + "', '" + this.idpacjent + "', '" + date + "', '" + wybranaGodzina + "', '" + stan + "')", database.Conect());
                             Update_Harmonogram();
                             Update_Godziny();
                         }

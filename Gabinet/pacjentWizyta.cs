@@ -8,13 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
-using mysettings = Gabinet.Properties.Settings;
+//using mysettings = Gabinet.Properties.Settings;
 
 namespace Gabinet
 {
     public partial class pacjentWizyta : Form
     {
-        public string dbconnection_gabinet;
+        //public string dbconnection_gabinet;
         private string idpacjent;
         public string idwizyta;
         public string pracownik;
@@ -28,7 +28,7 @@ namespace Gabinet
             this.MaximumSize = this.Size;
             this.MinimumSize = this.Size;
             this.idpacjent = idpacjentreceive;
-            this.dbconnection_gabinet = "datasource=" + mysettings.Default.datasource + ";database=" + mysettings.Default.database + ";port=" + mysettings.Default.port + ";username=" + mysettings.Default.user + ";password=" + mysettings.Default.password + ";charset=utf8";
+            //database.Conect() = "datasource=" + mysettings.Default.datasource + ";database=" + mysettings.Default.database + ";port=" + mysettings.Default.port + ";username=" + mysettings.Default.user + ";password=" + mysettings.Default.password + ";charset=utf8";
             buttonInfo.Visible = false;
             Update_wizyta();
             
@@ -41,7 +41,7 @@ namespace Gabinet
             this.MinimumSize = this.Size;
             this.idpacjent = idpacjentreceive;
             //this.rodzicRejestracja = parent;
-            this.dbconnection_gabinet = "datasource=" + mysettings.Default.datasource + ";database=" + mysettings.Default.database + ";port=" + mysettings.Default.port + ";username=" + mysettings.Default.user + ";password=" + mysettings.Default.password + ";charset=utf8";
+            //database.Conect() = "datasource=" + mysettings.Default.datasource + ";database=" + mysettings.Default.database + ";port=" + mysettings.Default.port + ";username=" + mysettings.Default.user + ";password=" + mysettings.Default.password + ";charset=utf8";
             this.flag = flagreceive;
             if (flag)
             {
@@ -68,9 +68,9 @@ namespace Gabinet
                 Database database = new Database();
                 if (flag)
                 {
-                    myDataAdapter = database.Select("select data, godzina, idwizyta, wizyta.idpracownik, nazwisko, imie from wizyta inner join pracownik on pracownik.idpracownik=wizyta.idpracownik where idpacjent='" + this.idpacjent + "' and stan='1'", this.dbconnection_gabinet);
+                    myDataAdapter = database.Select("select data, godzina, idwizyta, wizyta.idpracownik, nazwisko, imie from wizyta inner join pracownik on pracownik.idpracownik=wizyta.idpracownik where idpacjent='" + this.idpacjent + "' and stan='1'", database.Conect());
                 } else
-                myDataAdapter = database.Select("select data, godzina, idwizyta, wizyta.idpracownik, nazwisko, imie from wizyta inner join pracownik on pracownik.idpracownik=wizyta.idpracownik where idpacjent='" + this.idpacjent + "' and stan='0'", this.dbconnection_gabinet);
+                myDataAdapter = database.Select("select data, godzina, idwizyta, wizyta.idpracownik, nazwisko, imie from wizyta inner join pracownik on pracownik.idpracownik=wizyta.idpracownik where idpacjent='" + this.idpacjent + "' and stan='0'", database.Conect());
 
                 DataTable dt = new DataTable();
                 myDataAdapter.Fill(dt);
@@ -133,7 +133,7 @@ namespace Gabinet
                 if (result == DialogResult.Yes)
                 {
                     Database database = new Database();
-                    database.Delete("delete from wizyta where idwizyta='" + this.idwizyta + "'", this.dbconnection_gabinet);
+                    database.Delete("delete from wizyta where idwizyta='" + this.idwizyta + "'", database.Conect());
                     Update_wizyta();
                 }
             }

@@ -375,6 +375,10 @@
             // 
             this.RpViewer.Location = new System.Drawing.Point(0, 0);
             this.RpViewer.Name = "ReportViewer";
+            this.RpViewer.ShowDocumentMapButton = false;
+            this.RpViewer.ShowExportButton = false;
+            this.RpViewer.ShowParameterPrompts = false;
+            this.RpViewer.ShowPromptAreaButton = false;
             this.RpViewer.Size = new System.Drawing.Size(400, 250);
             this.RpViewer.TabIndex = 0;
             // 

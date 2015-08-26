@@ -5,6 +5,8 @@ VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gabinet", "Gabinet\Gabinet.csproj", "{A081CBA3-681C-4CEC-B9F0-8529BA2E6D42}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Szyfrator", "Szyfrator\Szyfrator.csproj", "{EA8DCF5E-9368-486F-9CAE-6E3FC2CCAC32}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{A081CBA3-681C-4CEC-B9F0-8529BA2E6D42}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A081CBA3-681C-4CEC-B9F0-8529BA2E6D42}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A081CBA3-681C-4CEC-B9F0-8529BA2E6D42}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EA8DCF5E-9368-486F-9CAE-6E3FC2CCAC32}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EA8DCF5E-9368-486F-9CAE-6E3FC2CCAC32}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EA8DCF5E-9368-486F-9CAE-6E3FC2CCAC32}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EA8DCF5E-9368-486F-9CAE-6E3FC2CCAC32}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

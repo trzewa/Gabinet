@@ -1,4 +1,4 @@
-﻿namespace Gabinet.Properties {
+﻿namespace Konfiguracja.Properties {
     
     
     // Ta klasa umożliwia obsługę określonych zdarzeń w klasie ustawień:
@@ -6,14 +6,14 @@
     //  Zdarzenie PropertyChanged jest wywoływane po zmianie wartości ustawień.
     //  Zdarzenie SettingsLoaded jest wywoływane po załadowaniu wartości ustawień.
     //  Zdarzenie SettingsSaving jest wywoływane przed zapisaniem wartości ustawień.
-    internal sealed partial class Settings {
+    public sealed partial class Settings {
         
         public Settings() {
             // // Aby dodać obsługę zdarzeń dla zapisu i zmiany ustawień, należy usunąć komentarz w poniższych wierszach:
             //
-            //this.SettingChanging += this.SettingChangingEventHandler;
+            // this.SettingChanging += this.SettingChangingEventHandler;
             //
-            //this.SettingsSaving += this.SettingsSavingEventHandler;
+            // this.SettingsSaving += this.SettingsSavingEventHandler;
             //
         }
         

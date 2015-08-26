@@ -9,13 +9,13 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 using System.Net.Mail;
-using mysettings = Gabinet.Properties.Settings;
+//using mysettings = Gabinet.Properties.Settings;
 
 namespace Gabinet
 {
     public partial class DodajPacjent : Form
     {
-        public string dbconnection_gabinet;
+        //public string dbconnection_gabinet;
         public string idopiekun = null;
         public string idopiekunDrugi = null;
         public string idpacjent;
@@ -27,7 +27,7 @@ namespace Gabinet
             InitializeComponent();
             this.MaximumSize = this.Size;
             this.MinimumSize = this.Size;
-            this.dbconnection_gabinet = "datasource=" + mysettings.Default.datasource + ";database=" + mysettings.Default.database + ";port=" + mysettings.Default.port + ";username=" + mysettings.Default.user + ";password=" + mysettings.Default.password + ";charset=utf8";
+            //this.dbconnection_gabinet = "datasource=" + mysettings.Default.datasource + ";database=" + mysettings.Default.database + ";port=" + mysettings.Default.port + ";username=" + mysettings.Default.user + ";password=" + mysettings.Default.password + ";charset=utf8";
             this.idopiekun = null;
             buttonZmien.Visible = false;
             Update_comboBoxUprawnienia();
@@ -45,7 +45,7 @@ namespace Gabinet
             this.MaximumSize = this.Size;
             this.MinimumSize = this.Size;
             this.idpacjent = idpacjentReceive;
-            this.dbconnection_gabinet = "datasource=" + mysettings.Default.datasource + ";database=" + mysettings.Default.database + ";port=" + mysettings.Default.port + ";username=" + mysettings.Default.user + ";password=" + mysettings.Default.password + ";charset=utf8";            
+            //this.dbconnection_gabinet = "datasource=" + mysettings.Default.datasource + ";database=" + mysettings.Default.database + ";port=" + mysettings.Default.port + ";username=" + mysettings.Default.user + ";password=" + mysettings.Default.password + ";charset=utf8";            
             buttonZapisz.Visible = false;
             buttonDodajOpiekun.Visible = false;
             this.Text = "Edycja danych pacjenta";
@@ -77,7 +77,7 @@ namespace Gabinet
                 
                 MySqlDataAdapter myDataAdapter = new MySqlDataAdapter();
                 Database database = new Database();
-                myDataAdapter = database.Select("select * from ubezpieczenia", this.dbconnection_gabinet);
+                myDataAdapter = database.Select("select * from ubezpieczenia", database.Conect());
 
                 DataTable dt = new DataTable();
                 myDataAdapter.Fill(dt);
@@ -105,7 +105,7 @@ namespace Gabinet
                 
                 MySqlDataAdapter myDataAdapter = new MySqlDataAdapter();
                 Database database = new Database();
-                myDataAdapter = database.Select("select * from fundusz", this.dbconnection_gabinet);
+                myDataAdapter = database.Select("select * from fundusz", database.Conect());
 
                 DataTable dt = new DataTable();
                 myDataAdapter.Fill(dt);
@@ -133,7 +133,7 @@ namespace Gabinet
 
                 MySqlDataAdapter myDataAdapter = new MySqlDataAdapter();
                 Database database = new Database();
-                myDataAdapter = database.Select("SELECT * FROM plec", this.dbconnection_gabinet);
+                myDataAdapter = database.Select("SELECT * FROM plec", database.Conect());
 
                 DataTable dt = new DataTable();
                 myDataAdapter.Fill(dt);
@@ -160,7 +160,7 @@ namespace Gabinet
                 
                 MySqlDataAdapter myDataAdapter = new MySqlDataAdapter();
                 Database database = new Database();
-                myDataAdapter = database.Select("SELECT distinct wojewodztwo FROM gus ORDER BY wojewodztwo ASC", this.dbconnection_gabinet);
+                myDataAdapter = database.Select("SELECT distinct wojewodztwo FROM gus ORDER BY wojewodztwo ASC", database.Conect());
 
                 DataTable dt = new DataTable();
                 myDataAdapter.Fill(dt);
@@ -187,7 +187,7 @@ namespace Gabinet
 
                 MySqlDataAdapter myDataAdapter = new MySqlDataAdapter();
                 Database database = new Database();
-                myDataAdapter = database.Select("SELECT distinct miejscowosc FROM gus ORDER BY miejscowosc ASC", this.dbconnection_gabinet);
+                myDataAdapter = database.Select("SELECT distinct miejscowosc FROM gus ORDER BY miejscowosc ASC", database.Conect());
 
                 DataTable dt = new DataTable();
                 myDataAdapter.Fill(dt);
@@ -214,7 +214,7 @@ namespace Gabinet
 
                 MySqlDataAdapter myDataAdapter = new MySqlDataAdapter();
                 Database database = new Database();
-                myDataAdapter = database.Select("SELECT distinct adres FROM gus ORDER BY adres ASC", this.dbconnection_gabinet);
+                myDataAdapter = database.Select("SELECT distinct adres FROM gus ORDER BY adres ASC", database.Conect());
 
                 DataTable dt = new DataTable();
                 myDataAdapter.Fill(dt);
@@ -272,20 +272,20 @@ namespace Gabinet
             string nipPraca = this.maskedTextBoxNipPraca.Text;
             
             Database database = new Database();
-            database.Insert("insert into pacjent (idplec, idubezpieczenia, idfundusz, imie, nazwisko, data_urodzenia, pesel, nip, miejsce_pracy, zawod, nip_platnika) VALUES('" + plec + "','" + uprawnienia + "','" + nfz + "','" + imie.ToString() + "','" + nazwisko.ToString() + "','" + dataUrodzenia + "','" + pesel + "','" + nip.ToString() + "','" + zaklad.ToString() + "','" + zawod.ToString() + "','" + nipPraca.ToString() + "')", this.dbconnection_gabinet);
-            database.Insert("insert into adres (wojewodztwo, miasto, kod_pocztowy, ulica, nr_budynku, nr_lokalu) VALUES('" + wojewodztwo.ToString() + "','" + miasto.ToString() + "','" + kod.ToString() + "','" + ulica.ToString() + "','" + nrDomu + "','" + nrMieszkania + "')", this.dbconnection_gabinet);
-            database.Insert("insert into kontakt (telefon, mail) VALUES('" + telefon.ToString() + "','" + mail.ToString() + "')", this.dbconnection_gabinet);
-            database.Insert("insert pacjentadres (idpacjent, idadres) select max(idpacjent), max(idadres) from pacjent, adres", this.dbconnection_gabinet);
-            database.Insert("insert pacjentkontakt (idpacjent, idkontakt) select max(idpacjent), max(idkontakt) from pacjent, kontakt", this.dbconnection_gabinet);
+            database.Insert("insert into pacjent (idplec, idubezpieczenia, idfundusz, imie, nazwisko, data_urodzenia, pesel, nip, miejsce_pracy, zawod, nip_platnika) VALUES('" + plec + "','" + uprawnienia + "','" + nfz + "','" + imie.ToString() + "','" + nazwisko.ToString() + "','" + dataUrodzenia + "','" + pesel + "','" + nip.ToString() + "','" + zaklad.ToString() + "','" + zawod.ToString() + "','" + nipPraca.ToString() + "')", database.Conect());
+            database.Insert("insert into adres (wojewodztwo, miasto, kod_pocztowy, ulica, nr_budynku, nr_lokalu) VALUES('" + wojewodztwo.ToString() + "','" + miasto.ToString() + "','" + kod.ToString() + "','" + ulica.ToString() + "','" + nrDomu + "','" + nrMieszkania + "')", database.Conect());
+            database.Insert("insert into kontakt (telefon, mail) VALUES('" + telefon.ToString() + "','" + mail.ToString() + "')", database.Conect());
+            database.Insert("insert pacjentadres (idpacjent, idadres) select max(idpacjent), max(idadres) from pacjent, adres", database.Conect());
+            database.Insert("insert pacjentkontakt (idpacjent, idkontakt) select max(idpacjent), max(idkontakt) from pacjent, kontakt", database.Conect());
 
             if (this.idopiekun != null)
             {
-                database.Insert("insert pacjentopiekun (idpacjent, idopiekun) select max(idpacjent), '" + idopiekun + "' from pacjent, opiekun", this.dbconnection_gabinet);
+                database.Insert("insert pacjentopiekun (idpacjent, idopiekun) select max(idpacjent), '" + idopiekun + "' from pacjent, opiekun", database.Conect());
             }
 
             if (this.idopiekunDrugi != null)
             {
-                database.Insert("insert pacjentopiekun (idpacjent, idopiekun) select max(idpacjent), '" + idopiekunDrugi + "' from pacjent, opiekun", this.dbconnection_gabinet);
+                database.Insert("insert pacjentopiekun (idpacjent, idopiekun) select max(idpacjent), '" + idopiekunDrugi + "' from pacjent, opiekun", database.Conect());
             }
 
             DialogResult result = MessageBox.Show("Pacjent dodany");
@@ -365,7 +365,7 @@ namespace Gabinet
             {
                 MySqlDataAdapter myDataAdapter = new MySqlDataAdapter();
                 Database database = new Database();
-                myDataAdapter = database.Select("select * from pacjent inner join ubezpieczenia on ubezpieczenia.idubezpieczenia=pacjent.idubezpieczenia inner join fundusz on fundusz.idfundusz=pacjent.idfundusz inner join plec on plec.idplec=pacjent.idplec where idpacjent='" + this.idpacjent + "'", this.dbconnection_gabinet);
+                myDataAdapter = database.Select("select * from pacjent inner join ubezpieczenia on ubezpieczenia.idubezpieczenia=pacjent.idubezpieczenia inner join fundusz on fundusz.idfundusz=pacjent.idfundusz inner join plec on plec.idplec=pacjent.idplec where idpacjent='" + this.idpacjent + "'", database.Conect());
                 DataTable dt = new DataTable();
                 myDataAdapter.Fill(dt);
 
@@ -404,7 +404,7 @@ namespace Gabinet
             {
                 MySqlDataAdapter myDataAdapter = new MySqlDataAdapter();
                 Database database = new Database();
-                myDataAdapter = database.Select("select * from adres inner join pacjentadres on adres.idadres=pacjentadres.idadres where idpacjent='" + this.idpacjent + "'", this.dbconnection_gabinet);
+                myDataAdapter = database.Select("select * from adres inner join pacjentadres on adres.idadres=pacjentadres.idadres where idpacjent='" + this.idpacjent + "'", database.Conect());
                 DataTable dt = new DataTable();
                 myDataAdapter.Fill(dt);
 
@@ -432,7 +432,7 @@ namespace Gabinet
             {
                 MySqlDataAdapter myDataAdapter = new MySqlDataAdapter();
                 Database database = new Database();
-                myDataAdapter = database.Select("select * from kontakt inner join pacjentkontakt on kontakt.idkontakt=pacjentkontakt.idkontakt where idpacjent='" + this.idpacjent + "'", this.dbconnection_gabinet);
+                myDataAdapter = database.Select("select * from kontakt inner join pacjentkontakt on kontakt.idkontakt=pacjentkontakt.idkontakt where idpacjent='" + this.idpacjent + "'", database.Conect());
                 DataTable dt = new DataTable();
                 myDataAdapter.Fill(dt);
 
@@ -475,7 +475,7 @@ namespace Gabinet
 
                 Database database = new Database();
                 MySqlDataAdapter myDataAdapter = new MySqlDataAdapter();
-                myDataAdapter = database.Select("select idadres from pacjentadres where idpacjent='" + idpacjent + "'", this.dbconnection_gabinet);
+                myDataAdapter = database.Select("select idadres from pacjentadres where idpacjent='" + idpacjent + "'", database.Conect());
                 DataTable dt = new DataTable();
                 myDataAdapter.Fill(dt);
 
@@ -486,7 +486,7 @@ namespace Gabinet
                     dt.Clear();
                 }
 
-                myDataAdapter = database.Select("select idkontakt from pacjentkontakt where idpacjent='" + idpacjent + "'", this.dbconnection_gabinet);
+                myDataAdapter = database.Select("select idkontakt from pacjentkontakt where idpacjent='" + idpacjent + "'", database.Conect());
                 myDataAdapter.Fill(dt);
 
                 if (dt.Rows.Count == 1)
@@ -495,9 +495,9 @@ namespace Gabinet
                     this.idkontakt = element["idkontakt"].ToString();                   
                 }
 
-                database.Update("update pacjent set idubezpieczenia = '" + uprawnienia + "', idfundusz = '" + nfz + "', nazwisko = '" + nazwisko.ToString() + "', miejsce_pracy = '" + zaklad.ToString() + "', zawod = '" + zawod.ToString() + "', nip_platnika = '" + nipPraca.ToString() + "' where idpacjent = '" + this.idpacjent + "'", this.dbconnection_gabinet);
-                database.Update("update adres set wojewodztwo = '" + wojewodztwo.ToString() + "', miasto = '" + miasto.ToString() + "', kod_pocztowy = '" + kod.ToString() + "', ulica = '" + ulica.ToString() + "', nr_budynku = '" + nrDomu + "', nr_lokalu = '" + nrMieszkania + "' where idadres = '" + this.idadres + "'", this.dbconnection_gabinet);
-                database.Update("update kontakt set telefon = '" + telefon.ToString() + "', mail = '" + mail.ToString() + "' where idkontakt = '" + this.idkontakt + "'", this.dbconnection_gabinet);
+                database.Update("update pacjent set idubezpieczenia = '" + uprawnienia + "', idfundusz = '" + nfz + "', nazwisko = '" + nazwisko.ToString() + "', miejsce_pracy = '" + zaklad.ToString() + "', zawod = '" + zawod.ToString() + "', nip_platnika = '" + nipPraca.ToString() + "' where idpacjent = '" + this.idpacjent + "'", database.Conect());
+                database.Update("update adres set wojewodztwo = '" + wojewodztwo.ToString() + "', miasto = '" + miasto.ToString() + "', kod_pocztowy = '" + kod.ToString() + "', ulica = '" + ulica.ToString() + "', nr_budynku = '" + nrDomu + "', nr_lokalu = '" + nrMieszkania + "' where idadres = '" + this.idadres + "'", database.Conect());
+                database.Update("update kontakt set telefon = '" + telefon.ToString() + "', mail = '" + mail.ToString() + "' where idkontakt = '" + this.idkontakt + "'", database.Conect());
                 
                 DialogResult result = MessageBox.Show("Zaktualizowano dane pacjenta");
 

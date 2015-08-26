@@ -30,7 +30,7 @@ namespace Gabinet
         double MedListWidth;
         double MedListHeight;
         public string dbconnection_lek;
-        public string dbconnection_gabinet;        
+        //public string dbconnection_gabinet;        
         public string idrecepta;
         public string idpacjent;
         public string ImieNazwisko;
@@ -55,7 +55,7 @@ namespace Gabinet
             this.MaximumSize = this.Size;
             this.MinimumSize = this.Size;
             this.dbconnection_lek = "Provider=" + mysettings.Default.provider + ";Data Source=" + mysettings.Default.dsdbf + ";Extended Properties=" + mysettings.Default.properties + ";";
-            this.dbconnection_gabinet = "datasource=" + mysettings.Default.datasource + ";database=" + mysettings.Default.database + ";port=" + mysettings.Default.port + ";username=" + mysettings.Default.user + ";password=" + mysettings.Default.password + ";charset=utf8";
+            //database.Conect() = "datasource=" + mysettings.Default.datasource + ";database=" + mysettings.Default.database + ";port=" + mysettings.Default.port + ";username=" + mysettings.Default.user + ";password=" + mysettings.Default.password + ";charset=utf8";
             this.idrecepta = idreceptaReceive;
             this.idpacjent = idpacjentReceive;
             this.data = dataReceive;
@@ -206,7 +206,7 @@ namespace Gabinet
             {
                 Database database = new Database();
                 MySqlDataAdapter myDataAdapter = new MySqlDataAdapter();
-                myDataAdapter = database.Select("select nazwa, regon, ulica, nr_budynku, miasto, kod_pocztowy, mail, telefon from przychodnia inner join przychodniaadres on przychodnia.idprzychodnia=przychodniaadres.idprzychodnia inner join adres on adres.idadres=przychodniaadres.idadres inner join przychodniakontakt on przychodnia.idprzychodnia=przychodniakontakt.idprzychodnia inner join kontakt on przychodniakontakt.idkontakt=kontakt.idkontakt where przychodnia.idprzychodnia=(select max(idprzychodnia) from przychodnia)", this.dbconnection_gabinet);
+                myDataAdapter = database.Select("select nazwa, regon, ulica, nr_budynku, miasto, kod_pocztowy, mail, telefon from przychodnia inner join przychodniaadres on przychodnia.idprzychodnia=przychodniaadres.idprzychodnia inner join adres on adres.idadres=przychodniaadres.idadres inner join przychodniakontakt on przychodnia.idprzychodnia=przychodniakontakt.idprzychodnia inner join kontakt on przychodniakontakt.idkontakt=kontakt.idkontakt where przychodnia.idprzychodnia=(select max(idprzychodnia) from przychodnia)", database.Conect());
                 DataTable dt = new DataTable();
                 myDataAdapter.Fill(dt);
 
@@ -229,7 +229,7 @@ namespace Gabinet
             {
                 Database database = new Database();
                 MySqlDataAdapter myDataAdapter = new MySqlDataAdapter();
-                myDataAdapter = database.Select("select nazwisko, imie, pesel, idfundusz, ulica, nr_budynku, nr_lokalu, miasto, kod_pocztowy, mail, telefon from pacjent inner join pacjentadres on pacjent.idpacjent=pacjentadres.idpacjent inner join adres on adres.idadres=pacjentadres.idadres inner join pacjentkontakt on pacjent.idpacjent=pacjentkontakt.idpacjent inner join kontakt on pacjentkontakt.idkontakt=kontakt.idkontakt where pacjent.idpacjent='" + this.idpacjent + "'", this.dbconnection_gabinet);
+                myDataAdapter = database.Select("select nazwisko, imie, pesel, idfundusz, ulica, nr_budynku, nr_lokalu, miasto, kod_pocztowy, mail, telefon from pacjent inner join pacjentadres on pacjent.idpacjent=pacjentadres.idpacjent inner join adres on adres.idadres=pacjentadres.idadres inner join pacjentkontakt on pacjent.idpacjent=pacjentkontakt.idpacjent inner join kontakt on pacjentkontakt.idkontakt=kontakt.idkontakt where pacjent.idpacjent='" + this.idpacjent + "'", database.Conect());
                 DataTable dt = new DataTable();
                 myDataAdapter.Fill(dt);
                                 
@@ -241,7 +241,7 @@ namespace Gabinet
                     this.Adres = element["ulica"].ToString() + " " + element["nr_budynku"].ToString() + " m." + element["nr_lokalu"].ToString() + "; " + element["kod_pocztowy"].ToString() + " " + element["miasto"].ToString();
                     this.Pesel = element["pesel"].ToString();
                     idfundusz = element["idfundusz"].ToString();
-                    myDataAdapter = database.Select("select oddzial from fundusz where idfundusz = '" + idfundusz + "'", dbconnection_gabinet);                    
+                    myDataAdapter = database.Select("select oddzial from fundusz where idfundusz = '" + idfundusz + "'", database.Conect());                    
                     myDataAdapter.Fill(dt);
                     element = dt.Rows[1];
                     this.Nfz = element["oddzial"].ToString().Substring(0,2);
@@ -260,7 +260,7 @@ namespace Gabinet
             {
                 MySqlDataAdapter myDataAdapter = new MySqlDataAdapter();
                 Database database = new Database();
-                myDataAdapter = database.Select("select * from recepta where idrecepty = '" + this.idrecepta + "'", this.dbconnection_gabinet);
+                myDataAdapter = database.Select("select * from recepta where idrecepty = '" + this.idrecepta + "'", database.Conect());
                 DataTable dt = new DataTable();
                 myDataAdapter.Fill(dt);
                 if (dt.Rows.Count == 1)
@@ -285,7 +285,7 @@ namespace Gabinet
 
             MySqlDataAdapter myDataAdapter = new MySqlDataAdapter();
             Database database = new Database();
-            myDataAdapter = database.Select("select * from receptalek where idrecepty = '" + this.idrecepta + "'", this.dbconnection_gabinet);
+            myDataAdapter = database.Select("select * from receptalek where idrecepty = '" + this.idrecepta + "'", database.Conect());
             DataTable dt = new DataTable();
             myDataAdapter.Fill(dt);
 

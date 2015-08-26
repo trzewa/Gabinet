@@ -27,7 +27,8 @@ namespace Gabinet
             this.textBoxNazwa.Text = mysettings.Default.database;
             this.textBoxPort.Text = mysettings.Default.port;
             this.textBoxUser.Text = mysettings.Default.user;
-            this.textBoxPass.Text = mysettings.Default.password;
+            String password = Szyfrowanie.DecryptRijndael(mysettings.Default.password);
+            this.textBoxPass.Text = password;
         }
 
         private void buttonZmien_Click(object sender, EventArgs e)
@@ -41,7 +42,7 @@ namespace Gabinet
                 mysettings.Default.database = this.textBoxNazwa.Text.ToString();
                 mysettings.Default.port = this.textBoxPort.Text.ToString();
                 mysettings.Default.user = this.textBoxUser.Text.ToString();
-                mysettings.Default.password = this.textBoxPass.Text.ToString();
+                mysettings.Default.password = Szyfrowanie.EncryptRijndael(this.textBoxPass.Text);
                 mysettings.Default.Save();
                 this.Close();
             }

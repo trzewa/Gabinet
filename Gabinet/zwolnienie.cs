@@ -8,14 +8,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
-using mysettings = Gabinet.Properties.Settings;
+//using mysettings = Gabinet.Properties.Settings;
 
 namespace Gabinet
 {
     public partial class zwolnienie : Form
     {
         private Wizyta rodzicWizyta;
-        public string dbconnection_gabinet;
+        //public string dbconnection_gabinet;
         public string idpracownik;
         public string idpacjent;
         public string idzwolnienia;
@@ -27,7 +27,7 @@ namespace Gabinet
             this.MaximumSize = this.Size;
             this.MinimumSize = this.Size;
             this.rodzicWizyta = parent;
-            this.dbconnection_gabinet = "datasource=" + mysettings.Default.datasource + ";database=" + mysettings.Default.database + ";port=" + mysettings.Default.port + ";username=" + mysettings.Default.user + ";password=" + mysettings.Default.password + ";charset=utf8";
+            //database.Conect() = "datasource=" + mysettings.Default.datasource + ";database=" + mysettings.Default.database + ";port=" + mysettings.Default.port + ";username=" + mysettings.Default.user + ";password=" + mysettings.Default.password + ";charset=utf8";
             Set_IDs();
             Update_danePacjent();
             Update_adresPacjent();
@@ -40,7 +40,7 @@ namespace Gabinet
             InitializeComponent();
             this.MaximumSize = this.Size;
             this.MinimumSize = this.Size;
-            this.dbconnection_gabinet = "datasource=" + mysettings.Default.datasource + ";database=" + mysettings.Default.database + ";port=" + mysettings.Default.port + ";username=" + mysettings.Default.user + ";password=" + mysettings.Default.password + ";charset=utf8";
+            //database.Conect() = "datasource=" + mysettings.Default.datasource + ";database=" + mysettings.Default.database + ";port=" + mysettings.Default.port + ";username=" + mysettings.Default.user + ";password=" + mysettings.Default.password + ";charset=utf8";
             this.idzwolnienia = idzwolnieniaReceive;
             this.rodzicWizyta = parent;
             this.Text = "Zwolnienie";
@@ -63,7 +63,7 @@ namespace Gabinet
         {
             Database database = new Database();
             MySqlDataAdapter myDataAdapter = new MySqlDataAdapter();
-            myDataAdapter = database.Select("select idpracownik, idpacjent, data from wizyta where idwizyta='" + this.rodzicWizyta.idwizyta + "'", this.dbconnection_gabinet);
+            myDataAdapter = database.Select("select idpracownik, idpacjent, data from wizyta where idwizyta='" + this.rodzicWizyta.idwizyta + "'", database.Conect());
             DataTable dt = new DataTable();
             myDataAdapter.Fill(dt);
             
@@ -81,7 +81,7 @@ namespace Gabinet
         {
             Database database = new Database();
             MySqlDataAdapter myDataAdapter = new MySqlDataAdapter();
-            myDataAdapter = database.Select("select * from pacjent where idpacjent='" + this.idpacjent + "'", this.dbconnection_gabinet);
+            myDataAdapter = database.Select("select * from pacjent where idpacjent='" + this.idpacjent + "'", database.Conect());
             DataTable dt = new DataTable();
             myDataAdapter.Fill(dt);
 
@@ -102,7 +102,7 @@ namespace Gabinet
         {
             Database database = new Database();
             MySqlDataAdapter myDataAdapter = new MySqlDataAdapter();
-            myDataAdapter = database.Select("select * from adres inner join pacjentadres on adres.idadres=pacjentadres.idadres where idpacjent='" + this.idpacjent + "'", this.dbconnection_gabinet);
+            myDataAdapter = database.Select("select * from adres inner join pacjentadres on adres.idadres=pacjentadres.idadres where idpacjent='" + this.idpacjent + "'", database.Conect());
             DataTable dt = new DataTable();
             myDataAdapter.Fill(dt);
 
@@ -121,7 +121,7 @@ namespace Gabinet
         {
             Database database = new Database();
             MySqlDataAdapter myDataAdapter = new MySqlDataAdapter();
-            myDataAdapter = database.Select("select numer_pwz from pracownik where idpracownik='" + this.idpracownik + "'", this.dbconnection_gabinet);
+            myDataAdapter = database.Select("select numer_pwz from pracownik where idpracownik='" + this.idpracownik + "'", database.Conect());
             DataTable dt = new DataTable();
             myDataAdapter.Fill(dt);
 
@@ -167,7 +167,7 @@ namespace Gabinet
             this.dateTimePickerWystawienia.Text = this.data.ToString();
             Database database = new Database();
             MySqlDataAdapter myDataAdapter = new MySqlDataAdapter();
-            myDataAdapter = database.Select("select * from zwolnienie where idzwolnienia='" + this.idzwolnienia + "'", this.dbconnection_gabinet);
+            myDataAdapter = database.Select("select * from zwolnienie where idzwolnienia='" + this.idzwolnienia + "'", database.Conect());
             DataTable dt = new DataTable();
             myDataAdapter.Fill(dt);
 
@@ -193,7 +193,7 @@ namespace Gabinet
             string kody = ((KeyValuePair<string, string>)comboBoxKody.SelectedItem).Value;
 
             Database database = new Database();
-            database.Insert("insert into zwolnienie (od, do, wskazania, szpital, kody, ubezpieczony) values ('" + dataOd + "','" + dataDo + "','" + wskazania.ToString() + "','" + szpital.ToString() + "','" + kody.ToString() + "','" + ubezpieczony.ToString() + "')", this.dbconnection_gabinet);
+            database.Insert("insert into zwolnienie (od, do, wskazania, szpital, kody, ubezpieczony) values ('" + dataOd + "','" + dataDo + "','" + wskazania.ToString() + "','" + szpital.ToString() + "','" + kody.ToString() + "','" + ubezpieczony.ToString() + "')", database.Conect());
             this.Opacity = 0.5;
             String message = "Zwolnienie zostało utworzone.";
             String caption = "Zwolnienie";
@@ -201,7 +201,7 @@ namespace Gabinet
             if (result == DialogResult.OK)
                 {
                     MySqlDataAdapter myDataAdapter = new MySqlDataAdapter();
-                    myDataAdapter = database.Select("select max(idzwolnienia) from zwolnienie", this.dbconnection_gabinet);
+                    myDataAdapter = database.Select("select max(idzwolnienia) from zwolnienie", database.Conect());
                     DataTable dt = new DataTable();
                     myDataAdapter.Fill(dt);
 

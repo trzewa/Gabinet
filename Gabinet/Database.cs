@@ -15,6 +15,13 @@ namespace Gabinet
 {
     class Database
     {
+        public string Conect()
+        {
+            String password = Szyfrowanie.DecryptRijndael(mysettings.Default.password);
+            string dbconnection_gabinet = "datasource=" + mysettings.Default.datasource + ";database=" + mysettings.Default.database + ";port=" + mysettings.Default.port + ";username=" + mysettings.Default.user + ";password=" + password + ";charset=utf8";
+            return dbconnection_gabinet;
+        }       
+
         public MySqlDataAdapter Select(string query, string db_connection)
         {
                 MySqlConnection myConn = new MySqlConnection(db_connection);

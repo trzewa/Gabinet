@@ -8,13 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
-using mysettings = Gabinet.Properties.Settings;
+//using mysettings = Gabinet.Properties.Settings;
 
 namespace Gabinet
 {
     public partial class dodajOpiekun : Form
     {
-        public string dbconnection_gabinet;
+        //public string dbconnection_gabinet;
         public string idopiekunSend = null;
 
         public dodajOpiekun()
@@ -22,7 +22,7 @@ namespace Gabinet
             InitializeComponent();
             this.MaximumSize = this.Size;
             this.MinimumSize = this.Size;
-            this.dbconnection_gabinet = "datasource=" + mysettings.Default.datasource + ";database=" + mysettings.Default.database + ";port=" + mysettings.Default.port + ";username=" + mysettings.Default.user + ";password=" + mysettings.Default.password + ";charset=utf8";
+            //this.dbconnection_gabinet = "datasource=" + mysettings.Default.datasource + ";database=" + mysettings.Default.database + ";port=" + mysettings.Default.port + ";username=" + mysettings.Default.user + ";password=" + mysettings.Default.password + ";charset=utf8";
             //this.idopiekunSend = idopiekun;
             Update_comboBoxTelefon();
         }
@@ -47,10 +47,10 @@ namespace Gabinet
 
                 if (this.idopiekunSend == null)
                 {
-                    database.Insert("insert into opiekun (imie, nazwisko) VALUES('" + imie.ToString() + "','" + nazwisko.ToString() + "')", this.dbconnection_gabinet);
-                    database.Insert("insert into kontakt (telefon, mail) VALUES('" + telefon.ToString() + "','" + mail.ToString() + "')", this.dbconnection_gabinet);
-                    database.Insert("insert opiekunkontakt (idopiekun, idkontakt) select max(idopiekun), max(idkontakt) from opiekun, kontakt", this.dbconnection_gabinet);
-                    myDataAdapter = database.Select("select max(idopiekun) from opiekun", this.dbconnection_gabinet);
+                    database.Insert("insert into opiekun (imie, nazwisko) VALUES('" + imie.ToString() + "','" + nazwisko.ToString() + "')", database.Conect());
+                    database.Insert("insert into kontakt (telefon, mail) VALUES('" + telefon.ToString() + "','" + mail.ToString() + "')", database.Conect());
+                    database.Insert("insert opiekunkontakt (idopiekun, idkontakt) select max(idopiekun), max(idkontakt) from opiekun, kontakt", database.Conect());
+                    myDataAdapter = database.Select("select max(idopiekun) from opiekun", database.Conect());
                     DataTable dt = new DataTable();
                     myDataAdapter.Fill(dt);
                     if (dt.Rows.Count == 1)
@@ -80,7 +80,7 @@ namespace Gabinet
             {
                 MySqlDataAdapter myDataAdapter = new MySqlDataAdapter();
                 Database database = new Database();
-                myDataAdapter = database.Select("SELECT * FROM kontakt INNER JOIN opiekunkontakt ON kontakt.idkontakt = opiekunkontakt.idkontakt ORDER BY telefon ASC", this.dbconnection_gabinet);
+                myDataAdapter = database.Select("SELECT * FROM kontakt INNER JOIN opiekunkontakt ON kontakt.idkontakt = opiekunkontakt.idkontakt ORDER BY telefon ASC", database.Conect());
 
                 DataTable dt = new DataTable();
                 myDataAdapter.Fill(dt);
@@ -107,7 +107,7 @@ namespace Gabinet
                 string selected_item = (comboBoxTelefon.SelectedItem as ComboboxItem).Hidden_Id.ToString();
                 Database database = new Database();
                 MySqlDataAdapter myDataAdapter = new MySqlDataAdapter();
-                myDataAdapter = database.Select("select opiekunkontakt.idopiekun, imie, nazwisko, telefon, mail from opiekunkontakt INNER JOIN opiekun ON opiekun.idopiekun = opiekunkontakt.idopiekun INNER JOIN kontakt ON kontakt.idkontakt = opiekunkontakt.idkontakt WHERE opiekunkontakt.idkontakt='" + selected_item + "'", this.dbconnection_gabinet);
+                myDataAdapter = database.Select("select opiekunkontakt.idopiekun, imie, nazwisko, telefon, mail from opiekunkontakt INNER JOIN opiekun ON opiekun.idopiekun = opiekunkontakt.idopiekun INNER JOIN kontakt ON kontakt.idkontakt = opiekunkontakt.idkontakt WHERE opiekunkontakt.idkontakt='" + selected_item + "'", database.Conect());
 
                 DataTable dt = new DataTable();
                 myDataAdapter.Fill(dt);

@@ -1,5 +1,5 @@
 ﻿<?xml version='1.0' encoding='utf-8'?>
-<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Gabinet.Properties" GeneratedClassName="Settings">
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Konfiguracja.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
     <Setting Name="database" Type="System.String" Scope="User">
@@ -12,7 +12,7 @@
       <Value Profile="(Default)">aneu_gabinet</Value>
     </Setting>
     <Setting Name="password" Type="System.String" Scope="User">
-      <Value Profile="(Default)">ykp/i9pIFYJ1FQSI317mrA==</Value>
+      <Value Profile="(Default)">kolunio1</Value>
     </Setting>
     <Setting Name="datasource" Type="System.String" Scope="User">
       <Value Profile="(Default)">1an.eu</Value>

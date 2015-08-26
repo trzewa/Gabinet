@@ -8,14 +8,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
-using mysettings = Gabinet.Properties.Settings;
+//using mysettings = Gabinet.Properties.Settings;
 
 namespace Gabinet
 {
     public partial class danePacjent : Form
     {
 
-        public string dbconnection_gabinet;
+        //public string dbconnection_gabinet;
         public string idpacjent;        
 
         public danePacjent(string idpacjentReceive)
@@ -23,7 +23,8 @@ namespace Gabinet
             InitializeComponent();
             this.MaximumSize = this.Size;
             this.MinimumSize = this.Size;
-            this.dbconnection_gabinet = "datasource=" + mysettings.Default.datasource + ";database=" + mysettings.Default.database + ";port=" + mysettings.Default.port + ";username=" + mysettings.Default.user + ";password=" + mysettings.Default.password + ";charset=utf8";
+            //String password = Szyfrowanie.DecryptRijndael(mysettings.Default.password);
+            //this.dbconnection_gabinet = "datasource=" + mysettings.Default.datasource + ";database=" + mysettings.Default.database + ";port=" + mysettings.Default.port + ";username=" + mysettings.Default.user + ";password=" + password + ";charset=utf8";
             this.idpacjent = idpacjentReceive;
             Update_danePodstawowe();
             Update_daneAdresowe();
@@ -31,15 +32,13 @@ namespace Gabinet
             Update_opiekun();
         }
 
-
-
         public void Update_danePodstawowe()
         {
             try
             {
                 MySqlDataAdapter myDataAdapter = new MySqlDataAdapter();
                 Database database = new Database();
-                myDataAdapter = database.Select("select * from pacjent inner join ubezpieczenia on ubezpieczenia.idubezpieczenia=pacjent.idubezpieczenia inner join fundusz on fundusz.idfundusz=pacjent.idfundusz inner join plec on plec.idplec=pacjent.idplec where idpacjent='" + this.idpacjent + "'", this.dbconnection_gabinet);
+                myDataAdapter = database.Select("select * from pacjent inner join ubezpieczenia on ubezpieczenia.idubezpieczenia=pacjent.idubezpieczenia inner join fundusz on fundusz.idfundusz=pacjent.idfundusz inner join plec on plec.idplec=pacjent.idplec where idpacjent='" + this.idpacjent + "'", database.Conect());
                 DataTable dt = new DataTable();
                 myDataAdapter.Fill(dt); 
 
@@ -74,7 +73,7 @@ namespace Gabinet
             {
                 MySqlDataAdapter myDataAdapter = new MySqlDataAdapter();
                 Database database = new Database();
-                myDataAdapter = database.Select("select * from adres inner join pacjentadres on adres.idadres=pacjentadres.idadres where idpacjent='" + this.idpacjent + "'", this.dbconnection_gabinet);
+                myDataAdapter = database.Select("select * from adres inner join pacjentadres on adres.idadres=pacjentadres.idadres where idpacjent='" + this.idpacjent + "'", database.Conect());
                 DataTable dt = new DataTable();
                 myDataAdapter.Fill(dt);
 
@@ -102,7 +101,7 @@ namespace Gabinet
             {
                 MySqlDataAdapter myDataAdapter = new MySqlDataAdapter();
                 Database database = new Database();
-                myDataAdapter = database.Select("select * from kontakt inner join pacjentkontakt on kontakt.idkontakt=pacjentkontakt.idkontakt where idpacjent='" + this.idpacjent + "'", this.dbconnection_gabinet);
+                myDataAdapter = database.Select("select * from kontakt inner join pacjentkontakt on kontakt.idkontakt=pacjentkontakt.idkontakt where idpacjent='" + this.idpacjent + "'", database.Conect());
                 DataTable dt = new DataTable();
                 myDataAdapter.Fill(dt);
 
@@ -126,7 +125,7 @@ namespace Gabinet
             {
                 MySqlDataAdapter myDataAdapter = new MySqlDataAdapter();
                 Database database = new Database();
-                myDataAdapter = database.Select("select nazwisko, imie, opiekun.idopiekun from pacjentopiekun left join opiekun on pacjentopiekun.idopiekun=opiekun.idopiekun where idpacjent='" + this.idpacjent + "'", this.dbconnection_gabinet);
+                myDataAdapter = database.Select("select nazwisko, imie, opiekun.idopiekun from pacjentopiekun left join opiekun on pacjentopiekun.idopiekun=opiekun.idopiekun where idpacjent='" + this.idpacjent + "'", database.Conect());
                 DataTable dt = new DataTable();
                 myDataAdapter.Fill(dt);
 
@@ -153,7 +152,7 @@ namespace Gabinet
                 string selected_item = (comboBoxOpiekun.SelectedItem as ComboboxItem).Hidden_Id.ToString();
                 Database database = new Database();
                 MySqlDataAdapter myDataAdapter = new MySqlDataAdapter();
-                myDataAdapter = database.Select("select telefon, mail from kontakt inner join opiekunkontakt on kontakt.idkontakt=opiekunkontakt.idkontakt WHERE idopiekun='" + selected_item + "'", this.dbconnection_gabinet);
+                myDataAdapter = database.Select("select telefon, mail from kontakt inner join opiekunkontakt on kontakt.idkontakt=opiekunkontakt.idkontakt WHERE idopiekun='" + selected_item + "'", database.Conect());
 
                 DataTable dt = new DataTable();
                 myDataAdapter.Fill(dt);

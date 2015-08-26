@@ -9,13 +9,13 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 using System.Net.Mail;
-using mysettings = Gabinet.Properties.Settings;
+//using mysettings = Gabinet.Properties.Settings;
 
 namespace Gabinet
 {
     public partial class dodajPracownika : Form
     {
-        public string dbconnection_gabinet;
+        //public string dbconnection_gabinet;
         private string idpracownik;
         private string idkontakt;
         private string idadres;
@@ -25,7 +25,7 @@ namespace Gabinet
             InitializeComponent();
             this.MaximumSize = this.Size;
             this.MinimumSize = this.Size;
-            this.dbconnection_gabinet = "datasource=" + mysettings.Default.datasource + ";database=" + mysettings.Default.database + ";port=" + mysettings.Default.port + ";username=" + mysettings.Default.user + ";password=" + mysettings.Default.password + ";charset=utf8";
+            //database.Conect() = "datasource=" + mysettings.Default.datasource + ";database=" + mysettings.Default.database + ";port=" + mysettings.Default.port + ";username=" + mysettings.Default.user + ";password=" + mysettings.Default.password + ";charset=utf8";
             buttonZmien.Visible = false;
             Update_comboBoxPlec();
             Update_comboBoxWojewodztwo();
@@ -39,7 +39,7 @@ namespace Gabinet
             InitializeComponent();
             this.MaximumSize = this.Size;
             this.MinimumSize = this.Size;
-            this.dbconnection_gabinet = "datasource=" + mysettings.Default.datasource + ";database=" + mysettings.Default.database + ";port=" + mysettings.Default.port + ";username=" + mysettings.Default.user + ";password=" + mysettings.Default.password + ";charset=utf8";
+            //database.Conect() = "datasource=" + mysettings.Default.datasource + ";database=" + mysettings.Default.database + ";port=" + mysettings.Default.port + ";username=" + mysettings.Default.user + ";password=" + mysettings.Default.password + ";charset=utf8";
             this.idpracownik = idpracownikReceive;
             buttonZapisz.Visible = false;
             this.Text = "Edycja danych pracownika";
@@ -59,7 +59,7 @@ namespace Gabinet
 
                 MySqlDataAdapter myDataAdapter = new MySqlDataAdapter();
                 Database database = new Database();
-                myDataAdapter = database.Select("SELECT * FROM plec", this.dbconnection_gabinet);
+                myDataAdapter = database.Select("SELECT * FROM plec", database.Conect());
 
                 DataTable dt = new DataTable();
                 myDataAdapter.Fill(dt);
@@ -86,7 +86,7 @@ namespace Gabinet
 
                 MySqlDataAdapter myDataAdapter = new MySqlDataAdapter();
                 Database database = new Database();
-                myDataAdapter = database.Select("SELECT * FROM stanowisko", this.dbconnection_gabinet);
+                myDataAdapter = database.Select("SELECT * FROM stanowisko", database.Conect());
 
                 DataTable dt = new DataTable();
                 myDataAdapter.Fill(dt);
@@ -113,7 +113,7 @@ namespace Gabinet
 
                 MySqlDataAdapter myDataAdapter = new MySqlDataAdapter();
                 Database database = new Database();
-                myDataAdapter = database.Select("SELECT distinct wojewodztwo FROM gus ORDER BY wojewodztwo ASC", this.dbconnection_gabinet);
+                myDataAdapter = database.Select("SELECT distinct wojewodztwo FROM gus ORDER BY wojewodztwo ASC", database.Conect());
 
                 DataTable dt = new DataTable();
                 myDataAdapter.Fill(dt);
@@ -140,7 +140,7 @@ namespace Gabinet
 
                 MySqlDataAdapter myDataAdapter = new MySqlDataAdapter();
                 Database database = new Database();
-                myDataAdapter = database.Select("SELECT distinct miejscowosc FROM gus ORDER BY miejscowosc ASC", this.dbconnection_gabinet);
+                myDataAdapter = database.Select("SELECT distinct miejscowosc FROM gus ORDER BY miejscowosc ASC", database.Conect());
 
                 DataTable dt = new DataTable();
                 myDataAdapter.Fill(dt);
@@ -167,7 +167,7 @@ namespace Gabinet
 
                 MySqlDataAdapter myDataAdapter = new MySqlDataAdapter();
                 Database database = new Database();
-                myDataAdapter = database.Select("SELECT distinct adres FROM gus ORDER BY adres ASC", this.dbconnection_gabinet);
+                myDataAdapter = database.Select("SELECT distinct adres FROM gus ORDER BY adres ASC", database.Conect());
 
                 DataTable dt = new DataTable();
                 myDataAdapter.Fill(dt);
@@ -189,18 +189,20 @@ namespace Gabinet
 
         private void buttonZapisz_Click(object sender, EventArgs e)
         {
+            string plec, wojewodztwo, miasto, ulica, stanowisko = ""; 
+
             try
             {
                 string imie = this.textBoxImie.Text;
                 string nazwisko = this.textBoxNazwisko.Text;
                 string dataZatrudnienia = this.dateTimePickerZatrudnienia.Text;
                 string pesel = this.textBoxPesel.Text;
-                string plec = (comboBoxPlec.SelectedItem as ComboboxItem).Hidden_Id.ToString();
+                plec = (comboBoxPlec.SelectedItem as ComboboxItem).Hidden_Id.ToString();
                 string pwz = this.textBoxPwz.Text;
 
-                string wojewodztwo = (comboBoxWojewodztwo.SelectedItem as ComboboxItem).Text.ToString();
-                string miasto = (comboBoxMiasto.SelectedItem as ComboboxItem).Text.ToString();
-                string ulica = (comboBoxUlica.SelectedItem as ComboboxItem).Text.ToString();
+                wojewodztwo = (comboBoxWojewodztwo.SelectedItem as ComboboxItem).Text.ToString();
+                miasto = (comboBoxMiasto.SelectedItem as ComboboxItem).Text.ToString();
+                ulica = (comboBoxUlica.SelectedItem as ComboboxItem).Text.ToString();
                 string nrDomu = this.textBoxNrDomu.Text;
                 string nrMieszkania = this.textBoxNrMieszkania.Text;
                 string kod = this.maskedTextBoxKod.Text;
@@ -210,36 +212,57 @@ namespace Gabinet
                 string login = this.textBoxLogin.Text;
                 string haslo = this.textBoxHaslo.Text;
                 string hasloRepeat = this.textBoxHasloRepeat.Text;
-                string stanowisko = (comboBoxStanowisko.SelectedItem as ComboboxItem).Hidden_Id.ToString();
+                stanowisko = (comboBoxStanowisko.SelectedItem as ComboboxItem).Hidden_Id.ToString();
+               
+                    MySqlDataAdapter myDataAdapter = new MySqlDataAdapter();
+                    Database database = new Database();
 
-                MySqlDataAdapter myDataAdapter = new MySqlDataAdapter();
-                Database database = new Database();
-                database.Insert("insert into pracownik (idstanowisko, idplec, imie, nazwisko, pesel, numer_pwz, data_zatrudnienia) VALUES('" + stanowisko + "','" + plec + "','" + imie.ToString() + "','" + nazwisko.ToString() + "','" + pesel + "','" + pwz.ToString() + "','" + dataZatrudnienia + "')", this.dbconnection_gabinet);
-                database.Insert("insert into adres (wojewodztwo, miasto, kod_pocztowy, ulica, nr_budynku, nr_lokalu) VALUES('" + wojewodztwo.ToString() + "','" + miasto.ToString() + "','" + kod.ToString() + "','" + ulica.ToString() + "','" + nrDomu + "','" + nrMieszkania + "')", this.dbconnection_gabinet);
-                database.Insert("insert into kontakt (telefon, mail) VALUES('" + telefon.ToString() + "','" + mail.ToString() + "')", this.dbconnection_gabinet);
-                database.Insert("insert pracownikadres (idpracownik, idadres) select max(idpracownik), max(idadres) from pracownik, adres", this.dbconnection_gabinet);
-                database.Insert("insert pracownikkontakt (idpracownik, idkontakt) select max(idpracownik), max(idkontakt) from pracownik, kontakt", this.dbconnection_gabinet);
+                    if (imie.Equals("") || nazwisko.Equals("") || pesel.Equals("") || plec.Equals("") || stanowisko.Equals(""))
+                    {
+                        MessageBox.Show("Brak danych w sekcji Dane podstawowe");
+                    }
+                    else if (wojewodztwo.Equals("") || miasto.Equals("") || kod.Equals("") || ulica.Equals("") || nrDomu.Equals("") || telefon.Equals(""))
+                    {
+                        MessageBox.Show("Brak danych w sekcji Adres zamieszkania");
+                    }
+                    else if (login.Equals("") || haslo.Equals(""))
+                    {
+                        MessageBox.Show("Login i hasło są wymagane");
+                    }
+                    else
+                    {
+                        database.Insert("insert into pracownik (idstanowisko, idplec, imie, nazwisko, pesel, numer_pwz, data_zatrudnienia) VALUES('" + stanowisko + "','" + plec + "','" + imie.ToString() + "','" + nazwisko.ToString() + "','" + pesel + "','" + pwz.ToString() + "','" + dataZatrudnienia + "')", database.Conect());
+                        database.Insert("insert into adres (wojewodztwo, miasto, kod_pocztowy, ulica, nr_budynku, nr_lokalu) VALUES('" + wojewodztwo.ToString() + "','" + miasto.ToString() + "','" + kod.ToString() + "','" + ulica.ToString() + "','" + nrDomu + "','" + nrMieszkania + "')", database.Conect());
+                        database.Insert("insert into kontakt (telefon, mail) VALUES('" + telefon.ToString() + "','" + mail.ToString() + "')", database.Conect());
+                        database.Insert("insert pracownikadres (idpracownik, idadres) select max(idpracownik), max(idadres) from pracownik, adres", database.Conect());
+                        database.Insert("insert pracownikkontakt (idpracownik, idkontakt) select max(idpracownik), max(idkontakt) from pracownik, kontakt", database.Conect());
 
-                myDataAdapter = database.Select("select max(idpracownik) from pracownik", this.dbconnection_gabinet);
-                DataTable dt = new DataTable();
-                myDataAdapter.Fill(dt);
-
-                //string idpracownik = null;
-                if (dt.Rows.Count == 1)
-                {
-
-                    DataRow element = dt.Rows[0];
-                    this.idpracownik = element["max(idpracownik)"].ToString();
-                }
-                database.Insert("insert user (idpracownik, login, haslo) VALUES('" + this.idpracownik + "','" + login.ToString() + "','" + haslo.ToString() + "')", this.dbconnection_gabinet);
+                        myDataAdapter = database.Select("select max(idpracownik) from pracownik", database.Conect());
+                        DataTable dt = new DataTable();
+                        myDataAdapter.Fill(dt);
 
 
-                DialogResult result = MessageBox.Show("Pracownik dodany");
+                        if (dt.Rows.Count == 1)
+                        {
 
-                if (result == System.Windows.Forms.DialogResult.OK)
-                {
-                    DodajPacjent.ActiveForm.Close();
-                }
+                            DataRow element = dt.Rows[0];
+                            this.idpracownik = element["max(idpracownik)"].ToString();
+                        }
+
+                        Szyfrowanie hasloSzyfr = new Szyfrowanie();
+                        string hs = hasloSzyfr.szyfr(haslo);
+
+                            database.Insert("insert user (idpracownik, login, haslo) VALUES('" + this.idpracownik + "','" + login.ToString() + "','" + hs + "')", database.Conect());
+
+
+                            DialogResult result = MessageBox.Show("Pracownik dodany");
+
+                            if (result == System.Windows.Forms.DialogResult.OK)
+                            {
+                                DodajPacjent.ActiveForm.Close();
+                            }
+                        
+                    }
             }
             catch (Exception ex)
             {
@@ -261,7 +284,7 @@ namespace Gabinet
             {
                 MySqlDataAdapter myDataAdapter = new MySqlDataAdapter();
                 Database database = new Database();
-                myDataAdapter = database.Select("select * from pracownik inner join stanowisko on stanowisko.idstanowisko=pracownik.idstanowisko inner join plec on plec.idplec=pracownik.idplec inner join user on user.idpracownik=pracownik.idpracownik where pracownik.idpracownik='" + this.idpracownik + "'", this.dbconnection_gabinet);
+                myDataAdapter = database.Select("select * from pracownik inner join stanowisko on stanowisko.idstanowisko=pracownik.idstanowisko inner join plec on plec.idplec=pracownik.idplec inner join user on user.idpracownik=pracownik.idpracownik where pracownik.idpracownik='" + this.idpracownik + "'", database.Conect());
                 DataTable dt = new DataTable();
                 myDataAdapter.Fill(dt);
 
@@ -298,7 +321,7 @@ namespace Gabinet
             {
                 MySqlDataAdapter myDataAdapter = new MySqlDataAdapter();
                 Database database = new Database();
-                myDataAdapter = database.Select("select * from adres inner join pracownikadres on adres.idadres=pracownikadres.idadres where idpracownik='" + this.idpracownik + "'", this.dbconnection_gabinet);
+                myDataAdapter = database.Select("select * from adres inner join pracownikadres on adres.idadres=pracownikadres.idadres where idpracownik='" + this.idpracownik + "'", database.Conect());
                 DataTable dt = new DataTable();
                 myDataAdapter.Fill(dt);
 
@@ -326,7 +349,7 @@ namespace Gabinet
             {
                 MySqlDataAdapter myDataAdapter = new MySqlDataAdapter();
                 Database database = new Database();
-                myDataAdapter = database.Select("select * from kontakt inner join pracownikkontakt on kontakt.idkontakt=pracownikkontakt.idkontakt where idpracownik='" + this.idpracownik + "'", this.dbconnection_gabinet);
+                myDataAdapter = database.Select("select * from kontakt inner join pracownikkontakt on kontakt.idkontakt=pracownikkontakt.idkontakt where idpracownik='" + this.idpracownik + "'", database.Conect());
                 DataTable dt = new DataTable();
                 myDataAdapter.Fill(dt);
 
@@ -364,7 +387,7 @@ namespace Gabinet
                 
                 Database database = new Database();
                 MySqlDataAdapter myDataAdapter = new MySqlDataAdapter();
-                myDataAdapter = database.Select("select idadres from pracownikadres where idpracownik='" + this.idpracownik + "'", this.dbconnection_gabinet);
+                myDataAdapter = database.Select("select idadres from pracownikadres where idpracownik='" + this.idpracownik + "'", database.Conect());
                 DataTable dt = new DataTable();
                 myDataAdapter.Fill(dt);
 
@@ -375,7 +398,7 @@ namespace Gabinet
                     dt.Clear();
                 }
 
-                myDataAdapter = database.Select("select idkontakt from pracownikkontakt where idpracownik='" + this.idpracownik + "'", this.dbconnection_gabinet);
+                myDataAdapter = database.Select("select idkontakt from pracownikkontakt where idpracownik='" + this.idpracownik + "'", database.Conect());
                 myDataAdapter.Fill(dt);
 
                 if (dt.Rows.Count == 1)
@@ -384,16 +407,34 @@ namespace Gabinet
                     this.idkontakt = element["idkontakt"].ToString();
                 }
 
-                database.Update("update pracownik set idstanowisko = '" + stanowisko + "', nazwisko = '" + nazwisko.ToString() + "', numer_pwz = '" + pwz.ToString() + "'  where idpracownik = '" + this.idpracownik + "'", this.dbconnection_gabinet);
-                database.Update("update user set login = '" + login.ToString() + "', haslo = '" + haslo.ToString() + "' where idpracownik = '" + this.idpracownik + "'", this.dbconnection_gabinet);
-                database.Update("update adres set wojewodztwo = '" + wojewodztwo.ToString() + "', miasto = '" + miasto.ToString() + "', kod_pocztowy = '" + kod.ToString() + "', ulica = '" + ulica.ToString() + "', nr_budynku = '" + nrDomu + "', nr_lokalu = '" + nrMieszkania + "' where idadres = '" + this.idadres + "'", this.dbconnection_gabinet);
-                database.Update("update kontakt set telefon = '" + telefon.ToString() + "', mail = '" + mail.ToString() + "' where idkontakt = '" + this.idkontakt + "'", this.dbconnection_gabinet);
-
-                DialogResult result = MessageBox.Show("Zaktualizowano dane pracownika", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                if (result == System.Windows.Forms.DialogResult.OK)
+                if (nazwisko.Equals("") || stanowisko.Equals(""))
                 {
-                    dodajPracownika.ActiveForm.Close();
+                    MessageBox.Show("Brak danych w sekcji Dane podstawowe");
+                }
+                else if (wojewodztwo.Equals("") || miasto.Equals("") || kod.Equals("") || ulica.Equals("") || nrDomu.Equals("") || telefon.Equals(""))
+                {
+                    MessageBox.Show("Brak danych w sekcji Adres zamieszkania");
+                }
+                else if (login.Equals("") || haslo.Equals(""))
+                {
+                    MessageBox.Show("Login i hasło są wymagane");
+                }
+                else
+                {
+                    Szyfrowanie hasloSzyfr = new Szyfrowanie();
+                    string hs = hasloSzyfr.szyfr(haslo);
+
+                    database.Update("update pracownik set idstanowisko = '" + stanowisko + "', nazwisko = '" + nazwisko.ToString() + "', numer_pwz = '" + pwz.ToString() + "'  where idpracownik = '" + this.idpracownik + "'", database.Conect());
+                    database.Update("update user set login = '" + login.ToString() + "', haslo = '" + hs + "' where idpracownik = '" + this.idpracownik + "'", database.Conect());
+                    database.Update("update adres set wojewodztwo = '" + wojewodztwo.ToString() + "', miasto = '" + miasto.ToString() + "', kod_pocztowy = '" + kod.ToString() + "', ulica = '" + ulica.ToString() + "', nr_budynku = '" + nrDomu + "', nr_lokalu = '" + nrMieszkania + "' where idadres = '" + this.idadres + "'", database.Conect());
+                    database.Update("update kontakt set telefon = '" + telefon.ToString() + "', mail = '" + mail.ToString() + "' where idkontakt = '" + this.idkontakt + "'", database.Conect());
+
+                    DialogResult result = MessageBox.Show("Zaktualizowano dane pracownika", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    if (result == System.Windows.Forms.DialogResult.OK)
+                    {
+                        dodajPracownika.ActiveForm.Close();
+                    }
                 }
             }
             catch (Exception ex)

@@ -8,13 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
-using mysettings = Gabinet.Properties.Settings;
+//using mysettings = Gabinet.Properties.Settings;
 
 namespace Gabinet
 {
     public partial class szukajProcedury : Form
     {
-        public string dbconnection_gabinet;        
+        //public string dbconnection_gabinet;        
         private int _searchColumnID = 2;
         private int _searchRowID = 0;
         private Wizyta rodzicWizyta;
@@ -27,7 +27,7 @@ namespace Gabinet
             this.MinimumSize = this.Size;
             this.rodzicWizyta = parent;
             this.button = buttonReceive;
-            this.dbconnection_gabinet = "datasource=" + mysettings.Default.datasource + ";database=" + mysettings.Default.database + ";port=" + mysettings.Default.port + ";username=" + mysettings.Default.user + ";password=" + mysettings.Default.password + ";charset=utf8";
+            //database.Conect() = "datasource=" + mysettings.Default.datasource + ";database=" + mysettings.Default.database + ";port=" + mysettings.Default.port + ";username=" + mysettings.Default.user + ";password=" + mysettings.Default.password + ";charset=utf8";
             if (this.button.Equals(1))
             {
                 Update_Procedury();
@@ -47,7 +47,7 @@ namespace Gabinet
             {                
                 Database database = new Database();
                 MySqlDataAdapter myDataAdapter = new MySqlDataAdapter();                
-                myDataAdapter = database.Select("select * from typbadania", this.dbconnection_gabinet);
+                myDataAdapter = database.Select("select * from typbadania", database.Conect());
                 DataTable dt = new DataTable();
                 myDataAdapter.Fill(dt);
                 dataGridViewProcedury.DataSource = dt.DefaultView;
@@ -64,7 +64,7 @@ namespace Gabinet
             {
                 Database database = new Database();
                 MySqlDataAdapter myDataAdapter = new MySqlDataAdapter();
-                myDataAdapter = database.Select("select * from choroba", this.dbconnection_gabinet);
+                myDataAdapter = database.Select("select * from choroba", database.Conect());
                 DataTable dt = new DataTable();
                 myDataAdapter.Fill(dt);
                 dataGridViewChoroba.DataSource = dt.DefaultView;

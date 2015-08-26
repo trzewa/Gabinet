@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
-using mysettings = Gabinet.Properties.Settings;
+//using mysettings = Gabinet.Properties.Settings;
 
 namespace Gabinet
 {
@@ -16,7 +16,7 @@ namespace Gabinet
     {
         public string idpracownik;
         private int idstanowiska;
-        public string dbconnection_gabinet;
+        //public string dbconnection_gabinet;
         public Login rodzic;
 
         public Start(string idpracownikReceive, Login login)
@@ -26,7 +26,8 @@ namespace Gabinet
             this.MinimumSize = this.Size;           
             this.idpracownik = idpracownikReceive;
             this.rodzic = login;
-            this.dbconnection_gabinet = "datasource=" + mysettings.Default.datasource + ";database=" + mysettings.Default.database + ";port=" + mysettings.Default.port + ";username=" + mysettings.Default.user + ";password=" + mysettings.Default.password + ";charset=utf8";
+            //String password = Szyfrowanie.DecryptRijndael(mysettings.Default.password);
+            //this.dbconnection_gabinet = "datasource=" + mysettings.Default.datasource + ";database=" + mysettings.Default.database + ";port=" + mysettings.Default.port + ";username=" + mysettings.Default.user + ";password=" + password + ";charset=utf8";
             User_Control();
         }
 
@@ -126,7 +127,7 @@ namespace Gabinet
             {
                 MySqlDataAdapter myDataAdapter = new MySqlDataAdapter();
                 Database database = new Database();
-                myDataAdapter = database.Select("select * from pracownik where idpracownik='" + this.idpracownik + "'", this.dbconnection_gabinet);
+                myDataAdapter = database.Select("select * from pracownik where idpracownik='" + this.idpracownik + "'", database.Conect());
 
                 DataTable dt = new DataTable();
                 myDataAdapter.Fill(dt);

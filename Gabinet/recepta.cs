@@ -17,7 +17,7 @@ namespace Gabinet
     public partial class recepta : Form
     {
         public string dbconnection_lek;
-        public string dbconnection_gabinet;
+        //public string dbconnection_gabinet;
         public string idrecepta = null;
         
         public recepta()
@@ -26,7 +26,7 @@ namespace Gabinet
             this.MaximumSize = this.Size;
             this.MinimumSize = this.Size;
             this.dbconnection_lek = "Provider=" + mysettings.Default.provider + ";Data Source=" + mysettings.Default.dsdbf + ";Extended Properties=" + mysettings.Default.properties + ";";
-            this.dbconnection_gabinet = "datasource=" + mysettings.Default.datasource + ";database=" + mysettings.Default.database + ";port=" + mysettings.Default.port + ";username=" + mysettings.Default.user + ";password=" + mysettings.Default.password + ";charset=utf8";
+            //database.Conect() = "datasource=" + mysettings.Default.datasource + ";database=" + mysettings.Default.database + ";port=" + mysettings.Default.port + ";username=" + mysettings.Default.user + ";password=" + mysettings.Default.password + ";charset=utf8";
             Update_comboboxes();
             if (File.Exists(@"c:\Baza\wersja.txt"))
             {
@@ -168,9 +168,9 @@ namespace Gabinet
 
                 MySqlDataAdapter myDataAdapter = new MySqlDataAdapter();
                 Database database = new Database();
-                database.Insert("insert into recepta (data_realizacji, uprawnienia_dodatkowe) VALUES('" + dataRealizacji + "','" + uprawnienia + "')", this.dbconnection_gabinet);
+                database.Insert("insert into recepta (data_realizacji, uprawnienia_dodatkowe) VALUES('" + dataRealizacji + "','" + uprawnienia + "')", database.Conect());
 
-                myDataAdapter = database.Select("select max(idrecepty) from recepta", this.dbconnection_gabinet);
+                myDataAdapter = database.Select("select max(idrecepty) from recepta", database.Conect());
                 DataTable dt = new DataTable();
                 myDataAdapter.Fill(dt);
                                 
@@ -188,7 +188,7 @@ namespace Gabinet
                     string ilosc = listViewRecepta.Items[i].SubItems[2].Text.ToString();
                     string odplatnosc = listViewRecepta.Items[i].SubItems[3].Text.ToString();
 
-                    database.Insert("insert into receptalek (idrecepty, bazyl, dawkowanie, ilosc, odplatnosc) VALUES('" + this.idrecepta + "','" + bazyl + "','" + dawkowanie + "', '" + ilosc + "','" + odplatnosc + "')", this.dbconnection_gabinet);
+                    database.Insert("insert into receptalek (idrecepty, bazyl, dawkowanie, ilosc, odplatnosc) VALUES('" + this.idrecepta + "','" + bazyl + "','" + dawkowanie + "', '" + ilosc + "','" + odplatnosc + "')", database.Conect());
                 }
 
 

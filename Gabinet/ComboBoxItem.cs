@@ -11,7 +11,7 @@ namespace Gabinet
         public string text = "";
        
         public string hidden = "";
-
+        
         public string Text
         {
             get

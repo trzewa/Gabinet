@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
-using mysettings = Gabinet.Properties.Settings;
+//using mysettings = Gabinet.Properties.Settings;
 
 namespace Gabinet
 {
@@ -27,14 +27,14 @@ namespace Gabinet
         private string godzdo;
         private string mindo;
         private bool flag;
-        public string dbconnection_gabinet;
+        //public string dbconnection_gabinet;
 
         public harmonogramZmien(string idgodzinyR, string idPracownikGodzinyR, string idpracownikR, int dzienR, string godz_odR, string godz_doR)
         {
             InitializeComponent();
             this.MaximumSize = this.Size;
             this.MinimumSize = this.Size;
-            this.dbconnection_gabinet = "datasource=" + mysettings.Default.datasource + ";database=" + mysettings.Default.database + ";port=" + mysettings.Default.port + ";username=" + mysettings.Default.user + ";password=" + mysettings.Default.password + ";charset=utf8";
+            //database.Conect() = "datasource=" + mysettings.Default.datasource + ";database=" + mysettings.Default.database + ";port=" + mysettings.Default.port + ";username=" + mysettings.Default.user + ";password=" + mysettings.Default.password + ";charset=utf8";
             this.idgodziny = idgodzinyR;
             this.idPracownikGodziny = idPracownikGodzinyR;
             this.idpracownik = idpracownikR;
@@ -116,7 +116,7 @@ namespace Gabinet
 
             MySqlDataAdapter myDataAdapter = new MySqlDataAdapter();
             Database database = new Database();
-            myDataAdapter = database.Select("select * from godzinyprzyjec", this.dbconnection_gabinet);
+            myDataAdapter = database.Select("select * from godzinyprzyjec", database.Conect());
 
             DataTable dt = new DataTable();
             myDataAdapter.Fill(dt);
@@ -138,12 +138,12 @@ namespace Gabinet
 
             if (this.flag)
             {
-                database.Update("update pracownikgodziny set idgodziny='" + this.idgodziny + "' where id='" + this.idPracownikGodziny + "'", this.dbconnection_gabinet);
+                database.Update("update pracownikgodziny set idgodziny='" + this.idgodziny + "' where id='" + this.idPracownikGodziny + "'", database.Conect());
             }
             else 
             {
-                database.Insert("insert into godzinyprzyjec (dzien_tygodnia, godz_od, godz_do) VALUES('" + this.dzien + "','" + this.godz_od + "', '" + this.godz_do + "')", this.dbconnection_gabinet);
-                database.Update("update pracownikgodziny set idgodziny=(select max(idgodziny) from godzinyprzyjec) where id='" + this.idPracownikGodziny + "'", this.dbconnection_gabinet);
+                database.Insert("insert into godzinyprzyjec (dzien_tygodnia, godz_od, godz_do) VALUES('" + this.dzien + "','" + this.godz_od + "', '" + this.godz_do + "')", database.Conect());
+                database.Update("update pracownikgodziny set idgodziny=(select max(idgodziny) from godzinyprzyjec) where id='" + this.idPracownikGodziny + "'", database.Conect());
             }
             
             DialogResult result = MessageBox.Show("Zmieniono godziny");
@@ -185,7 +185,7 @@ namespace Gabinet
 
             MySqlDataAdapter myDataAdapter = new MySqlDataAdapter();
             Database database = new Database();
-            myDataAdapter = database.Select("select * from godzinyprzyjec", this.dbconnection_gabinet);
+            myDataAdapter = database.Select("select * from godzinyprzyjec", database.Conect());
 
             DataTable dt = new DataTable();
             myDataAdapter.Fill(dt);
@@ -207,12 +207,12 @@ namespace Gabinet
 
             if (this.flag)
             {
-                database.Insert("insert into pracownikgodziny (idgodziny, idpracownik) values ('" + this.idgodziny + "','" + this.idpracownik + "')", this.dbconnection_gabinet);
+                database.Insert("insert into pracownikgodziny (idgodziny, idpracownik) values ('" + this.idgodziny + "','" + this.idpracownik + "')", database.Conect());
             }
             else
             {
-                database.Insert("insert into godzinyprzyjec (dzien_tygodnia, godz_od, godz_do) VALUES('" + this.dzien + "','" + this.godz_od + "', '" + this.godz_do + "')", this.dbconnection_gabinet);
-                database.Insert("insert into pracownikgodziny (idgodziny, idpracownik) values ((select max(idgodziny) from godzinyprzyjec),'" + this.idpracownik + "')", this.dbconnection_gabinet);
+                database.Insert("insert into godzinyprzyjec (dzien_tygodnia, godz_od, godz_do) VALUES('" + this.dzien + "','" + this.godz_od + "', '" + this.godz_do + "')", database.Conect());
+                database.Insert("insert into pracownikgodziny (idgodziny, idpracownik) values ((select max(idgodziny) from godzinyprzyjec),'" + this.idpracownik + "')", database.Conect());
             }
 
             DialogResult result = MessageBox.Show("Dodano godziny");

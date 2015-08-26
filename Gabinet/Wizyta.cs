@@ -8,14 +8,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
-using mysettings = Gabinet.Properties.Settings;
+//using mysettings = Gabinet.Properties.Settings;
 
 namespace Gabinet
 {
     public partial class Wizyta : Form
     {
 
-        public string dbconnection_gabinet;
+        //public string dbconnection_gabinet;
         public string idwizyta;
         public string idpacjent;
         public string idrecepta = null;
@@ -33,7 +33,7 @@ namespace Gabinet
             InitializeComponent();
             this.MaximumSize = this.Size;
             this.MinimumSize = this.Size;
-            this.dbconnection_gabinet = "datasource=" + mysettings.Default.datasource + ";database=" + mysettings.Default.database + ";port=" + mysettings.Default.port + ";username=" + mysettings.Default.user + ";password=" + mysettings.Default.password + ";charset=utf8";
+            //database.Conect() = "datasource=" + mysettings.Default.datasource + ";database=" + mysettings.Default.database + ";port=" + mysettings.Default.port + ";username=" + mysettings.Default.user + ";password=" + mysettings.Default.password + ";charset=utf8";
             this.idwizyta = idwizytaReceive;
             this.flag = flagreceive;
             Update_danePacjent();
@@ -62,7 +62,7 @@ namespace Gabinet
                 Database database = new Database();
 
                 MySqlDataAdapter myDA = new MySqlDataAdapter();
-                myDA = database.Select("select idpacjent from wizyta where idwizyta='" + this.idwizyta + "'", this.dbconnection_gabinet);
+                myDA = database.Select("select idpacjent from wizyta where idwizyta='" + this.idwizyta + "'", database.Conect());
                 DataTable dT = new DataTable();
                 myDA.Fill(dT);
 
@@ -73,7 +73,7 @@ namespace Gabinet
                 }
 
                 MySqlDataAdapter myDataAdapter = new MySqlDataAdapter();                
-                myDataAdapter = database.Select("select nazwisko, imie, ulica, nr_budynku, nr_lokalu, miasto, kod_pocztowy, mail, telefon from pacjent inner join pacjentadres on pacjent.idpacjent=pacjentadres.idpacjent inner join adres on adres.idadres=pacjentadres.idadres inner join pacjentkontakt on pacjent.idpacjent=pacjentkontakt.idpacjent inner join kontakt on pacjentkontakt.idkontakt=kontakt.idkontakt where pacjent.idpacjent='" + this.idpacjent + "'", this.dbconnection_gabinet);
+                myDataAdapter = database.Select("select nazwisko, imie, ulica, nr_budynku, nr_lokalu, miasto, kod_pocztowy, mail, telefon from pacjent inner join pacjentadres on pacjent.idpacjent=pacjentadres.idpacjent inner join adres on adres.idadres=pacjentadres.idadres inner join pacjentkontakt on pacjent.idpacjent=pacjentkontakt.idpacjent inner join kontakt on pacjentkontakt.idkontakt=kontakt.idkontakt where pacjent.idpacjent='" + this.idpacjent + "'", database.Conect());
                 DataTable dt = new DataTable();
                 myDataAdapter.Fill(dt);
 
@@ -154,7 +154,7 @@ namespace Gabinet
             {
                 try
                 {
-                    database.Delete("delete from zwolnienie where idzwolnienia='" + this.idzwolnienie + "'", this.dbconnection_gabinet);                    
+                    database.Delete("delete from zwolnienie where idzwolnienia='" + this.idzwolnienie + "'", database.Conect());                    
                 }
                 catch (Exception ex)
                 {
@@ -165,9 +165,9 @@ namespace Gabinet
             {
                 try
                 {
-                    database.Delete("delete from receptalek where idrecepty='" + this.idrecepta + "'", this.dbconnection_gabinet);
+                    database.Delete("delete from receptalek where idrecepty='" + this.idrecepta + "'", database.Conect());
 
-                    database.Delete("delete from recepta where idrecepty='" + this.idrecepta + "'", this.dbconnection_gabinet);
+                    database.Delete("delete from recepta where idrecepty='" + this.idrecepta + "'", database.Conect());
                 }
                 catch (Exception ex)
                 {
@@ -195,14 +195,14 @@ namespace Gabinet
                     try
                     {
                         Database database = new Database();
-                        database.Update("update wizyta set idchoroby='" + this.idChoroby + "', idtyp_badania='" + idTypBadania + "', data='" + data + "', godzina='" + godzina + "', wywiad='" + wywiad + "', stan='1' where idwizyta='" + idwizyta + "'", this.dbconnection_gabinet);
+                        database.Update("update wizyta set idchoroby='" + this.idChoroby + "', idtyp_badania='" + idTypBadania + "', data='" + data + "', godzina='" + godzina + "', wywiad='" + wywiad + "', stan='1' where idwizyta='" + idwizyta + "'", database.Conect());
                         if (this.idzwolnienie != null)
                         {
-                            database.Update("update wizyta set idzwolnienia='" + idzwolnienie + "' where idwizyta='" + idwizyta + "'", this.dbconnection_gabinet);
+                            database.Update("update wizyta set idzwolnienia='" + idzwolnienie + "' where idwizyta='" + idwizyta + "'", database.Conect());
                         }
                         if (this.idrecepta != null)
                         {
-                            database.Update("update wizyta set idrecepty='" + this.idrecepta + "' where idwizyta='" + idwizyta + "'", this.dbconnection_gabinet);
+                            database.Update("update wizyta set idrecepty='" + this.idrecepta + "' where idwizyta='" + idwizyta + "'", database.Conect());
 
                         }
                         Close();
@@ -348,7 +348,7 @@ namespace Gabinet
             {
                 Database database = new Database();
                 MySqlDataAdapter myDA = new MySqlDataAdapter();
-                myDA = database.Select("select kod_mkch, nazwa_choroby from choroba inner join wizyta on choroba.idchoroby=wizyta.idchoroby where idwizyta = '" + this.idwizyta + "'", this.dbconnection_gabinet);
+                myDA = database.Select("select kod_mkch, nazwa_choroby from choroba inner join wizyta on choroba.idchoroby=wizyta.idchoroby where idwizyta = '" + this.idwizyta + "'", database.Conect());
                 DataTable dT = new DataTable();
                 myDA.Fill(dT);
 
@@ -371,7 +371,7 @@ namespace Gabinet
             {
                 Database database = new Database();
                 MySqlDataAdapter myDA = new MySqlDataAdapter();
-                myDA = database.Select("select kod_badania, nazwa_badania from typbadania inner join wizyta on typbadania.idtyp_badania=wizyta.idtyp_badania where idwizyta = '" + this.idwizyta + "'", this.dbconnection_gabinet);
+                myDA = database.Select("select kod_badania, nazwa_badania from typbadania inner join wizyta on typbadania.idtyp_badania=wizyta.idtyp_badania where idwizyta = '" + this.idwizyta + "'", database.Conect());
                 DataTable dT = new DataTable();
                 myDA.Fill(dT);
 
@@ -394,7 +394,7 @@ namespace Gabinet
             {
                 Database database = new Database();
                 MySqlDataAdapter myDA = new MySqlDataAdapter();
-                myDA = database.Select("select idrecepty, idzwolnienia, wywiad from wizyta where idwizyta = '" + this.idwizyta + "'", this.dbconnection_gabinet);
+                myDA = database.Select("select idrecepty, idzwolnienia, wywiad from wizyta where idwizyta = '" + this.idwizyta + "'", database.Conect());
                 DataTable dT = new DataTable();
                 myDA.Fill(dT);
 
@@ -436,7 +436,7 @@ namespace Gabinet
             {
                 Database database = new Database();
                 MySqlDataAdapter myDA = new MySqlDataAdapter();
-                myDA = database.Select("select data, stan from wizyta where idwizyta = '" + this.idwizyta + "'", this.dbconnection_gabinet);
+                myDA = database.Select("select data, stan from wizyta where idwizyta = '" + this.idwizyta + "'", database.Conect());
                 DataTable dT = new DataTable();
                 myDA.Fill(dT);
 
