@@ -1,6 +1,6 @@
 ﻿namespace Gabinet
 {
-    partial class bazaDane
+    partial class BazaDanych
     {
         /// <summary>
         /// Required designer variable.

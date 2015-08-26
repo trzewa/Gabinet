@@ -68,7 +68,7 @@ namespace Gabinet
                     this.Visible = false;                    
                     int row = dataGridViewPacjenci.CurrentCell.RowIndex;
                     string id = dataGridViewPacjenci.Rows[row].Cells[5].Value.ToString();
-                    rejestracjaPacjenta f2 = new rejestracjaPacjenta(id);                    
+                    RejestracjaPacjenta f2 = new RejestracjaPacjenta(id);                    
                     f2.ShowDialog();
                     this.Visible = true;
                 }
@@ -126,7 +126,7 @@ namespace Gabinet
                     int row = dataGridViewPacjenci.CurrentCell.RowIndex;
                     string id = dataGridViewPacjenci.Rows[row].Cells[5].Value.ToString();
                     this.Opacity = 0.5;
-                    danePacjent f2 = new danePacjent(id);
+                    DanePacjent f2 = new DanePacjent(id);
                     f2.ShowDialog();
                     this.Opacity = 1;
                 }
@@ -157,7 +157,7 @@ namespace Gabinet
                     this.Visible = false;
                     int row = dataGridViewPacjenci.CurrentCell.RowIndex;
                     string id = dataGridViewPacjenci.Rows[row].Cells[5].Value.ToString();
-                    pacjentWizyta f2 = new pacjentWizyta(id);
+                    PacjentWizyta f2 = new PacjentWizyta(id);
                     f2.ShowDialog();
                     this.Visible = true;
                 }
@@ -184,7 +184,7 @@ namespace Gabinet
             if (IsOpen == false)
             {
                 this.Visible = false;
-                rejestracjaPacjenta f2 = new rejestracjaPacjenta(this);
+                RejestracjaPacjenta f2 = new RejestracjaPacjenta(this);
                 f2.ShowDialog();
                 this.Visible = true;              
             }
@@ -211,7 +211,7 @@ namespace Gabinet
                     this.Opacity = 0.5;                    
                     int row = dataGridViewPacjenci.CurrentCell.RowIndex;
                     string id = dataGridViewPacjenci.Rows[row].Cells[5].Value.ToString();
-                    pacjentWizyta f2 = new pacjentWizyta(id, true);                    
+                    PacjentWizyta f2 = new PacjentWizyta(id, true);                    
                     f2.ShowDialog();
                     this.Opacity = 1;
                 }
@@ -242,7 +242,7 @@ namespace Gabinet
                     this.Opacity = 0.5;
                     int row = dataGridViewPacjenci.CurrentCell.RowIndex;
                     string id = dataGridViewPacjenci.Rows[row].Cells[5].Value.ToString();
-                    pacjentWizyta f2 = new pacjentWizyta(id, false);
+                    PacjentWizyta f2 = new PacjentWizyta(id, false);
                     f2.ShowDialog();
                     this.Opacity = 1;
                 }
@@ -308,7 +308,7 @@ namespace Gabinet
                     int row = dataGridViewPacjenci.CurrentCell.RowIndex;
                     string id = dataGridViewPacjenci.Rows[row].Cells[5].Value.ToString();
                     this.Opacity = 0.5;
-                    edytujOpiekun f2 = new edytujOpiekun(id);
+                    EdytujOpiekun f2 = new EdytujOpiekun(id);
                     f2.ShowDialog();
                     this.Opacity = 1;
                 }

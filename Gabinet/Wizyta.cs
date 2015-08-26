@@ -111,7 +111,7 @@ namespace Gabinet
             {
                 this.Opacity = 0.5;
                 int button = 1;
-                szukajProcedury f2 = new szukajProcedury(this, button);
+                SzukajProcedury f2 = new SzukajProcedury(this, button);
                 f2.Owner = this;
                 f2.ShowDialog();
                 textBoxKod.Text = kod;
@@ -137,7 +137,7 @@ namespace Gabinet
             {
                 this.Opacity = 0.5;
                 int button = 2;
-                szukajProcedury f2 = new szukajProcedury(this, button);
+                SzukajProcedury f2 = new SzukajProcedury(this, button);
                 f2.Owner = this;
                 f2.ShowDialog();
                 textBoxKodChoroby.Text = kod;
@@ -237,7 +237,7 @@ namespace Gabinet
                 if (IsOpen == false)
                 {                    
                         this.Visible = false;
-                        zwolnienie f2 = new zwolnienie(this.idzwolnienie, this);
+                        Zwolnienie f2 = new Zwolnienie(this.idzwolnienie, this);
                         f2.Owner = this;    
                         f2.ShowDialog();
                         this.Visible = true;                                            
@@ -259,7 +259,7 @@ namespace Gabinet
                     if (idChoroby != null)
                     {
                         this.Opacity = 0.5;
-                        zwolnienie f2 = new zwolnienie(this);
+                        Zwolnienie f2 = new Zwolnienie(this);
                         f2.Owner = this;
                         f2.ShowDialog();
                         this.Opacity = 1;
@@ -289,7 +289,7 @@ namespace Gabinet
             if (IsOpen == false)
             {
                     this.Opacity = 0.5;
-                    danePacjent f2 = new danePacjent(this.idpacjent);
+                    DanePacjent f2 = new DanePacjent(this.idpacjent);
                     f2.ShowDialog();
                     this.Opacity = 1;
                 
@@ -313,7 +313,7 @@ namespace Gabinet
             {
                 
                     this.Opacity = 0.5;                    
-                    pacjentWizyta f2 = new pacjentWizyta(this.idpacjent, true);
+                    PacjentWizyta f2 = new PacjentWizyta(this.idpacjent, true);
                     f2.ShowDialog();
                     this.Opacity = 1;
                 
@@ -336,7 +336,7 @@ namespace Gabinet
             if (IsOpen == false)
             {                
                     this.Opacity = 0.5;                    
-                    pacjentWizyta f2 = new pacjentWizyta(this.idpacjent, false);
+                    PacjentWizyta f2 = new PacjentWizyta(this.idpacjent, false);
                     f2.ShowDialog();
                     this.Opacity = 1;               
             }
@@ -485,7 +485,7 @@ namespace Gabinet
                 if (IsOpen == false)
                 {
                     this.Visible = false;
-                    receptaWidok f2 = new receptaWidok(this.idrecepta, this.idpacjent, this.data);                    
+                    ReceptaWidok f2 = new ReceptaWidok(this.idrecepta, this.idpacjent, this.data);                    
                     f2.ShowDialog();
                     this.Visible = true;
                 }
@@ -504,15 +504,15 @@ namespace Gabinet
                 if (IsOpen == false)
                 {
                     this.Opacity = 0.5;
-                    recepta f2 = new recepta();
+                    Recepta f2 = new Recepta();
                     f2.Owner = this;
                     f2.ShowDialog();
                     if (f2.idrecepta != null)
                     {
                         this.idrecepta = f2.idrecepta;
-                        //buttonRecepta.Enabled = false;
-                        flag = true;
-                        buttonRecepta.Text = "Wygeneruj recepte";
+                        buttonRecepta.Enabled = false;
+                        //flag = true;
+                        //buttonRecepta.Text = "Wygeneruj recepte";
                     }
                     this.Opacity = 1;
                 }

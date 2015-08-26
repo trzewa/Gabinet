@@ -12,14 +12,14 @@ using MySql.Data.MySqlClient;
 
 namespace Gabinet
 {
-    public partial class edytujOpiekun : Form
+    public partial class EdytujOpiekun : Form
     {
         //public string dbconnection_gabinet;
         public string idpacjent;
         public string idkontakt;
         public string idopiekun = null;        
 
-        public edytujOpiekun(string idpacjentReceive)
+        public EdytujOpiekun(string idpacjentReceive)
         {
             InitializeComponent();
             this.MaximumSize = this.Size;
@@ -209,7 +209,7 @@ namespace Gabinet
                 if (comboBoxOpiekun.Items.Count <= 1)
                 {
                     this.Opacity = 0.5;
-                    dodajOpiekun f2 = new dodajOpiekun();                    
+                    DodajOpiekun f2 = new DodajOpiekun();                    
                     f2.ShowDialog();
                     this.idopiekun = f2.idopiekunSend;
                     this.Opacity = 1;

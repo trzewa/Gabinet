@@ -325,7 +325,7 @@ namespace Gabinet
                 if (idopiekun == null)
                 {
                     this.Opacity = 0.5;
-                    dodajOpiekun f2 = new dodajOpiekun();
+                    DodajOpiekun f2 = new DodajOpiekun();
                     f2.ShowDialog();
                     this.idopiekun = f2.idopiekunSend;
                     this.Opacity = 1;
@@ -337,7 +337,7 @@ namespace Gabinet
                 else
                 {
                     this.Opacity = 0.5;
-                    dodajOpiekun f2 = new dodajOpiekun();
+                    DodajOpiekun f2 = new DodajOpiekun();
                     f2.ShowDialog();
                     this.idopiekunDrugi = f2.idopiekunSend;
                     this.Opacity = 1;

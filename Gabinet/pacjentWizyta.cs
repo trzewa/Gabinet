@@ -12,7 +12,7 @@ using MySql.Data.MySqlClient;
 
 namespace Gabinet
 {
-    public partial class pacjentWizyta : Form
+    public partial class PacjentWizyta : Form
     {
         //public string dbconnection_gabinet;
         private string idpacjent;
@@ -22,7 +22,7 @@ namespace Gabinet
         //private Rejestracja rodzicRejestracja;
         private bool flag = false;
 
-        public pacjentWizyta(string idpacjentreceive)
+        public PacjentWizyta(string idpacjentreceive)
         {
             InitializeComponent();
             this.MaximumSize = this.Size;
@@ -34,7 +34,7 @@ namespace Gabinet
             
         }
 
-        public pacjentWizyta(string idpacjentreceive, bool flagreceive)
+        public PacjentWizyta(string idpacjentreceive, bool flagreceive)
         {
             InitializeComponent();
             this.MaximumSize = this.Size;
@@ -105,7 +105,7 @@ namespace Gabinet
                     this.idwizyta = dataGridViewWizyty.Rows[row].Cells[2].Value.ToString();
                     this.pracownik = dataGridViewWizyty.Rows[row].Cells[4].Value.ToString() + " " + dataGridViewWizyty.Rows[row].Cells[5].Value.ToString();
                     this.data = dataGridViewWizyty.Rows[row].Cells[0].Value.ToString();
-                    rejestracjaPacjenta f2 = new rejestracjaPacjenta(this.idpacjent, this);
+                    RejestracjaPacjenta f2 = new RejestracjaPacjenta(this.idpacjent, this);
                     f2.Owner = this;
                     f2.ShowDialog();
                     this.Visible = true;

@@ -1,6 +1,6 @@
 ﻿namespace Gabinet
 {
-    partial class dodajPracownika
+    partial class DodajPracownik
     {
         /// <summary>
         /// Required designer variable.

@@ -14,13 +14,13 @@ using mysettings = Gabinet.Properties.Settings;
 
 namespace Gabinet
 {
-    public partial class recepta : Form
+    public partial class Recepta : Form
     {
         public string dbconnection_lek;
         //public string dbconnection_gabinet;
         public string idrecepta = null;
         
-        public recepta()
+        public Recepta()
         {
             InitializeComponent();
             this.MaximumSize = this.Size;
@@ -119,7 +119,7 @@ namespace Gabinet
                     int row = dataGridViewLek.CurrentCell.RowIndex;
                     string id = dataGridViewLek.Rows[row].Cells[0].Value.ToString();
                     this.Opacity = 0.5;
-                    lekRecepta f2 = new lekRecepta(id);
+                    LekRecepta f2 = new LekRecepta(id);
                     f2.Owner = this;
                     f2.ShowDialog();
                     this.Opacity = 1;

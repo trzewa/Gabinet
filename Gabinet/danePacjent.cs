@@ -12,13 +12,13 @@ using MySql.Data.MySqlClient;
 
 namespace Gabinet
 {
-    public partial class danePacjent : Form
+    public partial class DanePacjent : Form
     {
 
         //public string dbconnection_gabinet;
         public string idpacjent;        
 
-        public danePacjent(string idpacjentReceive)
+        public DanePacjent(string idpacjentReceive)
         {
             InitializeComponent();
             this.MaximumSize = this.Size;

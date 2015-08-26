@@ -12,12 +12,12 @@ using MySql.Data.MySqlClient;
 
 namespace Gabinet
 {
-    public partial class dodajOpiekun : Form
+    public partial class DodajOpiekun : Form
     {
         //public string dbconnection_gabinet;
         public string idopiekunSend = null;
 
-        public dodajOpiekun()
+        public DodajOpiekun()
         {
             InitializeComponent();
             this.MaximumSize = this.Size;
@@ -64,7 +64,7 @@ namespace Gabinet
 
                 if (result == System.Windows.Forms.DialogResult.OK)
                     {                    
-                        dodajOpiekun.ActiveForm.Close();
+                        DodajOpiekun.ActiveForm.Close();
                     }
             }
             catch (Exception ex)

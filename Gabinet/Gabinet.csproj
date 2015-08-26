@@ -22,7 +22,7 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>24</ApplicationRevision>
+    <ApplicationRevision>25</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -121,27 +121,27 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="bazaDane.cs">
+    <Compile Include="BazaDanych.cs">
       <SubType>Form</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
-    <Compile Include="bazaDane.Designer.cs">
-      <DependentUpon>bazaDane.cs</DependentUpon>
+    <Compile Include="BazaDanych.Designer.cs">
+      <DependentUpon>BazaDanych.cs</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="ComboBoxItem.cs" />
-    <Compile Include="danePacjent.cs">
+    <Compile Include="DanePacjent.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="danePacjent.Designer.cs">
-      <DependentUpon>danePacjent.cs</DependentUpon>
+    <Compile Include="DanePacjent.Designer.cs">
+      <DependentUpon>DanePacjent.cs</DependentUpon>
     </Compile>
     <Compile Include="Database.cs" />
-    <Compile Include="dodajOpiekun.cs">
+    <Compile Include="DodajOpiekun.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="dodajOpiekun.Designer.cs">
-      <DependentUpon>dodajOpiekun.cs</DependentUpon>
+    <Compile Include="DodajOpiekun.Designer.cs">
+      <DependentUpon>DodajOpiekun.cs</DependentUpon>
     </Compile>
     <Compile Include="DodajPacjent.cs">
       <SubType>Form</SubType>
@@ -149,17 +149,17 @@
     <Compile Include="DodajPacjent.Designer.cs">
       <DependentUpon>DodajPacjent.cs</DependentUpon>
     </Compile>
-    <Compile Include="dodajPracownika.cs">
+    <Compile Include="DodajPracownik.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="dodajPracownika.Designer.cs">
-      <DependentUpon>dodajPracownika.cs</DependentUpon>
+    <Compile Include="DodajPracownik.Designer.cs">
+      <DependentUpon>DodajPracownik.cs</DependentUpon>
     </Compile>
-    <Compile Include="edytujOpiekun.cs">
+    <Compile Include="EdytujOpiekun.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="edytujOpiekun.Designer.cs">
-      <DependentUpon>edytujOpiekun.cs</DependentUpon>
+    <Compile Include="EdytujOpiekun.Designer.cs">
+      <DependentUpon>EdytujOpiekun.cs</DependentUpon>
     </Compile>
     <Compile Include="Gabinet.cs">
       <SubType>Form</SubType>
@@ -167,23 +167,23 @@
     <Compile Include="Gabinet.Designer.cs">
       <DependentUpon>Gabinet.cs</DependentUpon>
     </Compile>
-    <Compile Include="harmonogram.cs">
+    <Compile Include="Harmonogram.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="harmonogram.Designer.cs">
-      <DependentUpon>harmonogram.cs</DependentUpon>
+    <Compile Include="Harmonogram.Designer.cs">
+      <DependentUpon>Harmonogram.cs</DependentUpon>
     </Compile>
-    <Compile Include="harmonogramZmien.cs">
+    <Compile Include="HarmonogramZmien.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="harmonogramZmien.Designer.cs">
-      <DependentUpon>harmonogramZmien.cs</DependentUpon>
+    <Compile Include="HarmonogramZmien.Designer.cs">
+      <DependentUpon>HarmonogramZmien.cs</DependentUpon>
     </Compile>
-    <Compile Include="lekRecepta.cs">
+    <Compile Include="LekRecepta.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="lekRecepta.Designer.cs">
-      <DependentUpon>lekRecepta.cs</DependentUpon>
+    <Compile Include="LekRecepta.Designer.cs">
+      <DependentUpon>LekRecepta.cs</DependentUpon>
     </Compile>
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
@@ -197,23 +197,23 @@
     <Compile Include="Logout.Designer.cs">
       <DependentUpon>Logout.cs</DependentUpon>
     </Compile>
-    <Compile Include="organizacjaPrzychodni.cs">
+    <Compile Include="OrganizacjaPrzychodni.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="organizacjaPrzychodni.Designer.cs">
-      <DependentUpon>organizacjaPrzychodni.cs</DependentUpon>
+    <Compile Include="OrganizacjaPrzychodni.Designer.cs">
+      <DependentUpon>OrganizacjaPrzychodni.cs</DependentUpon>
     </Compile>
-    <Compile Include="panelLekarza.cs">
+    <Compile Include="PanelLekarza.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="panelLekarza.Designer.cs">
-      <DependentUpon>panelLekarza.cs</DependentUpon>
+    <Compile Include="PanelLekarza.Designer.cs">
+      <DependentUpon>PanelLekarza.cs</DependentUpon>
     </Compile>
-    <Compile Include="pobranieBazyl.cs">
+    <Compile Include="PobranieBazyl.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="pobranieBazyl.Designer.cs">
-      <DependentUpon>pobranieBazyl.cs</DependentUpon>
+    <Compile Include="PobranieBazyl.Designer.cs">
+      <DependentUpon>PobranieBazyl.cs</DependentUpon>
     </Compile>
     <Compile Include="PrintingProvider.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
@@ -221,23 +221,23 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="pacjentWizyta.cs">
+    <Compile Include="PacjentWizyta.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="pacjentWizyta.Designer.cs">
-      <DependentUpon>pacjentWizyta.cs</DependentUpon>
+    <Compile Include="PacjentWizyta.Designer.cs">
+      <DependentUpon>PacjentWizyta.cs</DependentUpon>
     </Compile>
-    <Compile Include="recepta.cs">
+    <Compile Include="Recepta.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="recepta.Designer.cs">
-      <DependentUpon>recepta.cs</DependentUpon>
+    <Compile Include="Recepta.Designer.cs">
+      <DependentUpon>Recepta.cs</DependentUpon>
     </Compile>
-    <Compile Include="receptaWidok.cs">
+    <Compile Include="ReceptaWidok.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="receptaWidok.Designer.cs">
-      <DependentUpon>receptaWidok.cs</DependentUpon>
+    <Compile Include="ReceptaWidok.Designer.cs">
+      <DependentUpon>ReceptaWidok.cs</DependentUpon>
     </Compile>
     <Compile Include="Rp.cs">
       <DependentUpon>Rp.xsd</DependentUpon>
@@ -250,12 +250,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Rp.xsd</DependentUpon>
     </Compile>
-    <Compile Include="Szyfrowanie.cs" />
-    <Compile Include="zwolnienie.cs">
+    <Compile Include="Cryption.cs" />
+    <Compile Include="Zwolnienie.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="zwolnienie.Designer.cs">
-      <DependentUpon>zwolnienie.cs</DependentUpon>
+    <Compile Include="Zwolnienie.Designer.cs">
+      <DependentUpon>Zwolnienie.cs</DependentUpon>
     </Compile>
     <Compile Include="Rejestracja.cs">
       <SubType>Form</SubType>
@@ -263,11 +263,11 @@
     <Compile Include="Rejestracja.Designer.cs">
       <DependentUpon>Rejestracja.cs</DependentUpon>
     </Compile>
-    <Compile Include="rejestracjaPacjenta.cs">
+    <Compile Include="RejestracjaPacjenta.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="rejestracjaPacjenta.Designer.cs">
-      <DependentUpon>rejestracjaPacjenta.cs</DependentUpon>
+    <Compile Include="RejestracjaPacjenta.Designer.cs">
+      <DependentUpon>RejestracjaPacjenta.cs</DependentUpon>
     </Compile>
     <Compile Include="Settings.cs" />
     <Compile Include="Start.cs">
@@ -278,11 +278,11 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="szukajProcedury.cs">
+    <Compile Include="SzukajProcedury.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="szukajProcedury.Designer.cs">
-      <DependentUpon>szukajProcedury.cs</DependentUpon>
+    <Compile Include="SzukajProcedury.Designer.cs">
+      <DependentUpon>SzukajProcedury.cs</DependentUpon>
     </Compile>
     <Compile Include="Wizyta.cs">
       <SubType>Form</SubType>
@@ -290,36 +290,36 @@
     <Compile Include="Wizyta.Designer.cs">
       <DependentUpon>Wizyta.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="bazaDane.resx">
-      <DependentUpon>bazaDane.cs</DependentUpon>
+    <EmbeddedResource Include="BazaDanych.resx">
+      <DependentUpon>BazaDanych.cs</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
-    <EmbeddedResource Include="danePacjent.resx">
-      <DependentUpon>danePacjent.cs</DependentUpon>
+    <EmbeddedResource Include="DanePacjent.resx">
+      <DependentUpon>DanePacjent.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="dodajOpiekun.resx">
-      <DependentUpon>dodajOpiekun.cs</DependentUpon>
+    <EmbeddedResource Include="DodajOpiekun.resx">
+      <DependentUpon>DodajOpiekun.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DodajPacjent.resx">
       <DependentUpon>DodajPacjent.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="dodajPracownika.resx">
-      <DependentUpon>dodajPracownika.cs</DependentUpon>
+    <EmbeddedResource Include="DodajPracownik.resx">
+      <DependentUpon>DodajPracownik.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="edytujOpiekun.resx">
-      <DependentUpon>edytujOpiekun.cs</DependentUpon>
+    <EmbeddedResource Include="EdytujOpiekun.resx">
+      <DependentUpon>EdytujOpiekun.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Gabinet.resx">
       <DependentUpon>Gabinet.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="harmonogram.resx">
-      <DependentUpon>harmonogram.cs</DependentUpon>
+    <EmbeddedResource Include="Harmonogram.resx">
+      <DependentUpon>Harmonogram.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="harmonogramZmien.resx">
-      <DependentUpon>harmonogramZmien.cs</DependentUpon>
+    <EmbeddedResource Include="HarmonogramZmien.resx">
+      <DependentUpon>HarmonogramZmien.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="lekRecepta.resx">
-      <DependentUpon>lekRecepta.cs</DependentUpon>
+    <EmbeddedResource Include="LekRecepta.resx">
+      <DependentUpon>LekRecepta.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
@@ -327,23 +327,23 @@
     <EmbeddedResource Include="Logout.resx">
       <DependentUpon>Logout.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="organizacjaPrzychodni.resx">
-      <DependentUpon>organizacjaPrzychodni.cs</DependentUpon>
+    <EmbeddedResource Include="OrganizacjaPrzychodni.resx">
+      <DependentUpon>OrganizacjaPrzychodni.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="panelLekarza.resx">
-      <DependentUpon>panelLekarza.cs</DependentUpon>
+    <EmbeddedResource Include="PanelLekarza.resx">
+      <DependentUpon>PanelLekarza.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="pacjentWizyta.resx">
-      <DependentUpon>pacjentWizyta.cs</DependentUpon>
+    <EmbeddedResource Include="PacjentWizyta.resx">
+      <DependentUpon>PacjentWizyta.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="pobranieBazyl.resx">
-      <DependentUpon>pobranieBazyl.cs</DependentUpon>
+    <EmbeddedResource Include="PobranieBazyl.resx">
+      <DependentUpon>PobranieBazyl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="recepta.resx">
-      <DependentUpon>recepta.cs</DependentUpon>
+    <EmbeddedResource Include="Recepta.resx">
+      <DependentUpon>Recepta.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="receptaWidok.resx">
-      <DependentUpon>receptaWidok.cs</DependentUpon>
+    <EmbeddedResource Include="ReceptaWidok.resx">
+      <DependentUpon>ReceptaWidok.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="App.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -355,14 +355,14 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <SubType>Designer</SubType>
     </None>
-    <EmbeddedResource Include="zwolnienie.resx">
-      <DependentUpon>zwolnienie.cs</DependentUpon>
+    <EmbeddedResource Include="Zwolnienie.resx">
+      <DependentUpon>Zwolnienie.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Rejestracja.resx">
       <DependentUpon>Rejestracja.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="rejestracjaPacjenta.resx">
-      <DependentUpon>rejestracjaPacjenta.cs</DependentUpon>
+    <EmbeddedResource Include="RejestracjaPacjenta.resx">
+      <DependentUpon>RejestracjaPacjenta.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Start.resx">
       <DependentUpon>Start.cs</DependentUpon>
@@ -372,8 +372,8 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="szukajProcedury.resx">
-      <DependentUpon>szukajProcedury.cs</DependentUpon>
+    <EmbeddedResource Include="SzukajProcedury.resx">
+      <DependentUpon>SzukajProcedury.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Wizyta.resx">
       <DependentUpon>Wizyta.cs</DependentUpon>

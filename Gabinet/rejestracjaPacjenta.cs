@@ -12,7 +12,7 @@ using MySql.Data.MySqlClient;
 
 namespace Gabinet
 {   
-    public partial class rejestracjaPacjenta : Form
+    public partial class RejestracjaPacjenta : Form
     {
         //public string dbconnection_gabinet;
         private string idpacjent;
@@ -20,11 +20,11 @@ namespace Gabinet
         private string godzDo;
         private string godzWizyty;        
         private Rejestracja rodzicRejestracja;
-        private pacjentWizyta rodzicWizyta;
+        private PacjentWizyta rodzicWizyta;
         private bool form = false;
         private bool flag = false;
 
-        public rejestracjaPacjenta(string idpacjentreceive)
+        public RejestracjaPacjenta(string idpacjentreceive)
         {
             InitializeComponent();
             this.MaximumSize = this.Size;
@@ -36,7 +36,7 @@ namespace Gabinet
             Update_daneLekarza();            
         }
 
-        public rejestracjaPacjenta(string idpacjentreceive, pacjentWizyta parent)
+        public RejestracjaPacjenta(string idpacjentreceive, PacjentWizyta parent)
         {
             InitializeComponent();
             this.MaximumSize = this.Size;
@@ -52,7 +52,7 @@ namespace Gabinet
             this.form = true;
         }
 
-        public rejestracjaPacjenta(Rejestracja parent)
+        public RejestracjaPacjenta(Rejestracja parent)
         {
             InitializeComponent();
             this.MaximumSize = this.Size;

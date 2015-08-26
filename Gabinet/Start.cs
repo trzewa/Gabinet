@@ -47,7 +47,7 @@ namespace Gabinet
             if (IsOpen == false)
             {
                 this.Visible = false;
-                panelLekarza f2 = new panelLekarza(this.idpracownik);
+                PanelLekarza f2 = new PanelLekarza(this.idpracownik);
                 f2.ShowDialog();
                 this.Visible = true;
             }
@@ -91,7 +91,7 @@ namespace Gabinet
             if (IsOpen == false)
             {
                 this.Visible = false;
-                organizacjaPrzychodni f2 = new organizacjaPrzychodni();
+                OrganizacjaPrzychodni f2 = new OrganizacjaPrzychodni();
                 f2.ShowDialog();
                 this.Visible = true;
             }

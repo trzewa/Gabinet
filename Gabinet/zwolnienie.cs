@@ -12,7 +12,7 @@ using MySql.Data.MySqlClient;
 
 namespace Gabinet
 {
-    public partial class zwolnienie : Form
+    public partial class Zwolnienie : Form
     {
         private Wizyta rodzicWizyta;
         //public string dbconnection_gabinet;
@@ -21,7 +21,7 @@ namespace Gabinet
         public string idzwolnienia;
         public string data;
 
-        public zwolnienie(Wizyta parent)
+        public Zwolnienie(Wizyta parent)
         {
             InitializeComponent();
             this.MaximumSize = this.Size;
@@ -35,7 +35,7 @@ namespace Gabinet
             Update_comboBoxes();
         }
 
-        public zwolnienie(string idzwolnieniaReceive, Wizyta parent)
+        public Zwolnienie(string idzwolnieniaReceive, Wizyta parent)
         {
             InitializeComponent();
             this.MaximumSize = this.Size;

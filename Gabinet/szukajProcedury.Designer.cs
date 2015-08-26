@@ -1,6 +1,6 @@
 ﻿namespace Gabinet
 {
-    partial class szukajProcedury
+    partial class SzukajProcedury
     {
         /// <summary>
         /// Required designer variable.

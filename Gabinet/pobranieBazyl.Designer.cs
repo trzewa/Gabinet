@@ -1,6 +1,6 @@
 ﻿namespace Gabinet
 {
-    partial class pobranieBazyl
+    partial class PobranieBazyl
     {
         /// <summary>
         /// Required designer variable.

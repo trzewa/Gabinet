@@ -17,7 +17,7 @@ namespace Gabinet
     {
         public string Conect()
         {
-            String password = Szyfrowanie.DecryptRijndael(mysettings.Default.password);
+            String password = Cryption.DecryptRijndael(mysettings.Default.password);
             string dbconnection_gabinet = "datasource=" + mysettings.Default.datasource + ";database=" + mysettings.Default.database + ";port=" + mysettings.Default.port + ";username=" + mysettings.Default.user + ";password=" + password + ";charset=utf8";
             return dbconnection_gabinet;
         }       
@@ -49,8 +49,7 @@ namespace Gabinet
             MySqlCommand MyCommand = new MySqlCommand(query, MyConn);
             MySqlDataReader MyReader;
             MyConn.Open();
-            MyReader = MyCommand.ExecuteReader();
-            //MessageBox.Show("Data Deleted");
+            MyReader = MyCommand.ExecuteReader();            
             while (MyReader.Read())
             {
 
@@ -68,8 +67,7 @@ namespace Gabinet
               MySqlCommand MyCommand = new MySqlCommand(query, myConn);
               MySqlDataReader MyReader;
               myConn.Open();
-              MyReader = MyCommand.ExecuteReader();
-              //MessageBox.Show("Data Updated");
+              MyReader = MyCommand.ExecuteReader();              
               while (MyReader.Read())
               {
 
@@ -96,8 +94,7 @@ namespace Gabinet
             {
                 conDataBase.Open();
                 myReader = cmdDataBase.ExecuteReader();
-                //MessageBox.Show("DODANE");
-
+                
                 while (myReader.Read())
                 {
                     

@@ -13,14 +13,14 @@ using System.IO;
 
 namespace Gabinet
 {
-    public partial class pobranieBazyl : Form
+    public partial class PobranieBazyl : Form
     {
         private WebClient client = new WebClient();
         private string login = "kopalnia";
         private string haslo = "informacji";
         private string linke = "ftp://ftp.imspoland.com.pl/";
         
-        public pobranieBazyl()
+        public PobranieBazyl()
         {
             InitializeComponent();
             this.MaximumSize = this.Size;

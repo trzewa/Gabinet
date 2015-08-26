@@ -18,7 +18,7 @@ using mysettings = Gabinet.Properties.Settings;
 
 namespace Gabinet
 {
-    public partial class receptaWidok : Form
+    public partial class ReceptaWidok : Form
     {
         double HardMarginX = 4;
         double HardMarginY = 4;
@@ -44,12 +44,12 @@ namespace Gabinet
         public string data;
         public Wizyta rodzicWizyta;
 
-        public receptaWidok()
+        public ReceptaWidok()
         {
             InitializeComponent();
         }
 
-        public receptaWidok(string idreceptaReceive, string idpacjentReceive, string dataReceive)
+        public ReceptaWidok(string idreceptaReceive, string idpacjentReceive, string dataReceive)
         {
             InitializeComponent();
             this.MaximumSize = this.Size;

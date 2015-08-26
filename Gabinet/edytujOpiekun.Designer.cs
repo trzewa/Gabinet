@@ -1,6 +1,6 @@
 ﻿namespace Gabinet
 {
-    partial class edytujOpiekun
+    partial class EdytujOpiekun
     {
         /// <summary>
         /// Required designer variable.

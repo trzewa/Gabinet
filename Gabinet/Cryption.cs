@@ -9,12 +9,12 @@ using System.Threading.Tasks;
 
 namespace Gabinet
 {
-    class Szyfrowanie
+    class Cryption
     {
         internal const string Inputkey = "560A18CD-6346-4CF0-A2E8-671F9B6B9EA9";
         internal const string salt = "3b1afaf4-b2a3-42a8-83a6-769af2b82c00";
 
-        public string szyfr(string Value)
+        public string CryptMd5(string Value)
         {
             System.Security.Cryptography.MD5CryptoServiceProvider x = new System.Security.Cryptography.MD5CryptoServiceProvider();
             byte[] data = System.Text.Encoding.ASCII.GetBytes(Value);
@@ -54,10 +54,10 @@ namespace Gabinet
         public static string DecryptRijndael(string cipherText)
         {
             if (string.IsNullOrEmpty(cipherText))
-                throw new ArgumentNullException("cipherText");
+                throw new ArgumentNullException("Zaszyfrowany tekst");
 
             if (!IsBase64String(cipherText))
-                throw new Exception("The cipherText input parameter is not base64 encoded");
+                throw new Exception("Zaszyfrowany tekst nie jest zakodowany base64");
 
             string text;
 

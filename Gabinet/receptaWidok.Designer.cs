@@ -1,6 +1,6 @@
 ﻿namespace Gabinet
 {
-    partial class receptaWidok
+    partial class ReceptaWidok
     {
         /// <summary>
         /// Required designer variable.

@@ -1,6 +1,6 @@
 ﻿namespace Gabinet
 {
-    partial class lekRecepta
+    partial class LekRecepta
     {
         /// <summary>
         /// Required designer variable.

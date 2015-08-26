@@ -11,9 +11,9 @@ using mysettings = Gabinet.Properties.Settings;
 
 namespace Gabinet
 {
-    public partial class bazaDane : Form
+    public partial class BazaDanych : Form
     {
-        public bazaDane()
+        public BazaDanych()
         {
             InitializeComponent();
             this.MaximumSize = this.Size;
@@ -27,7 +27,7 @@ namespace Gabinet
             this.textBoxNazwa.Text = mysettings.Default.database;
             this.textBoxPort.Text = mysettings.Default.port;
             this.textBoxUser.Text = mysettings.Default.user;
-            String password = Szyfrowanie.DecryptRijndael(mysettings.Default.password);
+            String password = Cryption.DecryptRijndael(mysettings.Default.password);
             this.textBoxPass.Text = password;
         }
 
@@ -42,7 +42,7 @@ namespace Gabinet
                 mysettings.Default.database = this.textBoxNazwa.Text.ToString();
                 mysettings.Default.port = this.textBoxPort.Text.ToString();
                 mysettings.Default.user = this.textBoxUser.Text.ToString();
-                mysettings.Default.password = Szyfrowanie.EncryptRijndael(this.textBoxPass.Text);
+                mysettings.Default.password = Cryption.EncryptRijndael(this.textBoxPass.Text);
                 mysettings.Default.Save();
                 this.Close();
             }

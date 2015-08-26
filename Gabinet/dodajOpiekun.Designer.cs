@@ -1,6 +1,6 @@
 ﻿namespace Gabinet
 {
-    partial class dodajOpiekun
+    partial class DodajOpiekun
     {
         /// <summary>
         /// Required designer variable.

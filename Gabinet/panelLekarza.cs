@@ -12,13 +12,13 @@ using MySql.Data.MySqlClient;
 
 namespace Gabinet
 {
-    public partial class panelLekarza : Form
+    public partial class PanelLekarza : Form
     {
         //public string dbconnection_gabinet;
         private string idpracownik;
         private string idwizyta;        
 
-        public panelLekarza(string idpracownikReceive)
+        public PanelLekarza(string idpracownikReceive)
         {
             InitializeComponent();
             this.MaximumSize = this.Size;
@@ -154,7 +154,7 @@ namespace Gabinet
                     int row = dataGridViewWizyta.CurrentCell.RowIndex;
                     string id = dataGridViewWizyta.Rows[row].Cells[5].Value.ToString();
                     this.Opacity = 0.5;
-                    danePacjent f2 = new danePacjent(id);
+                    DanePacjent f2 = new DanePacjent(id);
                     f2.ShowDialog();
                     this.Opacity = 1;
                 }
@@ -185,7 +185,7 @@ namespace Gabinet
                     this.Opacity = 0.5;
                     int row = dataGridViewWizyta.CurrentCell.RowIndex;
                     string id = dataGridViewWizyta.Rows[row].Cells[5].Value.ToString();
-                    pacjentWizyta f2 = new pacjentWizyta(id, true);
+                    PacjentWizyta f2 = new PacjentWizyta(id, true);
                     f2.ShowDialog();
                     this.Opacity = 1;
                 }
@@ -216,7 +216,7 @@ namespace Gabinet
                     this.Opacity = 0.5;
                     int row = dataGridViewWizyta.CurrentCell.RowIndex;
                     string id = dataGridViewWizyta.Rows[row].Cells[5].Value.ToString();
-                    pacjentWizyta f2 = new pacjentWizyta(id, false);
+                    PacjentWizyta f2 = new PacjentWizyta(id, false);
                     f2.ShowDialog();
                     this.Opacity = 1;
                 }

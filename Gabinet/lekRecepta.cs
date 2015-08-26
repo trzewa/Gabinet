@@ -12,7 +12,7 @@ using mysettings = Gabinet.Properties.Settings;
 
 namespace Gabinet
 {
-    public partial class lekRecepta : Form
+    public partial class LekRecepta : Form
     {
         public string bazyl;
         public string dbconnection_lek;
@@ -24,12 +24,12 @@ namespace Gabinet
         public string postac;
         public bool flag;
 
-        public lekRecepta()
+        public LekRecepta()
         {
             InitializeComponent();
         }
 
-        public lekRecepta(string idBazyl)
+        public LekRecepta(string idBazyl)
         {
             InitializeComponent();
             this.MaximumSize = this.Size;

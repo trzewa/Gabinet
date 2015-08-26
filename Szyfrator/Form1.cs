@@ -23,7 +23,7 @@ namespace Szyfrator
         private void button1_Click(object sender, EventArgs e)
         {
 
-            textBox2.Text = Szyfrowanie.EncryptRijndael(textBox1.Text);
+            textBox2.Text = Cryption.EncryptRijndael(textBox1.Text);
         }
     }
 }

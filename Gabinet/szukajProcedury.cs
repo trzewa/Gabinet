@@ -12,7 +12,7 @@ using MySql.Data.MySqlClient;
 
 namespace Gabinet
 {
-    public partial class szukajProcedury : Form
+    public partial class SzukajProcedury : Form
     {
         //public string dbconnection_gabinet;        
         private int _searchColumnID = 2;
@@ -20,7 +20,7 @@ namespace Gabinet
         private Wizyta rodzicWizyta;
         private int button;
 
-        public szukajProcedury(Wizyta parent, int buttonReceive)
+        public SzukajProcedury(Wizyta parent, int buttonReceive)
         {
             InitializeComponent();
             this.MaximumSize = this.Size;

@@ -12,12 +12,12 @@ using MySql.Data.MySqlClient;
 
 namespace Gabinet
 {
-    public partial class organizacjaPrzychodni : Form
+    public partial class OrganizacjaPrzychodni : Form
     {
 
         //public string dbconnection_gabinet;
 
-        public organizacjaPrzychodni()
+        public OrganizacjaPrzychodni()
         {
             InitializeComponent();
             this.MaximumSize = this.Size;
@@ -54,7 +54,7 @@ namespace Gabinet
             if (IsOpen == false)
             {
                 this.Visible = false;
-                dodajPracownika f2 = new dodajPracownika();
+                DodajPracownik f2 = new DodajPracownik();
                 f2.ShowDialog();
                 Update_dataGridViewPracownicy();
                 this.Visible = true;
@@ -81,7 +81,7 @@ namespace Gabinet
                     this.Visible = false;
                     int row = dataGridViewPracownicy.CurrentCell.RowIndex;
                     string id = dataGridViewPracownicy.Rows[row].Cells[4].Value.ToString();
-                    harmonogram f2 = new harmonogram(id);
+                    Harmonogram f2 = new Harmonogram(id);
                     f2.ShowDialog();
                     this.Visible = true;
                 }
@@ -108,7 +108,7 @@ namespace Gabinet
             if (IsOpen == false)
             {
                 this.Visible = false;
-                bazaDane f2 = new bazaDane();
+                BazaDanych f2 = new BazaDanych();
                 f2.ShowDialog();
                 Update_dataGridViewPracownicy();
                 this.Visible = true;
@@ -135,7 +135,7 @@ namespace Gabinet
                     int row = dataGridViewPracownicy.CurrentCell.RowIndex;
                     string id = dataGridViewPracownicy.Rows[row].Cells[4].Value.ToString();
                     this.Opacity = 0.5;
-                    dodajPracownika f2 = new dodajPracownika(id);
+                    DodajPracownik f2 = new DodajPracownik(id);
                     f2.ShowDialog();
                     Update_dataGridViewPracownicy();
                     this.Opacity = 1;                    
@@ -163,7 +163,7 @@ namespace Gabinet
             if (IsOpen == false)
             {
                 this.Visible = false;
-                pobranieBazyl f2 = new pobranieBazyl();
+                PobranieBazyl f2 = new PobranieBazyl();
                 f2.ShowDialog();
                 Update_dataGridViewPracownicy();
                 this.Visible = true;

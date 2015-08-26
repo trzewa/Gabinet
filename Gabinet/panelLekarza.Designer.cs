@@ -1,6 +1,6 @@
 ﻿namespace Gabinet
 {
-    partial class panelLekarza
+    partial class PanelLekarza
     {
         /// <summary>
         /// Required designer variable.

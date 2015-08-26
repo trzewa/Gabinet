@@ -1,6 +1,6 @@
 ﻿namespace Gabinet
 {
-    partial class harmonogramZmien
+    partial class HarmonogramZmien
     {
         /// <summary>
         /// Required designer variable.

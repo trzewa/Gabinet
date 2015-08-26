@@ -13,14 +13,14 @@ using System.Net.Mail;
 
 namespace Gabinet
 {
-    public partial class dodajPracownika : Form
+    public partial class DodajPracownik : Form
     {
         //public string dbconnection_gabinet;
         private string idpracownik;
         private string idkontakt;
         private string idadres;
 
-        public dodajPracownika()
+        public DodajPracownik()
         {
             InitializeComponent();
             this.MaximumSize = this.Size;
@@ -34,7 +34,7 @@ namespace Gabinet
             Update_comboBoxStanowisko();
         }
 
-        public dodajPracownika(string idpracownikReceive)
+        public DodajPracownik(string idpracownikReceive)
         {
             InitializeComponent();
             this.MaximumSize = this.Size;
@@ -249,8 +249,8 @@ namespace Gabinet
                             this.idpracownik = element["max(idpracownik)"].ToString();
                         }
 
-                        Szyfrowanie hasloSzyfr = new Szyfrowanie();
-                        string hs = hasloSzyfr.szyfr(haslo);
+                        Cryption hasloSzyfr = new Cryption();
+                        string hs = hasloSzyfr.CryptMd5(haslo);
 
                             database.Insert("insert user (idpracownik, login, haslo) VALUES('" + this.idpracownik + "','" + login.ToString() + "','" + hs + "')", database.Conect());
 
@@ -421,8 +421,8 @@ namespace Gabinet
                 }
                 else
                 {
-                    Szyfrowanie hasloSzyfr = new Szyfrowanie();
-                    string hs = hasloSzyfr.szyfr(haslo);
+                    Cryption hasloSzyfr = new Cryption();
+                    string hs = hasloSzyfr.CryptMd5(haslo);
 
                     database.Update("update pracownik set idstanowisko = '" + stanowisko + "', nazwisko = '" + nazwisko.ToString() + "', numer_pwz = '" + pwz.ToString() + "'  where idpracownik = '" + this.idpracownik + "'", database.Conect());
                     database.Update("update user set login = '" + login.ToString() + "', haslo = '" + hs + "' where idpracownik = '" + this.idpracownik + "'", database.Conect());
@@ -433,7 +433,7 @@ namespace Gabinet
 
                     if (result == System.Windows.Forms.DialogResult.OK)
                     {
-                        dodajPracownika.ActiveForm.Close();
+                        DodajPracownik.ActiveForm.Close();
                     }
                 }
             }

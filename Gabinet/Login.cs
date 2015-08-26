@@ -45,8 +45,8 @@ namespace Gabinet
             try
             {
                 //String myCon = "datasource=91.228.198.167;database=aneu_gabinet;port=3306;username=aneu_gabinet;password=kolunio1";
-                Szyfrowanie hasloSzyfr = new Szyfrowanie();
-                string hs = hasloSzyfr.szyfr(this.textBoxPasword.Text);
+                Cryption hasloSzyfr = new Cryption();
+                string hs = hasloSzyfr.CryptMd5(this.textBoxPasword.Text);
                 Database database = new Database();
                 MySqlConnection con = new MySqlConnection(database.Conect());
 

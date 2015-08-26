@@ -12,7 +12,7 @@ using MySql.Data.MySqlClient;
 
 namespace Gabinet
 {
-    public partial class harmonogramZmien : Form
+    public partial class HarmonogramZmien : Form
     {
         private string idpracownik;
         private int dzien;
@@ -29,7 +29,7 @@ namespace Gabinet
         private bool flag;
         //public string dbconnection_gabinet;
 
-        public harmonogramZmien(string idgodzinyR, string idPracownikGodzinyR, string idpracownikR, int dzienR, string godz_odR, string godz_doR)
+        public HarmonogramZmien(string idgodzinyR, string idPracownikGodzinyR, string idpracownikR, int dzienR, string godz_odR, string godz_doR)
         {
             InitializeComponent();
             this.MaximumSize = this.Size;
@@ -150,7 +150,7 @@ namespace Gabinet
 
             if (result == System.Windows.Forms.DialogResult.OK)
             {
-                harmonogramZmien.ActiveForm.Close();
+                HarmonogramZmien.ActiveForm.Close();
             }
         }
 
@@ -219,7 +219,7 @@ namespace Gabinet
 
             if (result == System.Windows.Forms.DialogResult.OK)
             {
-                harmonogramZmien.ActiveForm.Close();
+                HarmonogramZmien.ActiveForm.Close();
             }
         }
     }

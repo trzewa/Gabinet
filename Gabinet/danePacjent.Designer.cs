@@ -1,6 +1,6 @@
 ﻿namespace Gabinet
 {
-    partial class danePacjent
+    partial class DanePacjent
     {
         /// <summary>
         /// Required designer variable.
