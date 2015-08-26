@@ -22,7 +22,7 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>8</ApplicationRevision>
+    <ApplicationRevision>24</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -58,6 +58,12 @@
   </PropertyGroup>
   <PropertyGroup>
     <SignManifests>true</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <TargetZone>LocalIntranet</TargetZone>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="I25, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -95,6 +101,7 @@
     <Reference Include="System">
       <Private>False</Private>
     </Reference>
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Design" />
     <Reference Include="System.Web.Services" />
@@ -116,9 +123,11 @@
   <ItemGroup>
     <Compile Include="bazaDane.cs">
       <SubType>Form</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="bazaDane.Designer.cs">
       <DependentUpon>bazaDane.cs</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="ComboBoxItem.cs" />
     <Compile Include="danePacjent.cs">
@@ -241,6 +250,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Rp.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Szyfrowanie.cs" />
     <Compile Include="zwolnienie.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -282,6 +292,7 @@
     </Compile>
     <EmbeddedResource Include="bazaDane.resx">
       <DependentUpon>bazaDane.cs</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="danePacjent.resx">
       <DependentUpon>danePacjent.cs</DependentUpon>
@@ -334,6 +345,11 @@
     <EmbeddedResource Include="receptaWidok.resx">
       <DependentUpon>receptaWidok.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="App.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="ClassDiagram1.cd" />
     <None Include="Gabinet_TemporaryKey.pfx" />
     <None Include="Rp.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -363,6 +379,7 @@
       <DependentUpon>Wizyta.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
+    <None Include="Properties\app.manifest" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -383,9 +400,6 @@
     <None Include="Rp.xss">
       <DependentUpon>Rp.xsd</DependentUpon>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\023333859.jpg" />
