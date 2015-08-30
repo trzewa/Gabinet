@@ -10,10 +10,10 @@ using System.Windows.Forms;
 
 namespace Szyfrator
 {
-    public partial class Form1 : Form
+    public partial class Generator : Form
     {
         
-        public Form1()
+        public Generator()
         {            
             InitializeComponent();
             this.MaximumSize = this.Size;

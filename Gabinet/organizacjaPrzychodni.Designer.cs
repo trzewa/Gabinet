@@ -42,6 +42,8 @@
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonBazyl = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton4 = new System.Windows.Forms.ToolStripButton();
             this.toolStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPracownicy)).BeginInit();
@@ -58,10 +60,12 @@
             this.toolStripButtonHarmonogram,
             this.toolStripButton1,
             this.toolStripButtonBazyl,
-            this.toolStripButton2});
+            this.toolStripButton2,
+            this.toolStripButton3,
+            this.toolStripButton4});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(662, 80);
+            this.toolStrip1.Size = new System.Drawing.Size(682, 80);
             this.toolStrip1.Stretch = true;
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
@@ -95,7 +99,7 @@
             this.dataGridViewPracownicy.Name = "dataGridViewPracownicy";
             this.dataGridViewPracownicy.ReadOnly = true;
             this.dataGridViewPracownicy.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewPracownicy.Size = new System.Drawing.Size(556, 238);
+            this.dataGridViewPracownicy.Size = new System.Drawing.Size(564, 238);
             this.dataGridViewPracownicy.TabIndex = 2;
             // 
             // nazwisko
@@ -196,15 +200,33 @@
             this.toolStripButton2.Text = "Dodanie / Edycja danych przychodni";
             this.toolStripButton2.Click += new System.EventHandler(this.toolStripButton2_Click);
             // 
-            // organizacjaPrzychodni
+            // toolStripButton3
+            // 
+            this.toolStripButton3.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton3.Image = global::Gabinet.Properties.Resources.note_icon;
+            this.toolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton3.Name = "toolStripButton3";
+            this.toolStripButton3.Size = new System.Drawing.Size(84, 77);
+            this.toolStripButton3.Text = "Import kodów recept";
+            // 
+            // toolStripButton4
+            // 
+            this.toolStripButton4.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton4.Image = global::Gabinet.Properties.Resources.download_3_icon1;
+            this.toolStripButton4.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton4.Name = "toolStripButton4";
+            this.toolStripButton4.Size = new System.Drawing.Size(84, 77);
+            this.toolStripButton4.Text = "Backup bazy";
+            // 
+            // OrganizacjaPrzychodni
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.ClientSize = new System.Drawing.Size(662, 358);
+            this.ClientSize = new System.Drawing.Size(682, 358);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.toolStrip1);
-            this.Name = "organizacjaPrzychodni";
+            this.Name = "OrganizacjaPrzychodni";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Zarządzanie przychodnią";
             this.toolStrip1.ResumeLayout(false);
@@ -231,5 +253,7 @@
         private System.Windows.Forms.ToolStripButton toolStripButtonEdytuj;
         private System.Windows.Forms.ToolStripButton toolStripButtonBazyl;
         private System.Windows.Forms.ToolStripButton toolStripButton2;
+        private System.Windows.Forms.ToolStripButton toolStripButton3;
+        private System.Windows.Forms.ToolStripButton toolStripButton4;
     }
 }

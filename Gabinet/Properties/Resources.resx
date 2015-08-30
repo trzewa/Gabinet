@@ -136,6 +136,9 @@
   <data name="addition-icon1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\addition-icon1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="note-icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\note-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="settings-3-icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\settings-3-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -208,6 +211,9 @@
   <data name="rejestruj" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\rejestruj.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="heart-plus-icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\heart-plus-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="koniec" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\koniec.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -238,7 +244,7 @@
   <data name="zmień" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\zmień.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="heart-plus-icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\heart-plus-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="download-3-icon1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\download-3-icon1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

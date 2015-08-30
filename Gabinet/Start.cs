@@ -143,27 +143,36 @@ namespace Gabinet
                 {
                     case 1:
                         this.btnRejestracja.Enabled = false;
+                        this.label4.Enabled = false;
                         this.btnKonfiguracja.Enabled = false;
+                        this.label5.Enabled = false;
                         this.btnGabinet.Enabled = true;
+                        this.label3.Enabled = true;
                         break;
 
                     case 2:
                         this.btnGabinet.Enabled = false;
+                        this.label3.Enabled = false;
                         this.btnKonfiguracja.Enabled = false;
+                        this.label5.Enabled = false;
                         this.btnRejestracja.Enabled = true;
+                        this.label4.Enabled = true;
                         break;
 
                     case 3:
-                        this.btnRejestracja.Enabled = false;
-                        this.btnKonfiguracja.Enabled = false;
+                        this.btnRejestracja.Enabled = true;
+                        this.label4.Enabled = true;
+                        this.btnKonfiguracja.Enabled = true;
+                        this.label5.Enabled = true;
                         this.btnGabinet.Enabled = true;
+                        this.label3.Enabled = true;
                         break;
 
-                    case 4:
+                    /*case 4:
                         this.btnRejestracja.Enabled = true;
                         this.btnKonfiguracja.Enabled = true;
                         this.btnGabinet.Enabled = true;
-                        break;
+                        break;*/
 
                     default :
                         break;
