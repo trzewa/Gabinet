@@ -29,13 +29,6 @@
         private void InitializeComponent()
         {
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.dataGridViewPracownicy = new System.Windows.Forms.DataGridView();
-            this.nazwisko = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.imie = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.pesel = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.rola = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.toolStripButtonDodaj = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonEdytuj = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonHarmonogram = new System.Windows.Forms.ToolStripButton();
@@ -44,6 +37,15 @@
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton4 = new System.Windows.Forms.ToolStripButton();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.dataGridViewPracownicy = new System.Windows.Forms.DataGridView();
+            this.nazwisko = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.imie = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pesel = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.rola = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPracownicy)).BeginInit();
@@ -60,23 +62,108 @@
             this.toolStripButtonHarmonogram,
             this.toolStripButton1,
             this.toolStripButtonBazyl,
+            this.toolStripSeparator1,
             this.toolStripButton2,
+            this.toolStripSeparator2,
             this.toolStripButton3,
             this.toolStripButton4});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(682, 80);
+            this.toolStrip1.Size = new System.Drawing.Size(701, 80);
             this.toolStrip1.Stretch = true;
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
+            // 
+            // toolStripButtonDodaj
+            // 
+            this.toolStripButtonDodaj.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonDodaj.Image = global::Gabinet.Properties.Resources.addition_icon1;
+            this.toolStripButtonDodaj.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonDodaj.Name = "toolStripButtonDodaj";
+            this.toolStripButtonDodaj.Size = new System.Drawing.Size(84, 77);
+            this.toolStripButtonDodaj.Text = "Dodaj pracownika";
+            this.toolStripButtonDodaj.Click += new System.EventHandler(this.toolStripButtonDodaj_Click);
+            // 
+            // toolStripButtonEdytuj
+            // 
+            this.toolStripButtonEdytuj.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonEdytuj.Image = global::Gabinet.Properties.Resources.pencil_icon;
+            this.toolStripButtonEdytuj.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonEdytuj.Name = "toolStripButtonEdytuj";
+            this.toolStripButtonEdytuj.Size = new System.Drawing.Size(84, 77);
+            this.toolStripButtonEdytuj.Text = "Edytuj dane pracownika";
+            this.toolStripButtonEdytuj.Click += new System.EventHandler(this.toolStripButtonEdytuj_Click);
+            // 
+            // toolStripButtonHarmonogram
+            // 
+            this.toolStripButtonHarmonogram.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonHarmonogram.Image = global::Gabinet.Properties.Resources.clock_icon;
+            this.toolStripButtonHarmonogram.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonHarmonogram.Name = "toolStripButtonHarmonogram";
+            this.toolStripButtonHarmonogram.Size = new System.Drawing.Size(84, 77);
+            this.toolStripButtonHarmonogram.Text = "Ustaw harmonogram pracownika";
+            this.toolStripButtonHarmonogram.Click += new System.EventHandler(this.toolStripButtonHarmonogram_Click);
+            // 
+            // toolStripButton1
+            // 
+            this.toolStripButton1.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton1.Image = global::Gabinet.Properties.Resources.share_2_icon;
+            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton1.Name = "toolStripButton1";
+            this.toolStripButton1.Size = new System.Drawing.Size(84, 77);
+            this.toolStripButton1.Text = "Konfiguracja serwera";
+            this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
+            // 
+            // toolStripButtonBazyl
+            // 
+            this.toolStripButtonBazyl.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.toolStripButtonBazyl.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonBazyl.Image = global::Gabinet.Properties.Resources.download_icon;
+            this.toolStripButtonBazyl.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonBazyl.Name = "toolStripButtonBazyl";
+            this.toolStripButtonBazyl.Size = new System.Drawing.Size(84, 77);
+            this.toolStripButtonBazyl.Text = "Pobranie pliku bazy leków BAZYL";
+            this.toolStripButtonBazyl.Click += new System.EventHandler(this.toolStripButtonBazyl_Click);
+            // 
+            // toolStripButton2
+            // 
+            this.toolStripButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton2.Image = global::Gabinet.Properties.Resources.heart_plus_icon;
+            this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton2.Name = "toolStripButton2";
+            this.toolStripButton2.Size = new System.Drawing.Size(84, 77);
+            this.toolStripButton2.Text = "Dodanie / Edycja danych przychodni";
+            this.toolStripButton2.Click += new System.EventHandler(this.toolStripButton2_Click);
+            // 
+            // toolStripButton3
+            // 
+            this.toolStripButton3.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.toolStripButton3.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton3.Image = global::Gabinet.Properties.Resources.note_icon;
+            this.toolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton3.Name = "toolStripButton3";
+            this.toolStripButton3.Size = new System.Drawing.Size(84, 77);
+            this.toolStripButton3.Text = "Import kodów recept";
+            // 
+            // toolStripButton4
+            // 
+            this.toolStripButton4.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.toolStripButton4.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton4.Image = global::Gabinet.Properties.Resources.download_3_icon1;
+            this.toolStripButton4.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton4.Name = "toolStripButton4";
+            this.toolStripButton4.Size = new System.Drawing.Size(84, 77);
+            this.toolStripButton4.Text = "Backup bazy";
+            this.toolStripButton4.Click += new System.EventHandler(this.toolStripButton4_Click);
             // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.dataGridViewPracownicy);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.groupBox1.Location = new System.Drawing.Point(55, 83);
+            this.groupBox1.Location = new System.Drawing.Point(55, 87);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(570, 263);
+            this.groupBox1.Size = new System.Drawing.Size(580, 263);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Pracownicy przychodni";
@@ -137,93 +224,22 @@
             this.id.Name = "id";
             this.id.ReadOnly = true;
             // 
-            // toolStripButtonDodaj
+            // toolStripSeparator1
             // 
-            this.toolStripButtonDodaj.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonDodaj.Image = global::Gabinet.Properties.Resources.addition_icon1;
-            this.toolStripButtonDodaj.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonDodaj.Name = "toolStripButtonDodaj";
-            this.toolStripButtonDodaj.Size = new System.Drawing.Size(84, 77);
-            this.toolStripButtonDodaj.Text = "Dodaj pracownika";
-            this.toolStripButtonDodaj.Click += new System.EventHandler(this.toolStripButtonDodaj_Click);
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 80);
             // 
-            // toolStripButtonEdytuj
+            // toolStripSeparator2
             // 
-            this.toolStripButtonEdytuj.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonEdytuj.Image = global::Gabinet.Properties.Resources.pencil_icon;
-            this.toolStripButtonEdytuj.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonEdytuj.Name = "toolStripButtonEdytuj";
-            this.toolStripButtonEdytuj.Size = new System.Drawing.Size(84, 77);
-            this.toolStripButtonEdytuj.Text = "Edytuj dane pracownika";
-            this.toolStripButtonEdytuj.Click += new System.EventHandler(this.toolStripButtonEdytuj_Click);
-            // 
-            // toolStripButtonHarmonogram
-            // 
-            this.toolStripButtonHarmonogram.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonHarmonogram.Image = global::Gabinet.Properties.Resources.clock_icon;
-            this.toolStripButtonHarmonogram.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonHarmonogram.Name = "toolStripButtonHarmonogram";
-            this.toolStripButtonHarmonogram.Size = new System.Drawing.Size(84, 77);
-            this.toolStripButtonHarmonogram.Text = "Ustaw harmonogram pracownika";
-            this.toolStripButtonHarmonogram.Click += new System.EventHandler(this.toolStripButtonHarmonogram_Click);
-            // 
-            // toolStripButton1
-            // 
-            this.toolStripButton1.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton1.Image = global::Gabinet.Properties.Resources.share_2_icon;
-            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(84, 77);
-            this.toolStripButton1.Text = "Konfiguracja serwera";
-            this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
-            // 
-            // toolStripButtonBazyl
-            // 
-            this.toolStripButtonBazyl.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.toolStripButtonBazyl.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonBazyl.Image = global::Gabinet.Properties.Resources.download_icon;
-            this.toolStripButtonBazyl.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonBazyl.Name = "toolStripButtonBazyl";
-            this.toolStripButtonBazyl.Size = new System.Drawing.Size(84, 77);
-            this.toolStripButtonBazyl.Text = "Pobranie pliku bazy leków BAZYL";
-            this.toolStripButtonBazyl.Click += new System.EventHandler(this.toolStripButtonBazyl_Click);
-            // 
-            // toolStripButton2
-            // 
-            this.toolStripButton2.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.toolStripButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton2.Image = global::Gabinet.Properties.Resources.heart_plus_icon;
-            this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton2.Name = "toolStripButton2";
-            this.toolStripButton2.Size = new System.Drawing.Size(84, 77);
-            this.toolStripButton2.Text = "Dodanie / Edycja danych przychodni";
-            this.toolStripButton2.Click += new System.EventHandler(this.toolStripButton2_Click);
-            // 
-            // toolStripButton3
-            // 
-            this.toolStripButton3.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton3.Image = global::Gabinet.Properties.Resources.note_icon;
-            this.toolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton3.Name = "toolStripButton3";
-            this.toolStripButton3.Size = new System.Drawing.Size(84, 77);
-            this.toolStripButton3.Text = "Import kodów recept";
-            // 
-            // toolStripButton4
-            // 
-            this.toolStripButton4.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton4.Image = global::Gabinet.Properties.Resources.download_3_icon1;
-            this.toolStripButton4.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton4.Name = "toolStripButton4";
-            this.toolStripButton4.Size = new System.Drawing.Size(84, 77);
-            this.toolStripButton4.Text = "Backup bazy";
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 80);
             // 
             // OrganizacjaPrzychodni
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.ClientSize = new System.Drawing.Size(682, 358);
+            this.ClientSize = new System.Drawing.Size(701, 357);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.toolStrip1);
             this.Name = "OrganizacjaPrzychodni";
@@ -255,5 +271,7 @@
         private System.Windows.Forms.ToolStripButton toolStripButton2;
         private System.Windows.Forms.ToolStripButton toolStripButton3;
         private System.Windows.Forms.ToolStripButton toolStripButton4;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
     }
 }

@@ -8,15 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
-//using mysettings = Gabinet.Properties.Settings;
+using mysettings = Gabinet.Properties.Settings;
+using System.Net;
 
 namespace Gabinet
 {
     public partial class OrganizacjaPrzychodni : Form
     {
-
-        //public string dbconnection_gabinet;
-
         public OrganizacjaPrzychodni()
         {
             InitializeComponent();
@@ -190,6 +188,31 @@ namespace Gabinet
                 f2.ShowDialog();                
                 this.Visible = true;
             }
+        }
+
+        private void toolStripButton4_Click(object sender, EventArgs e)
+        {
+            
+            String password = Cryption.DecryptRijndael(mysettings.Default.password);
+            Database database = new Database();
+            string constring = "server=" + mysettings.Default.datasource + ";user=" + mysettings.Default.user + ";pwd=" + password + ";database=" + mysettings.Default.database + ";";
+            string file = @"C:\Baza\backup.sql";
+            
+            using (MySqlConnection conn = new MySqlConnection(constring))
+            {               
+                using (MySqlCommand cmd = new MySqlCommand())
+                {
+                    using (MySqlBackup mb = new MySqlBackup(cmd))
+                    {
+                        
+                        cmd.Connection = conn;
+                        conn.Open();                        
+                        mb.ExportToFile(file);                         
+                        conn.Close();                        
+                    }
+                }
+            }
+            MessageBox.Show("Plik backup.sql został zapisany z powodzeniem!");
         }
     }
 }

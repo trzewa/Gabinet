@@ -19,6 +19,7 @@ namespace Gabinet
         private string idpracownik;
         private string idkontakt;
         private string idadres;
+        private string inputLogin, inputHaslo;
 
         public DodajPracownik()
         {
@@ -43,7 +44,7 @@ namespace Gabinet
             this.idpracownik = idpracownikReceive;
             buttonZapisz.Visible = false;
             this.Text = "Edycja danych pracownika";
-            textBoxImie.Enabled = false;
+            //textBoxImie.Enabled = false;
             textBoxPesel.Enabled = false;
             comboBoxPlec.Enabled = false;
             dateTimePickerZatrudnienia.Enabled = false;
@@ -299,8 +300,8 @@ namespace Gabinet
                     this.textBoxPwz.Text = element["numer_pwz"].ToString();                    
                     this.comboBoxPlec.SelectedIndex = comboBoxPlec.FindStringExact(element["plec"].ToString());
                     this.comboBoxStanowisko.SelectedIndex = comboBoxStanowisko.FindStringExact(element["nazwa"].ToString());
-                    this.textBoxLogin.Text = element["login"].ToString();
-                    this.textBoxHaslo.Text = element["haslo"].ToString();
+                    this.textBoxLogin.Text = this.inputLogin = element["login"].ToString();
+                    this.textBoxHaslo.Text = this.inputHaslo = element["haslo"].ToString();
                 }
 
             }
@@ -371,6 +372,7 @@ namespace Gabinet
         {
             try
             {
+                string imie = this.textBoxImie.Text;
                 string nazwisko = this.textBoxNazwisko.Text;
                 string pwz = this.textBoxPwz.Text;
                 string wojewodztwo = (comboBoxWojewodztwo.SelectedItem as ComboboxItem).Text.ToString();
@@ -407,7 +409,7 @@ namespace Gabinet
                     this.idkontakt = element["idkontakt"].ToString();
                 }
 
-                if (nazwisko.Equals("") || stanowisko.Equals(""))
+                if (imie.Equals("") || nazwisko.Equals("") || stanowisko.Equals(""))
                 {
                     MessageBox.Show("Brak danych w sekcji Dane podstawowe");
                 }
@@ -421,11 +423,19 @@ namespace Gabinet
                 }
                 else
                 {
-                    Cryption hasloSzyfr = new Cryption();
-                    string hs = hasloSzyfr.CryptMd5(haslo);
-
-                    database.Update("update pracownik set idstanowisko = '" + stanowisko + "', nazwisko = '" + nazwisko.ToString() + "', numer_pwz = '" + pwz.ToString() + "'  where idpracownik = '" + this.idpracownik + "'", database.Conect());
-                    database.Update("update user set login = '" + login.ToString() + "', haslo = '" + hs + "' where idpracownik = '" + this.idpracownik + "'", database.Conect());
+                    if (haslo.Equals(this.inputHaslo))
+                    {
+                        database.Update("update user set haslo = '" + haslo.ToString() + "' where idpracownik = '" + this.idpracownik + "'", database.Conect());
+                    }
+                    else
+                    {
+                        Cryption hasloSzyfr = new Cryption();
+                        string hs = hasloSzyfr.CryptMd5(haslo);
+                        database.Update("update user set haslo = '" + hs + "' where idpracownik = '" + this.idpracownik + "'", database.Conect());
+                    }                   
+                    
+                    database.Update("update pracownik set idstanowisko = '" + stanowisko + "', imie = '" + imie.ToString() + "', nazwisko = '" + nazwisko.ToString() + "', numer_pwz = '" + pwz.ToString() + "'  where idpracownik = '" + this.idpracownik + "'", database.Conect());
+                    database.Update("update user set login = '" + login.ToString() + "' where idpracownik = '" + this.idpracownik + "'", database.Conect());
                     database.Update("update adres set wojewodztwo = '" + wojewodztwo.ToString() + "', miasto = '" + miasto.ToString() + "', kod_pocztowy = '" + kod.ToString() + "', ulica = '" + ulica.ToString() + "', nr_budynku = '" + nrDomu + "', nr_lokalu = '" + nrMieszkania + "' where idadres = '" + this.idadres + "'", database.Conect());
                     database.Update("update kontakt set telefon = '" + telefon.ToString() + "', mail = '" + mail.ToString() + "' where idkontakt = '" + this.idkontakt + "'", database.Conect());
 
@@ -462,6 +472,11 @@ namespace Gabinet
                     e.KeyChar = (char)0;
                 }
             }
+        }
+
+        private void textBoxHaslo_TextChanged(object sender, EventArgs e)
+        {            
+                
         }
     }
 }

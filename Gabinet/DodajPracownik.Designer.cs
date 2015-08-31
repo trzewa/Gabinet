@@ -418,15 +418,16 @@
             this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label17.Location = new System.Drawing.Point(8, 54);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(62, 13);
+            this.label17.Size = new System.Drawing.Size(69, 13);
             this.label17.TabIndex = 6;
-            this.label17.Text = "Stanowisko";
+            this.label17.Text = "Stanowisko *";
             // 
             // textBoxHasloRepeat
             // 
             this.textBoxHasloRepeat.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.textBoxHasloRepeat.Location = new System.Drawing.Point(293, 31);
             this.textBoxHasloRepeat.Name = "textBoxHasloRepeat";
+            this.textBoxHasloRepeat.PasswordChar = '*';
             this.textBoxHasloRepeat.Size = new System.Drawing.Size(126, 20);
             this.textBoxHasloRepeat.TabIndex = 5;
             // 
@@ -435,8 +436,10 @@
             this.textBoxHaslo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.textBoxHaslo.Location = new System.Drawing.Point(156, 31);
             this.textBoxHaslo.Name = "textBoxHaslo";
+            this.textBoxHaslo.PasswordChar = '*';
             this.textBoxHaslo.Size = new System.Drawing.Size(131, 20);
             this.textBoxHaslo.TabIndex = 4;
+            this.textBoxHaslo.TextChanged += new System.EventHandler(this.textBoxHaslo_TextChanged);
             // 
             // textBoxLogin
             // 
@@ -462,9 +465,9 @@
             this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label15.Location = new System.Drawing.Point(153, 15);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(36, 13);
+            this.label15.Size = new System.Drawing.Size(43, 13);
             this.label15.TabIndex = 1;
-            this.label15.Text = "Hasło";
+            this.label15.Text = "Hasło *";
             // 
             // label14
             // 
@@ -472,9 +475,9 @@
             this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label14.Location = new System.Drawing.Point(6, 16);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(33, 13);
+            this.label14.Size = new System.Drawing.Size(40, 13);
             this.label14.TabIndex = 0;
-            this.label14.Text = "Login";
+            this.label14.Text = "Login *";
             // 
             // label20
             // 
@@ -515,7 +518,7 @@
             this.buttonZmien.UseVisualStyleBackColor = true;
             this.buttonZmien.Click += new System.EventHandler(this.buttonZmien_Click);
             // 
-            // dodajPracownika
+            // DodajPracownik
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -528,7 +531,7 @@
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
-            this.Name = "dodajPracownika";
+            this.Name = "DodajPracownik";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Dodawanie pracownika";
             this.groupBox1.ResumeLayout(false);
