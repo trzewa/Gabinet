@@ -123,6 +123,7 @@
             // 
             this.textBoxPass.Location = new System.Drawing.Point(92, 124);
             this.textBoxPass.Name = "textBoxPass";
+            this.textBoxPass.PasswordChar = '*';
             this.textBoxPass.Size = new System.Drawing.Size(215, 20);
             this.textBoxPass.TabIndex = 9;
             // 
@@ -136,7 +137,7 @@
             this.buttonZmien.UseVisualStyleBackColor = true;
             this.buttonZmien.Click += new System.EventHandler(this.buttonZmien_Click);
             // 
-            // bazaDane
+            // BazaDanych
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -153,7 +154,7 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Name = "bazaDane";
+            this.Name = "BazaDanych";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Ustawienia dostępu do bazy";
             this.ResumeLayout(false);

@@ -192,27 +192,33 @@ namespace Gabinet
 
         private void toolStripButton4_Click(object sender, EventArgs e)
         {
-            
-            String password = Cryption.DecryptRijndael(mysettings.Default.password);
-            Database database = new Database();
-            string constring = "server=" + mysettings.Default.datasource + ";user=" + mysettings.Default.user + ";pwd=" + password + ";database=" + mysettings.Default.database + ";";
-            string file = @"C:\Baza\backup.sql";
-            
-            using (MySqlConnection conn = new MySqlConnection(constring))
-            {               
-                using (MySqlCommand cmd = new MySqlCommand())
+            try
+            {
+                String password = Cryption.DecryptRijndael(mysettings.Default.password);
+                Database database = new Database();
+                string constring = "server=" + mysettings.Default.datasource + ";user=" + mysettings.Default.user + ";pwd=" + password + ";database=" + mysettings.Default.database + ";";
+
+                string file = @"C:\Baza\backup.sql";
+
+                using (MySqlConnection conn = new MySqlConnection(constring))
                 {
-                    using (MySqlBackup mb = new MySqlBackup(cmd))
+                    using (MySqlCommand cmd = new MySqlCommand())
                     {
-                        
-                        cmd.Connection = conn;
-                        conn.Open();                        
-                        mb.ExportToFile(file);                         
-                        conn.Close();                        
+                        using (MySqlBackup mb = new MySqlBackup(cmd))
+                        {
+                            cmd.Connection = conn;
+                            conn.Open();
+                            mb.ExportToFile(file);
+                            conn.Close();
+                        }
                     }
                 }
+                MessageBox.Show("Plik backup.sql został zapisany z powodzeniem!");
             }
-            MessageBox.Show("Plik backup.sql został zapisany z powodzeniem!");
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }
