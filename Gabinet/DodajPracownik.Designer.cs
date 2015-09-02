@@ -143,6 +143,7 @@
             this.textBoxPesel.Name = "textBoxPesel";
             this.textBoxPesel.Size = new System.Drawing.Size(145, 20);
             this.textBoxPesel.TabIndex = 5;
+            this.textBoxPesel.TextChanged += new System.EventHandler(this.textBoxPesel_TextChanged);
             this.textBoxPesel.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxPesel_KeyPress);
             this.textBoxPesel.Leave += new System.EventHandler(this.textBoxPesel_Leave);
             // 

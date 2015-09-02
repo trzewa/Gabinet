@@ -184,6 +184,12 @@
     <Compile Include="HarmonogramZmien.Designer.cs">
       <DependentUpon>HarmonogramZmien.cs</DependentUpon>
     </Compile>
+    <Compile Include="KodRecepta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="KodRecepta.Designer.cs">
+      <DependentUpon>KodRecepta.cs</DependentUpon>
+    </Compile>
     <Compile Include="LekRecepta.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -322,6 +328,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="HarmonogramZmien.resx">
       <DependentUpon>HarmonogramZmien.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="KodRecepta.resx">
+      <DependentUpon>KodRecepta.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LekRecepta.resx">
       <DependentUpon>LekRecepta.cs</DependentUpon>

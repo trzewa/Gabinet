@@ -478,5 +478,10 @@ namespace Gabinet
         {            
                 
         }
+
+        private void textBoxPesel_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
