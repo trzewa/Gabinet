@@ -31,6 +31,8 @@
             this.toolStrip2 = new System.Windows.Forms.ToolStrip();
             this.toolStripBtnWizyta = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonDanePacjenta = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonHistoria = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonPlan = new System.Windows.Forms.ToolStripButton();
             this.groupBoxLekarz = new System.Windows.Forms.GroupBox();
             this.textBoxStanowisko = new System.Windows.Forms.TextBox();
             this.textBoxImieNazwisko = new System.Windows.Forms.TextBox();
@@ -51,8 +53,6 @@
             this.textBoxGodzOd = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.toolStripButtonHistoria = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButtonPlan = new System.Windows.Forms.ToolStripButton();
             this.toolStrip2.SuspendLayout();
             this.groupBoxLekarz.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -100,6 +100,26 @@
             this.toolStripButtonDanePacjenta.Size = new System.Drawing.Size(84, 77);
             this.toolStripButtonDanePacjenta.Text = "Dane pacjenta";
             this.toolStripButtonDanePacjenta.Click += new System.EventHandler(this.toolStripButtonDanePacjenta_Click);
+            // 
+            // toolStripButtonHistoria
+            // 
+            this.toolStripButtonHistoria.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonHistoria.Image = global::Gabinet.Properties.Resources.fastrewind_icon;
+            this.toolStripButtonHistoria.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonHistoria.Name = "toolStripButtonHistoria";
+            this.toolStripButtonHistoria.Size = new System.Drawing.Size(84, 77);
+            this.toolStripButtonHistoria.Text = "Historia wizyt pacjenta";
+            this.toolStripButtonHistoria.Click += new System.EventHandler(this.toolStripButtonHistoria_Click);
+            // 
+            // toolStripButtonPlan
+            // 
+            this.toolStripButtonPlan.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonPlan.Image = global::Gabinet.Properties.Resources.fastforward_icon;
+            this.toolStripButtonPlan.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonPlan.Name = "toolStripButtonPlan";
+            this.toolStripButtonPlan.Size = new System.Drawing.Size(84, 77);
+            this.toolStripButtonPlan.Text = "Zarezerwowane wizyty pacjenta";
+            this.toolStripButtonPlan.Click += new System.EventHandler(this.toolStripButtonPlan_Click);
             // 
             // groupBoxLekarz
             // 
@@ -292,27 +312,7 @@
             this.label4.TabIndex = 1;
             this.label4.Text = "Od";
             // 
-            // toolStripButtonHistoria
-            // 
-            this.toolStripButtonHistoria.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonHistoria.Image = global::Gabinet.Properties.Resources.fastrewind_icon;
-            this.toolStripButtonHistoria.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonHistoria.Name = "toolStripButtonHistoria";
-            this.toolStripButtonHistoria.Size = new System.Drawing.Size(84, 77);
-            this.toolStripButtonHistoria.Text = "Historia wizyt pacjenta";
-            this.toolStripButtonHistoria.Click += new System.EventHandler(this.toolStripButtonHistoria_Click);
-            // 
-            // toolStripButtonPlan
-            // 
-            this.toolStripButtonPlan.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonPlan.Image = global::Gabinet.Properties.Resources.fastforward_icon;
-            this.toolStripButtonPlan.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonPlan.Name = "toolStripButtonPlan";
-            this.toolStripButtonPlan.Size = new System.Drawing.Size(84, 77);
-            this.toolStripButtonPlan.Text = "Zarezerwowane wizyty pacjenta";
-            this.toolStripButtonPlan.Click += new System.EventHandler(this.toolStripButtonPlan_Click);
-            // 
-            // panelLekarza
+            // PanelLekarza
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -323,9 +323,9 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBoxLekarz);
             this.Controls.Add(this.toolStrip2);
-            this.Name = "panelLekarza";
+            this.Name = "PanelLekarza";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Panel lekarza";
+            this.Text = "Lekarz";
             this.Load += new System.EventHandler(this.panelLekarza_Load);
             this.toolStrip2.ResumeLayout(false);
             this.toolStrip2.PerformLayout();

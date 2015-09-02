@@ -220,5 +220,27 @@ namespace Gabinet
                 MessageBox.Show(ex.Message);
             }
         }
+
+        private void toolStripButton3_Click(object sender, EventArgs e)
+        {
+            bool IsOpen = false;
+
+            foreach (Form f in Application.OpenForms)
+            {
+                if (f.Text == "Import kodów recept")
+                {
+                    IsOpen = true;
+                    f.Focus();
+                    break;
+                }
+            }
+            if (IsOpen == false)
+            {
+                this.Visible = false;
+                KodRecepta f2 = new KodRecepta();
+                f2.ShowDialog();
+                this.Visible = true;
+            }
+        }
     }
 }

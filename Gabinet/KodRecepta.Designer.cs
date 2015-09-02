@@ -115,6 +115,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBox2);
             this.Name = "KodRecepta";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Import kodów recept";
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -16,6 +16,8 @@ namespace Gabinet
         public KodRecepta()
         {
             InitializeComponent();
+            this.MaximumSize = this.Size;
+            this.MinimumSize = this.Size;
         }
 
         private void textBox1_Leave(object sender, EventArgs e)
@@ -34,13 +36,18 @@ namespace Gabinet
                 MessageBox.Show("Wprowadzony numer jest za krótki!");
                 textBox2.Select();
             }
-            int start = textBox2.TextLength - 18;
-            int end = textBox2.TextLength - 2;
-            label4.Text = textBox2.Text.Substring(3, 16);
-            /*if (Convert.ToDouble(label4.Text) < 0)
+            else
             {
-                MessageBox.Show("Numer końcowy nie może być mniejszy od początkowego!");
-            }*/
+                Int64 wynik = Convert.ToInt64(textBox2.Text.Substring(5, 15)) - Convert.ToInt64(textBox1.Text.Substring(5, 15)) + 1;
+                label4.Text = wynik.ToString();
+
+                if (Convert.ToInt64(label4.Text) < 0)
+                {
+                    label4.Text = "BŁĄD";
+                    MessageBox.Show("Numer końcowy nie może być mniejszy od początkowego!");
+
+                }
+            }            
         }
 
         private void textBox1_KeyPress(object sender, KeyPressEventArgs e)

@@ -155,6 +155,7 @@
             this.toolStripButton3.Name = "toolStripButton3";
             this.toolStripButton3.Size = new System.Drawing.Size(84, 77);
             this.toolStripButton3.Text = "Import kodów recept";
+            this.toolStripButton3.Click += new System.EventHandler(this.toolStripButton3_Click);
             // 
             // toolStripButton4
             // 
@@ -163,7 +164,7 @@
             this.toolStripButton4.Image = global::Gabinet.Properties.Resources.download_3_icon1;
             this.toolStripButton4.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton4.Name = "toolStripButton4";
-            this.toolStripButton4.Size = new System.Drawing.Size(84, 77);
+            this.toolStripButton4.Size = new System.Drawing.Size(84, 84);
             this.toolStripButton4.Text = "Backup bazy";
             this.toolStripButton4.Click += new System.EventHandler(this.toolStripButton4_Click);
             // 
