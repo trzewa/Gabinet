@@ -19,7 +19,8 @@ namespace Gabinet
         public string dbconnection_lek;
         //public string dbconnection_gabinet;
         public string idrecepta = null;
-        
+        public string kodrecepty;
+
         public Recepta()
         {
             InitializeComponent();
@@ -75,6 +76,29 @@ namespace Gabinet
             }
             else listViewRecepta.BackColor = System.Drawing.Color.White;
         }
+
+        private void Get_kodRecepty()
+        {
+            try
+            {
+                MySqlDataAdapter myDataAdapter = new MySqlDataAdapter();
+                Database database = new Database();
+                myDataAdapter = database.Select("select * from receptakod where stan = 0 order by id asc", database.Conect());
+                DataTable dt = new DataTable();
+                myDataAdapter.Fill(dt);
+                if (dt.Rows.Count > 0)
+                {
+                    DataRow element = dt.Rows[0];
+                    this.kodrecepty = element["kod_recepty"].ToString();
+                }                
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }            
+        }
+        
+        
 
         private void buttonZnajdz_Click(object sender, EventArgs e)
         {            
@@ -156,7 +180,6 @@ namespace Gabinet
         {
             try
             {
-
                 string uprawnienia = comboBoxUprawnienia.SelectedItem.ToString();
                 string dataRealizacji;
                 if (checkBox1.CheckState == CheckState.Checked) 
@@ -164,8 +187,8 @@ namespace Gabinet
                     dataRealizacji = this.dateTimePickerRealizacja.Text;                    
                 }
                 else dataRealizacji = "X";
-
-
+                
+                
                 MySqlDataAdapter myDataAdapter = new MySqlDataAdapter();
                 Database database = new Database();
                 database.Insert("insert into recepta (data_realizacji, uprawnienia_dodatkowe) VALUES('" + dataRealizacji + "','" + uprawnienia + "')", database.Conect());
