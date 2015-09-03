@@ -49,7 +49,7 @@ namespace Gabinet
             buttonZapisz.Visible = false;
             buttonDodajOpiekun.Visible = false;
             this.Text = "Edycja danych pacjenta";
-            textBoxImie.Enabled = false;
+            //textBoxImie.Enabled = false;
             textBoxPesel.Enabled = false;
             maskedTextBoxNip.Enabled = false;
             comboBoxPlec.Enabled = false;
@@ -455,8 +455,8 @@ namespace Gabinet
 
             try
             {                
-                string nazwisko = this.textBoxNazwisko.Text;                
-
+                string nazwisko = this.textBoxNazwisko.Text;
+                string imie = this.textBoxImie.Text;
                 string wojewodztwo = (comboBoxWojewodztwo.SelectedItem as ComboboxItem).Text.ToString();
                 string miasto = (comboBoxMiasto.SelectedItem as ComboboxItem).Text.ToString();
                 string ulica = (comboBoxUlica.SelectedItem as ComboboxItem).Text.ToString();
@@ -495,7 +495,7 @@ namespace Gabinet
                     this.idkontakt = element["idkontakt"].ToString();                   
                 }
 
-                database.Update("update pacjent set idubezpieczenia = '" + uprawnienia + "', idfundusz = '" + nfz + "', nazwisko = '" + nazwisko.ToString() + "', miejsce_pracy = '" + zaklad.ToString() + "', zawod = '" + zawod.ToString() + "', nip_platnika = '" + nipPraca.ToString() + "' where idpacjent = '" + this.idpacjent + "'", database.Conect());
+                database.Update("update pacjent set idubezpieczenia = '" + uprawnienia + "', idfundusz = '" + nfz + "', imie = '" + imie.ToString() + "', nazwisko = '" + nazwisko.ToString() + "', miejsce_pracy = '" + zaklad.ToString() + "', zawod = '" + zawod.ToString() + "', nip_platnika = '" + nipPraca.ToString() + "' where idpacjent = '" + this.idpacjent + "'", database.Conect());
                 database.Update("update adres set wojewodztwo = '" + wojewodztwo.ToString() + "', miasto = '" + miasto.ToString() + "', kod_pocztowy = '" + kod.ToString() + "', ulica = '" + ulica.ToString() + "', nr_budynku = '" + nrDomu + "', nr_lokalu = '" + nrMieszkania + "' where idadres = '" + this.idadres + "'", database.Conect());
                 database.Update("update kontakt set telefon = '" + telefon.ToString() + "', mail = '" + mail.ToString() + "' where idkontakt = '" + this.idkontakt + "'", database.Conect());
                 

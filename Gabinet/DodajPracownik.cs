@@ -474,6 +474,15 @@ namespace Gabinet
             }
         }
 
+        private void textBoxMail_Leave(object sender, EventArgs e)
+        {
+            if ((textBoxMail.Text.IndexOf("@") == -1 || textBoxMail.Text.IndexOf(".") == -1))
+            {
+                MessageBox.Show("Nieprawidłowy adres mailowy!");
+                textBoxMail.Select();
+            }
+        }
+
         private void textBoxHaslo_TextChanged(object sender, EventArgs e)
         {            
                 

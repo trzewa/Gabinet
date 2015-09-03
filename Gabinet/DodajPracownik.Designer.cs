@@ -273,6 +273,7 @@
             this.textBoxMail.Name = "textBoxMail";
             this.textBoxMail.Size = new System.Drawing.Size(196, 20);
             this.textBoxMail.TabIndex = 15;
+            this.textBoxMail.Leave += new System.EventHandler(this.textBoxMail_Leave);
             // 
             // label13
             // 
