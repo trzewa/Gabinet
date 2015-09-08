@@ -93,6 +93,7 @@
             // 
             // toolStripButtonDanePacjenta
             // 
+            this.toolStripButtonDanePacjenta.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
             this.toolStripButtonDanePacjenta.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.toolStripButtonDanePacjenta.Image = global::Gabinet.Properties.Resources.info_icon;
             this.toolStripButtonDanePacjenta.ImageTransparentColor = System.Drawing.Color.Magenta;
@@ -103,6 +104,7 @@
             // 
             // toolStripButtonHistoria
             // 
+            this.toolStripButtonHistoria.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
             this.toolStripButtonHistoria.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.toolStripButtonHistoria.Image = global::Gabinet.Properties.Resources.fastrewind_icon;
             this.toolStripButtonHistoria.ImageTransparentColor = System.Drawing.Color.Magenta;
@@ -113,6 +115,7 @@
             // 
             // toolStripButtonPlan
             // 
+            this.toolStripButtonPlan.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
             this.toolStripButtonPlan.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.toolStripButtonPlan.Image = global::Gabinet.Properties.Resources.fastforward_icon;
             this.toolStripButtonPlan.ImageTransparentColor = System.Drawing.Color.Magenta;

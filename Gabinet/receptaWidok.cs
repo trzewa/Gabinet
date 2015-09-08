@@ -42,6 +42,7 @@ namespace Gabinet
         public string dataRealizacji;
         public string uprawnienia;
         public string data;
+        public string kodRecepty;
         public Wizyta rodzicWizyta;
 
         public ReceptaWidok()
@@ -138,7 +139,7 @@ namespace Gabinet
             this.g = this.CreateGraphics();
             this.g.PageUnit = GraphicsUnit.Millimeter;
 
-            this.ReportPath = @"Rp.rdlc";
+            this.ReportPath = @"c:\Baza\Rp.rdlc";
             this.ReadInitialValuesFromRDLC(new FileStream(this.ReportPath, FileMode.Open), out this.PageWidth, out this.PageHeight, out MedListWidth, out this.MedListHeight);
             this.MakeReport(0.0 + this.HardMarginX, 0.0 + this.HardMarginX);
             this.tabControl1.SelectedTab = tabPage2;
@@ -172,6 +173,7 @@ namespace Gabinet
             Update_danePacjent();
             Update_danePrzychodni();
             Update_daneRecepta();
+            Update_kodRecepta();
 
             ReportParameter PrintWireframe = new ReportParameter("PrintWireframe", this.cbPrintFrames.Checked.ToString());
             ReportParameter PrintLabels = new ReportParameter("PrintLabels", this.cbPrintLabels.Checked.ToString());
@@ -179,7 +181,7 @@ namespace Gabinet
             ReportParameter PrintHCProvider = new ReportParameter("PrintHCProvider", this.cbPrintHCProvider.Checked.ToString());
 
             ReportParameter HCP = new ReportParameter("HealthcareProvider", this.danePrzychodni);
-            ReportParameter PNum = new ReportParameter("PrescriptionNumber", this.GenerateRandomRpNumber());
+            ReportParameter PNum = new ReportParameter("PrescriptionNumber", this.kodRecepty); //this.GenerateRandomRpNumber()
             ReportParameter NFZ = new ReportParameter("NFZDivision", this.Nfz);
             ReportParameter PP = new ReportParameter("PatientPersmissions", this.uprawnienia);
             ReportParameter PESEL = new ReportParameter("PESEL", this.Pesel);
@@ -254,6 +256,27 @@ namespace Gabinet
             }
         }
 
+        private void Update_kodRecepta()
+        {
+            try
+            {
+                MySqlDataAdapter myDataAdapter = new MySqlDataAdapter();
+                Database database = new Database();
+                myDataAdapter = database.Select("select * from receptakod where id = '" + this.kodRecepty + "'", database.Conect());
+                DataTable dt = new DataTable();
+                myDataAdapter.Fill(dt);
+                if (dt.Rows.Count == 1)
+                {
+                    DataRow element = dt.Rows[0];
+                    this.kodRecepty = element["kod_recepty"].ToString();                    
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
         private void Update_daneRecepta()
         {
             try
@@ -272,6 +295,8 @@ namespace Gabinet
                         this.dataRealizacji = Convert.ToDateTime(this.dataRealizacji).ToString("yyyy-MM-dd");
                     }
                     this.uprawnienia = element["uprawnienia_dodatkowe"].ToString().Substring(0, 2);
+                    this.kodRecepty = element["idkod"].ToString();
+                    
                 }
             }
             catch (Exception ex)

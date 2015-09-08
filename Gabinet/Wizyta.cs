@@ -25,6 +25,7 @@ namespace Gabinet
         public string idChoroby = null;
         public string idTypBadania = null;
         public string data;
+        public string kodRecepty;
         public bool stan;
         private bool flag;
 
@@ -166,8 +167,19 @@ namespace Gabinet
                 try
                 {
                     database.Delete("delete from receptalek where idrecepty='" + this.idrecepta + "'", database.Conect());
+                    MySqlDataAdapter myDataAdapter = new MySqlDataAdapter();
+                    myDataAdapter = database.Select("select * from recepta where idrecepty='" + this.idrecepta + "'", database.Conect());
+                    DataTable ddt = new DataTable();
+                    myDataAdapter.Fill(ddt);
 
-                    database.Delete("delete from recepta where idrecepty='" + this.idrecepta + "'", database.Conect());
+                    if (ddt.Rows.Count == 1)
+                    {
+                        DataRow element = ddt.Rows[0];
+                        this.kodRecepty = element["idkod"].ToString();
+                    }
+                    database.Update("update receptakod set stan = 0 where id ='" + this.kodRecepty + "'", database.Conect());
+                    database.Delete("delete from recepta where idrecepty='" + this.idrecepta + "'", database.Conect());                    
+
                 }
                 catch (Exception ex)
                 {

@@ -19,7 +19,7 @@ namespace Gabinet
         public string dbconnection_lek;
         //public string dbconnection_gabinet;
         public string idrecepta = null;
-        public string kodrecepty;
+        public string kodrecepty = "";
 
         public Recepta()
         {
@@ -182,6 +182,7 @@ namespace Gabinet
             {
                 string uprawnienia = comboBoxUprawnienia.SelectedItem.ToString();
                 string dataRealizacji;
+                
                 if (checkBox1.CheckState == CheckState.Checked) 
                 {
                     dataRealizacji = this.dateTimePickerRealizacja.Text;                    
@@ -191,37 +192,60 @@ namespace Gabinet
                 
                 MySqlDataAdapter myDataAdapter = new MySqlDataAdapter();
                 Database database = new Database();
-                database.Insert("insert into recepta (data_realizacji, uprawnienia_dodatkowe) VALUES('" + dataRealizacji + "','" + uprawnienia + "')", database.Conect());
+                myDataAdapter = database.Select("select * from receptakod where stan = 0 order by id asc", database.Conect());
+                DataTable ddt = new DataTable();
+                myDataAdapter.Fill(ddt);
 
-                myDataAdapter = database.Select("select max(idrecepty) from recepta", database.Conect());
-                DataTable dt = new DataTable();
-                myDataAdapter.Fill(dt);
-                                
-                if (dt.Rows.Count == 1)
+                if (ddt.Rows.Count > 0)
                 {
-                    DataRow element = dt.Rows[0];
-                    this.idrecepta = element["max(idrecepty)"].ToString();
+                    DataRow element = ddt.Rows[0];
+                    this.kodrecepty = element["id"].ToString();
                 }
 
-                for (int i = 0; i <= listViewRecepta.Items.Count - 1; i++)
-                
+                if (this.kodrecepty.Equals(""))
                 {
-                    string bazyl = listViewRecepta.Items[i].SubItems[1].Text.ToString();
-                    string dawkowanie = listViewRecepta.Items[i].SubItems[4].Text.ToString();
-                    string ilosc = listViewRecepta.Items[i].SubItems[2].Text.ToString();
-                    string odplatnosc = listViewRecepta.Items[i].SubItems[3].Text.ToString();
+                    {
+                        DialogResult w = MessageBox.Show("Brak wolnych kodów recept! Nie można utworzyć recepty!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                    database.Insert("insert into receptalek (idrecepty, bazyl, dawkowanie, ilosc, odplatnosc) VALUES('" + this.idrecepta + "','" + bazyl + "','" + dawkowanie + "', '" + ilosc + "','" + odplatnosc + "')", database.Conect());
+                        if (w == System.Windows.Forms.DialogResult.OK)
+                        {
+                            this.Close();
+                        }
+                    }
                 }
-
-
-                DialogResult result = MessageBox.Show("Recepta utworzona", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                if (result == System.Windows.Forms.DialogResult.OK)
+                else
                 {
-                    this.Close();
-                }
-                
+                    database.Insert("insert into recepta (idkod, data_realizacji, uprawnienia_dodatkowe) VALUES('" + this.kodrecepty + "', '" + dataRealizacji + "','" + uprawnienia + "')", database.Conect());
+                    database.Update("update receptakod set stan = 1 where id ='" + this.kodrecepty + "'", database.Conect());
+
+                    myDataAdapter = database.Select("select max(idrecepty) from recepta", database.Conect());
+                    DataTable dt = new DataTable();
+                    myDataAdapter.Fill(dt);
+
+                    if (dt.Rows.Count == 1)
+                    {
+                        DataRow element = dt.Rows[0];
+                        this.idrecepta = element["max(idrecepty)"].ToString();
+                    }
+
+                    for (int i = 0; i <= listViewRecepta.Items.Count - 1; i++)
+                    {
+                        string bazyl = listViewRecepta.Items[i].SubItems[1].Text.ToString();
+                        string dawkowanie = listViewRecepta.Items[i].SubItems[4].Text.ToString();
+                        string ilosc = listViewRecepta.Items[i].SubItems[2].Text.ToString();
+                        string odplatnosc = listViewRecepta.Items[i].SubItems[3].Text.ToString();
+
+                        database.Insert("insert into receptalek (idrecepty, bazyl, dawkowanie, ilosc, odplatnosc) VALUES('" + this.idrecepta + "','" + bazyl + "','" + dawkowanie + "', '" + ilosc + "','" + odplatnosc + "')", database.Conect());
+                    }
+
+
+                    DialogResult result = MessageBox.Show("Recepta utworzona", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    if (result == System.Windows.Forms.DialogResult.OK)
+                    {
+                        this.Close();
+                    }
+                } 
             }
             catch (Exception ex)
             {

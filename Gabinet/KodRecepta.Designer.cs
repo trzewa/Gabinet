@@ -90,6 +90,7 @@
             this.buttonZapisz.TabIndex = 6;
             this.buttonZapisz.Text = "Zapisz";
             this.buttonZapisz.UseVisualStyleBackColor = true;
+            this.buttonZapisz.Click += new System.EventHandler(this.buttonZapisz_Click);
             // 
             // textBox1
             // 
